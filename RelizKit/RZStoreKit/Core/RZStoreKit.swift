@@ -10,30 +10,30 @@ import UIKit
 import StoreKit
 import SwiftyStoreKit
 
-//MARK: - SubController
+//MARK: - RZStoreKit
 /// `RU: - `
 /// Класс отвечающий за все процессы покупок и отслеживание состояния подписок
 ///
 /// Для запуска нужно вызвать метод `start`
 ///
-///     SubController.start(SubDelegate.instans)
+///     RZStoreKit.start(SubDelegate.instans)
 ///
-/// Для корректоной работы необходимо провести инициализацию `Product`
-public class SubController{
+/// Для корректоной работы необходимо провести инициализацию `RZProduct`
+public class RZStoreKit{
     //MARK: - start
     /// `RU: - `
     /// Запускает все необходимые для проверки подписок процессы. Для корректной работы лучше запускать из `AppDelegate` приложения
-    public static func start(_ delegate: SubDelegateProtocol? = nil){
+    public static func start(_ delegate: RZStoreDelegateProtocol? = nil){
         self.delegate = delegate
-        SubRefrasher.start()
+        RZStoreRefrasher.start()
     }
     
-    public static weak var delegate: SubDelegateProtocol?
+    public static weak var delegate: RZStoreDelegateProtocol?
     
-    public static var activeProducts: [Product] {
-        var activeProducts = [Product]()
+    public static var activeProducts: [RZProduct] {
+        var activeProducts = [RZProduct]()
         for activeReceipt in activeReceipts{
-            if let activeProduct = Product.getProduct(activeReceipt.productId){
+            if let activeProduct = RZProduct.getProduct(activeReceipt.productId){
                 activeProducts.append(activeProduct)
             }
         }
@@ -79,7 +79,7 @@ public class SubController{
     }
     
     
-    //MARK: - subscribe
+    //MARK: - buy
     /// `RU: - `
     /// Метод для инициирования процесса подписки
     ///
@@ -87,7 +87,7 @@ public class SubController{
     /// id продукта
     /// - Parameter completion
     /// замыкае вызываемое при окончании процесса подписки
-    public static func subscribe(product: Product, customData: Any? = nil, completion: (()->())? = nil){
+    public static func buy(product: RZProduct, customData: Any? = nil, completion: (()->())? = nil){
         SwiftyStoreKit.purchaseProduct(product.id, atomically: true){ result in
             
             switch result{
@@ -96,11 +96,11 @@ public class SubController{
                     SwiftyStoreKit.finishTransaction(purchase.transaction)
                 }
                 
-                delegate?.subscibeSucces(product: product, customData: customData)
+                delegate?.buySucces(product: product, customData: customData)
                 completion?()
-                SubRefrasher.refrash()
+                RZStoreRefrasher.refrash()
             case .error:
-                delegate?.subscibeFaild(product: product, customData: customData)
+                delegate?.buyFaild(product: product, customData: customData)
                 completion?()
             }
         }

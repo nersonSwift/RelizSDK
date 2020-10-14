@@ -1,5 +1,5 @@
 //
-//  SubRefrasher.swift
+//  RZStoreRefrasher.swift
 //  Yoga
 //
 //  Created by Александр Сенин on 28.09.2020.
@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyStoreKit
 
-class SubRefrasher{
+class RZStoreRefrasher{
     private static var refrashBackgroundTaskId: UIBackgroundTaskIdentifier?
     
     static func start(){
@@ -22,14 +22,14 @@ class SubRefrasher{
     static func refrash(){
         refrashBackgroundTaskId = UIApplication.shared.beginBackgroundTask(withName: "refrash")
         
-        let appleValidator = AppleReceiptValidator(service: .production, sharedSecret: Product.sharedSecret)
+        let appleValidator = AppleReceiptValidator(service: .production, sharedSecret: RZProduct.sharedSecret)
         SwiftyStoreKit.verifyReceipt(using: appleValidator) { result in
             if case .success(let receipt) = result {
                 let res = getActiveReceiptItem(receipt)
-                SubController.activeReceipts = res
+                RZStoreKit.activeReceipts = res
             }
         
-            SubController.delegate?.upadate()
+            RZStoreKit.delegate?.upadate()
             if let btID = refrashBackgroundTaskId{
                 UIApplication.shared.endBackgroundTask(btID)
             }
@@ -38,7 +38,7 @@ class SubRefrasher{
     
     private static func getActiveReceiptItem(_ receipt: ReceiptInfo) -> [ReceiptItem]{
         var activeReceipts = [ReceiptItem]()
-        for (_, product) in Product.allProduct{
+        for (_, product) in RZProduct.allProduct{
             if let receipt = product.productType == .subscription ? verifySubscription(product, receipt) : verifyPurchase(product, receipt){
                 activeReceipts.append(receipt)
             }
@@ -46,7 +46,7 @@ class SubRefrasher{
         return activeReceipts
     }
     
-    private static func verifySubscription(_ product: Product, _ receipt: ReceiptInfo) -> ReceiptItem? {
+    private static func verifySubscription(_ product: RZProduct, _ receipt: ReceiptInfo) -> ReceiptItem? {
         let purchaseResult = SwiftyStoreKit.verifySubscription(ofType: .autoRenewable, productId: product.id, inReceipt: receipt)
         if case .purchased(_, let receiptItems) = purchaseResult{
             return receiptItems.first
@@ -54,7 +54,7 @@ class SubRefrasher{
         return nil
     }
     
-    private static func verifyPurchase(_ product: Product, _ receipt: ReceiptInfo) -> ReceiptItem?{
+    private static func verifyPurchase(_ product: RZProduct, _ receipt: ReceiptInfo) -> ReceiptItem?{
         let purchaseResult = SwiftyStoreKit.verifyPurchase(productId: product.id, inReceipt: receipt)
         if case .purchased(let receiptItem) = purchaseResult{
             return receiptItem

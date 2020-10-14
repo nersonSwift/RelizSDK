@@ -1,5 +1,5 @@
 //
-//  SubDelegateProtocol.swift
+//  RZStoreDelegateProtocol.swift
 //  Yoga
 //
 //  Created by Александр Сенин on 08.10.2020.
@@ -9,11 +9,11 @@
 import StoreKit
 
 
-public protocol SubDelegateProtocol: class{
+public protocol RZStoreDelegateProtocol: class{
     func upadate()
     
-    func subscibeSucces(product: Product, customData: Any?)
-    func subscibeFaild(product: Product, customData: Any?)
+    func buySucces(product: RZProduct, customData: Any?)
+    func buyFaild(product: RZProduct, customData: Any?)
     
     func productsReceived(skProducts: Set<SKProduct>)
 }

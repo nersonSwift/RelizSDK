@@ -1,5 +1,5 @@
 //
-//  Product.swift
+//  RZProduct.swift
 //  Yoga
 //
 //  Created by Александр Сенин on 09.10.2020.
@@ -10,26 +10,26 @@ import Foundation
 import StoreKit
 import SwiftyStoreKit
 
-public enum ProductType{
+public enum RZProductType{
     case subscription
     case purchase
 }
 
-//MARK: - Product
+//MARK: - RZProduct
 /// `RU: - `
 /// Модель продукта, используется для оформления покупки, нуждается в статической инициализации при запуске приложения
 ///
 /// Пример статической инициализации:
 ///
-///     Product.sharedSecret = "8318cg423s4145e3fgdffdfgdfgb7"
-///     Product.add([
-///         Product(id: "com.test.sub.year.a.allaccess",
+///     RZProduct.sharedSecret = "8318cg423s4145e3fgdffdfgdfgb7"
+///     RZProduct.add([
+///         RZProduct(id: "com.test.sub.year.a.allaccess",
 ///                 customData: [
 ///                     "af": "year_c",
 ///                     "adjust": [true: "fsdfse", false: "vthjec"]
 ///                 ]
 ///         ),
-///         Product(id: "com.test.sub.livetime.allaccess",
+///         RZProduct(id: "com.test.sub.livetime.allaccess",
 ///                 isSubscibe: false,
 ///                 customData: [
 ///                     "af": "livetime",
@@ -37,7 +37,7 @@ public enum ProductType{
 ///                 ]
 ///         )
 ///     ])
-public struct Product: Equatable{
+public struct RZProduct: Equatable{
     //MARK: - id
     /// `RU: - `
     /// ID  подписки из AppStore Connect
@@ -46,7 +46,7 @@ public struct Product: Equatable{
     //MARK: - isSubscibe
     /// `RU: - `
     /// Флаг подписки. Установите `true` если продукт является подпиской
-    public var productType: ProductType = .subscription
+    public var productType: RZProductType = .subscription
     
     //MARK: - customData
     /// `RU: - `
@@ -65,7 +65,7 @@ public struct Product: Equatable{
     ///
     /// - Parameter isSubscibe
     /// Любые данные которые могут быть использованны в дальнейшем
-    public init(id: String, productType: ProductType = .subscription, customData: [String: Any] = [:]){
+    public init(id: String, productType: RZProductType = .subscription, customData: [String: Any] = [:]){
         self.id = id
         self.productType = productType
         self.customData = customData
@@ -77,7 +77,7 @@ public struct Product: Equatable{
     ///
     /// - Parameter id
     /// ID  подписки из AppStore Connect
-    public static func getProduct(_ id: String) -> Product?{
+    public static func getProduct(_ id: String) -> RZProduct?{
         return allProduct[id]
     }
     
@@ -89,14 +89,14 @@ public struct Product: Equatable{
     //MARK: - add
     /// `RU: - `
     /// Метод регестрирующий продукты для дальшейшего использования
-    public static func add(_ products: [Product]){
+    public static func add(_ products: [RZProduct]){
         for product in products{
             allProduct[product.id] = product
         }
         getProducInfo()
     }
     
-    //MARK: - subscribe
+    //MARK: - buy
     /// `RU: - `
     /// Метод инициирующий процесс покупки
     ///
@@ -105,8 +105,8 @@ public struct Product: Equatable{
     ///
     /// - Parameter completion
     /// Замыкание которое будет вызвано после окончания процесса покупки
-    public func subscribe(_ customData: Any? = nil, completion: (()->())? = nil){
-        SubController.subscribe(product: self, customData: customData, completion: completion)
+    public func buy(_ customData: Any? = nil, completion: (()->())? = nil){
+        RZStoreKit.buy(product: self, customData: customData, completion: completion)
     }
     
     //MARK: - getPrice
@@ -119,9 +119,9 @@ public struct Product: Equatable{
     /// Продукт
     /// - Parameter action
     /// Замыкание принимающее локалезированный ценник
-    public static func getPrice(productId: Product, action: @escaping (String)->()){
+    public static func getPrice(productId: RZProduct, action: @escaping (String)->()){
         DispatchQueue.main.async {
-            getValue(productId, prises, &prisesClosure, action)
+            getValue(productId, prices, &pricesClosure, action)
         }
     }
     
@@ -146,9 +146,9 @@ public struct Product: Equatable{
     /// Продукт
     /// - Parameter action
     /// Замыкание принимающее локалезированный ценник
-    public static func getPricesMans(productId: Product, action: @escaping (String)->()){
+    public static func getPricesMans(productId: RZProduct, action: @escaping (String)->()){
         DispatchQueue.main.async {
-            getValue(productId, prisesMans, &prisesMansClosure, action)
+            getValue(productId, pricesMans, &pricesMansClosure, action)
         }
     }
     
@@ -173,7 +173,7 @@ public struct Product: Equatable{
     /// Продукт
     /// - Parameter action
     /// Замыкание принимающее локалезированный кода валюты
-    public static func getCurrencyCods(productId: Product, action: @escaping (String)->()){
+    public static func getCurrencyCods(productId: RZProduct, action: @escaping (String)->()){
         DispatchQueue.main.async {
             getValue(productId, currencyCods, &currencyCodsClosure, action)
         }
@@ -190,7 +190,7 @@ public struct Product: Equatable{
         Self.getCurrencyCods(productId: self, action: action)
     }
     
-    static var allProduct: [String: Product] = [:]
+    static var allProduct: [String: RZProduct] = [:]
     
     static var allKeys: Set<String> {
         var allKeys: Set<String> = []
@@ -198,31 +198,31 @@ public struct Product: Equatable{
         return allKeys
     }
     
-    public static func == (lhs: Product, rhs: Product) -> Bool {
+    public static func == (lhs: RZProduct, rhs: RZProduct) -> Bool {
         lhs.id == rhs.id
     }
     
-    private static var prises: [String: String] = [:]
-    private static var prisesMans: [String: String] = [:]
+    private static var prices: [String: String] = [:]
+    private static var pricesMans: [String: String] = [:]
     private static var currencyCods: [String: String] = [:]
     
-    private static var prisesClosure: [String: (String)->()] = [:]
-    private static var prisesMansClosure: [String: (String)->()] = [:]
+    private static var pricesClosure: [String: (String)->()] = [:]
+    private static var pricesMansClosure: [String: (String)->()] = [:]
     private static var currencyCodsClosure: [String: (String)->()] = [:]
     
-    static func setPrise(_ productId: Product, _ prise: String){
+    static func setPrice(_ productId: RZProduct, _ price: String){
         DispatchQueue.main.async {
-            prises[productId.id] = prise
-            prisesClosure.removeValue(forKey: productId.id)?(prise)
+            prices[productId.id] = price
+            pricesClosure.removeValue(forKey: productId.id)?(price)
         }
     }
-    static func setPrisesMans(_ productId: Product, _ priseMan: String){
+    static func setPricesMans(_ productId: RZProduct, _ priceMan: String){
         DispatchQueue.main.async {
-            prisesMans[productId.id] = priseMan
-            prisesMansClosure.removeValue(forKey: productId.id)?(priseMan)
+            pricesMans[productId.id] = priceMan
+            pricesMansClosure.removeValue(forKey: productId.id)?(priceMan)
         }
     }
-    static func setCurrencyCods(_ productId: Product, _ currencyCod: String){
+    static func setCurrencyCods(_ productId: RZProduct, _ currencyCod: String){
         DispatchQueue.main.async {
             currencyCods[productId.id] = currencyCod
             currencyCodsClosure.removeValue(forKey: productId.id)?(currencyCod)
@@ -254,12 +254,12 @@ public struct Product: Equatable{
                 if let productId = getProduct(plan.productIdentifier),
                    let price = plan.localizedPrice,
                    let currencyCode = plan.priceLocale.currencyCode{
-                    setPrise(productId, price)
-                    setPrisesMans(productId, "\(plan.price)")
+                    setPrice(productId, price)
+                    setPricesMans(productId, "\(plan.price)")
                     setCurrencyCods(productId, currencyCode)
                 }
             }
-            SubController.delegate?.productsReceived(skProducts: prodects)
+            RZStoreKit.delegate?.productsReceived(skProducts: prodects)
         }else{
             getProducInfo()
         }
@@ -268,7 +268,7 @@ public struct Product: Equatable{
     
     
     
-    private static func getValue(_ productId: Product,
+    private static func getValue(_ productId: RZProduct,
                                  _ dic: [String: String],
                                  _ closures: inout [String: (String)->()],
                                  _ action: @escaping (String)->()){
