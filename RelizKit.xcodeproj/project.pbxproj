@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		511D99B825373CB800E67C68 /* RelizKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 511D99B625373CB800E67C68 /* RelizKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		511D99FE2537462A00E67C68 /* RelizKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511D99FD2537462A00E67C68 /* RelizKit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		511D99B325373CB800E67C68 /* RelizKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RelizKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		511D99B625373CB800E67C68 /* RelizKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RelizKit.h; sourceTree = "<group>"; };
 		511D99B725373CB800E67C68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		511D99FD2537462A00E67C68 /* RelizKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelizKit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +50,7 @@
 			children = (
 				511D99B625373CB800E67C68 /* RelizKit.h */,
 				511D99B725373CB800E67C68 /* Info.plist */,
+				511D99FD2537462A00E67C68 /* RelizKit.swift */,
 			);
 			path = RelizKit;
 			sourceTree = "<group>";
@@ -94,6 +97,7 @@
 				TargetAttributes = {
 					511D99B225373CB800E67C68 = {
 						CreatedOnToolsVersion = 12.0.1;
+						LastSwiftMigration = 1200;
 					};
 				};
 			};
@@ -130,6 +134,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				511D99FE2537462A00E67C68 /* RelizKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +266,7 @@
 		511D99BC25373CB800E67C68 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = FKAK3GFPT6;
@@ -278,6 +284,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -286,6 +293,7 @@
 		511D99BD25373CB800E67C68 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = FKAK3GFPT6;
