@@ -2,7 +2,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "RelizKit"
-  spec.version      = "0.0.11"
+  spec.version      = "0.0.12"
   spec.summary      = "Small example to test code sharing."
   spec.description  = "Small example to test code sharing via cocoapods."	
   
@@ -15,7 +15,7 @@ Pod::Spec.new do |spec|
 
   spec.author       = { "Angel-senpai" => "daniil.murygin68@gmail.com", "nersonSwift" => "aleksandrsenin@icloud.com" }
   spec.platform     = :ios, "13.0"
-  spec.source       = { :git => "https://github.com/nersonSwift/RelizKit.git", :tag => "0.0.11" }
+  spec.source       = { :git => "https://github.com/nersonSwift/RelizKit.git", :tag => "0.0.12" }
 
   # spec.source_files  = "RelizKit/**/*"
   spec.exclude_files = "RelizKit/**/*.plist"
@@ -34,6 +34,11 @@ Pod::Spec.new do |spec|
   spec.subspec 'RZUIKit' do |uikit|
     uikit.source_files = 'RelizKit/RZUIKit/**/*'
     
+  end
+
+  spec.subspec 'RZStoreKit' do |storekit|
+    storekit.source_files = 'RelizKit/RZStoreKit/**/*'
+    storekit.dependency "SwiftyStoreKit"
   end
 
 end

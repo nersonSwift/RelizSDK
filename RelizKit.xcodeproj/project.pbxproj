@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F0E8BB5AF73AD0CDB6C8083 /* Pods_RelizKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 176A6CB99712F19AB31090C2 /* Pods_RelizKit.framework */; };
 		511D99B825373CB800E67C68 /* RelizKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 511D99B625373CB800E67C68 /* RelizKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		511D99FE2537462A00E67C68 /* RelizKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511D99FD2537462A00E67C68 /* RelizKit.swift */; };
+		512FCB382537755E002DC150 /* SubRefrasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512FCB302537755E002DC150 /* SubRefrasher.swift */; };
+		512FCB392537755E002DC150 /* SubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512FCB312537755E002DC150 /* SubController.swift */; };
+		512FCB3A2537755E002DC150 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512FCB322537755E002DC150 /* Product.swift */; };
+		512FCB3D2537755E002DC150 /* ReceiptItemExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512FCB362537755E002DC150 /* ReceiptItemExtention.swift */; };
+		512FCB3E2537755E002DC150 /* SubDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512FCB372537755E002DC150 /* SubDelegateProtocol.swift */; };
 		51EA4BD82537544C0040BEBC /* RZRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA4BC92537544C0040BEBC /* RZRootController.swift */; };
 		51EA4BD92537544C0040BEBC /* RZPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA4BCC2537544C0040BEBC /* RZPresenter.swift */; };
 		51EA4BDA2537544C0040BEBC /* RZScreenUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA4BCD2537544C0040BEBC /* RZScreenUI.swift */; };
@@ -23,10 +29,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		176A6CB99712F19AB31090C2 /* Pods_RelizKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RelizKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		511D99B325373CB800E67C68 /* RelizKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RelizKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		511D99B625373CB800E67C68 /* RelizKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RelizKit.h; sourceTree = "<group>"; };
 		511D99B725373CB800E67C68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		511D99FD2537462A00E67C68 /* RelizKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelizKit.swift; sourceTree = "<group>"; };
+		512FCB302537755E002DC150 /* SubRefrasher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubRefrasher.swift; sourceTree = "<group>"; };
+		512FCB312537755E002DC150 /* SubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubController.swift; sourceTree = "<group>"; };
+		512FCB322537755E002DC150 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		512FCB362537755E002DC150 /* ReceiptItemExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptItemExtention.swift; sourceTree = "<group>"; };
+		512FCB372537755E002DC150 /* SubDelegateProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubDelegateProtocol.swift; sourceTree = "<group>"; };
 		51EA4BC92537544C0040BEBC /* RZRootController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZRootController.swift; sourceTree = "<group>"; };
 		51EA4BCC2537544C0040BEBC /* RZPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZPresenter.swift; sourceTree = "<group>"; };
 		51EA4BCD2537544C0040BEBC /* RZScreenUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZScreenUI.swift; sourceTree = "<group>"; };
@@ -38,6 +50,8 @@
 		51EA4BD42537544C0040BEBC /* RZScreenControllerUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZScreenControllerUI.swift; sourceTree = "<group>"; };
 		51EA4BD62537544C0040BEBC /* RZTransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZTransitionAnimation.swift; sourceTree = "<group>"; };
 		51EA4BD72537544C0040BEBC /* RZRotater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZRotater.swift; sourceTree = "<group>"; };
+		D6DD68D101C7E9BE53A0FD75 /* Pods-RelizKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RelizKit.release.xcconfig"; path = "Target Support Files/Pods-RelizKit/Pods-RelizKit.release.xcconfig"; sourceTree = "<group>"; };
+		E9DE1ABDB292A00DB7EE9F98 /* Pods-RelizKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RelizKit.debug.xcconfig"; path = "Target Support Files/Pods-RelizKit/Pods-RelizKit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,17 +59,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F0E8BB5AF73AD0CDB6C8083 /* Pods_RelizKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22B1A36ABD758D6A98702C78 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E9DE1ABDB292A00DB7EE9F98 /* Pods-RelizKit.debug.xcconfig */,
+				D6DD68D101C7E9BE53A0FD75 /* Pods-RelizKit.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		511D99A925373CB800E67C68 = {
 			isa = PBXGroup;
 			children = (
 				511D99B525373CB800E67C68 /* RelizKit */,
 				511D99B425373CB800E67C68 /* Products */,
+				22B1A36ABD758D6A98702C78 /* Pods */,
+				EDAE3C54BAD06196FD47E9D9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,6 +104,25 @@
 			path = RelizKit;
 			sourceTree = "<group>";
 		};
+		512FCB2F2537755E002DC150 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				512FCB302537755E002DC150 /* SubRefrasher.swift */,
+				512FCB312537755E002DC150 /* SubController.swift */,
+				512FCB322537755E002DC150 /* Product.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		512FCB352537755E002DC150 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				512FCB362537755E002DC150 /* ReceiptItemExtention.swift */,
+				512FCB372537755E002DC150 /* SubDelegateProtocol.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		51EA4BC5253753800040BEBC /* RZUIKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +135,8 @@
 		51EA4BC6253753980040BEBC /* RZStoreKit */ = {
 			isa = PBXGroup;
 			children = (
+				512FCB2F2537755E002DC150 /* Core */,
+				512FCB352537755E002DC150 /* Helpers */,
 			);
 			path = RZStoreKit;
 			sourceTree = "<group>";
@@ -144,6 +191,14 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		EDAE3C54BAD06196FD47E9D9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				176A6CB99712F19AB31090C2 /* Pods_RelizKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -162,6 +217,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 511D99BB25373CB800E67C68 /* Build configuration list for PBXNativeTarget "RelizKit" */;
 			buildPhases = (
+				844CD185EC01E5326E42F9EB /* [CP] Check Pods Manifest.lock */,
 				511D99AE25373CB800E67C68 /* Headers */,
 				511D99AF25373CB800E67C68 /* Sources */,
 				511D99B025373CB800E67C68 /* Frameworks */,
@@ -218,6 +274,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		844CD185EC01E5326E42F9EB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RelizKit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		511D99AF25373CB800E67C68 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -225,7 +306,11 @@
 			files = (
 				511D99FE2537462A00E67C68 /* RelizKit.swift in Sources */,
 				51EA4BDB2537544C0040BEBC /* RZRouter.swift in Sources */,
+				512FCB3A2537755E002DC150 /* Product.swift in Sources */,
+				512FCB3E2537755E002DC150 /* SubDelegateProtocol.swift in Sources */,
 				51EA4BDA2537544C0040BEBC /* RZScreenUI.swift in Sources */,
+				512FCB382537755E002DC150 /* SubRefrasher.swift in Sources */,
+				512FCB392537755E002DC150 /* SubController.swift in Sources */,
 				51EA4BE22537544C0040BEBC /* RZRotater.swift in Sources */,
 				51EA4BE12537544C0040BEBC /* RZTransitionAnimation.swift in Sources */,
 				51EA4BE02537544C0040BEBC /* RZScreenControllerUI.swift in Sources */,
@@ -234,6 +319,7 @@
 				51EA4BDD2537544C0040BEBC /* ScreensInstaller.swift in Sources */,
 				51EA4BDF2537544C0040BEBC /* RZScreenController.swift in Sources */,
 				51EA4BD92537544C0040BEBC /* RZPresenter.swift in Sources */,
+				512FCB3D2537755E002DC150 /* ReceiptItemExtention.swift in Sources */,
 				51EA4BDE2537544C0040BEBC /* RZPopUpView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -365,6 +451,7 @@
 		};
 		511D99BC25373CB800E67C68 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9DE1ABDB292A00DB7EE9F98 /* Pods-RelizKit.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -392,6 +479,7 @@
 		};
 		511D99BD25373CB800E67C68 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D6DD68D101C7E9BE53A0FD75 /* Pods-RelizKit.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
