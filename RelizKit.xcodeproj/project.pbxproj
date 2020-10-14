@@ -7,13 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		39E843D69440A0FF7FC68BFE /* Pods_RelizKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC358A1D5847ED1988CC185D /* Pods_RelizKit.framework */; };
 		51F6A7B9253727FF00D3CE95 /* RelizKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 51F6A7B7253727FF00D3CE95 /* RelizKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0404F745A6F1E5599DAC81B1 /* Pods-RelizKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RelizKit.debug.xcconfig"; path = "Target Support Files/Pods-RelizKit/Pods-RelizKit.debug.xcconfig"; sourceTree = "<group>"; };
 		51F6A7B4253727FF00D3CE95 /* RelizKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RelizKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51F6A7B7253727FF00D3CE95 /* RelizKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RelizKit.h; sourceTree = "<group>"; };
 		51F6A7B8253727FF00D3CE95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6FF9F4B4D73B9C97E7839EAD /* Pods-RelizKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RelizKit.release.xcconfig"; path = "Target Support Files/Pods-RelizKit/Pods-RelizKit.release.xcconfig"; sourceTree = "<group>"; };
+		CC358A1D5847ED1988CC185D /* Pods_RelizKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RelizKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -21,6 +25,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39E843D69440A0FF7FC68BFE /* Pods_RelizKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -32,6 +37,8 @@
 			children = (
 				51F6A7B6253727FF00D3CE95 /* RelizKit */,
 				51F6A7B5253727FF00D3CE95 /* Products */,
+				76AC97A7632163CBEF4393CE /* Pods */,
+				BB8B83D0C1FC701C8D4AE239 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -52,6 +59,23 @@
 			path = RelizKit;
 			sourceTree = "<group>";
 		};
+		76AC97A7632163CBEF4393CE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0404F745A6F1E5599DAC81B1 /* Pods-RelizKit.debug.xcconfig */,
+				6FF9F4B4D73B9C97E7839EAD /* Pods-RelizKit.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BB8B83D0C1FC701C8D4AE239 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CC358A1D5847ED1988CC185D /* Pods_RelizKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -70,6 +94,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 51F6A7BC253727FF00D3CE95 /* Build configuration list for PBXNativeTarget "RelizKit" */;
 			buildPhases = (
+				53B94E8E0A4B17E2BEE97181 /* [CP] Check Pods Manifest.lock */,
 				51F6A7AF253727FF00D3CE95 /* Headers */,
 				51F6A7B0253727FF00D3CE95 /* Sources */,
 				51F6A7B1253727FF00D3CE95 /* Frameworks */,
@@ -124,6 +149,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		53B94E8E0A4B17E2BEE97181 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RelizKit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		51F6A7B0253727FF00D3CE95 /* Sources */ = {
@@ -188,7 +238,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -246,7 +296,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -260,6 +310,7 @@
 		};
 		51F6A7BD253727FF00D3CE95 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0404F745A6F1E5599DAC81B1 /* Pods-RelizKit.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -277,6 +328,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.reliz.RelizKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -284,6 +336,7 @@
 		};
 		51F6A7BE253727FF00D3CE95 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6FF9F4B4D73B9C97E7839EAD /* Pods-RelizKit.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -301,6 +354,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.reliz.RelizKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

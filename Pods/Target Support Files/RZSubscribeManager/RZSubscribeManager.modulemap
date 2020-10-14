@@ -1,0 +1,6 @@
+framework module RZSubscribeManager {
+  umbrella header "RZSubscribeManager-umbrella.h"
+
+  export *
+  module * { export * }
+}

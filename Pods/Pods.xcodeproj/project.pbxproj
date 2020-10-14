@@ -1,0 +1,1116 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		037B86806068CF30896BB68B54F7EF09 /* RZScreenUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BECBB9433A970D7AB3A5C9057D3970B /* RZScreenUI.swift */; };
+		067DFB311EC7C22D0422851F1937CDCE /* RZRotater.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA50582FD9530FF701D73C9E01A07283 /* RZRotater.swift */; };
+		08DE7FD256B92A936A8AE5975F6828CB /* RZUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 21D93E182742BD78753CA0D2E6C00561 /* RZUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2036B7F1FFDE83B0859C8C14034E08A8 /* InAppReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65BFDC6B3A4DBE76BB61DDE43EC42DA /* InAppReceipt.swift */; };
+		2B30BC8B1D0B2A8BDCEEB5D6035EFD18 /* SKProductDiscount+LocalizedPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1157B8AD956DB1EC775ABB010C4F17E /* SKProductDiscount+LocalizedPrice.swift */; };
+		2DC4ED51027733A2D4C46F48AEF7CE7C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED62EC20DCEF8A3BFCE92B64602F0B4 /* Foundation.framework */; };
+		32222DAD7B3A4AC5BD9B0BCAB35F6AE0 /* ReceiptItemExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEBA3F0740E392E3F43828A2D9B4DEC /* ReceiptItemExtention.swift */; };
+		322CBD1E151E355D1208B593749C8A3D /* SKProduct+LocalizedPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1FB6B9FD837A7F7AEA29B9CFF79451 /* SKProduct+LocalizedPrice.swift */; };
+		3A17D5EFB8DDBD6911AA31ADE3B7849B /* RZRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22FA6370276D0374E61139105B56F0 /* RZRootController.swift */; };
+		3DA824A1F55B8EB2B417B18E12CC50FC /* RZTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F98B68B89829D67E19878F564B3BFE /* RZTransitionAnimation.swift */; };
+		4AA33EB072C3F2EAA2E81C9A47B96ED0 /* SwiftyStoreKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B971DD5047177A395C11D11A01DB9D9 /* SwiftyStoreKit.swift */; };
+		4C1484DB01705E9609773F2C93AEACFA /* SubDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EE84480E1A1FA642477C7A5F653ACA /* SubDelegateProtocol.swift */; };
+		4C77AE0E12BD23CD90E5ED688A0AA3F6 /* RestorePurchasesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C4247CBC1F7F6FBA02FE8701A7B93 /* RestorePurchasesController.swift */; };
+		4E274D6BA7CB63279A7B5876D8A01AEE /* ScreensInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50505522AAF614AEB836718BCFC93228 /* ScreensInstaller.swift */; };
+		56820FA396EF3193F8C15C876C715376 /* ProductsInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5000535D9BDE576A040D19BA8A031504 /* ProductsInfoController.swift */; };
+		572D3D75633177FDE81CA13E3FDC3BC3 /* SwiftyStoreKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C8F50F64C1541BA39EC57E6122718C3 /* SwiftyStoreKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C48D3D704A291E636301E85863068B7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED62EC20DCEF8A3BFCE92B64602F0B4 /* Foundation.framework */; };
+		5F23186FD9777F6C252EF57E2AE764F6 /* RZPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCE9A7700C4942D83622C79C3FE991E /* RZPopUpView.swift */; };
+		6D6A8E5AF53089C9746FC327994F7706 /* SwiftyStoreKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD2FF5C361D7256C6E8B5498BD875C6 /* SwiftyStoreKit-dummy.m */; };
+		7E1FE268C370A42FC589010CFAA681F4 /* CompleteTransactionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58A8C39276C05BCF4ABB6A24CF5311 /* CompleteTransactionsController.swift */; };
+		7F305B183EF6558CBD736E9E8BFFE368 /* Pods-RelizKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 81201BF9E402EF2B1CAE03236362A59A /* Pods-RelizKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A56FC160450F4C72E2405CD4201B386 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = B312C2AA5BB26F466C72A1D1790887E3 /* Product.swift */; };
+		8EF2A5896133B7A46BBE417E810CEFC7 /* PaymentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447515558F94A85583452FBD4DEF4CEC /* PaymentsController.swift */; };
+		96C42BE356FDE2F2B60FD1D51DCDACF1 /* SubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C0868C8E0BE26C360234CBA1A4095 /* SubController.swift */; };
+		9AC025FF49A3484E334A5EB27E027A65 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED62EC20DCEF8A3BFCE92B64602F0B4 /* Foundation.framework */; };
+		9CA459F45A3286451E50E14AD813CC11 /* InAppProductQueryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB82CB3D176F8D7AF9457ED8C53A4440 /* InAppProductQueryRequest.swift */; };
+		9EC34CB32A897221BFA776D6DC60E90D /* SwiftyStoreKit+Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A355541ED29CC9C106E54F2BB1FF47C /* SwiftyStoreKit+Types.swift */; };
+		A1D6B84D7C0C8C2AB0941E94DE1D0094 /* OS.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D41D6D1D91A052ED49D11D9B833CD8 /* OS.swift */; };
+		AD1A89C2D57DD714DB3BBEEBEE648E1A /* RZRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE012121BFE708BE756655224B5DA08 /* RZRouter.swift */; };
+		AD35B1176FC020952822B5A718638FCB /* InAppReceiptRefreshRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77757B4692F642F81239810A16B71A78 /* InAppReceiptRefreshRequest.swift */; };
+		B1A96496FB60BCF3E04A964D104B9E16 /* RZSubscribeManager-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C86055E8524F2867FA86CD3284B6D522 /* RZSubscribeManager-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B3A65894C035F49B63604A6E39B5907F /* Pods-RelizKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 385D9BF2C33CE85435B854394721FC7C /* Pods-RelizKit-dummy.m */; };
+		BB31278AACAB50DD60C3177439158BBA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED62EC20DCEF8A3BFCE92B64602F0B4 /* Foundation.framework */; };
+		CD34A0C5394F181F5B10B5DD67CBED80 /* AppleReceiptValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7243D79E04431CD0A4FF8FCF8A89E5 /* AppleReceiptValidator.swift */; };
+		D0123499883E07548708990D83AED16F /* SubRefrasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF963AA8CAC39D92F7282BB99EF3E6B0 /* SubRefrasher.swift */; };
+		D5B18F6EB16523D31AC91C59851671A9 /* RZScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079B35D01659F03C6E3D0720EDEE76E1 /* RZScreenController.swift */; };
+		E4DD030D5E46E87505B3AD6E48E96100 /* SwiftyStoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F1CC2215568478821E9461ECBB2BF53 /* SwiftyStoreKit.framework */; };
+		E96BC8D3489961627144F240DEDCD853 /* RZSubscribeManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DF707AA1EBA56BA0C889CE0268A67748 /* RZSubscribeManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ECC2027EF6BF5ECFBF07F6FD63E47069 /* InAppReceiptVerificator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9402CB61C5688626C8280959549D32 /* InAppReceiptVerificator.swift */; };
+		ED29F826BD00EC2F08ABD6560D2AB067 /* RZPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447BED30F03324FC7CC2790D0CC86058 /* RZPresenter.swift */; };
+		EEAEA13A498160CE81B4F5B2131CCF0E /* RZSubscribeManager-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 871BEE408577FC41BDD296D69DA2D4E9 /* RZSubscribeManager-dummy.m */; };
+		F3845CA2A0CA0CFB56A05ED6A43C7007 /* LinesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B35C2C91DF9D3D811603545883DE49 /* LinesController.swift */; };
+		F443D916EF67C0245A61D4E4C117541A /* RZUIKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C29D097A2335B22AA2818F176C00F0C6 /* RZUIKit-dummy.m */; };
+		F618FB013BFE161B7682286A1BD1D5D3 /* PaymentQueueController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467A95C5A0ACDA238E8876746C110728 /* PaymentQueueController.swift */; };
+		F9960F9A57630C697C3362E8CA5FC5ED /* RZUIKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EA82A99FD6F58BDD3E92376E695CAA0 /* RZUIKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FFE12A915733C5A41A447F4E455F0E1F /* RZScreenControllerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DC6D6E013C7AABBB39905EEF57826E /* RZScreenControllerUI.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		25446B07ED47CC256C06B0254C5CC2A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FCD4F1901DD86FEB184BFDD6673F4A7B;
+			remoteInfo = SwiftyStoreKit;
+		};
+		C6E18DD1C210E76C96E35CA33A24BCE9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6DD9EC9C582DC5C0FE95B7247C8740D0;
+			remoteInfo = RZUIKit;
+		};
+		E21270DADE763183257DF7ECCA9FEFAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 490C269E469174E0D929263D20A5839E;
+			remoteInfo = RZSubscribeManager;
+		};
+		FBCC23C7210DE4875276D7CBA00185E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FCD4F1901DD86FEB184BFDD6673F4A7B;
+			remoteInfo = SwiftyStoreKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0081218A702D4D63695E3CC61B888542 /* RZSubscribeManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RZSubscribeManager.framework; path = RZSubscribeManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		079B35D01659F03C6E3D0720EDEE76E1 /* RZScreenController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RZScreenController.swift; path = RZUIKit/ScreensArc/Controllers/RZScreenController.swift; sourceTree = "<group>"; };
+		0A1FB6B9FD837A7F7AEA29B9CFF79451 /* SKProduct+LocalizedPrice.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SKProduct+LocalizedPrice.swift"; path = "Sources/SwiftyStoreKit/SKProduct+LocalizedPrice.swift"; sourceTree = "<group>"; };
+		0A355541ED29CC9C106E54F2BB1FF47C /* SwiftyStoreKit+Types.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SwiftyStoreKit+Types.swift"; path = "Sources/SwiftyStoreKit/SwiftyStoreKit+Types.swift"; sourceTree = "<group>"; };
+		0B971DD5047177A395C11D11A01DB9D9 /* SwiftyStoreKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyStoreKit.swift; path = Sources/SwiftyStoreKit/SwiftyStoreKit.swift; sourceTree = "<group>"; };
+		104C4247CBC1F7F6FBA02FE8701A7B93 /* RestorePurchasesController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RestorePurchasesController.swift; path = Sources/SwiftyStoreKit/RestorePurchasesController.swift; sourceTree = "<group>"; };
+		13F814B673968A287586FDD60599EF77 /* Pods-RelizKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RelizKit.debug.xcconfig"; sourceTree = "<group>"; };
+		155EBA58017F2526738055B9C0B311A8 /* SwiftyStoreKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftyStoreKit-Info.plist"; sourceTree = "<group>"; };
+		1EBD8952BE6CC742C3423C7637C11FDA /* Pods-RelizKit-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RelizKit-acknowledgements.plist"; sourceTree = "<group>"; };
+		21D93E182742BD78753CA0D2E6C00561 /* RZUIKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RZUIKit.h; path = RZUIKit/RZUIKit.h; sourceTree = "<group>"; };
+		23B35C2C91DF9D3D811603545883DE49 /* LinesController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LinesController.swift; path = RZUIKit/ScreensArc/LinesController.swift; sourceTree = "<group>"; };
+		2BE012121BFE708BE756655224B5DA08 /* RZRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RZRouter.swift; path = RZUIKit/ScreensArc/Present/RZRouter.swift; sourceTree = "<group>"; };
+		32B68D5B8C0127052BE81786F59B46F6 /* SwiftyStoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyStoreKit.framework; path = SwiftyStoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3325936D3FC4E598A3783C85B511515A /* Pods-RelizKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RelizKit.release.xcconfig"; sourceTree = "<group>"; };
+		385D9BF2C33CE85435B854394721FC7C /* Pods-RelizKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RelizKit-dummy.m"; sourceTree = "<group>"; };
+		3BECBB9433A970D7AB3A5C9057D3970B /* RZScreenUI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RZScreenUI.swift; path = RZUIKit/ScreensArc/Present/RZScreenUI.swift; sourceTree = "<group>"; };
+		3EA82A99FD6F58BDD3E92376E695CAA0 /* RZUIKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RZUIKit-umbrella.h"; sourceTree = "<group>"; };
+		3F1CC2215568478821E9461ECBB2BF53 /* SwiftyStoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyStoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		447515558F94A85583452FBD4DEF4CEC /* PaymentsController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentsController.swift; path = Sources/SwiftyStoreKit/PaymentsController.swift; sourceTree = "<group>"; };
+		447BED30F03324FC7CC2790D0CC86058 /* RZPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RZPresenter.swift; path = RZUIKit/ScreensArc/Present/RZPresenter.swift; sourceTree = "<group>"; };
+		467A95C5A0ACDA238E8876746C110728 /* PaymentQueueController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentQueueController.swift; path = Sources/SwiftyStoreKit/PaymentQueueController.swift; sourceTree = "<group>"; };
+		4A22FA6370276D0374E61139105B56F0 /* RZRootController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RZRootController.swift; path = RZUIKit/RZRootController.swift; sourceTree = "<group>"; };
+		4A6F4AB7AE85853FCB965C713AB1F17B /* RZSubscribeManager-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RZSubscribeManager-prefix.pch"; sourceTree = "<group>"; };
+		4AD2FF5C361D7256C6E8B5498BD875C6 /* SwiftyStoreKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyStoreKit-dummy.m"; sourceTree = "<group>"; };
+		4BE84E796BD6AF9B7CA9C30496F5DAA7 /* SwiftyStoreKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftyStoreKit.modulemap; sourceTree = "<group>"; };
+		4C8F50F64C1541BA39EC57E6122718C3 /* SwiftyStoreKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyStoreKit-umbrella.h"; sourceTree = "<group>"; };
+		4DB4A64EFFB99F13DA19F7EF2A343C45 /* SwiftyStoreKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyStoreKit.release.xcconfig; sourceTree = "<group>"; };
+		5000535D9BDE576A040D19BA8A031504 /* ProductsInfoController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProductsInfoController.swift; path = Sources/SwiftyStoreKit/ProductsInfoController.swift; sourceTree = "<group>"; };
+		50505522AAF614AEB836718BCFC93228 /* ScreensInstaller.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScreensInstaller.swift; path = RZUIKit/ScreensArc/ScreensInstaller.swift; sourceTree = "<group>"; };
+		5F9402CB61C5688626C8280959549D32 /* InAppReceiptVerificator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InAppReceiptVerificator.swift; path = Sources/SwiftyStoreKit/InAppReceiptVerificator.swift; sourceTree = "<group>"; };
+		611AAB75BE2C0236B967DC2ACD0E3F31 /* Pods-RelizKit-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RelizKit-acknowledgements.markdown"; sourceTree = "<group>"; };
+		6BA0764614FC994AA57D22E7B19C5159 /* RZSubscribeManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RZSubscribeManager.debug.xcconfig; sourceTree = "<group>"; };
+		77757B4692F642F81239810A16B71A78 /* InAppReceiptRefreshRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InAppReceiptRefreshRequest.swift; path = Sources/SwiftyStoreKit/InAppReceiptRefreshRequest.swift; sourceTree = "<group>"; };
+		81201BF9E402EF2B1CAE03236362A59A /* Pods-RelizKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RelizKit-umbrella.h"; sourceTree = "<group>"; };
+		871BEE408577FC41BDD296D69DA2D4E9 /* RZSubscribeManager-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RZSubscribeManager-dummy.m"; sourceTree = "<group>"; };
+		89183C4702A820F39AE386D560F70B51 /* SwiftyStoreKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyStoreKit-prefix.pch"; sourceTree = "<group>"; };
+		8A2ECF74602D88A14F0FBDFAA11CDAEB /* RZUIKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = RZUIKit.modulemap; sourceTree = "<group>"; };
+		8C58F453AB1435BBFC80F307CB19B824 /* RZSubscribeManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RZSubscribeManager.release.xcconfig; sourceTree = "<group>"; };
+		8F7243D79E04431CD0A4FF8FCF8A89E5 /* AppleReceiptValidator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppleReceiptValidator.swift; path = Sources/SwiftyStoreKit/AppleReceiptValidator.swift; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A409316197A40AC6E2D03DF726FE2CF0 /* RZSubscribeManager.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = RZSubscribeManager.modulemap; sourceTree = "<group>"; };
+		A419AEE06B068CAD49D59134F9D29809 /* RZUIKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RZUIKit.release.xcconfig; sourceTree = "<group>"; };
+		AC0C0868C8E0BE26C360234CBA1A4095 /* SubController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SubController.swift; path = RZSubscribeManager/RZSubscribeManager/Core/SubController.swift; sourceTree = "<group>"; };
+		B09B5B4B8C52D80752EA20A5CF385768 /* Pods_RelizKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RelizKit.framework; path = "Pods-RelizKit.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B312C2AA5BB26F466C72A1D1790887E3 /* Product.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Product.swift; path = RZSubscribeManager/RZSubscribeManager/Core/Product.swift; sourceTree = "<group>"; };
+		B65BFDC6B3A4DBE76BB61DDE43EC42DA /* InAppReceipt.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InAppReceipt.swift; path = Sources/SwiftyStoreKit/InAppReceipt.swift; sourceTree = "<group>"; };
+		B68B22E854D45A81404EA07BC692058D /* Pods-RelizKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RelizKit-Info.plist"; sourceTree = "<group>"; };
+		C29D097A2335B22AA2818F176C00F0C6 /* RZUIKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RZUIKit-dummy.m"; sourceTree = "<group>"; };
+		C86055E8524F2867FA86CD3284B6D522 /* RZSubscribeManager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RZSubscribeManager-umbrella.h"; sourceTree = "<group>"; };
+		CA50582FD9530FF701D73C9E01A07283 /* RZRotater.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RZRotater.swift; path = RZUIKit/ScreensArc/Helpers/RZRotater.swift; sourceTree = "<group>"; };
+		CDCE9A7700C4942D83622C79C3FE991E /* RZPopUpView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RZPopUpView.swift; path = RZUIKit/ScreensArc/Controllers/RZPopUpView.swift; sourceTree = "<group>"; };
+		CED62EC20DCEF8A3BFCE92B64602F0B4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		D021BB25C72B48B13D50880FF882D77D /* RZUIKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RZUIKit.debug.xcconfig; sourceTree = "<group>"; };
+		D1EE84480E1A1FA642477C7A5F653ACA /* SubDelegateProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SubDelegateProtocol.swift; path = RZSubscribeManager/RZSubscribeManager/Helpers/SubDelegateProtocol.swift; sourceTree = "<group>"; };
+		DB82CB3D176F8D7AF9457ED8C53A4440 /* InAppProductQueryRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InAppProductQueryRequest.swift; path = Sources/SwiftyStoreKit/InAppProductQueryRequest.swift; sourceTree = "<group>"; };
+		DF5A2B40F87F257C988280C940376BFB /* RZSubscribeManager-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "RZSubscribeManager-Info.plist"; sourceTree = "<group>"; };
+		DF707AA1EBA56BA0C889CE0268A67748 /* RZSubscribeManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RZSubscribeManager.h; path = RZSubscribeManager/RZSubscribeManager/RZSubscribeManager.h; sourceTree = "<group>"; };
+		E2DC6D6E013C7AABBB39905EEF57826E /* RZScreenControllerUI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RZScreenControllerUI.swift; path = RZUIKit/ScreensArc/Controllers/RZScreenControllerUI.swift; sourceTree = "<group>"; };
+		E7D41D6D1D91A052ED49D11D9B833CD8 /* OS.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OS.swift; path = Sources/SwiftyStoreKit/OS.swift; sourceTree = "<group>"; };
+		EF024E5C6F0405820500A08EFB9AD970 /* Pods-RelizKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-RelizKit.modulemap"; sourceTree = "<group>"; };
+		EF73122D18EF8EE2ECC442DF9C9DCF86 /* RZUIKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RZUIKit-prefix.pch"; sourceTree = "<group>"; };
+		EF963AA8CAC39D92F7282BB99EF3E6B0 /* SubRefrasher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SubRefrasher.swift; path = RZSubscribeManager/RZSubscribeManager/Core/SubRefrasher.swift; sourceTree = "<group>"; };
+		F1157B8AD956DB1EC775ABB010C4F17E /* SKProductDiscount+LocalizedPrice.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SKProductDiscount+LocalizedPrice.swift"; path = "Sources/SwiftyStoreKit/SKProductDiscount+LocalizedPrice.swift"; sourceTree = "<group>"; };
+		F5A74883951E279311F2DF6271BEC459 /* RZUIKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "RZUIKit-Info.plist"; sourceTree = "<group>"; };
+		F854E1EC514251B9B75982E771578640 /* RZUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RZUIKit.framework; path = RZUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8748F0C3981962B60255B14E2CC0103 /* SwiftyStoreKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyStoreKit.debug.xcconfig; sourceTree = "<group>"; };
+		F9F98B68B89829D67E19878F564B3BFE /* RZTransitionAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RZTransitionAnimation.swift; path = RZUIKit/ScreensArc/Helpers/RZTransitionAnimation.swift; sourceTree = "<group>"; };
+		FCEBA3F0740E392E3F43828A2D9B4DEC /* ReceiptItemExtention.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReceiptItemExtention.swift; path = RZSubscribeManager/RZSubscribeManager/Helpers/ReceiptItemExtention.swift; sourceTree = "<group>"; };
+		FF58A8C39276C05BCF4ABB6A24CF5311 /* CompleteTransactionsController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CompleteTransactionsController.swift; path = Sources/SwiftyStoreKit/CompleteTransactionsController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		962520405A24F83B1CF946F74CC2343B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AC025FF49A3484E334A5EB27E027A65 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6E3E83FE07882C379DD836BE6CEA3CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C48D3D704A291E636301E85863068B7 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B06ABCB251303FA17A54663CEB0003C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB31278AACAB50DD60C3177439158BBA /* Foundation.framework in Frameworks */,
+				E4DD030D5E46E87505B3AD6E48E96100 /* SwiftyStoreKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C14D95E3A090828E5167119CDC20529F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DC4ED51027733A2D4C46F48AEF7CE7C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		037EDC638278CAFEFF36D543A4664EA1 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				FB9E7049D7C731F6EC10937A0DA8E840 /* Pods-RelizKit */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		22B8570995E661E919A5707679B00910 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				8A2ECF74602D88A14F0FBDFAA11CDAEB /* RZUIKit.modulemap */,
+				C29D097A2335B22AA2818F176C00F0C6 /* RZUIKit-dummy.m */,
+				F5A74883951E279311F2DF6271BEC459 /* RZUIKit-Info.plist */,
+				EF73122D18EF8EE2ECC442DF9C9DCF86 /* RZUIKit-prefix.pch */,
+				3EA82A99FD6F58BDD3E92376E695CAA0 /* RZUIKit-umbrella.h */,
+				D021BB25C72B48B13D50880FF882D77D /* RZUIKit.debug.xcconfig */,
+				A419AEE06B068CAD49D59134F9D29809 /* RZUIKit.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/RZUIKit";
+			sourceTree = "<group>";
+		};
+		560528A58AFB361D1C761D3E5B0F3C37 /* RZUIKit */ = {
+			isa = PBXGroup;
+			children = (
+				23B35C2C91DF9D3D811603545883DE49 /* LinesController.swift */,
+				CDCE9A7700C4942D83622C79C3FE991E /* RZPopUpView.swift */,
+				447BED30F03324FC7CC2790D0CC86058 /* RZPresenter.swift */,
+				4A22FA6370276D0374E61139105B56F0 /* RZRootController.swift */,
+				CA50582FD9530FF701D73C9E01A07283 /* RZRotater.swift */,
+				2BE012121BFE708BE756655224B5DA08 /* RZRouter.swift */,
+				079B35D01659F03C6E3D0720EDEE76E1 /* RZScreenController.swift */,
+				E2DC6D6E013C7AABBB39905EEF57826E /* RZScreenControllerUI.swift */,
+				3BECBB9433A970D7AB3A5C9057D3970B /* RZScreenUI.swift */,
+				F9F98B68B89829D67E19878F564B3BFE /* RZTransitionAnimation.swift */,
+				21D93E182742BD78753CA0D2E6C00561 /* RZUIKit.h */,
+				50505522AAF614AEB836718BCFC93228 /* ScreensInstaller.swift */,
+				22B8570995E661E919A5707679B00910 /* Support Files */,
+			);
+			name = RZUIKit;
+			path = RZUIKit;
+			sourceTree = "<group>";
+		};
+		6A078F74811E84A938619BE760F26CC8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B09B5B4B8C52D80752EA20A5CF385768 /* Pods_RelizKit.framework */,
+				0081218A702D4D63695E3CC61B888542 /* RZSubscribeManager.framework */,
+				F854E1EC514251B9B75982E771578640 /* RZUIKit.framework */,
+				32B68D5B8C0127052BE81786F59B46F6 /* SwiftyStoreKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A8FA56F7A00ABB879CD387AD775461F1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3F1CC2215568478821E9461ECBB2BF53 /* SwiftyStoreKit.framework */,
+				F625C96AF1750E1FB36D91DEA07719A0 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B1F30E35789D38C8DDE947924BC542D3 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A409316197A40AC6E2D03DF726FE2CF0 /* RZSubscribeManager.modulemap */,
+				871BEE408577FC41BDD296D69DA2D4E9 /* RZSubscribeManager-dummy.m */,
+				DF5A2B40F87F257C988280C940376BFB /* RZSubscribeManager-Info.plist */,
+				4A6F4AB7AE85853FCB965C713AB1F17B /* RZSubscribeManager-prefix.pch */,
+				C86055E8524F2867FA86CD3284B6D522 /* RZSubscribeManager-umbrella.h */,
+				6BA0764614FC994AA57D22E7B19C5159 /* RZSubscribeManager.debug.xcconfig */,
+				8C58F453AB1435BBFC80F307CB19B824 /* RZSubscribeManager.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/RZSubscribeManager";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				A8FA56F7A00ABB879CD387AD775461F1 /* Frameworks */,
+				E2A35250E35113A54E6229BDF02637CA /* Pods */,
+				6A078F74811E84A938619BE760F26CC8 /* Products */,
+				037EDC638278CAFEFF36D543A4664EA1 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		E2A35250E35113A54E6229BDF02637CA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F4B679551914B53EB52BA24314F342AC /* RZSubscribeManager */,
+				560528A58AFB361D1C761D3E5B0F3C37 /* RZUIKit */,
+				EB26D925E782123FE994F8A795956D1A /* SwiftyStoreKit */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		EB26D925E782123FE994F8A795956D1A /* SwiftyStoreKit */ = {
+			isa = PBXGroup;
+			children = (
+				8F7243D79E04431CD0A4FF8FCF8A89E5 /* AppleReceiptValidator.swift */,
+				FF58A8C39276C05BCF4ABB6A24CF5311 /* CompleteTransactionsController.swift */,
+				DB82CB3D176F8D7AF9457ED8C53A4440 /* InAppProductQueryRequest.swift */,
+				B65BFDC6B3A4DBE76BB61DDE43EC42DA /* InAppReceipt.swift */,
+				77757B4692F642F81239810A16B71A78 /* InAppReceiptRefreshRequest.swift */,
+				5F9402CB61C5688626C8280959549D32 /* InAppReceiptVerificator.swift */,
+				E7D41D6D1D91A052ED49D11D9B833CD8 /* OS.swift */,
+				467A95C5A0ACDA238E8876746C110728 /* PaymentQueueController.swift */,
+				447515558F94A85583452FBD4DEF4CEC /* PaymentsController.swift */,
+				5000535D9BDE576A040D19BA8A031504 /* ProductsInfoController.swift */,
+				104C4247CBC1F7F6FBA02FE8701A7B93 /* RestorePurchasesController.swift */,
+				0A1FB6B9FD837A7F7AEA29B9CFF79451 /* SKProduct+LocalizedPrice.swift */,
+				F1157B8AD956DB1EC775ABB010C4F17E /* SKProductDiscount+LocalizedPrice.swift */,
+				0B971DD5047177A395C11D11A01DB9D9 /* SwiftyStoreKit.swift */,
+				0A355541ED29CC9C106E54F2BB1FF47C /* SwiftyStoreKit+Types.swift */,
+				F73CA894B6A4DD103A8D0C863D31A7C5 /* Support Files */,
+			);
+			name = SwiftyStoreKit;
+			path = SwiftyStoreKit;
+			sourceTree = "<group>";
+		};
+		F4B679551914B53EB52BA24314F342AC /* RZSubscribeManager */ = {
+			isa = PBXGroup;
+			children = (
+				B312C2AA5BB26F466C72A1D1790887E3 /* Product.swift */,
+				FCEBA3F0740E392E3F43828A2D9B4DEC /* ReceiptItemExtention.swift */,
+				DF707AA1EBA56BA0C889CE0268A67748 /* RZSubscribeManager.h */,
+				AC0C0868C8E0BE26C360234CBA1A4095 /* SubController.swift */,
+				D1EE84480E1A1FA642477C7A5F653ACA /* SubDelegateProtocol.swift */,
+				EF963AA8CAC39D92F7282BB99EF3E6B0 /* SubRefrasher.swift */,
+				B1F30E35789D38C8DDE947924BC542D3 /* Support Files */,
+			);
+			name = RZSubscribeManager;
+			path = RZSubscribeManager;
+			sourceTree = "<group>";
+		};
+		F625C96AF1750E1FB36D91DEA07719A0 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CED62EC20DCEF8A3BFCE92B64602F0B4 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		F73CA894B6A4DD103A8D0C863D31A7C5 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				4BE84E796BD6AF9B7CA9C30496F5DAA7 /* SwiftyStoreKit.modulemap */,
+				4AD2FF5C361D7256C6E8B5498BD875C6 /* SwiftyStoreKit-dummy.m */,
+				155EBA58017F2526738055B9C0B311A8 /* SwiftyStoreKit-Info.plist */,
+				89183C4702A820F39AE386D560F70B51 /* SwiftyStoreKit-prefix.pch */,
+				4C8F50F64C1541BA39EC57E6122718C3 /* SwiftyStoreKit-umbrella.h */,
+				F8748F0C3981962B60255B14E2CC0103 /* SwiftyStoreKit.debug.xcconfig */,
+				4DB4A64EFFB99F13DA19F7EF2A343C45 /* SwiftyStoreKit.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftyStoreKit";
+			sourceTree = "<group>";
+		};
+		FB9E7049D7C731F6EC10937A0DA8E840 /* Pods-RelizKit */ = {
+			isa = PBXGroup;
+			children = (
+				EF024E5C6F0405820500A08EFB9AD970 /* Pods-RelizKit.modulemap */,
+				611AAB75BE2C0236B967DC2ACD0E3F31 /* Pods-RelizKit-acknowledgements.markdown */,
+				1EBD8952BE6CC742C3423C7637C11FDA /* Pods-RelizKit-acknowledgements.plist */,
+				385D9BF2C33CE85435B854394721FC7C /* Pods-RelizKit-dummy.m */,
+				B68B22E854D45A81404EA07BC692058D /* Pods-RelizKit-Info.plist */,
+				81201BF9E402EF2B1CAE03236362A59A /* Pods-RelizKit-umbrella.h */,
+				13F814B673968A287586FDD60599EF77 /* Pods-RelizKit.debug.xcconfig */,
+				3325936D3FC4E598A3783C85B511515A /* Pods-RelizKit.release.xcconfig */,
+			);
+			name = "Pods-RelizKit";
+			path = "Target Support Files/Pods-RelizKit";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		3C978DC8FDC82DAC80E46293C115B7FF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				572D3D75633177FDE81CA13E3FDC3BC3 /* SwiftyStoreKit-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		637F144A87721EF9967DA0D5A738C108 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1A96496FB60BCF3E04A964D104B9E16 /* RZSubscribeManager-umbrella.h in Headers */,
+				E96BC8D3489961627144F240DEDCD853 /* RZSubscribeManager.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6954E43764495AA99D76F0AA00C10275 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F305B183EF6558CBD736E9E8BFFE368 /* Pods-RelizKit-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6EA80EFF09C8CE324558AD224AE554C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9960F9A57630C697C3362E8CA5FC5ED /* RZUIKit-umbrella.h in Headers */,
+				08DE7FD256B92A936A8AE5975F6828CB /* RZUIKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		490C269E469174E0D929263D20A5839E /* RZSubscribeManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D5D2851A72AE896B510931136875E399 /* Build configuration list for PBXNativeTarget "RZSubscribeManager" */;
+			buildPhases = (
+				637F144A87721EF9967DA0D5A738C108 /* Headers */,
+				C05795C50372C04F92237A4D9C73F144 /* Sources */,
+				B06ABCB251303FA17A54663CEB0003C3 /* Frameworks */,
+				92EDFA2A46055F1089B914D75D321122 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A9B31446BB2BDFC700F88E14CEA88D94 /* PBXTargetDependency */,
+			);
+			name = RZSubscribeManager;
+			productName = RZSubscribeManager;
+			productReference = 0081218A702D4D63695E3CC61B888542 /* RZSubscribeManager.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		6DD9EC9C582DC5C0FE95B7247C8740D0 /* RZUIKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1B62C6071B1D28827B3CE74DD4B60FB0 /* Build configuration list for PBXNativeTarget "RZUIKit" */;
+			buildPhases = (
+				B6EA80EFF09C8CE324558AD224AE554C /* Headers */,
+				E6075940BAAE0181F06A58C3C50548AC /* Sources */,
+				962520405A24F83B1CF946F74CC2343B /* Frameworks */,
+				9D9E00AE5D70FCA605576CCB2EB00006 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RZUIKit;
+			productName = RZUIKit;
+			productReference = F854E1EC514251B9B75982E771578640 /* RZUIKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		79DB875E75EC3F752F74254C4F0A278F /* Pods-RelizKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 940D5D44CB067433A4CEE4200B64351B /* Build configuration list for PBXNativeTarget "Pods-RelizKit" */;
+			buildPhases = (
+				6954E43764495AA99D76F0AA00C10275 /* Headers */,
+				DA4F95E020B3254E9BF2DE39167DAFC7 /* Sources */,
+				A6E3E83FE07882C379DD836BE6CEA3CA /* Frameworks */,
+				961B6591E5B319374C2541A3869FB37A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				99D7246889CD050E490FE40DB4DFA794 /* PBXTargetDependency */,
+				B134306B0E662006A86E6F056D9F223D /* PBXTargetDependency */,
+				03757CB30DCB95EB3CB826C3101649B1 /* PBXTargetDependency */,
+			);
+			name = "Pods-RelizKit";
+			productName = "Pods-RelizKit";
+			productReference = B09B5B4B8C52D80752EA20A5CF385768 /* Pods_RelizKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		FCD4F1901DD86FEB184BFDD6673F4A7B /* SwiftyStoreKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC2FF14D976C5C4C58626DBF490272BD /* Build configuration list for PBXNativeTarget "SwiftyStoreKit" */;
+			buildPhases = (
+				3C978DC8FDC82DAC80E46293C115B7FF /* Headers */,
+				43AD6C534DE3F01A6993161DF38BCDAD /* Sources */,
+				C14D95E3A090828E5167119CDC20529F /* Frameworks */,
+				8B9A9E1180EA8B0D0B111C9EC330C909 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftyStoreKit;
+			productName = SwiftyStoreKit;
+			productReference = 32B68D5B8C0127052BE81786F59B46F6 /* SwiftyStoreKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 6A078F74811E84A938619BE760F26CC8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				79DB875E75EC3F752F74254C4F0A278F /* Pods-RelizKit */,
+				490C269E469174E0D929263D20A5839E /* RZSubscribeManager */,
+				6DD9EC9C582DC5C0FE95B7247C8740D0 /* RZUIKit */,
+				FCD4F1901DD86FEB184BFDD6673F4A7B /* SwiftyStoreKit */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8B9A9E1180EA8B0D0B111C9EC330C909 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92EDFA2A46055F1089B914D75D321122 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		961B6591E5B319374C2541A3869FB37A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9D9E00AE5D70FCA605576CCB2EB00006 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		43AD6C534DE3F01A6993161DF38BCDAD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD34A0C5394F181F5B10B5DD67CBED80 /* AppleReceiptValidator.swift in Sources */,
+				7E1FE268C370A42FC589010CFAA681F4 /* CompleteTransactionsController.swift in Sources */,
+				9CA459F45A3286451E50E14AD813CC11 /* InAppProductQueryRequest.swift in Sources */,
+				2036B7F1FFDE83B0859C8C14034E08A8 /* InAppReceipt.swift in Sources */,
+				AD35B1176FC020952822B5A718638FCB /* InAppReceiptRefreshRequest.swift in Sources */,
+				ECC2027EF6BF5ECFBF07F6FD63E47069 /* InAppReceiptVerificator.swift in Sources */,
+				A1D6B84D7C0C8C2AB0941E94DE1D0094 /* OS.swift in Sources */,
+				F618FB013BFE161B7682286A1BD1D5D3 /* PaymentQueueController.swift in Sources */,
+				8EF2A5896133B7A46BBE417E810CEFC7 /* PaymentsController.swift in Sources */,
+				56820FA396EF3193F8C15C876C715376 /* ProductsInfoController.swift in Sources */,
+				4C77AE0E12BD23CD90E5ED688A0AA3F6 /* RestorePurchasesController.swift in Sources */,
+				322CBD1E151E355D1208B593749C8A3D /* SKProduct+LocalizedPrice.swift in Sources */,
+				2B30BC8B1D0B2A8BDCEEB5D6035EFD18 /* SKProductDiscount+LocalizedPrice.swift in Sources */,
+				9EC34CB32A897221BFA776D6DC60E90D /* SwiftyStoreKit+Types.swift in Sources */,
+				6D6A8E5AF53089C9746FC327994F7706 /* SwiftyStoreKit-dummy.m in Sources */,
+				4AA33EB072C3F2EAA2E81C9A47B96ED0 /* SwiftyStoreKit.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C05795C50372C04F92237A4D9C73F144 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A56FC160450F4C72E2405CD4201B386 /* Product.swift in Sources */,
+				32222DAD7B3A4AC5BD9B0BCAB35F6AE0 /* ReceiptItemExtention.swift in Sources */,
+				EEAEA13A498160CE81B4F5B2131CCF0E /* RZSubscribeManager-dummy.m in Sources */,
+				96C42BE356FDE2F2B60FD1D51DCDACF1 /* SubController.swift in Sources */,
+				4C1484DB01705E9609773F2C93AEACFA /* SubDelegateProtocol.swift in Sources */,
+				D0123499883E07548708990D83AED16F /* SubRefrasher.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA4F95E020B3254E9BF2DE39167DAFC7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3A65894C035F49B63604A6E39B5907F /* Pods-RelizKit-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6075940BAAE0181F06A58C3C50548AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3845CA2A0CA0CFB56A05ED6A43C7007 /* LinesController.swift in Sources */,
+				5F23186FD9777F6C252EF57E2AE764F6 /* RZPopUpView.swift in Sources */,
+				ED29F826BD00EC2F08ABD6560D2AB067 /* RZPresenter.swift in Sources */,
+				3A17D5EFB8DDBD6911AA31ADE3B7849B /* RZRootController.swift in Sources */,
+				067DFB311EC7C22D0422851F1937CDCE /* RZRotater.swift in Sources */,
+				AD1A89C2D57DD714DB3BBEEBEE648E1A /* RZRouter.swift in Sources */,
+				D5B18F6EB16523D31AC91C59851671A9 /* RZScreenController.swift in Sources */,
+				FFE12A915733C5A41A447F4E455F0E1F /* RZScreenControllerUI.swift in Sources */,
+				037B86806068CF30896BB68B54F7EF09 /* RZScreenUI.swift in Sources */,
+				3DA824A1F55B8EB2B417B18E12CC50FC /* RZTransitionAnimation.swift in Sources */,
+				F443D916EF67C0245A61D4E4C117541A /* RZUIKit-dummy.m in Sources */,
+				4E274D6BA7CB63279A7B5876D8A01AEE /* ScreensInstaller.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		03757CB30DCB95EB3CB826C3101649B1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftyStoreKit;
+			target = FCD4F1901DD86FEB184BFDD6673F4A7B /* SwiftyStoreKit */;
+			targetProxy = 25446B07ED47CC256C06B0254C5CC2A2 /* PBXContainerItemProxy */;
+		};
+		99D7246889CD050E490FE40DB4DFA794 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RZSubscribeManager;
+			target = 490C269E469174E0D929263D20A5839E /* RZSubscribeManager */;
+			targetProxy = E21270DADE763183257DF7ECCA9FEFAC /* PBXContainerItemProxy */;
+		};
+		A9B31446BB2BDFC700F88E14CEA88D94 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftyStoreKit;
+			target = FCD4F1901DD86FEB184BFDD6673F4A7B /* SwiftyStoreKit */;
+			targetProxy = FBCC23C7210DE4875276D7CBA00185E8 /* PBXContainerItemProxy */;
+		};
+		B134306B0E662006A86E6F056D9F223D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RZUIKit;
+			target = 6DD9EC9C582DC5C0FE95B7247C8740D0 /* RZUIKit */;
+			targetProxy = C6E18DD1C210E76C96E35CA33A24BCE9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		00D75B03DA7E319D4537EACA38DAF21E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D021BB25C72B48B13D50880FF882D77D /* RZUIKit.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/RZUIKit/RZUIKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RZUIKit/RZUIKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/RZUIKit/RZUIKit.modulemap";
+				PRODUCT_MODULE_NAME = RZUIKit;
+				PRODUCT_NAME = RZUIKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		229968CB885B1EDA722DA2A07D3B82E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6BA0764614FC994AA57D22E7B19C5159 /* RZSubscribeManager.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/RZSubscribeManager/RZSubscribeManager-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RZSubscribeManager/RZSubscribeManager-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/RZSubscribeManager/RZSubscribeManager.modulemap";
+				PRODUCT_MODULE_NAME = RZSubscribeManager;
+				PRODUCT_NAME = RZSubscribeManager;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		501C527AFC5FBA78B7534A25056763B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4DB4A64EFFB99F13DA19F7EF2A343C45 /* SwiftyStoreKit.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyStoreKit/SwiftyStoreKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyStoreKit/SwiftyStoreKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SwiftyStoreKit/SwiftyStoreKit.modulemap";
+				PRODUCT_MODULE_NAME = SwiftyStoreKit;
+				PRODUCT_NAME = SwiftyStoreKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		589140DCCC603A0FD99076353933A066 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C58F453AB1435BBFC80F307CB19B824 /* RZSubscribeManager.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/RZSubscribeManager/RZSubscribeManager-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RZSubscribeManager/RZSubscribeManager-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/RZSubscribeManager/RZSubscribeManager.modulemap";
+				PRODUCT_MODULE_NAME = RZSubscribeManager;
+				PRODUCT_NAME = RZSubscribeManager;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		75F47A62592624EB3A08F8F6375EE1F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13F814B673968A287586FDD60599EF77 /* Pods-RelizKit.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-RelizKit/Pods-RelizKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RelizKit/Pods-RelizKit.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8A3650F6C8AC2EFFA814EA61C37468B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		90512E3B0F1E40E4451C23A35F64052B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3325936D3FC4E598A3783C85B511515A /* Pods-RelizKit.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-RelizKit/Pods-RelizKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RelizKit/Pods-RelizKit.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		AF1F8D2941B0228930706FA0F2C9BB78 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		D0D64DEE97C1D857EDFE761491707849 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F8748F0C3981962B60255B14E2CC0103 /* SwiftyStoreKit.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyStoreKit/SwiftyStoreKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyStoreKit/SwiftyStoreKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SwiftyStoreKit/SwiftyStoreKit.modulemap";
+				PRODUCT_MODULE_NAME = SwiftyStoreKit;
+				PRODUCT_NAME = SwiftyStoreKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		FEC6A5899F2C5D1794E718E614DB4830 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A419AEE06B068CAD49D59134F9D29809 /* RZUIKit.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/RZUIKit/RZUIKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RZUIKit/RZUIKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/RZUIKit/RZUIKit.modulemap";
+				PRODUCT_MODULE_NAME = RZUIKit;
+				PRODUCT_NAME = RZUIKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1B62C6071B1D28827B3CE74DD4B60FB0 /* Build configuration list for PBXNativeTarget "RZUIKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00D75B03DA7E319D4537EACA38DAF21E /* Debug */,
+				FEC6A5899F2C5D1794E718E614DB4830 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A3650F6C8AC2EFFA814EA61C37468B1 /* Debug */,
+				AF1F8D2941B0228930706FA0F2C9BB78 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		940D5D44CB067433A4CEE4200B64351B /* Build configuration list for PBXNativeTarget "Pods-RelizKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75F47A62592624EB3A08F8F6375EE1F0 /* Debug */,
+				90512E3B0F1E40E4451C23A35F64052B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC2FF14D976C5C4C58626DBF490272BD /* Build configuration list for PBXNativeTarget "SwiftyStoreKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0D64DEE97C1D857EDFE761491707849 /* Debug */,
+				501C527AFC5FBA78B7534A25056763B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D5D2851A72AE896B510931136875E399 /* Build configuration list for PBXNativeTarget "RZSubscribeManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				229968CB885B1EDA722DA2A07D3B82E1 /* Debug */,
+				589140DCCC603A0FD99076353933A066 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}
