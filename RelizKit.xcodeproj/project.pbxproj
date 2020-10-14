@@ -7,98 +7,73 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		39E843D69440A0FF7FC68BFE /* Pods_RelizKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC358A1D5847ED1988CC185D /* Pods_RelizKit.framework */; };
-		51F6A7B9253727FF00D3CE95 /* RelizKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 51F6A7B7253727FF00D3CE95 /* RelizKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		511D99B825373CB800E67C68 /* RelizKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 511D99B625373CB800E67C68 /* RelizKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0404F745A6F1E5599DAC81B1 /* Pods-RelizKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RelizKit.debug.xcconfig"; path = "Target Support Files/Pods-RelizKit/Pods-RelizKit.debug.xcconfig"; sourceTree = "<group>"; };
-		51F6A7B4253727FF00D3CE95 /* RelizKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RelizKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		51F6A7B7253727FF00D3CE95 /* RelizKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RelizKit.h; sourceTree = "<group>"; };
-		51F6A7B8253727FF00D3CE95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6FF9F4B4D73B9C97E7839EAD /* Pods-RelizKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RelizKit.release.xcconfig"; path = "Target Support Files/Pods-RelizKit/Pods-RelizKit.release.xcconfig"; sourceTree = "<group>"; };
-		CC358A1D5847ED1988CC185D /* Pods_RelizKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RelizKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		511D99B325373CB800E67C68 /* RelizKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RelizKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		511D99B625373CB800E67C68 /* RelizKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RelizKit.h; sourceTree = "<group>"; };
+		511D99B725373CB800E67C68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		51F6A7B1253727FF00D3CE95 /* Frameworks */ = {
+		511D99B025373CB800E67C68 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39E843D69440A0FF7FC68BFE /* Pods_RelizKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		51F6A7AA253727FF00D3CE95 = {
+		511D99A925373CB800E67C68 = {
 			isa = PBXGroup;
 			children = (
-				51F6A7B6253727FF00D3CE95 /* RelizKit */,
-				51F6A7B5253727FF00D3CE95 /* Products */,
-				76AC97A7632163CBEF4393CE /* Pods */,
-				BB8B83D0C1FC701C8D4AE239 /* Frameworks */,
+				511D99B525373CB800E67C68 /* RelizKit */,
+				511D99B425373CB800E67C68 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		51F6A7B5253727FF00D3CE95 /* Products */ = {
+		511D99B425373CB800E67C68 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				51F6A7B4253727FF00D3CE95 /* RelizKit.framework */,
+				511D99B325373CB800E67C68 /* RelizKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		51F6A7B6253727FF00D3CE95 /* RelizKit */ = {
+		511D99B525373CB800E67C68 /* RelizKit */ = {
 			isa = PBXGroup;
 			children = (
-				51F6A7B7253727FF00D3CE95 /* RelizKit.h */,
-				51F6A7B8253727FF00D3CE95 /* Info.plist */,
+				511D99B625373CB800E67C68 /* RelizKit.h */,
+				511D99B725373CB800E67C68 /* Info.plist */,
 			);
 			path = RelizKit;
-			sourceTree = "<group>";
-		};
-		76AC97A7632163CBEF4393CE /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				0404F745A6F1E5599DAC81B1 /* Pods-RelizKit.debug.xcconfig */,
-				6FF9F4B4D73B9C97E7839EAD /* Pods-RelizKit.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		BB8B83D0C1FC701C8D4AE239 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				CC358A1D5847ED1988CC185D /* Pods_RelizKit.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		51F6A7AF253727FF00D3CE95 /* Headers */ = {
+		511D99AE25373CB800E67C68 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51F6A7B9253727FF00D3CE95 /* RelizKit.h in Headers */,
+				511D99B825373CB800E67C68 /* RelizKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		51F6A7B3253727FF00D3CE95 /* RelizKit */ = {
+		511D99B225373CB800E67C68 /* RelizKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 51F6A7BC253727FF00D3CE95 /* Build configuration list for PBXNativeTarget "RelizKit" */;
+			buildConfigurationList = 511D99BB25373CB800E67C68 /* Build configuration list for PBXNativeTarget "RelizKit" */;
 			buildPhases = (
-				53B94E8E0A4B17E2BEE97181 /* [CP] Check Pods Manifest.lock */,
-				51F6A7AF253727FF00D3CE95 /* Headers */,
-				51F6A7B0253727FF00D3CE95 /* Sources */,
-				51F6A7B1253727FF00D3CE95 /* Frameworks */,
-				51F6A7B2253727FF00D3CE95 /* Resources */,
+				511D99AE25373CB800E67C68 /* Headers */,
+				511D99AF25373CB800E67C68 /* Sources */,
+				511D99B025373CB800E67C68 /* Frameworks */,
+				511D99B125373CB800E67C68 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -106,23 +81,23 @@
 			);
 			name = RelizKit;
 			productName = RelizKit;
-			productReference = 51F6A7B4253727FF00D3CE95 /* RelizKit.framework */;
+			productReference = 511D99B325373CB800E67C68 /* RelizKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		51F6A7AB253727FF00D3CE95 /* Project object */ = {
+		511D99AA25373CB800E67C68 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
-					51F6A7B3253727FF00D3CE95 = {
+					511D99B225373CB800E67C68 = {
 						CreatedOnToolsVersion = 12.0.1;
 					};
 				};
 			};
-			buildConfigurationList = 51F6A7AE253727FF00D3CE95 /* Build configuration list for PBXProject "RelizKit" */;
+			buildConfigurationList = 511D99AD25373CB800E67C68 /* Build configuration list for PBXProject "RelizKit" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -130,18 +105,18 @@
 				en,
 				Base,
 			);
-			mainGroup = 51F6A7AA253727FF00D3CE95;
-			productRefGroup = 51F6A7B5253727FF00D3CE95 /* Products */;
+			mainGroup = 511D99A925373CB800E67C68;
+			productRefGroup = 511D99B425373CB800E67C68 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				51F6A7B3253727FF00D3CE95 /* RelizKit */,
+				511D99B225373CB800E67C68 /* RelizKit */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		51F6A7B2253727FF00D3CE95 /* Resources */ = {
+		511D99B125373CB800E67C68 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -150,33 +125,8 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		53B94E8E0A4B17E2BEE97181 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-RelizKit-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		51F6A7B0253727FF00D3CE95 /* Sources */ = {
+		511D99AF25373CB800E67C68 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -186,7 +136,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		51F6A7BA253727FF00D3CE95 /* Debug */ = {
+		511D99B925373CB800E67C68 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -250,7 +200,7 @@
 			};
 			name = Debug;
 		};
-		51F6A7BB253727FF00D3CE95 /* Release */ = {
+		511D99BA25373CB800E67C68 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -308,9 +258,8 @@
 			};
 			name = Release;
 		};
-		51F6A7BD253727FF00D3CE95 /* Debug */ = {
+		511D99BC25373CB800E67C68 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0404F745A6F1E5599DAC81B1 /* Pods-RelizKit.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -334,9 +283,8 @@
 			};
 			name = Debug;
 		};
-		51F6A7BE253727FF00D3CE95 /* Release */ = {
+		511D99BD25373CB800E67C68 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6FF9F4B4D73B9C97E7839EAD /* Pods-RelizKit.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -363,25 +311,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		51F6A7AE253727FF00D3CE95 /* Build configuration list for PBXProject "RelizKit" */ = {
+		511D99AD25373CB800E67C68 /* Build configuration list for PBXProject "RelizKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				51F6A7BA253727FF00D3CE95 /* Debug */,
-				51F6A7BB253727FF00D3CE95 /* Release */,
+				511D99B925373CB800E67C68 /* Debug */,
+				511D99BA25373CB800E67C68 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		51F6A7BC253727FF00D3CE95 /* Build configuration list for PBXNativeTarget "RelizKit" */ = {
+		511D99BB25373CB800E67C68 /* Build configuration list for PBXNativeTarget "RelizKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				51F6A7BD253727FF00D3CE95 /* Debug */,
-				51F6A7BE253727FF00D3CE95 /* Release */,
+				511D99BC25373CB800E67C68 /* Debug */,
+				511D99BD25373CB800E67C68 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 51F6A7AB253727FF00D3CE95 /* Project object */;
+	rootObject = 511D99AA25373CB800E67C68 /* Project object */;
 }

@@ -1,6 +1,0 @@
-framework module RZUIKit {
-  umbrella header "RZUIKit-umbrella.h"
-
-  export *
-  module * { export * }
-}
