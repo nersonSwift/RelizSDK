@@ -9,6 +9,17 @@
 /* Begin PBXBuildFile section */
 		511D99B825373CB800E67C68 /* RelizKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 511D99B625373CB800E67C68 /* RelizKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		511D99FE2537462A00E67C68 /* RelizKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511D99FD2537462A00E67C68 /* RelizKit.swift */; };
+		51EA4BD82537544C0040BEBC /* RZRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA4BC92537544C0040BEBC /* RZRootController.swift */; };
+		51EA4BD92537544C0040BEBC /* RZPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA4BCC2537544C0040BEBC /* RZPresenter.swift */; };
+		51EA4BDA2537544C0040BEBC /* RZScreenUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA4BCD2537544C0040BEBC /* RZScreenUI.swift */; };
+		51EA4BDB2537544C0040BEBC /* RZRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA4BCE2537544C0040BEBC /* RZRouter.swift */; };
+		51EA4BDC2537544C0040BEBC /* LinesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA4BCF2537544C0040BEBC /* LinesController.swift */; };
+		51EA4BDD2537544C0040BEBC /* ScreensInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA4BD02537544C0040BEBC /* ScreensInstaller.swift */; };
+		51EA4BDE2537544C0040BEBC /* RZPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA4BD22537544C0040BEBC /* RZPopUpView.swift */; };
+		51EA4BDF2537544C0040BEBC /* RZScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA4BD32537544C0040BEBC /* RZScreenController.swift */; };
+		51EA4BE02537544C0040BEBC /* RZScreenControllerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA4BD42537544C0040BEBC /* RZScreenControllerUI.swift */; };
+		51EA4BE12537544C0040BEBC /* RZTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA4BD62537544C0040BEBC /* RZTransitionAnimation.swift */; };
+		51EA4BE22537544C0040BEBC /* RZRotater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA4BD72537544C0040BEBC /* RZRotater.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -16,6 +27,17 @@
 		511D99B625373CB800E67C68 /* RelizKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RelizKit.h; sourceTree = "<group>"; };
 		511D99B725373CB800E67C68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		511D99FD2537462A00E67C68 /* RelizKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelizKit.swift; sourceTree = "<group>"; };
+		51EA4BC92537544C0040BEBC /* RZRootController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZRootController.swift; sourceTree = "<group>"; };
+		51EA4BCC2537544C0040BEBC /* RZPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZPresenter.swift; sourceTree = "<group>"; };
+		51EA4BCD2537544C0040BEBC /* RZScreenUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZScreenUI.swift; sourceTree = "<group>"; };
+		51EA4BCE2537544C0040BEBC /* RZRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZRouter.swift; sourceTree = "<group>"; };
+		51EA4BCF2537544C0040BEBC /* LinesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinesController.swift; sourceTree = "<group>"; };
+		51EA4BD02537544C0040BEBC /* ScreensInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreensInstaller.swift; sourceTree = "<group>"; };
+		51EA4BD22537544C0040BEBC /* RZPopUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZPopUpView.swift; sourceTree = "<group>"; };
+		51EA4BD32537544C0040BEBC /* RZScreenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZScreenController.swift; sourceTree = "<group>"; };
+		51EA4BD42537544C0040BEBC /* RZScreenControllerUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZScreenControllerUI.swift; sourceTree = "<group>"; };
+		51EA4BD62537544C0040BEBC /* RZTransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZTransitionAnimation.swift; sourceTree = "<group>"; };
+		51EA4BD72537544C0040BEBC /* RZRotater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZRotater.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,11 +70,78 @@
 		511D99B525373CB800E67C68 /* RelizKit */ = {
 			isa = PBXGroup;
 			children = (
-				511D99B625373CB800E67C68 /* RelizKit.h */,
 				511D99B725373CB800E67C68 /* Info.plist */,
-				511D99FD2537462A00E67C68 /* RelizKit.swift */,
+				51EA4BC7253753DF0040BEBC /* Core */,
+				51EA4BC6253753980040BEBC /* RZStoreKit */,
+				51EA4BC5253753800040BEBC /* RZUIKit */,
 			);
 			path = RelizKit;
+			sourceTree = "<group>";
+		};
+		51EA4BC5253753800040BEBC /* RZUIKit */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RZUIKit;
+			sourceTree = "<group>";
+		};
+		51EA4BC6253753980040BEBC /* RZStoreKit */ = {
+			isa = PBXGroup;
+			children = (
+				51EA4BC92537544C0040BEBC /* RZRootController.swift */,
+				51EA4BCA2537544C0040BEBC /* ScreensArc */,
+			);
+			path = RZStoreKit;
+			sourceTree = "<group>";
+		};
+		51EA4BC7253753DF0040BEBC /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				511D99B625373CB800E67C68 /* RelizKit.h */,
+				511D99FD2537462A00E67C68 /* RelizKit.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		51EA4BCA2537544C0040BEBC /* ScreensArc */ = {
+			isa = PBXGroup;
+			children = (
+				51EA4BCB2537544C0040BEBC /* Present */,
+				51EA4BCF2537544C0040BEBC /* LinesController.swift */,
+				51EA4BD02537544C0040BEBC /* ScreensInstaller.swift */,
+				51EA4BD12537544C0040BEBC /* Controllers */,
+				51EA4BD52537544C0040BEBC /* Helpers */,
+			);
+			path = ScreensArc;
+			sourceTree = "<group>";
+		};
+		51EA4BCB2537544C0040BEBC /* Present */ = {
+			isa = PBXGroup;
+			children = (
+				51EA4BCC2537544C0040BEBC /* RZPresenter.swift */,
+				51EA4BCD2537544C0040BEBC /* RZScreenUI.swift */,
+				51EA4BCE2537544C0040BEBC /* RZRouter.swift */,
+			);
+			path = Present;
+			sourceTree = "<group>";
+		};
+		51EA4BD12537544C0040BEBC /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				51EA4BD22537544C0040BEBC /* RZPopUpView.swift */,
+				51EA4BD32537544C0040BEBC /* RZScreenController.swift */,
+				51EA4BD42537544C0040BEBC /* RZScreenControllerUI.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		51EA4BD52537544C0040BEBC /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				51EA4BD62537544C0040BEBC /* RZTransitionAnimation.swift */,
+				51EA4BD72537544C0040BEBC /* RZRotater.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,6 +224,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				511D99FE2537462A00E67C68 /* RelizKit.swift in Sources */,
+				51EA4BDB2537544C0040BEBC /* RZRouter.swift in Sources */,
+				51EA4BDA2537544C0040BEBC /* RZScreenUI.swift in Sources */,
+				51EA4BE22537544C0040BEBC /* RZRotater.swift in Sources */,
+				51EA4BE12537544C0040BEBC /* RZTransitionAnimation.swift in Sources */,
+				51EA4BE02537544C0040BEBC /* RZScreenControllerUI.swift in Sources */,
+				51EA4BDC2537544C0040BEBC /* LinesController.swift in Sources */,
+				51EA4BD82537544C0040BEBC /* RZRootController.swift in Sources */,
+				51EA4BDD2537544C0040BEBC /* ScreensInstaller.swift in Sources */,
+				51EA4BDF2537544C0040BEBC /* RZScreenController.swift in Sources */,
+				51EA4BD92537544C0040BEBC /* RZPresenter.swift in Sources */,
+				51EA4BDE2537544C0040BEBC /* RZPopUpView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
