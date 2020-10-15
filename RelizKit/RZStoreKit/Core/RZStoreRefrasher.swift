@@ -29,7 +29,7 @@ class RZStoreRefrasher{
                 RZStoreKit.activeReceipts = res
             }
         
-            RZStoreKit.delegate?.upadate()
+            RZStoreKit.delegate?.update()
             if let btID = refrashBackgroundTaskId{
                 UIApplication.shared.endBackgroundTask(btID)
             }

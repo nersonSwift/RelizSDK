@@ -96,7 +96,7 @@ public class RZStoreKit{
                     SwiftyStoreKit.finishTransaction(purchase.transaction)
                 }
                 
-                delegate?.buySucces(product: product, customData: customData)
+                delegate?.buySuccess(product: product, customData: customData)
                 completion?()
                 RZStoreRefrasher.refrash()
             case .error:

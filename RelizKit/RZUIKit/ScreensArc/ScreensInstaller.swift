@@ -14,7 +14,7 @@ import UIKit
 
 class ScreensInstaller{
     static var inAnimation: Bool = false
-    static var rootViewController: RZRootController!
+    static var rootViewController: RZRootController { RZRootController.instance }
     
     //MARK: - in
     static func installScreen(in viewController: UIViewController,
@@ -87,26 +87,27 @@ class ScreensInstaller{
     }
     
     static func installPopUp(in view: UIView,
-                             installingPopUpView: RZPopUpView,
+                             installingPopUpView: RZPopUpViewProtocol,
                              anim open: RZTransitionAnimation = .shiftLeft,
-                             anim close: RZTransitionAnimation = .shiftRight){
-        /*
+                             anim close: RZTransitionAnimation = .shiftRight
+    ){
         let backView = installingPopUpView.backView
         backView.frame = view.bounds
         view.addSubview(backView)
         view.addSubview(installingPopUpView)
-        
-        open.funcAnimPopUp(installingPopUpView, backView, {})
+        installingPopUpView.backViewInstance = backView
+        open.funcAnim(nil, installingPopUpView, backView, {})
         
        installingPopUpView.closeClouser = {[weak installingPopUpView] in
            guard let unInstallingPopUpView = installingPopUpView else {return}
-           close.funcAnimPopUp(unInstallingPopUpView, backView, {[weak installingPopUpView] in
+        
+           close.funcAnim(nil, unInstallingPopUpView, backView, {[weak installingPopUpView] in
                guard let unInstallingPopUpView = installingPopUpView else {return}
                unInstallingPopUpView.removeFromSuperview()
                backView.removeFromSuperview()
            })
+         
        }
-         */
     }
     
     private static func setChild(_ viewController: UIViewController, _ view: UIView?, _ screen: RZScreenControllerProtocol){
@@ -119,7 +120,7 @@ class ScreensInstaller{
         screen.didMove(toParent: viewController)
         
         screen.rotater = RZRotater(viewController: screen)
-        ScreensInstaller.rootViewController?.roatateCild()
+        ScreensInstaller.rootViewController.roatateCild()
     }
     
     private static func removeChild(_ viewController: UIViewController){
@@ -154,21 +155,28 @@ public class RZTransition{
     public enum TransitionType {
         case In
         case Instead
+        case PopUp
     }
     
     private var transitionType: TransitionType
     
     private weak var _screen: UIViewController?
-    private var _view: UIView?
+    private weak var _view: UIView?
+    
     private var _pastScreen: RZScreenControllerProtocol?
     private var _installingScreen: RZScreenControllerProtocol?
     private var _archive: Bool = false
     private var _saveTranslite: Bool = true
-    private var _animation: RZTransitionAnimation?
+    
+    private var _animationO: RZTransitionAnimation?
+    private var _animationC: RZTransitionAnimation?
+    
     private var _selectLine: String?
     private var _setLine: Bool = true
+    private var _popUp: RZPopUpViewProtocol?
     
-    public init(_ transitionType: TransitionType, _ screen: UIViewController){
+    
+    public init(_ transitionType: TransitionType, _ screen: UIViewController?){
         self.transitionType = transitionType
         _screen = screen
     }
@@ -194,6 +202,12 @@ public class RZTransition{
     
     @discardableResult
     public func screen(_ screen: RZScreenControllerProtocol?) -> RZTransition {
+        _installingScreen = screen
+        return self
+    }
+    
+    @discardableResult
+    public func popUp(_ screen: PopUpScreenProtocol?) -> RZTransition {
         _installingScreen = screen
         return self
     }
@@ -230,9 +244,19 @@ public class RZTransition{
         return self
     }
     
+    public enum AnimationState {
+        case open
+        case close
+    }
+    
     @discardableResult
-    public func animation(_ animation: RZTransitionAnimation) -> RZTransition {
-        _animation = animation
+    public func animation(_ animation: RZTransitionAnimation, state: AnimationState = .open) -> RZTransition {
+        switch state {
+        case .open:
+            _animationO = animation
+        case .close:
+            _animationC = animation
+        }
         return self
     }
     
@@ -242,7 +266,7 @@ public class RZTransition{
         case .In:
             guard let _screen = _screen else {return false}
             guard let _installingScreen = _installingScreen else {return false}
-            return ScreensInstaller.installScreen(in: _screen, view: _view, installingScreen: _installingScreen, animation: _animation)
+            return ScreensInstaller.installScreen(in: _screen, view: _view, installingScreen: _installingScreen, animation: _animationO)
         case .Instead:
             guard let _screen = _screen as? RZScreenControllerProtocol else {return false}
             let test = ScreensInstaller.installScreen(instead: _screen,
@@ -251,10 +275,19 @@ public class RZTransition{
                                                       pastScreen: _pastScreen,
                                                       saveTranslite: _saveTranslite,
                                                       setLine: _setLine,
-                                                      animation: _animation)
+                                                      animation: _animationO)
             
             return test
+        case .PopUp:
+            guard let _screen = _view else { return false}
+            guard let _popUp = _popUp else { return false }
+            ScreensInstaller.installPopUp(in: _screen,
+                                          installingPopUpView: _popUp,
+                                          anim: _animationO ?? .shiftLeft,
+                                          anim: _animationC ?? .shiftRight)
+            return true
         }
+        
     }
     
 }

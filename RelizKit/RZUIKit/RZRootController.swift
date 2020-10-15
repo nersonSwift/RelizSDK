@@ -11,6 +11,7 @@ import UIKit
 public class RZRootController: UIViewController {
     var lines: [RZLine] = []
     var select: String = "Main"
+    static var instance: RZRootController = RZRootController()
 
     
     public static func setupRootViewController(_ installableScreenProtocol: RZScreenControllerProtocol) -> RZRootController{
@@ -46,7 +47,7 @@ public class RZRootController: UIViewController {
     
     private func registring(){
         if lines.count == 0 {return}
-        ScreensInstaller.rootViewController = self
+        Self.instance = self
         RZLineController.addLines(lines)
         lines = []
         let plase = UIView(frame: view.bounds)

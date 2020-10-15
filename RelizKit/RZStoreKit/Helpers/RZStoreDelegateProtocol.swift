@@ -10,9 +10,9 @@ import StoreKit
 
 
 public protocol RZStoreDelegateProtocol: class{
-    func upadate()
+    func update()
     
-    func buySucces(product: RZProduct, customData: Any?)
+    func buySuccess(product: RZProduct, customData: Any?)
     func buyFaild(product: RZProduct, customData: Any?)
     
     func productsReceived(skProducts: Set<SKProduct>)
