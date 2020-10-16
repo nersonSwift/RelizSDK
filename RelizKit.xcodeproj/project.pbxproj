@@ -17,6 +17,8 @@
 		512FCB3E2537755E002DC150 /* RZStoreDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512FCB372537755E002DC150 /* RZStoreDelegateProtocol.swift */; };
 		515AE8842539C1B2007761AB /* RZViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515AE8832539C1B2007761AB /* RZViewBuilder.swift */; };
 		515AE88C2539C6AB007761AB /* UIControlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515AE88B2539C6AB007761AB /* UIControlExtension.swift */; };
+		5184EC92253A245F00A3A993 /* RZDarkModeKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5184EC91253A245F00A3A993 /* RZDarkModeKit.swift */; };
+		5184EC97253A5A0E00A3A993 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5184EC96253A5A0E00A3A993 /* Operators.swift */; };
 		51EA4BD82537544C0040BEBC /* RZRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA4BC92537544C0040BEBC /* RZRootController.swift */; };
 		51EA4BD92537544C0040BEBC /* RZPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA4BCC2537544C0040BEBC /* RZPresenter.swift */; };
 		51EA4BDA2537544C0040BEBC /* RZScreenUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA4BCD2537544C0040BEBC /* RZScreenUI.swift */; };
@@ -43,6 +45,8 @@
 		512FCB372537755E002DC150 /* RZStoreDelegateProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZStoreDelegateProtocol.swift; sourceTree = "<group>"; };
 		515AE8832539C1B2007761AB /* RZViewBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZViewBuilder.swift; sourceTree = "<group>"; };
 		515AE88B2539C6AB007761AB /* UIControlExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControlExtension.swift; sourceTree = "<group>"; };
+		5184EC91253A245F00A3A993 /* RZDarkModeKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZDarkModeKit.swift; sourceTree = "<group>"; };
+		5184EC96253A5A0E00A3A993 /* Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		51EA4BC92537544C0040BEBC /* RZRootController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZRootController.swift; sourceTree = "<group>"; };
 		51EA4BCC2537544C0040BEBC /* RZPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZPresenter.swift; sourceTree = "<group>"; };
 		51EA4BCD2537544C0040BEBC /* RZScreenUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZScreenUI.swift; sourceTree = "<group>"; };
@@ -132,13 +136,23 @@
 			children = (
 				515AE8832539C1B2007761AB /* RZViewBuilder.swift */,
 				515AE88B2539C6AB007761AB /* UIControlExtension.swift */,
+				5184EC96253A5A0E00A3A993 /* Operators.swift */,
 			);
 			path = RZViewBuilder;
+			sourceTree = "<group>";
+		};
+		5184EC90253A242B00A3A993 /* RZDarkModeKit */ = {
+			isa = PBXGroup;
+			children = (
+				5184EC91253A245F00A3A993 /* RZDarkModeKit.swift */,
+			);
+			path = RZDarkModeKit;
 			sourceTree = "<group>";
 		};
 		51EA4BC5253753800040BEBC /* RZUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				5184EC90253A242B00A3A993 /* RZDarkModeKit */,
 				515AE8822539C189007761AB /* RZViewBuilder */,
 				51EA4BCA2537544C0040BEBC /* RZScreensKit */,
 			);
@@ -320,9 +334,11 @@
 			files = (
 				515AE8842539C1B2007761AB /* RZViewBuilder.swift in Sources */,
 				511D99FE2537462A00E67C68 /* RelizKit.swift in Sources */,
+				5184EC97253A5A0E00A3A993 /* Operators.swift in Sources */,
 				51EA4BDB2537544C0040BEBC /* RZRouter.swift in Sources */,
 				512FCB3A2537755E002DC150 /* RZProduct.swift in Sources */,
 				512FCB3E2537755E002DC150 /* RZStoreDelegateProtocol.swift in Sources */,
+				5184EC92253A245F00A3A993 /* RZDarkModeKit.swift in Sources */,
 				51EA4BDA2537544C0040BEBC /* RZScreenUI.swift in Sources */,
 				512FCB382537755E002DC150 /* RZStoreRefrasher.swift in Sources */,
 				512FCB392537755E002DC150 /* RZStoreKit.swift in Sources */,

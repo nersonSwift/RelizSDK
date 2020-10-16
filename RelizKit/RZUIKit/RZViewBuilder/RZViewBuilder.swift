@@ -69,9 +69,11 @@ public struct RZProto {
 }
 
 
+
 extension UIView{
     public var proto: RZProto { RZProto(self) }
 }
+
 
 infix operator <>
 infix operator ><
@@ -84,7 +86,7 @@ public struct RZProtoValue{
     
     private var range: RZProtoValueRang?
     
-    fileprivate enum SelfTag{
+    public enum SelfTag{
         case w
         case h
         
@@ -96,6 +98,26 @@ public struct RZProtoValue{
         
         case mX
         case mY
+    }
+    
+    public static func selfTag(_ value: SelfTag) -> RZProtoValue{
+        return Self.init(value)
+    }
+    public static func screenConst(_ value: SelfTag) -> RZProtoValue{
+        let proto = RZProto(UIScreen.main.bounds)
+        switch value {
+            case .w: return proto.w
+            case .h: return proto.h
+            
+            case .x: return proto.x
+            case .y: return proto.y
+            
+            case .cX: return proto.cX
+            case .cY: return proto.cY
+            
+            case .mX: return proto.mX
+            case .mY: return proto.mY
+        }
     }
     
     fileprivate func getValue(_ frame: CGRect) -> CGFloat{
@@ -142,15 +164,41 @@ public struct RZProtoValue{
         right.procent = left
         return right
     }
+    
+    public static func +(left: RZProtoValue, right: RZProtoValue) -> RZProtoValue{
+        var value = RZProtoValue()
+        value.range = RZProtoValueRang(left, right, .p)
+        return value
+    }
+    
+    public static func -(left: RZProtoValue, right: RZProtoValue) -> RZProtoValue{
+        var value = RZProtoValue()
+        value.range = RZProtoValueRang(left, right, .m)
+        return value
+    }
+    
+    public static func /(left: RZProtoValue, right: RZProtoValue) -> RZProtoValue{
+        var value = RZProtoValue()
+        value.range = RZProtoValueRang(left, right, .d)
+        return value
+    }
+    
+    public static func *(left: RZProtoValue, right: RZProtoValue) -> RZProtoValue{
+        var value = RZProtoValue()
+        value.range = RZProtoValueRang(left, right, .u)
+        return value
+    }
+    
+    
     public static func <>(left: RZProtoValue, right: RZProtoValue) -> RZProtoValue{
         var value = RZProtoValue()
         value.range = RZProtoValueRang(left, right, .rang)
-        return right
+        return value
     }
     public static func ><(left: RZProtoValue, right: RZProtoValue) -> RZProtoValue{
         var value = RZProtoValue()
         value.range = RZProtoValueRang(left, right, .center)
-        return right
+        return value
     }
     public static prefix func -(right: RZProtoValue) -> RZProtoValue{
         var right = right
@@ -171,6 +219,11 @@ fileprivate class RZProtoValueRang {
     enum RZProtoValueRangtType {
         case rang
         case center
+        
+        case p
+        case m
+        case u
+        case d
     }
     
     fileprivate init(_ spaceFirst: RZProtoValue, _ spaceSecond: RZProtoValue, _ type: RZProtoValueRangtType){
@@ -182,13 +235,25 @@ fileprivate class RZProtoValueRang {
     fileprivate func getValue(_ frame: CGRect) -> CGFloat{
         let first = spaceFirst.getValue(frame)
         let second = spaceSecond.getValue(frame)
-        var rang = first > second ? first - second : second - first
         
-        if type == .center {
+        switch type {
+        case .rang:
+            return first > second ? first - second : second - first
+        case .center:
+            var rang = first > second ? first - second : second - first
             rang /= 2
             rang += first < second ? first : second
+            return rang
+        case .p:
+            return first + second
+        case .m:
+            return first - second
+        case .u:
+            return first * second
+        case .d:
+            return first / second
+        
         }
-        return rang
     }
 }
 
@@ -238,6 +303,8 @@ public struct RZProtoFrame {
     }
 }
 
+
+
 public class RZViewBuilder<V: UIView>{
     public var view: V = V()
     
@@ -256,15 +323,24 @@ public class RZViewBuilder<V: UIView>{
     @discardableResult
     public func color(_ value: UIColor, _ type: ColorType) -> Self {
         switch type {
-            case .background: view.backgroundColor = value
-            case .content: setContentColor(value)
-            case .boder: view.layer.borderColor = value.cgColor
-            case .shadow: view.layer.shadowColor = value.cgColor
+            case .background: view <- { $0.backgroundColor = value }
+            case .content: self.setContentColor(value)
+            case .boder: view <- { $0.layer.borderColor = value.cgColor }
+            case .shadow: view <- { $0.layer.shadowColor = value.cgColor }
         }
         return self
     }
     
-    private func setContentColor(_ value: UIColor){}
+    func setContentColor(_ value: UIColor){
+        
+        switch view {
+        case let label as UILabel:
+            label <- { $0.textColor = value }
+        case let button as UIButton:
+            button <- { $0.setTitleColor(value, for: .normal) }
+        default:break
+        }
+    }
     
     @discardableResult
     public func cornerRadius(_ value: CGFloat) -> Self{
@@ -414,6 +490,7 @@ extension RZViewBuilder{
             case .down:   view.frame.origin.y = value.getValue(view.frame) - view.frame.height
             case .center: view.center.y = value.getValue(view.frame)
         }
+        
         return self
     }
     
@@ -438,9 +515,15 @@ extension RZViewBuilder where V: UILabel{
     }
     
     @discardableResult
+    public func aligment(_ value: NSTextAlignment)  -> Self{
+        view.textAlignment = value
+        return self
+    }
+    
+    @discardableResult
     public func font(_ value: UIFont, _ attributes: [NSAttributedString.Key:Any] = [:]) -> Self{
         view.font = value
-        let attributedText = NSMutableAttributedString(string: view.text ?? "", attributes: attributes)
+        let attributedText = NSMutableAttributedString(string: "", attributes: attributes)
         if let attributedTextL = view.attributedText{
             attributedText.append(attributedTextL)
         }
@@ -467,9 +550,6 @@ extension RZViewBuilder where V: UILabel{
         return self
     }
     
-    private func setContentColor(_ value: UIColor){
-        view.textColor = value
-    }
 }
 
 extension RZViewBuilder where V: UIButton{
@@ -490,14 +570,11 @@ extension RZViewBuilder where V: UIButton{
         view.addAction(for: controlEvents, closure)
         return self
     }
-    
-    private func setContentColor(_ value: UIColor){
-        view.setTitleColor(value, for: .normal)
-    }
+
 }
 
 
-class RZImageSeter{
+public class RZImageSeter{
     private var image: UIImage?
     private var placeHolder: UIImage?
     
@@ -540,16 +617,16 @@ class RZImageSeter{
 }
 
 extension RZViewBuilder where V: UIImageView{
-    func image(_ value: UIImage) -> Self {
+    public func image(_ value: UIImage) -> Self {
         view.image = value
         return self
     }
     
-    func image(_ value: SVGKImage) -> Self {
+    public func image(_ value: SVGKImage) -> Self {
         return image(value.uiImage)
     }
     
-    func image(_ value: RZImageSeter) -> Self{
+    public func image(_ value: RZImageSeter) -> Self{
         value.setImageView(view)
         return self
     }
