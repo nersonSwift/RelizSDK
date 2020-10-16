@@ -11,7 +11,7 @@ import UIKit
 public class RZRootController: UIViewController {
     var lines: [RZLine] = []
     var select: String = "Main"
-    static var instance: RZRootController = RZRootController()
+    public static var instance: RZRootController = RZRootController()
 
     
     public static func setupRootViewController(_ installableScreenProtocol: RZScreenControllerProtocol) -> RZRootController{

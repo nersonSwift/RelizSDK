@@ -253,7 +253,7 @@ public class RZViewBuilder<V: UIView>{
         case boder
         case shadow
     }
-    
+    @discardableResult
     public func color(_ value: UIColor, _ type: ColorType) -> Self {
         switch type {
             case .background: view.backgroundColor = value
@@ -266,21 +266,25 @@ public class RZViewBuilder<V: UIView>{
     
     private func setContentColor(_ value: UIColor){}
     
+    @discardableResult
     public func cornerRadius(_ value: CGFloat) -> Self{
         view.layer.cornerRadius = value
         return self
     }
     
+    @discardableResult
     public func cornerRadius(_ value: RZProtoValue) -> Self{
         view.layer.cornerRadius = value.getValue(view.frame)
         return self
     }
     
+    @discardableResult
     public func border(_ value: CGFloat) -> Self{
         view.layer.borderWidth = value
         return self
     }
     
+    @discardableResult
     public func shadow(_ radius: CGFloat, _ opacity: Float, _ offset: CGSize) -> Self{
         view.layer.shadowRadius = radius
         view.layer.shadowOpacity = opacity
@@ -288,6 +292,7 @@ public class RZViewBuilder<V: UIView>{
         return self
     }
     
+    @discardableResult
     public func mask(_ value: UIView, _ size: RZProtoSize = RZProtoSize(width: 100 % RZProto().w, height: 100 % RZProto().h)) -> Self{
         value.frame.size = size.getValue(view.frame)
         view.mask = value
@@ -298,16 +303,20 @@ public class RZViewBuilder<V: UIView>{
 }
 
 extension RZViewBuilder{
+    @discardableResult
     public func frame(_ value: CGRect, _ type: PointType = .topLeft) -> Self {
         return point(value.origin).size(value.size)
     }
+    @discardableResult
     public func frame(_ value: RZProtoFrame, _ type: PointType = .topLeft) -> Self {
         return point(value.origin).size(value.size)
     }
     
+    @discardableResult
     public func size(_ value: CGSize) -> Self{
         return width(value.width).height(value.height)
     }
+    @discardableResult
     public func size(_ value: RZProtoSize) -> Self{
         return width(value.width).height(value.height)
     }
@@ -318,6 +327,7 @@ extension RZViewBuilder{
         case downRight
         case downLeft
     }
+    @discardableResult
     public func point(_ value: CGPoint, _ type: PointType = .topLeft) -> Self{
         switch type {
             case .topLeft:   return x(value.x)         .y(value.y)
@@ -327,6 +337,7 @@ extension RZViewBuilder{
             case .downRight: return x(value.x, .right) .y(value.y, .down)
         }
     }
+    @discardableResult
     public func point(_ value: RZProtoPoint, _ type: PointType = .topLeft) -> Self{
         switch type {
             case .topLeft:   return x(value.x)         .y(value.y)
@@ -337,19 +348,23 @@ extension RZViewBuilder{
         }
     }
     
+    @discardableResult
     public func width(_ value: CGFloat) -> Self{
         view.frame.size.width = value
         return self
     }
+    @discardableResult
     public func width(_ value: RZProtoValue) -> Self{
         view.frame.size.width = value.getValue(view.frame)
         return self
     }
     
+    @discardableResult
     public func height(_ value: CGFloat) -> Self{
         view.frame.size.height = value
         return self
     }
+    @discardableResult
     public func height(_ value: RZProtoValue) -> Self{
         view.frame.size.height = value.getValue(view.frame)
         return self
@@ -360,6 +375,7 @@ extension RZViewBuilder{
         case left
         case right
     }
+    @discardableResult
     public func x(_ value: CGFloat,  _ type: XType = .left) -> Self{
         switch type {
             case .left:   view.frame.origin.x = value
@@ -368,6 +384,7 @@ extension RZViewBuilder{
         }
         return self
     }
+    @discardableResult
     public func x(_ value: RZProtoValue,  _ type: XType = .left) -> Self{
         switch type {
             case .left:   view.frame.origin.x = value.getValue(view.frame)
@@ -381,6 +398,7 @@ extension RZViewBuilder{
         case top
         case down
     }
+    @discardableResult
     public func y(_ value: CGFloat,  _ type: YType = .top) -> Self{
         switch type {
             case .top:    view.frame.origin.y = value
@@ -389,6 +407,7 @@ extension RZViewBuilder{
         }
         return self
     }
+    @discardableResult
     public func y(_ value: RZProtoValue,  _ type: YType = .top) -> Self{
         switch type {
             case .top:    view.frame.origin.y = value.getValue(view.frame)
@@ -398,11 +417,13 @@ extension RZViewBuilder{
         return self
     }
     
+    @discardableResult
     public func sizeToFit() -> Self {
         view.sizeToFit()
         return self
     }
     
+    @discardableResult
     public func contentMode(_ value: UIView.ContentMode) -> Self {
         view.contentMode = value
         return self
@@ -410,11 +431,13 @@ extension RZViewBuilder{
 }
 
 extension RZViewBuilder where V: UILabel{
+    @discardableResult
     public func text(_ value: String) -> Self{
         view.text = value
         return self
     }
     
+    @discardableResult
     public func font(_ value: UIFont, _ attributes: [NSAttributedString.Key:Any] = [:]) -> Self{
         view.font = value
         let attributedText = NSMutableAttributedString(string: view.text ?? "", attributes: attributes)
@@ -425,6 +448,7 @@ extension RZViewBuilder where V: UILabel{
         return self
     }
     
+    @discardableResult
     public func sizes() -> Self{
         let widthL = view.frame.width
         view.sizeToFit()
@@ -437,6 +461,7 @@ extension RZViewBuilder where V: UILabel{
         return self
     }
     
+    @discardableResult
     public func lines(_ value: Int) -> Self{
         view.numberOfLines = value
         return self
@@ -448,16 +473,19 @@ extension RZViewBuilder where V: UILabel{
 }
 
 extension RZViewBuilder where V: UIButton{
+    @discardableResult
     public func text(_ value: String) -> Self{
         view.setTitle(value, for: .normal)
         return self
     }
     
+    @discardableResult
     public func font(_ value: UIFont) -> Self{
         view.titleLabel?.font = value
         return self
     }
     
+    @discardableResult
     public func addAction(for controlEvents: UIControl.Event = .touchUpInside, _ closure: @escaping ()->()) -> Self{
         view.addAction(for: controlEvents, closure)
         return self
