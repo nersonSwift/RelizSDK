@@ -1,16 +1,26 @@
 PODS:
+  - CocoaLumberjack (3.7.0):
+    - CocoaLumberjack/Core (= 3.7.0)
+  - CocoaLumberjack/Core (3.7.0)
+  - SVGKit (2.1.1):
+    - CocoaLumberjack (~> 3.0)
   - SwiftyStoreKit (0.16.1)
 
 DEPENDENCIES:
+  - SVGKit
   - SwiftyStoreKit
 
 SPEC REPOS:
   trunk:
+    - CocoaLumberjack
+    - SVGKit
     - SwiftyStoreKit
 
 SPEC CHECKSUMS:
+  CocoaLumberjack: e8955b9d337ac307103b0a34fd141c32f27e53c5
+  SVGKit: 652cdf7bef8bec8564d04a8511d3ab50c7595fac
   SwiftyStoreKit: 6b9c08810269f030586dac1fae8e75871a82e84a
 
-PODFILE CHECKSUM: f7106f1dabefe433cd5d676c32dc4ca8b0d072e1
+PODFILE CHECKSUM: d2bd523d74152dfea740af54e791086bfa125793
 
 COCOAPODS: 1.9.3

@@ -15,6 +15,8 @@
 		512FCB3A2537755E002DC150 /* RZProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512FCB322537755E002DC150 /* RZProduct.swift */; };
 		512FCB3D2537755E002DC150 /* ReceiptItemExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512FCB362537755E002DC150 /* ReceiptItemExtention.swift */; };
 		512FCB3E2537755E002DC150 /* RZStoreDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512FCB372537755E002DC150 /* RZStoreDelegateProtocol.swift */; };
+		515AE8842539C1B2007761AB /* RZViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515AE8832539C1B2007761AB /* RZViewBuilder.swift */; };
+		515AE88C2539C6AB007761AB /* UIControlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515AE88B2539C6AB007761AB /* UIControlExtension.swift */; };
 		51EA4BD82537544C0040BEBC /* RZRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA4BC92537544C0040BEBC /* RZRootController.swift */; };
 		51EA4BD92537544C0040BEBC /* RZPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA4BCC2537544C0040BEBC /* RZPresenter.swift */; };
 		51EA4BDA2537544C0040BEBC /* RZScreenUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA4BCD2537544C0040BEBC /* RZScreenUI.swift */; };
@@ -39,6 +41,8 @@
 		512FCB322537755E002DC150 /* RZProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZProduct.swift; sourceTree = "<group>"; };
 		512FCB362537755E002DC150 /* ReceiptItemExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptItemExtention.swift; sourceTree = "<group>"; };
 		512FCB372537755E002DC150 /* RZStoreDelegateProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZStoreDelegateProtocol.swift; sourceTree = "<group>"; };
+		515AE8832539C1B2007761AB /* RZViewBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZViewBuilder.swift; sourceTree = "<group>"; };
+		515AE88B2539C6AB007761AB /* UIControlExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControlExtension.swift; sourceTree = "<group>"; };
 		51EA4BC92537544C0040BEBC /* RZRootController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZRootController.swift; sourceTree = "<group>"; };
 		51EA4BCC2537544C0040BEBC /* RZPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZPresenter.swift; sourceTree = "<group>"; };
 		51EA4BCD2537544C0040BEBC /* RZScreenUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZScreenUI.swift; sourceTree = "<group>"; };
@@ -123,11 +127,20 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		515AE8822539C189007761AB /* RZViewBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				515AE8832539C1B2007761AB /* RZViewBuilder.swift */,
+				515AE88B2539C6AB007761AB /* UIControlExtension.swift */,
+			);
+			path = RZViewBuilder;
+			sourceTree = "<group>";
+		};
 		51EA4BC5253753800040BEBC /* RZUIKit */ = {
 			isa = PBXGroup;
 			children = (
-				51EA4BC92537544C0040BEBC /* RZRootController.swift */,
-				51EA4BCA2537544C0040BEBC /* ScreensArc */,
+				515AE8822539C189007761AB /* RZViewBuilder */,
+				51EA4BCA2537544C0040BEBC /* RZScreensKit */,
 			);
 			path = RZUIKit;
 			sourceTree = "<group>";
@@ -150,16 +163,17 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
-		51EA4BCA2537544C0040BEBC /* ScreensArc */ = {
+		51EA4BCA2537544C0040BEBC /* RZScreensKit */ = {
 			isa = PBXGroup;
 			children = (
-				51EA4BCB2537544C0040BEBC /* Present */,
+				51EA4BC92537544C0040BEBC /* RZRootController.swift */,
 				51EA4BCF2537544C0040BEBC /* LinesController.swift */,
 				51EA4BD02537544C0040BEBC /* ScreensInstaller.swift */,
+				51EA4BCB2537544C0040BEBC /* Present */,
 				51EA4BD12537544C0040BEBC /* Controllers */,
 				51EA4BD52537544C0040BEBC /* Helpers */,
 			);
-			path = ScreensArc;
+			path = RZScreensKit;
 			sourceTree = "<group>";
 		};
 		51EA4BCB2537544C0040BEBC /* Present */ = {
@@ -304,6 +318,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				515AE8842539C1B2007761AB /* RZViewBuilder.swift in Sources */,
 				511D99FE2537462A00E67C68 /* RelizKit.swift in Sources */,
 				51EA4BDB2537544C0040BEBC /* RZRouter.swift in Sources */,
 				512FCB3A2537755E002DC150 /* RZProduct.swift in Sources */,
@@ -320,6 +335,7 @@
 				51EA4BDF2537544C0040BEBC /* RZScreenController.swift in Sources */,
 				51EA4BD92537544C0040BEBC /* RZPresenter.swift in Sources */,
 				512FCB3D2537755E002DC150 /* ReceiptItemExtention.swift in Sources */,
+				515AE88C2539C6AB007761AB /* UIControlExtension.swift in Sources */,
 				51EA4BDE2537544C0040BEBC /* RZPopUpView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

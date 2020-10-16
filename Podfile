@@ -6,5 +6,6 @@ target 'RelizKit' do
   use_frameworks!
 
   pod 'SwiftyStoreKit'
+  pod 'SVGKit'
 
 end
