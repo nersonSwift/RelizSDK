@@ -62,6 +62,8 @@ public protocol RZScreenControllerProtocol: UIViewController{
     //MARK: - rotate
     /// `ru`: - метод который вызывается при изменении ориентации
     func rotate()
+    
+    func resize()
 }
 
 class ScreenControllerInterfase{
@@ -81,6 +83,7 @@ extension RZScreenControllerProtocol{
     public func completedOpen(){}
     public func completedClose(){}
     public func rotate(){}
+    public func resize(){}
     
     private var key: UnsafeRawPointer? {
         return UnsafeRawPointer(bitPattern: 16)
@@ -173,16 +176,21 @@ public protocol RZScreenControllerPresentingProtocol: RZScreenControllerProtocol
     //MARK: - iPadPresenter
     /// `ru`: - свойство которое которое должно вернуть тип `Presenter` который будет инициализирован для версии `iPad`
     var iPadPresenter: RZPresenterNoJenericProtocol.Type? { get }
+    
+    var macPresenter: RZPresenterNoJenericProtocol.Type? { get }
 }
 
 extension RZScreenControllerPresentingProtocol{
     public var iPhonePresenter: RZPresenterNoJenericProtocol.Type? { nil }
     public var iPadPresenter: RZPresenterNoJenericProtocol.Type? { nil }
+    public var macPresenter: RZPresenterNoJenericProtocol.Type? { nil }
     
     public func setPresenter(){
         if UIDevice.current.userInterfaceIdiom == .pad, let type = iPadPresenter{
             presenter = type.init(installableScreen: self) as? Self.SPDP
         }else if UIDevice.current.userInterfaceIdiom == .phone, let type = iPhonePresenter{
+            presenter = type.init(installableScreen: self) as? Self.SPDP
+        }else if #available(iOS 14.0, *), UIDevice.current.userInterfaceIdiom == .mac, let type = macPresenter{
             presenter = type.init(installableScreen: self) as? Self.SPDP
         }else{
             presenter = SPDP.init(installableScreen: self)
@@ -192,6 +200,10 @@ extension RZScreenControllerPresentingProtocol{
             presenter.setModel()
         }
     }
+    
+    public func rotate(){ presenter?.rotate() }
+    
+    public func resize(){ presenter?.resize() }
 }
 
 

@@ -105,7 +105,13 @@ public class RZDarkModeKit {
         }
     }
     
-    private static var traidObserver: TraidObserver?
+    private static var traidObserver: TraidObserver?{
+        didSet{
+            if let traidObserver = traidObserver{
+                UIApplication.shared.windows.first?.rootViewController?.view.addSubview(traidObserver)
+            }
+        }
+    }
 }
 
 class TraidObserver: UIView{
@@ -123,4 +129,5 @@ public func <-<T: AnyObject>(object: T, closure: @escaping (T)->()){
         return object
     }
 }
+
 

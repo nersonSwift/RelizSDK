@@ -173,12 +173,26 @@ public class RZRotater: UIView{
         }
         rotatingSceens = []
     }
-    
+    private var key: NSKeyValueObservation?
     
     public init(viewController: UIViewController) {
         let view: UIView = viewController.view
         super.init(frame: view.frame)
-        view.superview?.addSubview(self)
+        let superV = view.superview
+        superV?.addSubview(self)
+        
+        key = superV?.layer.observe(\.bounds, changeHandler: { [weak superV, weak self, weak view, weak viewController](_, _) in
+            guard let superV = superV, let self = self, let view = view else {return}
+            
+            if self.frame.size == view.frame.size{
+                self.frame.size = superV.frame.size
+            }else{
+                self.frame.size = CGSize(width: superV.frame.height, height: superV.frame.width)
+            }
+            view.frame.size = superV.frame.size
+            (viewController as? RZScreenController)?.resize()
+        })
+        
         view.frame.origin = CGPoint()
         self.addSubview(view)
         mate = view

@@ -15,10 +15,15 @@ fileprivate class PresenterInterfase{
 public protocol RZPresenterNoJenericProtocol: NSObject{
     var view: UIView { get }
     func create()
+    func rotate()
+    func resize()
     init(installableScreen: RZScreenControllerProtocol)
 }
 
 extension RZPresenterNoJenericProtocol{
+    public func resize() {}
+    public func rotate() {}
+    
     public var view: UIView{
         screenController?.view ?? UIView()
     }

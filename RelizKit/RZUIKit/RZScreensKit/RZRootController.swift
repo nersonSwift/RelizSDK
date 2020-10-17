@@ -11,6 +11,7 @@ import UIKit
 public class RZRootController: UIViewController {
     var lines: [RZLine] = []
     var select: String = "Main"
+    var plase: UIView?
     public static var instance: RZRootController = RZRootController()
 
     
@@ -53,6 +54,7 @@ public class RZRootController: UIViewController {
         let plase = UIView(frame: view.bounds)
         view.addSubview(plase)
         RZTransition(.In, self).view(plase).line(select).transit()
+        self.plase = plase
     }
     
     func roatateCild(){
@@ -65,9 +67,9 @@ public class RZRootController: UIViewController {
         for child in children{
             if let child = child as? RZScreenControllerProtocol{
                 RZRotater.resizeAllChild(parent: false,
-                                       child: child,
-                                       parentOrientation: orientation,
-                                       orientation)
+                                         child: child,
+                                         parentOrientation: orientation,
+                                         orientation)
             }
         }
         
@@ -81,6 +83,7 @@ public class RZRootController: UIViewController {
     
     public override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
+        plase?.frame.size = size
         roatateCild()
     }
 }
