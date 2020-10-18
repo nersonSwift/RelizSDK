@@ -9,51 +9,92 @@
 import UIKit
 
 public class RZRootController: UIViewController {
-    var lines: [RZLine] = []
-    var select: String = "Main"
+    //var lines: [RZLine] = []
+    
     var plase: UIView?
-    public static var instance: RZRootController = RZRootController()
+    weak var scene: UIScene?
+    
+    private static var instancesClosures: [()->(RZRootController?)] = []
+    public static var instances: [RZRootController] {
+        var instances = [RZRootController]()
+        instancesClosures.forEach{
+            if let rootController = $0(){
+                instances.append(rootController)
+            }
+        }
+        
+        return instances
+    }
+    private static func addInstances(_ rootController: RZRootController){
+        instancesClosures.append {[weak rootController] in rootController}
+    }
+    
 
     
-    public static func setupRootViewController(_ installableScreenProtocol: RZScreenControllerProtocol) -> RZRootController{
-        return setupRootViewController(["Main": installableScreenProtocol], "Main")
-    }
+//    public static func setupRootViewController(_ installableScreenProtocol: RZScreenControllerProtocol) -> RZRootController{
+//        return setupRootViewController(["Main": installableScreenProtocol], "Main")
+//    }
+//
+//    public static func setupRootViewController(_ screenLines: [RZLine], _ select: RZScreenLines) -> RZRootController{
+//        setupRootViewController(screenLines, select.id)
+//    }
+//
+//    public static func setupRootViewController(_ screenLines: [RZLine], _ select: String) -> RZRootController{
+//        if let rVC = ScreensInstaller.needOpen{
+//            ScreensInstaller.needOpen = nil
+//            return rVC
+//        }
+//        let rVC = RZRootController()
+//        rVC.lines = screenLines
+//        rVC.select = select
+//        return rVC
+//    }
     
-    public static func setupRootViewController(_ screenLines: [RZLine], _ select: RZScreenLines) -> RZRootController{
-        setupRootViewController(screenLines, select.id)
-    }
-
-    public static func setupRootViewController(_ screenLines: [RZLine], _ select: String) -> RZRootController{
-        let rVC = RZRootController()
-        rVC.lines = screenLines
-        rVC.select = select
-        return rVC
-    }
+//    public static func setupRootViewController(_ screenLines: [String: RZScreenControllerProtocol], _ select: String) -> RZRootController{
+//        var lines: [RZLine] = []
+//        screenLines.forEach(){
+//            lines.append(RZLine(id: $0.key, controller: $0.value))
+//        }
+//        return setupRootViewController(lines, select)
+//    }
     
-    public static func setupRootViewController(_ screenLines: [String: RZScreenControllerProtocol], _ select: String) -> RZRootController{
-        var lines: [RZLine] = []
-        screenLines.forEach(){
-            lines.append(RZLine(id: $0.key, controller: $0.value))
+//    public static func setupRootViewController(_ screenLines: [RZScreenLines: RZScreenControllerProtocol], _ select: RZScreenLines) -> RZRootController{
+//        var lines: [RZLine] = []
+//        screenLines.forEach(){
+//            lines.append(RZLine(id: $0.key, controller: $0.value))
+//        }
+//        return setupRootViewController(lines, select)
+//    }
+    
+    public static func setupRootViewController(scene: UIScene?) -> UIWindow?{
+        if let windowScene = scene as? UIWindowScene {
+            
+            let window = UIWindow(windowScene: windowScene)
+            let rVC = RZRootController()
+            rVC.scene = scene
+            window.rootViewController = rVC
+            window.makeKeyAndVisible()
+            NotificationCenter().addObserver(self, selector: #selector(close), name: UIApplication.willTerminateNotification, object: nil)
+            return window
         }
-        return setupRootViewController(lines, select)
+        return nil
     }
     
-    public static func setupRootViewController(_ screenLines: [RZScreenLines: RZScreenControllerProtocol], _ select: RZScreenLines) -> RZRootController{
-        var lines: [RZLine] = []
-        screenLines.forEach(){
-            lines.append(RZLine(id: $0.key, controller: $0.value))
-        }
-        return setupRootViewController(lines, select)
+    @objc public func close(){
+        
+        guard let scene = scene else { return }
+        UIApplication.shared.requestSceneSessionDestruction(scene.session, options: nil, errorHandler: nil)
     }
     
     private func registring(){
-        if lines.count == 0 {return}
-        Self.instance = self
-        RZLineController.addLines(lines)
-        lines = []
+        Self.addInstances(self)
         let plase = UIView(frame: view.bounds)
         view.addSubview(plase)
-        RZTransition(.In, self).view(plase).line(select).transit()
+        if let screen = ScreensInstaller.needOpen{
+            RZTransition(.In, self).view(plase).screen(screen).transit()
+        }else{
+            RZTransition(.In, self).view(plase).line(RZLineController.rootLine).transit()
+        }
         self.plase = plase
         
         
@@ -80,7 +121,9 @@ public class RZRootController: UIViewController {
     }
     
     public override func viewDidLoad() {
-        registring()
+        DispatchQueue.main.async {
+            self.registring()
+        }
     }
     
     public override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

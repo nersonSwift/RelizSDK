@@ -8,6 +8,8 @@
 
 import Foundation
 
+import Foundation
+
 public struct RZScreenLines: Hashable {
     public var id: String
     
@@ -18,6 +20,7 @@ public struct RZScreenLines: Hashable {
 
 public class RZLineController{
     fileprivate static var lins: [String: ()->RZLine?] = [:]
+    static var rootLine: String = ""
     fileprivate static var anchor = RZLineController()
     
     public static func getLine(_ id: RZScreenLines) -> RZLine? { getLine(id.id) }
@@ -63,6 +66,9 @@ public class RZLineController{
         toLine?.controller = atLine?.controller
         atLine?.controller = nil
     }
+    
+    public static func setRootLine(id: String){ rootLine = id }
+    public static func setRootLine(id: RZLine){ rootLine = id.id }
 }
 
 public class RZLine{
@@ -123,4 +129,5 @@ public class RZLine{
         }
     }
 }
+
 

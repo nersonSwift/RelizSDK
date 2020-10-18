@@ -85,6 +85,8 @@ extension RZScreenControllerProtocol{
     public func rotate(){}
     public func resize(){}
     
+    public func closeWindow(){rootViewController?.close()}
+    
     private var key: UnsafeRawPointer? {
         return UnsafeRawPointer(bitPattern: 16)
     }
@@ -147,6 +149,21 @@ extension RZScreenControllerProtocol{
         }
         get{
             screenControllerInterfase.pastScreen
+        }
+    }
+    
+    public var rootViewController: RZRootController?{
+        var parent = self.parent
+        while true {
+            if let parentL = parent{
+                if let root = parentL as? RZRootController{
+                    return root
+                }else{
+                    parent = parentL
+                }
+            }else{
+                return nil
+            }
         }
     }
     

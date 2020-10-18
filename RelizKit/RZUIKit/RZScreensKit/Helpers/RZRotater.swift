@@ -8,6 +8,8 @@
 
 import UIKit
 
+import UIKit
+
 extension UIInterfaceOrientation{
     func getStateNumber() -> Int {
         switch self {
@@ -93,8 +95,7 @@ public class RZRotater: UIView{
                 let width = self.frame.width
                 let height = self.frame.height
                 
-                self.frame.size.height = width
-                self.frame.size.width = height
+                self.frame.size = CGSize(width: height, height: width)
                 
                 //self.mate?.frame.size.width = self.frame.width
                 //self.mate?.frame.size.height = self.frame.height
@@ -109,20 +110,16 @@ public class RZRotater: UIView{
             
             
             if range % 2 == 0{
-                self.mate?.frame.size.width = self.frame.width
-                self.mate?.frame.size.height = self.frame.height
+                self.mate?.frame.size = CGSize(width: self.frame.width, height: self.frame.height)
             }else{
-                self.mate?.frame.size.width = self.frame.height
-                self.mate?.frame.size.height = self.frame.width
+                self.mate?.frame.size = CGSize(width: self.frame.height, height: self.frame.width)
             }
             
             
             self.frame.origin = CGPoint()
             self.mate?.frame.origin = CGPoint()
             
-            
-            self.superview?.frame.size.width = self.frame.width
-            self.superview?.frame.size.height = self.frame.height
+            self.superview?.frame.size = CGSize(width: self.frame.width, height: self.frame.height)
             if piMode != 0 || !parent{
                 
                 
@@ -237,4 +234,6 @@ public class RZRotater: UIView{
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+
 

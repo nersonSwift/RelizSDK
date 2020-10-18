@@ -14,7 +14,7 @@ import UIKit
 
 class ScreensInstaller{
     static var inAnimation: Bool = false
-    static var rootViewController: RZRootController { RZRootController.instance }
+    static var needOpen: RZScreenControllerProtocol?
     
     //MARK: - in
     static func installScreen(in viewController: UIViewController,
@@ -120,7 +120,7 @@ class ScreensInstaller{
         screen.didMove(toParent: viewController)
         
         screen.rotater = RZRotater(viewController: screen)
-        ScreensInstaller.rootViewController.roatateCild()
+        screen.rootViewController?.roatateCild()
     }
     
     private static func removeChild(_ viewController: UIViewController){
@@ -156,6 +156,10 @@ public class RZTransition{
         case In
         case Instead
         case PopUp
+        
+        #if targetEnvironment(macCatalyst)
+        case Window
+        #endif
     }
     
     private var transitionType: TransitionType
@@ -176,7 +180,7 @@ public class RZTransition{
     private var _popUp: RZPopUpViewProtocol?
     
     
-    public init(_ transitionType: TransitionType, _ screen: UIViewController?){
+    public init(_ transitionType: TransitionType, _ screen: UIViewController? = nil){
         self.transitionType = transitionType
         _screen = screen
     }
@@ -214,8 +218,9 @@ public class RZTransition{
     
     @discardableResult
     public func line(_ string: String) -> RZTransition {
+        
         _selectLine = string
-        _installingScreen = RZLineController.getControllerInLine(string)
+        _installingScreen = RZLineController.getControllerInLine(string) ?? _installingScreen
         _setLine = false
         return self
     }
@@ -286,13 +291,24 @@ public class RZTransition{
                                           anim: _animationO ?? .shiftLeftPopUp,
                                           anim: _animationC ?? .shiftRightPopUp)
             return true
+        #if targetEnvironment(macCatalyst)
+        case .Window:
+            guard let _installingScreen = _installingScreen else {return false}
+            let screenLine = _installingScreen.screenLine ?? _selectLine ?? ""
+            if screenLine == ""{
+                _installingScreen.screenLine = "window"
+            }
+            ScreensInstaller.needOpen = _installingScreen
+            
+            UIApplication.shared.requestSceneSessionActivation(nil, userActivity: nil, options: nil, errorHandler: nil)
+            
+            return true
+        #endif
         }
         
     }
     
 }
-
-
 
 
 
