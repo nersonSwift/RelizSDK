@@ -190,7 +190,7 @@ extension RZScreenControllerPresentingProtocol{
             presenter = type.init(installableScreen: self) as? Self.SPDP
         }else if UIDevice.current.userInterfaceIdiom == .phone, let type = iPhonePresenter{
             presenter = type.init(installableScreen: self) as? Self.SPDP
-        }else if #available(iOS 14.0, *), UIDevice.current.userInterfaceIdiom == .mac, let type = macPresenter{
+        }else if #available(macOS 10.15, *), let type = macPresenter{
             presenter = type.init(installableScreen: self) as? Self.SPDP
         }else{
             presenter = SPDP.init(installableScreen: self)

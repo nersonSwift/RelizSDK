@@ -55,6 +55,8 @@ public class RZRootController: UIViewController {
         view.addSubview(plase)
         RZTransition(.In, self).view(plase).line(select).transit()
         self.plase = plase
+        
+        
     }
     
     func roatateCild(){
@@ -83,7 +85,16 @@ public class RZRootController: UIViewController {
     
     public override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        plase?.frame.size = size
-        roatateCild()
+
+        if plase?.frame.width == size.height, plase?.frame.height == size.width{
+            DispatchQueue.main.async {
+                self.roatateCild()
+            }
+        }else{
+            self.plase?.frame.size = size
+        }
+
     }
+    
+    
 }
