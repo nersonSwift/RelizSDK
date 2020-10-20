@@ -159,7 +159,7 @@ extension RZScreenControllerProtocol{
                 if let root = parentL as? RZRootController{
                     return root
                 }else{
-                    parent = parentL
+                    parent = parentL.parent
                 }
             }else{
                 return nil

@@ -9,6 +9,9 @@
 import UIKit
 import SVGKit
 
+import UIKit
+import SVGKit
+
 public struct RZProto {
     private var frame: CGRect?
     
@@ -103,7 +106,7 @@ public struct RZProtoValue{
     public static func selfTag(_ value: SelfTag) -> RZProtoValue{
         return Self.init(value)
     }
-    public static func screenConst(_ value: SelfTag) -> RZProtoValue{
+    public static func screenTag(_ value: SelfTag) -> RZProtoValue{
         let proto = RZProto(UIScreen.main.bounds)
         switch value {
             case .w: return proto.w
@@ -120,7 +123,7 @@ public struct RZProtoValue{
         }
     }
     
-    fileprivate func getValue(_ frame: CGRect) -> CGFloat{
+    public func getValue(_ frame: CGRect) -> CGFloat{
         if let range = range { return range.getValue(frame) }
         
         var value = self.value
@@ -559,13 +562,15 @@ public struct RZProtoFrame {
 //}
 
 public class RZViewBuilder<V: UIView>{
-    public var view: V = V()
+    public var view: V!
     
     public init(_ view: V){
         self.view = view
     }
     
-    public init(){}
+    convenience init(){
+        self.init(V(frame: .zero))
+    }
     
     public enum ColorType {
         case background
@@ -761,6 +766,7 @@ extension RZViewBuilder{
 }
 
 extension RZViewBuilder where V: UILabel{
+    
     @discardableResult
     public func text(_ value: String) -> Self{
         view.text = value
@@ -775,12 +781,18 @@ extension RZViewBuilder where V: UILabel{
     
     @discardableResult
     public func font(_ value: UIFont, _ attributes: [NSAttributedString.Key:Any] = [:]) -> Self{
+        if view.text == nil || view.text == "" { view.text = " " }
         view.font = value
-        let attributedText = NSMutableAttributedString(string: "", attributes: attributes)
+        let textAlignment = view.textAlignment
+        
+        var attributedText: NSMutableAttributedString?
         if let attributedTextL = view.attributedText{
-            attributedText.append(attributedTextL)
+            attributedText = NSMutableAttributedString(attributedString: attributedTextL)
         }
+        attributedText?.addAttributes(attributes, range: NSRange(location: 0, length: view.text?.count ?? 0))
         view.attributedText = attributedText
+        
+        view.textAlignment = textAlignment
         return self
     }
     
