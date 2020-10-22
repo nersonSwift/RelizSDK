@@ -72,7 +72,7 @@ import UIKit
 ///     // PV >< PV - вычисляет центр между двумя RZProtoValue
 ///     // порядок опирантов не имеет значения
 ///     // view.frame.maxY + ((view1.frame.minY - view.frame.maxY) / 2) ==
-///     // == 200 + ((500 - 200) / 2) == 300.0
+///     // == 200 + ((500 - 200) / 2) == 350.0
 ///     view2+>.y(view1*.y >< view*.mY, .center)
 ///     print(view2.frame.midY)      // 350.0
 ///

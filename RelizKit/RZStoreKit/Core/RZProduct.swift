@@ -239,9 +239,11 @@ public struct RZProduct: Equatable{
             if skProducts != result.retrievedProducts{
                 skProducts = result.retrievedProducts
             }
-            if result.retrievedProducts.count < allKeys.count{
-                DispatchQueue.main.async {
-                    getProducInfo()
+            if result.retrievedProducts.count == 0{
+                _ = Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { _ in
+                    DispatchQueue.main.async {
+                        getProducInfo()
+                    }
                 }
                 return
             }
