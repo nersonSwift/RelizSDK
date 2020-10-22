@@ -10,6 +10,10 @@ import UIKit
 
 postfix operator +>
 postfix operator *
+postfix operator |*
+
+infix operator <>
+infix operator ><
 
 public postfix func +><V: UIView>(view: V) -> RZViewBuilder<V>{
     RZViewBuilder(view)
@@ -17,6 +21,10 @@ public postfix func +><V: UIView>(view: V) -> RZViewBuilder<V>{
 
 public postfix func *(value: UIView) -> RZProto{
     RZProto(value)
+}
+
+public postfix func |*(value: UIView) -> RZProto{
+    RZProto(value, true)
 }
 
 public postfix func *(value: CGRect) -> RZProto{
@@ -34,3 +42,6 @@ public postfix func *(value: CGPoint) -> RZProto{
 public postfix func *(value: CGFloat) -> RZProtoValue{
     .value(value)
 }
+
+
+
