@@ -68,7 +68,7 @@ public class RZLineController{
     }
     
     public static func setRootLine(id: String){ rootLine = id }
-    public static func setRootLine(id: RZLine){ rootLine = id.id }
+    public static func setRootLine(id: RZScreenLines){ rootLine = id.id }
 }
 
 public class RZLine{

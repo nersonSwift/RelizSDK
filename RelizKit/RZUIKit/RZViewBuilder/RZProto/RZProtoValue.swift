@@ -218,20 +218,63 @@ public struct RZProtoValue{
     }
     
     private func checkObserv(_ view: UIView, _ tag: Int, _ protoValue: RZProtoValue, _ closure: @escaping ((UIView) -> ())){
-        if let observView = observView, view != observView{
-            let observeKey = observView.layer.observe(\.bounds) {[weak view] (_, _) in
-                guard let view = view else {return}
-                closure(view)
+        if let observView = observView{
+            if selfTag == .w || selfTag == .h{
+                addObserve(.size, view, observView, tag, closure)
+            }else if selfTag == .x || selfTag == .y{
+                addObserve(.origin, view, observView, tag, closure)
+            }else{
+                addObserve(.size, view, observView, tag, closure)
+                addObserve(.origin, view, observView, tag, closure)
             }
-            if let key = UnsafeRawPointer(bitPattern: tag){
-                var observArr = (objc_getAssociatedObject(view, key) as? [NSKeyValueObservation]) ?? []
-                observArr.append(observeKey)
-                objc_setAssociatedObject(view, key, observArr, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
-            }
+            
         }
         if let range = range{
             range.spaceFirst.checkObserv(view, tag, protoValue, closure)
             range.spaceSecond.checkObserv(view, tag, protoValue, closure)
+        }
+    }
+    private enum ObserveTag {
+        case size
+        case origin
+    }
+    private func addObserve(_ observeTag: ObserveTag,
+                            _ view: UIView,
+                            _ observView: UIView,
+                            _ tag: Int,
+                            _ closure: @escaping ((UIView) -> ())
+    ){
+        switch observeTag {
+        case .size:
+            let observeKey = observView.layer.observe(\.bounds) {[weak view, weak observView] (_, _) in
+                guard let view = view else {return}
+                if (view != observView) ||
+                   (tag == 2 && selfTag != .w && selfTag != .cX && selfTag != .mX) ||
+                   (tag == 3 && selfTag != .h && selfTag != .cY && selfTag != .mY)
+                {
+                    closure(view)
+                }
+            }
+            addKey(tag, view, observeKey)
+        case .origin:
+            let observeKey = observView.observe(\.center) {[weak view, weak observView] (_, _) in
+                guard let view = view else {return}
+                if view != observView ||
+                   (tag == 4 && selfTag != .x && selfTag != .cX && selfTag != .mX) ||
+                   (tag == 3 && selfTag != .y && selfTag != .cY && selfTag != .mY)
+                {
+                    closure(view)
+                }
+            }
+            addKey(tag, view, observeKey)
+        }
+    }
+    
+    private func addKey(_ tag: Int, _ object: Any, _ observeKey: NSKeyValueObservation){
+        if let key = UnsafeRawPointer(bitPattern: tag){
+            var observArr = (objc_getAssociatedObject(object, key) as? [NSKeyValueObservation]) ?? []
+            observArr.append(observeKey)
+            objc_setAssociatedObject(object, key, observArr, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
         }
     }
     
