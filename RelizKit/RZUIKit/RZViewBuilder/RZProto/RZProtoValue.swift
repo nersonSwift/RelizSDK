@@ -210,71 +210,30 @@ public struct RZProtoValue{
     }
     
     func setValueIn(_ view: UIView, _ tag: Int, _ closure: @escaping ((UIView) -> ())){
-        if let key = UnsafeRawPointer(bitPattern: tag){
-            objc_setAssociatedObject(view, key, nil, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
+        if let key = UnsafeRawPointer(bitPattern: 1){
+            var observeController = objc_getAssociatedObject(view, key) as? RZObserveController
+            if observeController == nil{
+                observeController = RZObserveController()
+                objc_setAssociatedObject(view, key, observeController, .OBJC_ASSOCIATION_RETAIN)
+            }
+            observeController?.remove(tag)
+            checkObserv(view, tag, self, observeController, closure)
         }
-        checkObserv(view, tag, self, closure)
+        
         closure(view)
     }
     
-    private func checkObserv(_ view: UIView, _ tag: Int, _ protoValue: RZProtoValue, _ closure: @escaping ((UIView) -> ())){
+    private func checkObserv(_ view: UIView,
+                             _ tag: Int,
+                             _ protoValue: RZProtoValue,
+                             _ observeController: RZObserveController?,
+                             _ closure: @escaping ((UIView) -> ())){
         if let observView = observView{
-            if selfTag == .w || selfTag == .h{
-                addObserve(.size, view, observView, tag, closure)
-            }else if selfTag == .x || selfTag == .y{
-                addObserve(.origin, view, observView, tag, closure)
-            }else{
-                addObserve(.size, view, observView, tag, closure)
-                addObserve(.origin, view, observView, tag, closure)
-            }
-            
+            observeController?.add(view, observView, tag, selfTag, closure)
         }
         if let range = range{
-            range.spaceFirst.checkObserv(view, tag, protoValue, closure)
-            range.spaceSecond.checkObserv(view, tag, protoValue, closure)
-        }
-    }
-    private enum ObserveTag {
-        case size
-        case origin
-    }
-    private func addObserve(_ observeTag: ObserveTag,
-                            _ view: UIView,
-                            _ observView: UIView,
-                            _ tag: Int,
-                            _ closure: @escaping ((UIView) -> ())
-    ){
-        switch observeTag {
-        case .size:
-            let observeKey = observView.layer.observe(\.bounds) {[weak view, weak observView] (_, _) in
-                guard let view = view else {return}
-                if (view != observView) ||
-                   (tag == 2 && selfTag != .w && selfTag != .cX && selfTag != .mX) ||
-                   (tag == 3 && selfTag != .h && selfTag != .cY && selfTag != .mY)
-                {
-                    closure(view)
-                }
-            }
-            addKey(tag, view, observeKey)
-        case .origin:
-            let observeKey = observView.observe(\.center) {[weak view, weak observView] (_, _) in
-                guard let view = view else {return}
-                if view != observView ||
-                   (tag == 4 && selfTag != .x && selfTag != .cX && selfTag != .mX) ||
-                   (tag == 3 && selfTag != .y && selfTag != .cY && selfTag != .mY)
-                {
-                    closure(view)
-                }
-            }
-            addKey(tag, view, observeKey)
-        }
-    }
-    
-    private func addKey(_ tag: Int, _ object: Any, _ observeKey: NSKeyValueObservation){
-        if let key = UnsafeRawPointer(bitPattern: tag){
-            var observArr = (objc_getAssociatedObject(object, key) as? [NSKeyValueObservation]) ?? []
-            observArr.append(observeKey)
-            objc_setAssociatedObject(object, key, observArr, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
+            range.spaceFirst.checkObserv(view, tag, protoValue, observeController, closure)
+            range.spaceSecond.checkObserv(view, tag, protoValue, observeController, closure)
         }
     }
     
@@ -342,5 +301,131 @@ public struct RZProtoValue{
     
     public static func value(_ value: CGFloat) -> RZProtoValue{
         RZProtoValue(value)
+    }
+}
+
+
+class RZObserveController{
+    var observes: [(Int, [RZObserve])] = []
+    
+    func add(_ view: UIView,
+             _ observeView: UIView,
+             _ tag: Int,
+             _ protoTag: RZProtoValue.RZProtoTag?,
+             _ closure: @escaping (UIView) -> ()){
+        observes.forEach{ $0.1.forEach{ $0.removeObserve()} }
+        
+        let observe = RZObserve()
+        observe.view = view
+        observe.observeView = observeView
+        observe.tag = tag
+        observe.protoTag = protoTag
+        //observe.observeTag = observeTag
+        observe.closure = closure
+        
+        var setFlag = true
+        var observesL = [(Int, [RZObserve])]()
+        for (key, value) in observes{
+            if key == tag{
+                var value = value
+                value.append(observe)
+                observesL.append((key, value))
+                setFlag = false
+            }else{
+                observesL.append((key, value))
+            }
+        }
+        if setFlag{
+            observesL.append((tag, [observe]))
+        }
+        observes = observesL
+        
+        observes.reversed().forEach{
+            $0.1.forEach{
+                
+                $0.setObserve()
+            }
+        }
+        
+    }
+    
+    func remove(_ tag: Int){
+        
+        observes = observes.filter{ $0.0 != tag }
+        
+    }
+}
+
+class RZObserve{
+    var keys: [NSKeyValueObservation?] = []
+    var closure: ((UIView) -> ())?
+    var tag: Int = 0
+    var protoTag: RZProtoValue.RZProtoTag?
+    weak var view: UIView?
+    weak var observeView: UIView?
+    
+    func setObserve(){
+        let observeKey = observeView?.observe(\.frame, options: [.old]) {[weak self] (_, test) in
+            guard let self = self else {return}
+            guard let view = self.view else {return}
+            guard let observeView = self.observeView else {return}
+            guard let protoTag = self.protoTag else {return}
+            guard var old = test.oldValue else {return}
+                
+            old.size.width -= observeView.frame.width
+            old.size.height -= observeView.frame.height
+            old.origin.x -= observeView.frame.minX
+            old.origin.y -= observeView.frame.minY
+                
+            if protoTag == .w, old.width == 0 {return}
+            if protoTag == .h, old.height == 0 {return}
+                
+            if protoTag == .x, old.minX == 0 {return}
+            if protoTag == .y, old.minY == 0 {return}
+                
+            if protoTag == .cX || protoTag == .mX, old.width == 0 && old.minX == 0 {return}
+            if protoTag == .cY || protoTag == .mY, old.height == 0 && old.minY == 0 {return}
+                
+            if view != observeView ||
+                (self.tag == 2 && protoTag != .w && protoTag != .cX && protoTag != .mX) ||
+                (self.tag == 3 && protoTag != .h && protoTag != .cY && protoTag != .mY) ||
+                (self.tag == 4 && protoTag != .x && protoTag != .cX && protoTag != .mX) ||
+                (self.tag == 3 && protoTag != .y && protoTag != .cY && protoTag != .mY) ||
+                (self.tag == 1)
+            {
+                self.closure?(view)
+            }
+        }
+        keys.append(observeKey)
+        
+        let observeKey1 = observeView?.observe(\.center, options: [.old]) {[weak self] (_, test) in
+            guard let self = self else {return}
+            guard let view = self.view else {return}
+            guard let observeView = self.observeView else {return}
+            guard let protoTag = self.protoTag else {return}
+            guard var old = test.oldValue else {return}
+                
+            old.x -= observeView.center.x
+            old.y -= observeView.center.y
+                
+                
+            if protoTag == .x || protoTag == .cX || protoTag == .mX, old.x == 0 {return}
+            if protoTag == .y || protoTag == .cY || protoTag == .mY, old.y == 0 {return}
+                
+            if view != observeView ||
+                (self.tag == 2 && protoTag != .w && protoTag != .cX && protoTag != .mX) ||
+                (self.tag == 3 && protoTag != .h && protoTag != .cY && protoTag != .mY) ||
+                (self.tag == 4 && protoTag != .x && protoTag != .cX && protoTag != .mX) ||
+                (self.tag == 3 && protoTag != .y && protoTag != .cY && protoTag != .mY) ||
+                (self.tag == 1)
+            {
+                self.closure?(view)
+            }
+        }
+        keys.append(observeKey1)
+    }
+    
+    func removeObserve(){
+        keys = []
     }
 }

@@ -252,6 +252,7 @@ extension RZViewBuilder{
     @discardableResult
     public func width(_ value: CGFloat) -> Self{
         view.frame.size.width = value
+        RZLabelSizeController.modUpdate(view)
         return self
     }
     
@@ -263,7 +264,7 @@ extension RZViewBuilder{
     /// Устанавляиваемая ширена в виде вычесляемого `RZProtoValue`
     @discardableResult
     public func width(_ value: RZProtoValue) -> Self{
-        value.setValueIn(view, 2) { $0.frame.size.width = value.getValue($0.frame) }
+        value.setValueIn(view, 2) { $0.frame.size.width = value.getValue($0.frame); RZLabelSizeController.modUpdate($0) }
         return self
     }
     
@@ -380,9 +381,19 @@ extension RZViewBuilder{
     /// `RU: - `
     /// Ресайзит view по размеру контента
     @discardableResult
-    public func sizeToFit() -> Self {
+    public func sizeToFit(_ value: Bool = true) -> Self {
         view.sizeToFit()
+        RZLabelSizeController.setMod(view, .sizeToFit)
         return self
+    }
+    
+    private static func setSizeToFit(_ value: UIView){
+        if let key = UnsafeRawPointer(bitPattern: 2){
+            let flag = (objc_getAssociatedObject(value, key) as? Bool) ?? false
+            if flag {
+                value.sizeToFit()
+            }
+        }
     }
     
     //MARK: - contentMode
@@ -449,6 +460,8 @@ extension RZViewBuilder where V: UILabel{
         view.attributedText = attributedText
         
         view.textAlignment = textAlignment
+        
+        RZLabelSizeController.setMod(view, .font(view.font))
         return self
     }
     
@@ -457,14 +470,8 @@ extension RZViewBuilder where V: UILabel{
     /// Функция автоматического маштабирования текста по размеру UILabel
     @discardableResult
     public func sizes() -> Self{
-        let widthL = view.frame.width
-        view.sizeToFit()
-        
-        if view.frame.width > widthL{
-            let coof = widthL / view.frame.width
-            view.font = view.font.withSize(view.font.pointSize * coof)
-            view.frame.size.width = widthL
-        }
+        RZLabelSizeController.setMod(view, .sizes)
+        RZLabelSizeController.modUpdate(view)
         return self
     }
     
@@ -536,7 +543,8 @@ extension RZViewBuilder where V: UIImageView{
     ///
     /// - Parameter value
     /// Устанавливаемое изображение
-    public func image(_ value: UIImage) -> Self {
+    @discardableResult
+    public func image(_ value: UIImage?) -> Self {
         view.image = value
         return self
     }
@@ -546,8 +554,9 @@ extension RZViewBuilder where V: UIImageView{
     ///
     /// - Parameter value
     /// Устанавливаемое изображение
-    public func image(_ value: SVGKImage) -> Self {
-        return image(value.uiImage)
+    @discardableResult
+    public func image(_ value: SVGKImage?) -> Self {
+        return image(value?.uiImage)
     }
     
     /// `RU: - `
@@ -555,10 +564,14 @@ extension RZViewBuilder where V: UIImageView{
     ///
     /// - Parameter value
     /// Устанавливаемое изображение в виде динамического `RZImageSeter`
+    @discardableResult
     public func image(_ value: RZImageSeter) -> Self{
         value.setImageView(view)
         return self
     }
 }
+
+
+
 
 
