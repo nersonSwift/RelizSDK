@@ -97,10 +97,11 @@ public class RZStoreKit{
                 }
                 
                 delegate?.buySuccess(product: product, customData: customData)
-                completion?()
                 RZStoreRefrasher.refrash()
+                completion?()
             case .error:
                 delegate?.buyFaild(product: product, customData: customData)
+                RZStoreRefrasher.refrash()
                 completion?()
             }
         }

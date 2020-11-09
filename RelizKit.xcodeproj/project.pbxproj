@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3F0E8BB5AF73AD0CDB6C8083 /* Pods_RelizKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 176A6CB99712F19AB31090C2 /* Pods_RelizKit.framework */; };
+		510F05162559506C00EC0B27 /* RZEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510F05152559506C00EC0B27 /* RZEvent.swift */; };
 		511541302540241300A7FB58 /* RZProto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5115412F2540241300A7FB58 /* RZProto.swift */; };
 		511541342540244300A7FB58 /* RZProtoValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511541332540244300A7FB58 /* RZProtoValue.swift */; };
 		511541372540250C00A7FB58 /* RZProtoValueGoup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511541362540250C00A7FB58 /* RZProtoValueGoup.swift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		176A6CB99712F19AB31090C2 /* Pods_RelizKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RelizKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		510F05152559506C00EC0B27 /* RZEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZEvent.swift; sourceTree = "<group>"; };
 		5115412F2540241300A7FB58 /* RZProto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZProto.swift; sourceTree = "<group>"; };
 		511541332540244300A7FB58 /* RZProtoValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZProtoValue.swift; sourceTree = "<group>"; };
 		511541362540250C00A7FB58 /* RZProtoValueGoup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZProtoValueGoup.swift; sourceTree = "<group>"; };
@@ -97,6 +99,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		510F05142559504400EC0B27 /* RZEvent */ = {
+			isa = PBXGroup;
+			children = (
+				510F05152559506C00EC0B27 /* RZEvent.swift */,
+			);
+			path = RZEvent;
+			sourceTree = "<group>";
+		};
 		5115412E254023F700A7FB58 /* RZProto */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +154,7 @@
 				511D99B725373CB800E67C68 /* Info.plist */,
 				51EA4BC7253753DF0040BEBC /* Core */,
 				51EA4BC6253753980040BEBC /* RZStoreKit */,
+				510F05142559504400EC0B27 /* RZEvent */,
 				51EA4BC5253753800040BEBC /* RZUIKit */,
 			);
 			path = RelizKit;
@@ -384,6 +395,7 @@
 				51EA4BDA2537544C0040BEBC /* RZScreenUI.swift in Sources */,
 				51C6090C2546CC2500827CAC /* RZLabelSizeController.swift in Sources */,
 				512FCB382537755E002DC150 /* RZStoreRefrasher.swift in Sources */,
+				510F05162559506C00EC0B27 /* RZEvent.swift in Sources */,
 				512FCB392537755E002DC150 /* RZStoreKit.swift in Sources */,
 				51EA4BE22537544C0040BEBC /* RZRotater.swift in Sources */,
 				51EA4BE12537544C0040BEBC /* RZTransitionAnimation.swift in Sources */,

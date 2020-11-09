@@ -390,7 +390,7 @@ class RZObserve{
                 (self.tag == 2 && protoTag != .w && protoTag != .cX && protoTag != .mX) ||
                 (self.tag == 3 && protoTag != .h && protoTag != .cY && protoTag != .mY) ||
                 (self.tag == 4 && protoTag != .x && protoTag != .cX && protoTag != .mX) ||
-                (self.tag == 3 && protoTag != .y && protoTag != .cY && protoTag != .mY) ||
+                (self.tag == 5 && protoTag != .y && protoTag != .cY && protoTag != .mY) ||
                 (self.tag == 1)
             {
                 self.closure?(view)
@@ -416,7 +416,7 @@ class RZObserve{
                 (self.tag == 2 && protoTag != .w && protoTag != .cX && protoTag != .mX) ||
                 (self.tag == 3 && protoTag != .h && protoTag != .cY && protoTag != .mY) ||
                 (self.tag == 4 && protoTag != .x && protoTag != .cX && protoTag != .mX) ||
-                (self.tag == 3 && protoTag != .y && protoTag != .cY && protoTag != .mY) ||
+                (self.tag == 5 && protoTag != .y && protoTag != .cY && protoTag != .mY) ||
                 (self.tag == 1)
             {
                 self.closure?(view)

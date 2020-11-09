@@ -571,7 +571,30 @@ extension RZViewBuilder where V: UIImageView{
     }
 }
 
-
+extension RZViewBuilder where V: UIScrollView{
+    @discardableResult
+    public func contentSize(_ value: CGSize) -> Self{
+        view.contentSize = value
+        return self
+    }
+    
+    @discardableResult
+    public func contentSize(_ value: RZProtoSize) -> Self{
+        return self.contentWidth(value.width).contentHeight(value.height)
+    }
+    
+    @discardableResult
+    public func contentWidth(_ value: RZProtoValue) -> Self{
+        value.setValueIn(view, 6) { ($0 as? UIScrollView)?.contentSize.width = value.getValue($0.frame) }
+        return self
+    }
+    
+    @discardableResult
+    public func contentHeight(_ value: RZProtoValue) -> Self{
+        value.setValueIn(view, 7) { ($0 as? UIScrollView)?.contentSize.height = value.getValue($0.frame) }
+        return self
+    }
+}
 
 
 
