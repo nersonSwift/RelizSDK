@@ -9,7 +9,6 @@ import UIKit
 
 class RZLabelSizeController{
     enum LabelSizeMod {
-        case sizes
         case font(UIFont)
         case sizeToFit
     }
@@ -25,9 +24,6 @@ class RZLabelSizeController{
         case .sizeToFit:
             labelSize?.view = view
             labelSize?.sizeToFit = true
-        case .sizes:
-            labelSize?.view = view
-            labelSize?.sizes = true
         case .font(let font):
             labelSize?.difoulFont = font
         }
@@ -48,21 +44,6 @@ class RZLabelSize{
     
     func update(){
         if sizeToFit { view?.sizeToFit() }
-        if sizes { sizesView() }
     }
     
-    func sizesView(){
-        guard let view = view as? UILabel else { return }
-        let difoulFont = self.difoulFont ?? view.font
-        
-        view.font = difoulFont
-        let widthL = view.frame.width
-        view.sizeToFit()
-        
-        if view.frame.width > widthL{
-            let coof = widthL / view.frame.width
-            view.font = view.font.withSize(view.font.pointSize * coof)
-            view.frame.size.width = widthL
-        }
-    }
 }

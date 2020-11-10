@@ -469,9 +469,9 @@ extension RZViewBuilder where V: UILabel{
     /// `RU: - `
     /// Функция автоматического маштабирования текста по размеру UILabel
     @discardableResult
-    public func sizes() -> Self{
-        RZLabelSizeController.setMod(view, .sizes)
-        RZLabelSizeController.modUpdate(view)
+    public func sizes(_ value: CGFloat = 0.1) -> Self{
+        view.adjustsFontSizeToFitWidth = true
+        view.minimumScaleFactor = value
         return self
     }
     
