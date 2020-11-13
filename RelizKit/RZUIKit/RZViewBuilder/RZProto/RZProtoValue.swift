@@ -209,14 +209,16 @@ public struct RZProtoValue{
         return 0
     }
     
-    func setValueIn(_ view: UIView, _ tag: Int, _ closure: @escaping ((UIView) -> ())){
+    func setValueIn(_ view: UIView, _ tag: Int, _ remove: Bool = true,  _ closure: @escaping ((UIView) -> ())){
         if let key = UnsafeRawPointer(bitPattern: 1){
             var observeController = objc_getAssociatedObject(view, key) as? RZObserveController
             if observeController == nil{
                 observeController = RZObserveController()
                 objc_setAssociatedObject(view, key, observeController, .OBJC_ASSOCIATION_RETAIN)
             }
-            observeController?.remove(tag)
+            if remove{
+                observeController?.remove(tag)
+            }
             checkObserv(view, tag, self, observeController, closure)
         }
         
@@ -407,10 +409,10 @@ class RZObserve{
                 
             old.x -= observeView.center.x
             old.y -= observeView.center.y
-                
-                
-            if protoTag == .x || protoTag == .cX || protoTag == .mX, old.x == 0 {return}
-            if protoTag == .y || protoTag == .cY || protoTag == .mY, old.y == 0 {return}
+            
+            
+            if protoTag == .w || protoTag == .x || protoTag == .cX || protoTag == .mX, old.x == 0 {return}
+            if protoTag == .h || protoTag == .y || protoTag == .cY || protoTag == .mY, old.y == 0 {return}
                 
             if view != observeView ||
                 (self.tag == 2 && protoTag != .w && protoTag != .cX && protoTag != .mX) ||

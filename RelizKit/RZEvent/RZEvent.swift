@@ -142,8 +142,9 @@ public class RZEvent{
     }
 }
 
-public class EventSendDelegate {
-    func send(_ name: String?, _ value: Any?) {}
+open class EventSendDelegate {
+    open func send(_ name: String?, _ value: Any?) {}
+    public init(){}
 }
 
 @_functionBuilder struct EventBuilder{

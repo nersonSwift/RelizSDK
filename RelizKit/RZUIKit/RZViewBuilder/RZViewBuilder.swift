@@ -328,8 +328,12 @@ extension RZViewBuilder{
     public func x(_ value: RZProtoValue,  _ type: XType = .left) -> Self{
         switch type {
         case .left:   value.setValueIn(view, 4) { $0.frame.origin.x = value.getValue($0.frame) }
-        case .right:  value.setValueIn(view, 4) { $0.frame.origin.x = value.getValue($0.frame) - $0.frame.width }
-        case .center: value.setValueIn(view, 4) { $0.center.x = value.getValue($0.frame) }
+        case .right:
+            value.setValueIn(view, 4) { $0.frame.origin.x = value.getValue($0.frame) - $0.frame.width }
+            view|*.w.setValueIn(view, 4, false) { $0.frame.origin.x = value.getValue($0.frame) - $0.frame.width }
+        case .center:
+            value.setValueIn(view, 4) { $0.center.x = value.getValue($0.frame) }
+            view|*.w.setValueIn(view, 4, false) { $0.center.x = value.getValue($0.frame) }
         }
         return self
     }
@@ -370,8 +374,12 @@ extension RZViewBuilder{
     public func y(_ value: RZProtoValue,  _ type: YType = .top) -> Self{
         switch type {
         case .top:    value.setValueIn(view, 5) { $0.frame.origin.y = value.getValue($0.frame) }
-        case .down:   value.setValueIn(view, 5) { $0.frame.origin.y = value.getValue($0.frame) - $0.frame.height }
-        case .center: value.setValueIn(view, 5) { $0.center.y = value.getValue($0.frame) }
+        case .down:
+            value.setValueIn(view, 5) { $0.frame.origin.y = value.getValue($0.frame) - $0.frame.height }
+            view|*.h.setValueIn(view, 5, false) { $0.frame.origin.y = value.getValue($0.frame) - $0.frame.height }
+        case .center:
+            value.setValueIn(view, 5) { $0.center.y = value.getValue($0.frame) }
+            view|*.h.setValueIn(view, 5, false) { $0.center.y = value.getValue($0.frame) }
         }
         
         return self
