@@ -28,8 +28,9 @@ class RZStoreRefrasher{
                 let res = getActiveReceiptItem(receipt)
                 RZStoreKit.activeReceipts = res
             }
-        
-            RZStoreKit.delegate?.update()
+            
+            Thread.isMainThread ? RZStoreKit.delegate?.update() : DispatchQueue.main.sync {RZStoreKit.delegate?.update()}
+
             if let btID = refrashBackgroundTaskId{
                 UIApplication.shared.endBackgroundTask(btID)
             }
