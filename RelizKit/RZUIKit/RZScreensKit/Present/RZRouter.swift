@@ -17,8 +17,10 @@ protocol RZRouterProtocol: NSObject{
 }
 
 
-public class RZRowRouter: NSObject, RZRouterProtocol{
+open class RZRowRouter: NSObject, RZRouterProtocol{
     weak var screenController: RZScreenControllerProtocol?
     var screenType: RZAnyScreen.Type? { nil }
-    required override init() {super.init()}
+    required public override init() {super.init()}
 }
+
+

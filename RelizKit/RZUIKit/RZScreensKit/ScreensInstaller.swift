@@ -156,7 +156,6 @@ public class RZTransition{
         case In
         case Instead
         case PopUp
-        
         #if targetEnvironment(macCatalyst)
         case Window
         #endif

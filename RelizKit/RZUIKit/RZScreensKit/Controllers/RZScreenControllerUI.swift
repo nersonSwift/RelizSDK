@@ -22,7 +22,7 @@ extension RZScreenControllerUIProtocol{
     public var iPhoneRouter: R.Type? { nil }
     public var iPadRouter: R.Type? { nil }
     
-    func setPresenter(){
+    public func setPresenter(){
         if UIDevice.current.userInterfaceIdiom == .pad, let type = iPadRouter{
             router = type.init()
         }else if UIDevice.current.userInterfaceIdiom == .phone, let type = iPhoneRouter{

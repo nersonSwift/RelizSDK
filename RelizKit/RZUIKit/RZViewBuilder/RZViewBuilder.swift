@@ -137,7 +137,8 @@ public class RZViewBuilder<V: UIView>{
     /// - Parameter value
     /// view используемое как маска
     @discardableResult
-    public func mask(_ value: UIView, _ size: RZProtoSize = RZProtoSize(width: 100 % RZProto().w, height: 100 % RZProto().h)) -> Self{
+    public func mask(_ value: UIView, _ size: RZProtoSize? = nil) -> Self{
+        let size = size ?? RZProtoSize(width: view|*.w, height: view|*.h)
         value+>.size(size).x(view|*.cX, .center).y(view|*.cY, .center)
         view.mask = value
         return self
@@ -429,6 +430,7 @@ extension RZViewBuilder where V: UILabel{
     @discardableResult
     public func text(_ value: String) -> Self{
         view.text = value
+        RZLabelSizeController.modUpdate(view)
         return self
     }
     

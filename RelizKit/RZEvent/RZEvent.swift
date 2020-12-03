@@ -119,13 +119,14 @@ public class RZEvent{
                 $0._name = $0._name ?? _name
                 $0._value = $0._value ?? _value
                 $0._sendDelegate = $0._sendDelegate ?? _sendDelegate
+                $0.send(key)
             }
         }else if let key = key{
             if _sendKey == key{
-                return sendEvent()
+                sendEvent()
             }
         }else{
-            return sendEvent()
+            sendEvent()
         }
     }
     
@@ -147,8 +148,9 @@ open class EventSendDelegate {
     public init(){}
 }
 
-@_functionBuilder struct EventBuilder{
-    static func buildBlock(_ atrs: RZEvent...) -> [RZEvent] {
+@_functionBuilder public struct EventBuilder{
+    public static func buildBlock(_ atrs: RZEvent...) -> [RZEvent] {
         return atrs
     }
 }
+

@@ -13,12 +13,12 @@ public protocol RZAnyScreen{
     init()
 }
 extension RZAnyScreen{
-    func testSelf(rowRouter: RZRowRouter) -> AnyView?{
+    public func testSelf(rowRouter: RZRowRouter) -> AnyView?{
         return nil
     }
 }
 extension RZAnyScreen where Self: RZScreenUI{
-    func testSelf(rowRouter: RZRowRouter) -> AnyView?{
+    public func testSelf(rowRouter: RZRowRouter) -> AnyView?{
         let ro = rowRouter as! R
         return AnyView(self.environmentObject(ro))
     }
