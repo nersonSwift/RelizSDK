@@ -221,6 +221,56 @@ public struct RZProto {
         return RZProtoValue(val)
     }
     
+    /// `RZProtoValue` эквиволентное собственной карденате центра по x
+    ///
+    ///     let view = UIView()
+    ///     view.frame.size.width = 100
+    ///     view.frame.origin.x = 100
+    ///
+    ///     let view1 = UIView()
+    ///     view1+>.x(view*.scX)
+    ///
+    ///     print(view1.frame.minX) // 50.0
+    ///
+    /// При использовании пустого инициализатора
+    ///
+    ///     let view = UIView()
+    ///     view.frame.size.width = 100
+    ///     view.frame.origin.x = 100
+    ///
+    ///     view+>.y(RZProto().sсX) // == view+>.y(.selfTag(.scX))
+    ///
+    ///     print(view.frame.y)   // 50.0
+    public var scX: RZProtoValue {
+        guard let val = frame?.width else { return RZProtoValue(.cX, view) }
+        return RZProtoValue(val / 2)
+    }
+    
+    /// `RZProtoValue` эквиволентное собственной карденате центра по y
+    ///
+    ///     let view = UIView()
+    ///     view.frame.size.height = 100
+    ///     view.frame.origin.y = 100
+    ///
+    ///     let view1 = UIView()
+    ///     view1+>.y(view*.scY)
+    ///
+    ///     print(view1.frame.minY) // 50.0
+    ///
+    /// При использовании пустого инициализатора
+    ///
+    ///     let view = UIView()
+    ///     view.frame.size.height = 100
+    ///     view.frame.origin.y = 100
+    ///
+    ///     view+>.x(RZProto().sсY) // == view+>.x(.selfTag(.scY))
+    ///
+    ///     print(view.frame.x)   // 50.0
+    public var scY: RZProtoValue {
+        guard let val = frame?.height else { return RZProtoValue(.cX, view) }
+        return RZProtoValue(val / 2)
+    }
+    
     /// `RZProtoValue` эквиволентное карденате конца по x
     ///
     ///     let view = UIView()

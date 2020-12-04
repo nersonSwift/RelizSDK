@@ -133,6 +133,9 @@ public struct RZProtoValue{
         case cX
         case cY
         
+        case scX
+        case scY
+        
         case mX
         case mY
     }
@@ -170,6 +173,9 @@ public struct RZProtoValue{
             
             case .cX: return proto.cX
             case .cY: return proto.cY
+                
+            case .scX: return proto.scX
+            case .scY: return proto.scY
             
             case .mX: return proto.mX
             case .mY: return proto.mY
@@ -191,6 +197,9 @@ public struct RZProtoValue{
             
             case .cX: value = frame.midX
             case .cY: value = frame.midY
+            
+            case .scX: value = frame.width / 2
+            case .scY: value = frame.height / 2
             
             case .mX: value = frame.maxX
             case .mY: value = frame.maxY
@@ -379,8 +388,8 @@ class RZObserve{
             old.origin.x -= observeView.frame.minX
             old.origin.y -= observeView.frame.minY
                 
-            if protoTag == .w, old.width == 0 {return}
-            if protoTag == .h, old.height == 0 {return}
+            if protoTag == .w || protoTag == .scX, old.width == 0 {return}
+            if protoTag == .h || protoTag == .scY, old.height == 0 {return}
                 
             if protoTag == .x, old.minX == 0 {return}
             if protoTag == .y, old.minY == 0 {return}

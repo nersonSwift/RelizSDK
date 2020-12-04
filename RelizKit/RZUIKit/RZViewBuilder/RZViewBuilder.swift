@@ -14,7 +14,7 @@ public class RZViewBuilder<V: UIView>{
     //MARK: - view
     /// `RU: - `
     /// Редактируемое view
-    public var view: V!
+    public var view: V
     
     //MARK: - init
     /// `RU: - `
@@ -139,7 +139,7 @@ public class RZViewBuilder<V: UIView>{
     @discardableResult
     public func mask(_ value: UIView, _ size: RZProtoSize? = nil) -> Self{
         let size = size ?? RZProtoSize(width: view|*.w, height: view|*.h)
-        value+>.size(size).x(view|*.cX, .center).y(view|*.cY, .center)
+        value+>.size(size).x(view|*.scX, .center).y(view|*.scY, .center)
         view.mask = value
         return self
     }
