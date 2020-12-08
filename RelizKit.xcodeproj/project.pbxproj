@@ -25,7 +25,6 @@
 		515AE88C2539C6AB007761AB /* UIControlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515AE88B2539C6AB007761AB /* UIControlExtension.swift */; };
 		5184EC97253A5A0E00A3A993 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5184EC96253A5A0E00A3A993 /* Operators.swift */; };
 		51C6090C2546CC2500827CAC /* RZLabelSizeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C6090B2546CC2500827CAC /* RZLabelSizeController.swift */; };
-		51E14158257FEEC000333C01 /* RelizKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E14157257FEEBF00333C01 /* RelizKit.swift */; };
 		51EA4BD82537544C0040BEBC /* RZRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA4BC92537544C0040BEBC /* RZRootController.swift */; };
 		51EA4BD92537544C0040BEBC /* RZPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA4BCC2537544C0040BEBC /* RZPresenter.swift */; };
 		51EA4BDA2537544C0040BEBC /* RZScreenUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA4BCD2537544C0040BEBC /* RZScreenUI.swift */; };
@@ -60,7 +59,7 @@
 		515AE88B2539C6AB007761AB /* UIControlExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControlExtension.swift; sourceTree = "<group>"; };
 		5184EC96253A5A0E00A3A993 /* Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		51C6090B2546CC2500827CAC /* RZLabelSizeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZLabelSizeController.swift; sourceTree = "<group>"; };
-		51E14157257FEEBF00333C01 /* RelizKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelizKit.swift; sourceTree = "<group>"; };
+		51E1428D257FF88500333C01 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		51EA4BC92537544C0040BEBC /* RZRootController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZRootController.swift; sourceTree = "<group>"; };
 		51EA4BCC2537544C0040BEBC /* RZPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZPresenter.swift; sourceTree = "<group>"; };
 		51EA4BCD2537544C0040BEBC /* RZScreenUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZScreenUI.swift; sourceTree = "<group>"; };
@@ -209,7 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				511D99B625373CB800E67C68 /* RelizKit.h */,
-				51E14157257FEEBF00333C01 /* RelizKit.swift */,
+				51E1428D257FF88500333C01 /* module.modulemap */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -396,7 +395,6 @@
 				512FCB3D2537755E002DC150 /* ReceiptItemExtention.swift in Sources */,
 				515AE88C2539C6AB007761AB /* UIControlExtension.swift in Sources */,
 				51EA4BDE2537544C0040BEBC /* RZPopUpView.swift in Sources */,
-				51E14158257FEEC000333C01 /* RelizKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
