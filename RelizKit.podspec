@@ -49,7 +49,7 @@ Pod::Spec.new do |spec|
   end
 
   spec.subspec 'RZDarkModeKit' do |darkmodekit|
-    viewbuilder.dependency "RZDarkModeKit"
+    darkmodekit.dependency "RZDarkModeKit"
   end
 
   spec.subspec 'RZStoreKit' do |storekit|
