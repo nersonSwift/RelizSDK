@@ -2,7 +2,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "RelizKit"
-  spec.version      = "1.6.1"
+  spec.version      = "1.6.2"
   spec.summary      = "RelizKit"
   spec.description  = "Small example to test code sharing via cocoapods."	
   
@@ -32,7 +32,7 @@ Pod::Spec.new do |spec|
   spec.default_subspec = 'Core'
   
   spec.subspec 'CoreOnly' do |ss|
-    ss.source_files = 'RelizKit/Core/RelizKit.h'
+    ss.source_files = 'RelizKit/Core/**/*'
   end
 
   spec.subspec 'Core' do |ss|
