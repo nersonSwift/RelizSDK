@@ -17,7 +17,6 @@ Pod::Spec.new do |spec|
  
   spec.source       = { :git => "https://github.com/nersonSwift/RelizKit.git", :tag => "1.5.8" }
 
-  spec.source_files  = 'RelizKit/Core/**/*'
   spec.exclude_files = "RelizKit/**/*.plist"
   spec.swift_version = '5.3'
   spec.ios.deployment_target  = '13.0'
