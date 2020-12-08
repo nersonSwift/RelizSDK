@@ -2,8 +2,8 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "RelizKit"
-  spec.version      = "1.6"
-  spec.summary      = "Small example to test code sharing."
+  spec.version      = "1.6.1"
+  spec.summary      = "RelizKit"
   spec.description  = "Small example to test code sharing via cocoapods."	
   
   spec.homepage     = "https://github.com/nersonSwift/RelizKit"
@@ -13,9 +13,15 @@ Pod::Spec.new do |spec|
 
  
 
-  spec.author       = { "Angel-senpai" => "daniil.murygin68@gmail.com", "nersonSwift" => "aleksandrsenin@icloud.com" }
+  spec.author       = { 
+	"Angel-senpai" => "daniil.murygin68@gmail.com", 
+	"nersonSwift" => "aleksandrsenin@icloud.com" 
+  }
  
-  spec.source       = { :git => "https://github.com/nersonSwift/RelizKit.git", :tag => "1.6" }
+  spec.source       = { 
+	:git => "https://github.com/nersonSwift/RelizKit.git", 
+	:tag => spec.version.to_s
+  }
 
   spec.exclude_files = "RelizKit/**/*.plist"
   spec.swift_version = '5.3'
@@ -26,7 +32,7 @@ Pod::Spec.new do |spec|
   spec.default_subspec = 'Core'
   
   spec.subspec 'CoreOnly' do |ss|
-    ss.source_files = 'RelizKit/Core/**/*'
+    ss.source_files = 'RelizKit/Core/RelizKit.h'
   end
 
   spec.subspec 'Core' do |ss|
