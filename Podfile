@@ -7,5 +7,6 @@ target 'RelizKit' do
 
   pod 'SwiftyStoreKit'
   pod 'SVGKit'
+  pod 'RZDarkModeKit'
 
 end

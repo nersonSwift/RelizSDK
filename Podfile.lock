@@ -2,25 +2,29 @@ PODS:
   - CocoaLumberjack (3.7.0):
     - CocoaLumberjack/Core (= 3.7.0)
   - CocoaLumberjack/Core (3.7.0)
+  - RZDarkModeKit (1.0)
   - SVGKit (2.1.1):
     - CocoaLumberjack (~> 3.0)
   - SwiftyStoreKit (0.16.1)
 
 DEPENDENCIES:
+  - RZDarkModeKit
   - SVGKit
   - SwiftyStoreKit
 
 SPEC REPOS:
   trunk:
     - CocoaLumberjack
+    - RZDarkModeKit
     - SVGKit
     - SwiftyStoreKit
 
 SPEC CHECKSUMS:
   CocoaLumberjack: e8955b9d337ac307103b0a34fd141c32f27e53c5
+  RZDarkModeKit: f616af539f9632595abcc42da56bc2fc31430889
   SVGKit: 652cdf7bef8bec8564d04a8511d3ab50c7595fac
   SwiftyStoreKit: 6b9c08810269f030586dac1fae8e75871a82e84a
 
-PODFILE CHECKSUM: d2bd523d74152dfea740af54e791086bfa125793
+PODFILE CHECKSUM: 1e7a8bbd1d26f9e7770b30485f4ec8452ec1dd34
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0.rc.1

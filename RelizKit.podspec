@@ -2,7 +2,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "RelizKit"
-  spec.version      = "1.5.7"
+  spec.version      = "1.5.8"
   spec.summary      = "Small example to test code sharing."
   spec.description  = "Small example to test code sharing via cocoapods."	
   
@@ -15,9 +15,9 @@ Pod::Spec.new do |spec|
 
   spec.author       = { "Angel-senpai" => "daniil.murygin68@gmail.com", "nersonSwift" => "aleksandrsenin@icloud.com" }
  
-  spec.source       = { :git => "https://github.com/nersonSwift/RelizKit.git", :tag => "1.5.7" }
+  spec.source       = { :git => "https://github.com/nersonSwift/RelizKit.git", :tag => "1.5.8" }
 
-  # spec.source_files  = "RelizKit/**/*"
+  spec.source_files  = 'RelizKit/Core/**/*'
   spec.exclude_files = "RelizKit/**/*.plist"
   spec.swift_version = '5.3'
   spec.ios.deployment_target  = '13.0'
@@ -27,7 +27,6 @@ Pod::Spec.new do |spec|
   spec.default_subspec = 'Core'
 
   spec.subspec 'Core' do |core|
-    core.source_files   = 'RelizKit/Core/**/*'
     core.dependency 'RelizKit/RZUIKit'
     core.dependency 'RelizKit/RZStoreKit'
     core.dependency 'RelizKit/RZEvent'
@@ -50,8 +49,7 @@ Pod::Spec.new do |spec|
   end
 
   spec.subspec 'RZDarkModeKit' do |darkmodekit|
-    darkmodekit.source_files = 'RZUIKit/RZDarkModeKit/**/*'
-    
+    viewbuilder.dependency "RZDarkModeKit"
   end
 
   spec.subspec 'RZStoreKit' do |storekit|
