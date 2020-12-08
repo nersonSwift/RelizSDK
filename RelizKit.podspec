@@ -2,7 +2,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "RelizKit"
-  spec.version      = "1.6.5"
+  spec.version      = "1.6.6"
   spec.summary      = "RelizKit"
   spec.description  = "Small example to test code sharing via cocoapods."	
   
@@ -38,7 +38,7 @@ Pod::Spec.new do |spec|
     ss.user_target_xcconfig = {
        'HEADER_SEARCH_PATHS' => "$(inherited) ${PODS_ROOT}/RelizKit/Core"
     }
-    end
+    
   end
 
   spec.subspec 'Core' do |ss|
