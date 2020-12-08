@@ -107,10 +107,11 @@ public class RZDarkModeKit {
     
     private static var traidObserver: TraidObserver?{
         didSet{
-            
+            #if UIApplication
             if let traidObserver = traidObserver{
                 UIApplication.shared.windows.first?.rootViewController?.view.addSubview(traidObserver)
             }
+            #endif
         }
     }
 }
