@@ -37,9 +37,9 @@ Pod::Spec.new do |spec|
   end
 
   spec.subspec 'RZViewBuilder' do |viewbuilder|
-    viewbuilder.source_files = 'RelizKit/RZUIKit/RZViewBuilder/**/*'
     viewbuilder.dependency 'RelizKit/RZDarkModeKit'
     viewbuilder.dependency "SVGKit"
+    viewbuilder.source_files = 'RelizKit/RZUIKit/RZViewBuilder/**/*'
   end
 
   spec.subspec 'RZScreensKit' do |screens|
