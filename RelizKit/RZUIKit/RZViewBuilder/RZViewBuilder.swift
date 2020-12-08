@@ -8,6 +8,7 @@
 
 import UIKit
 import SVGKit
+import RZDarkModeKit
 
 //MARK: - UIView
 public class RZViewBuilder<V: UIView>{
