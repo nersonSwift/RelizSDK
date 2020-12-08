@@ -133,6 +133,9 @@
 		511D99A925373CB800E67C68 = {
 			isa = PBXGroup;
 			children = (
+				51EA4BC6253753980040BEBC /* RZStoreKit */,
+				510F05142559504400EC0B27 /* RZEvent */,
+				51EA4BC5253753800040BEBC /* RZUIKit */,
 				511D99B525373CB800E67C68 /* RelizKit */,
 				511D99B425373CB800E67C68 /* Products */,
 				22B1A36ABD758D6A98702C78 /* Pods */,
@@ -153,9 +156,6 @@
 			children = (
 				511D99B725373CB800E67C68 /* Info.plist */,
 				51EA4BC7253753DF0040BEBC /* Core */,
-				51EA4BC6253753980040BEBC /* RZStoreKit */,
-				510F05142559504400EC0B27 /* RZEvent */,
-				51EA4BC5253753800040BEBC /* RZUIKit */,
 			);
 			path = RelizKit;
 			sourceTree = "<group>";
