@@ -37,13 +37,13 @@ Pod::Spec.new do |spec|
   end
 
   spec.subspec 'RZViewBuilder' do |viewbuilder|
-    viewbuilder.source_files = 'RZUIKit/RZViewBuilder/**/*'
+    viewbuilder.source_files = 'RelizKit/RZUIKit/RZViewBuilder/**/*'
     viewbuilder.dependency 'RelizKit/RZDarkModeKit'
     viewbuilder.dependency "SVGKit"
   end
 
   spec.subspec 'RZScreensKit' do |screens|
-    screens.source_files = 'RZUIKit/RZScreensKit/**/*'
+    screens.source_files = 'RelizKit/RZUIKit/RZScreensKit/**/*'
     
   end
 
@@ -52,12 +52,12 @@ Pod::Spec.new do |spec|
   end
 
   spec.subspec 'RZStoreKit' do |storekit|
-    storekit.source_files = 'RZStoreKit/**/*'
+    storekit.source_files = 'RelizKit/RZStoreKit/**/*'
     storekit.dependency "SwiftyStoreKit"
   end
 
   spec.subspec 'RZEvent' do |event|
-    event.source_files = 'RZEvent/**/*'
+    event.source_files = 'RelizKit/RZEvent/**/*'
   end
 
 end
