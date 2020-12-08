@@ -32,7 +32,7 @@ Pod::Spec.new do |spec|
   spec.default_subspec = 'Core'
   
   spec.subspec 'CoreOnly' do |ss|
-    ss.source_files = 'RelizKit/Core/**/*'
+    ss.source_files = 'RelizKit/Core/RelizKit.h'
     ss.preserve_paths = 'RelizKit/Core/module.modulemap'
   end
 
