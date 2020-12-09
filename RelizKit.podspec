@@ -17,7 +17,7 @@ Pod::Spec.new do |spec|
  
   spec.source       = { 
 	:git => "https://github.com/nersonSwift/RelizKit.git", 
-	:tag => "v" + spec.version.to_s + "_" +spec.name.to_s
+	:tag => spec.name.to_s + "_v" + spec.version.to_s
   }
 
   spec.exclude_files = "RelizKit/**/*.plist"
