@@ -2,7 +2,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "RelizKit"
-  spec.version      = "1.7.0"
+  spec.version      = "1.7"
   spec.summary      = "RelizKit"
   spec.description  = "Small example to test code sharing via cocoapods."	
   
@@ -36,7 +36,7 @@ Pod::Spec.new do |spec|
     ss.preserve_paths = 'RelizKit/Core/module.modulemap'
     
     ss.user_target_xcconfig = {
-        'HEADER_SEARCH_PATHS' => "$(inherited) ../RelizKit/RelizKit/Core"
+        'HEADER_SEARCH_PATHS' => "$(inherited) ${PODS_ROOT}/RelizKit/RelizKit/Core"
     }
     
   end
