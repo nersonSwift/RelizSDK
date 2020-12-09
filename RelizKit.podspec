@@ -9,9 +9,6 @@ Pod::Spec.new do |spec|
   spec.homepage     = "https://github.com/nersonSwift/RelizKit"
 
   spec.license      = "MIT"
-  
-
-  v1.7.1_RelizKit
 
   spec.author       = { 
 	"Angel-senpai" => "daniil.murygin68@gmail.com", 
@@ -20,7 +17,7 @@ Pod::Spec.new do |spec|
  
   spec.source       = { 
 	:git => "https://github.com/nersonSwift/RelizKit.git", 
-	:tag => "v" + spec.version.to_s + spec.name.to_s
+	:tag => "v" + spec.version.to_s + "_" +spec.name.to_s
   }
 
   spec.exclude_files = "RelizKit/**/*.plist"
