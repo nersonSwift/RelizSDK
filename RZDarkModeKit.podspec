@@ -23,12 +23,12 @@ Pod::Spec.new do |spec|
 	:tag => spec.name.to_s + "_v" + spec.version.to_s
   }
 
-  spec.exclude_files = "../RZUIKit/RZDarkModeKit/RZDarkModeKit/**/*.plist"
+  spec.exclude_files = "RZUIKit/RZDarkModeKit/RZDarkModeKit/**/*.plist"
   spec.swift_version = '5.3'
   spec.ios.deployment_target  = '13.0'
 
   spec.requires_arc = true
-  spec.source_files = "../RZUIKit/RZDarkModeKit/RZDarkModeKit/**/*"
+  spec.source_files = "RZUIKit/RZDarkModeKit/RZDarkModeKit/**/*"
 
 
 end
