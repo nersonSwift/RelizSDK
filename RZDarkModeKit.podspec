@@ -2,7 +2,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "RZDarkModeKit"
-  spec.version      = "2.0.1"
+  spec.version      = "2.0.2"
   spec.summary      = "Small example to test code sharing."
   spec.description  = "Small example to test code sharing via cocoapods."	
   
@@ -28,7 +28,7 @@ Pod::Spec.new do |spec|
   spec.ios.deployment_target  = '13.0'
 
   spec.requires_arc = true
-  spec.source_files = 'RZUIKit/RZDarkModeKit/RZDarkModeKit/**/*'
+  spec.source_files = "RZUIKit/RZDarkModeKit/RZDarkModeKit/**/*"
 
 
 end
