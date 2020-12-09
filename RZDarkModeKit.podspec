@@ -6,7 +6,7 @@ Pod::Spec.new do |spec|
   spec.summary      = "Small example to test code sharing."
   spec.description  = "Small example to test code sharing via cocoapods."	
   
-  spec.homepage     = "https://github.com/nersonSwift/RZDarkModeKit"
+  spec.homepage     = "https://github.com/nersonSwift/RelizKit"
 
   spec.license      = "MIT"
   
@@ -19,7 +19,7 @@ Pod::Spec.new do |spec|
   }
  
   spec.source       = { 
-	:git => "https://github.com/nersonSwift/RZDarkModeKit.git", 
+	:git => "https://github.com/nersonSwift/RelizKit.git", 
 	:tag => spec.name.to_s + "_v" + spec.version.to_s
   }
 
