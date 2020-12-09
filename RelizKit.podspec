@@ -32,8 +32,8 @@ Pod::Spec.new do |spec|
   spec.default_subspec = 'Core'
   
   spec.subspec 'CoreOnly' do |ss|
-    ss.source_files = 'RelizKit/Core/RelizKit.h'
-    ss.preserve_paths = 'RelizKit/Core/module.modulemap'
+    ss.source_files = 'RelizKit/RelizKit/Core/RelizKit.h'
+    ss.preserve_paths = 'RelizKit/RelizKit/Core/module.modulemap'
     
     ss.user_target_xcconfig = {
         'HEADER_SEARCH_PATHS' => "$(inherited) ${PODS_ROOT}/RelizKit/RelizKit/Core"
@@ -58,12 +58,12 @@ Pod::Spec.new do |spec|
     ss.dependency 'RelizKit/CoreOnly'
     ss.dependency 'RelizKit/RZDarkModeKit'
     ss.dependency "SVGKit"
-    ss.source_files = 'RelizKit/RZUIKit/RZViewBuilder/**/*'
+    ss.source_files = 'RelizKit/RelizKit/RZUIKit/RZViewBuilder/**/*'
   end
 
   spec.subspec 'RZScreensKit' do |ss|
     ss.dependency 'RelizKit/CoreOnly'
-    ss.source_files = 'RelizKit/RZUIKit/RZScreensKit/**/*'
+    ss.source_files = 'RelizKit/RelizKit/RZUIKit/RZScreensKit/**/*'
   end
 
   spec.subspec 'RZDarkModeKit' do |ss|
@@ -72,13 +72,13 @@ Pod::Spec.new do |spec|
   end
 
   spec.subspec 'RZStoreKit' do |ss|
-    ss.source_files = 'RelizKit/RZStoreKit/**/*'
+    ss.source_files = 'RelizKit/RelizKit/RZStoreKit/**/*'
     ss.dependency "SwiftyStoreKit"
     ss.dependency 'RelizKit/CoreOnly'
   end
 
   spec.subspec 'RZEvent' do |ss|
-    ss.source_files = 'RelizKit/RZEvent/**/*'
+    ss.source_files = 'RelizKit/RelizKit/RZEvent/**/*'
     ss.dependency 'RelizKit/CoreOnly'
   end
 
