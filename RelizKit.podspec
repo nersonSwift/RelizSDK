@@ -19,7 +19,7 @@ Pod::Spec.new do |spec|
   }
  
   spec.source       = { 
-	:git => "https://github.com/nersonSwift/RelizKit.git/RelizKit", 
+	:git => "https://github.com/nersonSwift/RelizKit.git", 
 	:tag => spec.name.to_s + "v" + spec.version.to_s
   }
 
