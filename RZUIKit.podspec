@@ -35,5 +35,6 @@ Pod::Spec.new do |spec|
 
   spec.requires_arc = true
 
-
+  spec.dependency "RZScreensKit"
+  spec.dependency "RZViewBuilder"
 end
