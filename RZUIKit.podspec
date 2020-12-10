@@ -29,7 +29,7 @@ Pod::Spec.new do |spec|
   spec.swift_version = '5.3'
   spec.ios.deployment_target  = '13.0'
 
-  ss.user_target_xcconfig = {
+  spec.user_target_xcconfig = {
         'HEADER_SEARCH_PATHS' => "$(inherited) ${PODS_ROOT}/RZUIKit/RZUIKit/RZUIKit/RZUIKit"
     }
 
