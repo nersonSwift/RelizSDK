@@ -1,0 +1,16 @@
+PODS:
+  - RZDarkModeKit (2.0.4)
+
+DEPENDENCIES:
+  - RZDarkModeKit
+
+SPEC REPOS:
+  trunk:
+    - RZDarkModeKit
+
+SPEC CHECKSUMS:
+  RZDarkModeKit: 3cb201574a3e75c4beccdea572fbec7072e61a39
+
+PODFILE CHECKSUM: 3fdd723ec358a24ff8aa48303844f4b46d8b3b7b
+
+COCOAPODS: 1.10.0.rc.1

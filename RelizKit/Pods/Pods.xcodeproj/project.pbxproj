@@ -27,7 +27,6 @@
 		12C2915F9344E4DB059F7155739B8871 /* SVGKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 5812F2E5780E82EA7D3DA07428B9DD7A /* SVGKit.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		13D73864CB5B94F07432F956F7E5B720 /* SVGKSourceLocalFile.m in Sources */ = {isa = PBXBuildFile; fileRef = C86F13C5B98CF20F729FC35477F7E8C0 /* SVGKSourceLocalFile.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		1469C26A8EEF0B29E29FBBC4CF01DF08 /* CAShapeLayerWithClipRender.h in Headers */ = {isa = PBXBuildFile; fileRef = 26FEBBE272940699E4EA4812D2CD9AC8 /* CAShapeLayerWithClipRender.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		14C6CBDF4E0C700CE6BE6A691076E1CA /* RZDarkModeKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 06144470446880D668590E36B29EDAF8 /* RZDarkModeKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1505741DE2CB244D38D891E0B40AB7DF /* SVGUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A508FC01E0D5A75F271A508D1FCC36B /* SVGUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		191AA7BDB1946EA6ABD503B390D312EF /* CSSRuleList.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F5F2DB456CCEE47C87504CA22B71804 /* CSSRuleList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1964F302452CB6BE8B68D369FAAC7679 /* DOMHelperUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3585D937F8677644C1DF039095770804 /* DOMHelperUtilities.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
@@ -41,11 +40,11 @@
 		24EF0AD7F6584048DB2242D12CA11D5C /* SVGKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A288AA09D53E4DFCF713F5E1E602473 /* SVGKit-dummy.m */; };
 		256212E159EDD1F612E0AAB26EA6649F /* SVGTextPositioningElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1985CCFAFF2538657C14A5C5565B85 /* SVGTextPositioningElement.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		25992F9843EB139F1ECEEE84B8C5443D /* SVGKSourceLocalFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 0907DF91DE07FC7B525028F46B5F3744 /* SVGKSourceLocalFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		25BC39BD62210E5922686FF10E20CAEB /* RZDarkModeKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AF14AB2381C3528E77546AF040E33B /* RZDarkModeKit.swift */; };
 		265F7AE903B1DF9C9C09DBF37E1C065D /* SVGGradientElement.h in Headers */ = {isa = PBXBuildFile; fileRef = EBE038C0F7A9906DF4F901A08134FF58 /* SVGGradientElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27C1515A56B4D93249107FC19868B66A /* Text.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F5947F1581F80682E8EC8EB1EFCDE /* Text.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		2836A6951AA9D8397D5C182E2D28567D /* DDFileLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 205356A6FBF4E7E48CA2B33AD34DCC14 /* DDFileLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		283CEB6420EA51583911F732404EFDB9 /* SVGAnimatedPreserveAspectRatio.m in Sources */ = {isa = PBXBuildFile; fileRef = 2076E0EEDFA67D5451F76224AC6178E9 /* SVGAnimatedPreserveAspectRatio.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		2A2B4D10046E02689738580E4D3F129A /* RZDarkModeKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A7EEABC9ED0C00494DF0D8B03162695 /* RZDarkModeKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2C263E5ED2E8873EF9EFBEFAD9E9FECD /* SVGTransform.h in Headers */ = {isa = PBXBuildFile; fileRef = FC6D13E363631A5FC57DC1972A900A08 /* SVGTransform.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2CD93F7FEE3E4201AADE6FD4B658E553 /* Document.h in Headers */ = {isa = PBXBuildFile; fileRef = 76E976BCEADF94D4FA0BAAC7868E8952 /* Document.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2D5876202079FB83C89AD4407600F396 /* SVGKImage+CGContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C501F0C97F2012F36BBDE5B34AE81C4 /* SVGKImage+CGContext.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
@@ -91,7 +90,7 @@
 		5320A29B0F71590C2B4E50955743B350 /* SVGKSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 91B2296FA00C30DA3157DE8C9F59071F /* SVGKSource.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		532988677F206162D8E916D5B7BD7A1D /* SVGPolylineElement.h in Headers */ = {isa = PBXBuildFile; fileRef = FEC1C76B7B5377A723557B8BA8A029C9 /* SVGPolylineElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		53CB295D6716207D50463D2DE0510DB8 /* SVGPolygonElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 727C551E71DD7FD759086DF752BEAF67 /* SVGPolygonElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5667072A2CF0645E9E7236063C6AFD11 /* RZDarkModeKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B5F16AEB7F230EA7E49D3C4CA7E9059 /* RZDarkModeKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5667072A2CF0645E9E7236063C6AFD11 /* RZDarkModeKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2586797DF617ABE9E63C832F20966A75 /* RZDarkModeKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		59D7A43FB420491FFA470D352CCEC374 /* InAppReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D878F4ECD9E25C07B241C49F3E4DC195 /* InAppReceipt.swift */; };
 		5C050E327E1884DC1201AA9B833A739D /* SVGKSourceString.h in Headers */ = {isa = PBXBuildFile; fileRef = 0CD35DD95739345189B195A86A44BC97 /* SVGKSourceString.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		618AA87D9F8C4482001D9BAD6E28D9DA /* SVGKPointsAndPathsParser.h in Headers */ = {isa = PBXBuildFile; fileRef = E958C4BD2C918641577302C2414B858E /* SVGKPointsAndPathsParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -101,6 +100,7 @@
 		6480E1E2E958D70B5D6B5242D2184519 /* SVGGradientStop.h in Headers */ = {isa = PBXBuildFile; fileRef = 47D207F6B4A8F221BAE094E4E2006737 /* SVGGradientStop.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		64CB16F730612CFCC02B297F5C244B77 /* SVGKParserPatternsAndGradients.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FFD37094FF3093C8E8FA51FA1C45D8 /* SVGKParserPatternsAndGradients.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		654586D602604CFE8B0FDA78AC2E5259 /* SVGKSourceURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 90AD8EC1158533B232628516771CE8D1 /* SVGKSourceURL.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		6A10704440536997C0D2F8992E5AAFC5 /* RZDarkModeKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8C4A2707DD69A58BC9AA6B23086911 /* RZDarkModeKit.swift */; };
 		6A977361297EE9895B29FB2959A8CCD1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE19504F43D5734CBDC9C4546A92A638 /* Foundation.framework */; };
 		6ACAA42CA81F5B925F442B86FCA51B46 /* SVGAnimatedPreserveAspectRatio.h in Headers */ = {isa = PBXBuildFile; fileRef = FC8C55CBAAA4434CB699AE25D9FAAD3E /* SVGAnimatedPreserveAspectRatio.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6BF0328A926B5248CC1A34CD3297C05F /* Node.h in Headers */ = {isa = PBXBuildFile; fileRef = 69799D03B9926F58160149171E5390B5 /* Node.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -111,7 +111,7 @@
 		6DE76DC8E6BE1E82B504607563A48362 /* DDOSLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = C298D35D93EDFE66362A42C1C89EFA13 /* DDOSLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6E714B8683A2887C3C453BB790F2C5AD /* SVGKImage.m in Sources */ = {isa = PBXBuildFile; fileRef = F85461D8C7E8CB4A248651E8E5D6BF1A /* SVGKImage.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		6FD8F9FF3B9E9AFED40CF87B7C815271 /* SVGSwitchElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 51CEA867895D6C83DAA2F45A43D36C7E /* SVGSwitchElement.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		7007CDA64CE3A1E77A6B96D57C9D4C73 /* RZDarkModeKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 62FF80D3587E956A5013D2BAA2A87E6A /* RZDarkModeKit-dummy.m */; };
+		7007CDA64CE3A1E77A6B96D57C9D4C73 /* RZDarkModeKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E9290665E4C2248143E0B0B93216669F /* RZDarkModeKit-dummy.m */; };
 		70CB9193A0F6758924F1B0CA6D7012D2 /* SVGEllipseElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 4385C3DFA7E466CA18F7D8E291E06BE4 /* SVGEllipseElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7154470FB43D51BDEC93320FE5365C95 /* CharacterData.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FDC5659D60B42CAAD6CDC81D3FA9E67 /* CharacterData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		717EC51BF353F474F56D86DB55E4B295 /* SVGElement_ForParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 465D96FD708E949B3F44B17E0F031E04 /* SVGElement_ForParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -348,7 +348,6 @@
 		0044C25EF93C956323513EAAFD81437F /* TinySVGTextAreaElement.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TinySVGTextAreaElement.h; path = "Source/DOM classes/Unported or Partial DOM/TinySVGTextAreaElement.h"; sourceTree = "<group>"; };
 		01B5270E77AA0819890DF6E189E42BB0 /* RestorePurchasesController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RestorePurchasesController.swift; path = Sources/SwiftyStoreKit/RestorePurchasesController.swift; sourceTree = "<group>"; };
 		03BA0C29C87390F476B6C687A1F9C5AB /* SVGPreserveAspectRatio.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVGPreserveAspectRatio.h; path = "Source/DOM classes/SVG-DOM/SVGPreserveAspectRatio.h"; sourceTree = "<group>"; };
-		06144470446880D668590E36B29EDAF8 /* RZDarkModeKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RZDarkModeKit.h; path = RZDarkModeKit/RZDarkModeKit.h; sourceTree = "<group>"; };
 		062AECAF99E3FA060E76AE4E2559F87D /* CAShapeLayerWithClipRender.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CAShapeLayerWithClipRender.m; path = "Source/QuartzCore additions/CAShapeLayerWithClipRender.m"; sourceTree = "<group>"; };
 		071162A08CDC32AC611DC6CEDE40C502 /* DDFileLogger+Buffering.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "DDFileLogger+Buffering.m"; path = "Sources/CocoaLumberjack/Extensions/DDFileLogger+Buffering.m"; sourceTree = "<group>"; };
 		08E24633D632EE40BD94117F5694AE87 /* NamedNodeMap.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NamedNodeMap.m; path = "Source/DOM classes/Core DOM/NamedNodeMap.m"; sourceTree = "<group>"; };
@@ -388,6 +387,7 @@
 		21FD047FD4339DDBB0C82E600940B4B8 /* DocumentStyle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DocumentStyle.h; path = "Source/DOM classes/Core DOM/DocumentStyle.h"; sourceTree = "<group>"; };
 		2298D23105706D2D6BC5A2A6EC0F6DCC /* SVGStyleElement.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVGStyleElement.h; path = "Source/DOM classes/Unported or Partial DOM/SVGStyleElement.h"; sourceTree = "<group>"; };
 		22A08897746E18147EA18E953CA4AAE8 /* Text.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Text.h; path = "Source/DOM classes/Core DOM/Text.h"; sourceTree = "<group>"; };
+		2586797DF617ABE9E63C832F20966A75 /* RZDarkModeKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RZDarkModeKit-umbrella.h"; sourceTree = "<group>"; };
 		26FEBBE272940699E4EA4812D2CD9AC8 /* CAShapeLayerWithClipRender.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CAShapeLayerWithClipRender.h; path = "Source/QuartzCore additions/CAShapeLayerWithClipRender.h"; sourceTree = "<group>"; };
 		289EC0C569349C3816BF65C1C5240F95 /* DDDispatchQueueLogFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDDispatchQueueLogFormatter.m; path = Sources/CocoaLumberjack/Extensions/DDDispatchQueueLogFormatter.m; sourceTree = "<group>"; };
 		28FF0FB4B12EEF39A099A77D9FAE3F38 /* SVGKImageView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVGKImageView.h; path = "Source/UIKit additions/SVGKImageView.h"; sourceTree = "<group>"; };
@@ -397,6 +397,7 @@
 		2C1AA7B916306EA86F51E1923F03C537 /* SVGKParserExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVGKParserExtension.h; path = Source/Parsers/SVGKParserExtension.h; sourceTree = "<group>"; };
 		2C1C8F65D5884773AF7C9CE17FAEF58B /* CALayerWithChildHitTest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CALayerWithChildHitTest.h; path = "Source/QuartzCore additions/CALayerWithChildHitTest.h"; sourceTree = "<group>"; };
 		2F0D24662BEFBB87D8EE8F8921CA45CA /* CDATASection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CDATASection.m; path = "Source/DOM classes/Core DOM/CDATASection.m"; sourceTree = "<group>"; };
+		2F115F21DAA4F4042D3DFA0CB10A0A55 /* RZDarkModeKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RZDarkModeKit.debug.xcconfig; sourceTree = "<group>"; };
 		2F604E60D0F458131AE47A8557808D6C /* DocumentFragment.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DocumentFragment.m; path = "Source/DOM classes/Core DOM/DocumentFragment.m"; sourceTree = "<group>"; };
 		2FBE847344429EBFC4CB307761ECCA15 /* TinySVGTextAreaElement.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TinySVGTextAreaElement.m; path = "Source/DOM classes/Unported or Partial DOM/TinySVGTextAreaElement.m"; sourceTree = "<group>"; };
 		2FDC5659D60B42CAAD6CDC81D3FA9E67 /* CharacterData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CharacterData.h; path = "Source/DOM classes/Core DOM/CharacterData.h"; sourceTree = "<group>"; };
@@ -428,6 +429,7 @@
 		3F5F2DB456CCEE47C87504CA22B71804 /* CSSRuleList.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSSRuleList.h; path = "Source/DOM classes/Core DOM/CSSRuleList.h"; sourceTree = "<group>"; };
 		40AF51DD8D4126A0126599890E831A59 /* RZDarkModeKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RZDarkModeKit.framework; path = RZDarkModeKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40BB7797ABCADD66E2F3B4A428E83E89 /* SVGDocument.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVGDocument.m; path = "Source/DOM classes/SVG-DOM/SVGDocument.m"; sourceTree = "<group>"; };
+		40DD5BE5B59AE2DB16EA159A1F84FD91 /* RZDarkModeKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = RZDarkModeKit.modulemap; sourceTree = "<group>"; };
 		435DE964E3430486723BBC5BDDBAA3EA /* NamedNodeMap.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NamedNodeMap.h; path = "Source/DOM classes/Core DOM/NamedNodeMap.h"; sourceTree = "<group>"; };
 		4385C3DFA7E466CA18F7D8E291E06BE4 /* SVGEllipseElement.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVGEllipseElement.h; path = "Source/DOM classes/Unported or Partial DOM/SVGEllipseElement.h"; sourceTree = "<group>"; };
 		43999AA5A8B987A5897FDDBC4DFA56B9 /* DDASLLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDASLLogger.m; path = Sources/CocoaLumberjack/DDASLLogger.m; sourceTree = "<group>"; };
@@ -453,7 +455,6 @@
 		51A0A44D7C69A6540382DBE0FD01AF2D /* EntityReference.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EntityReference.h; path = "Source/DOM classes/Core DOM/EntityReference.h"; sourceTree = "<group>"; };
 		51CEA867895D6C83DAA2F45A43D36C7E /* SVGSwitchElement.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVGSwitchElement.m; path = "Source/DOM classes/Unported or Partial DOM/SVGSwitchElement.m"; sourceTree = "<group>"; };
 		529B964D1F6D234280BD75749EB64EDD /* SVGNumber.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVGNumber.h; path = "Source/DOM classes/SVG-DOM/SVGNumber.h"; sourceTree = "<group>"; };
-		535F57AACECCFA4AF672E9415325EE84 /* RZDarkModeKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = RZDarkModeKit.modulemap; sourceTree = "<group>"; };
 		5524199B4CDCD1D52B9D10B38A894AB6 /* SVGStyleElement.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVGStyleElement.m; path = "Source/DOM classes/Unported or Partial DOM/SVGStyleElement.m"; sourceTree = "<group>"; };
 		55C9B68D830ADE11BB4E440AF02C4B06 /* SVGKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVGKit.h; path = Source/SVGKit.h; sourceTree = "<group>"; };
 		56909B72E4D6F07715430B30F25E4F23 /* ConverterSVGToCALayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ConverterSVGToCALayer.h; path = "Source/DOM classes/Unported or Partial DOM/ConverterSVGToCALayer.h"; sourceTree = "<group>"; };
@@ -472,7 +473,6 @@
 		611AAB75BE2C0236B967DC2ACD0E3F31 /* Pods-RelizKit-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RelizKit-acknowledgements.markdown"; sourceTree = "<group>"; };
 		61FBB3BED91AB11607384C5946CEEC72 /* SVGGradientLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVGGradientLayer.h; path = "Source/QuartzCore additions/SVGGradientLayer.h"; sourceTree = "<group>"; };
 		62F3C393E179A1617573776F69208491 /* DOMGlobalSettings.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DOMGlobalSettings.h; path = "Source/DOM classes/Core DOM/DOMGlobalSettings.h"; sourceTree = "<group>"; };
-		62FF80D3587E956A5013D2BAA2A87E6A /* RZDarkModeKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RZDarkModeKit-dummy.m"; sourceTree = "<group>"; };
 		63175AFAC8254F2D594D401ED0913053 /* SVGDefsElement.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVGDefsElement.m; path = "Source/DOM classes/SVG-DOM/SVGDefsElement.m"; sourceTree = "<group>"; };
 		63AB559A40C3EE7991DBBECB167E57DD /* SVGElementInstance.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVGElementInstance.h; path = "Source/DOM classes/SVG-DOM/SVGElementInstance.h"; sourceTree = "<group>"; };
 		654986C2BA2A4DF4471DD120B5043375 /* SVGTransform.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVGTransform.m; path = "Source/DOM classes/SVG-DOM/SVGTransform.m"; sourceTree = "<group>"; };
@@ -484,9 +484,9 @@
 		6D4D575537AAC2EBFF9591599556FAD5 /* CALayerWithClipRender.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CALayerWithClipRender.h; path = "Source/QuartzCore additions/CALayerWithClipRender.h"; sourceTree = "<group>"; };
 		6D55B3945AD548265B863EC4BDED4086 /* SVGRect.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVGRect.m; path = "Source/DOM classes/SVG-DOM/SVGRect.m"; sourceTree = "<group>"; };
 		6DA4141EF8AD54DD0C062A2EC622A0E3 /* CSSValue_ForSubclasses.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSSValue_ForSubclasses.h; path = "Source/DOM classes/Core DOM/CSSValue_ForSubclasses.h"; sourceTree = "<group>"; };
+		6E8C4A2707DD69A58BC9AA6B23086911 /* RZDarkModeKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RZDarkModeKit.swift; path = RZUIKit/RZDarkModeKit/RZDarkModeKit/RZDarkModeKit.swift; sourceTree = "<group>"; };
 		6E9969FE45FAAA79F41AEA6B87F50E0E /* SVGKParseResult.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVGKParseResult.m; path = Source/Parsers/SVGKParseResult.m; sourceTree = "<group>"; };
 		6F35FDA687B4F4EFFB594303F4EFB6FD /* PaymentsController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentsController.swift; path = Sources/SwiftyStoreKit/PaymentsController.swift; sourceTree = "<group>"; };
-		70152F18C8F58BB688F1D1D770220DE9 /* RZDarkModeKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RZDarkModeKit-prefix.pch"; sourceTree = "<group>"; };
 		70FC1522ED94874C68B0E906225A0499 /* CALayer+RecursiveClone.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CALayer+RecursiveClone.m"; path = "Source/QuartzCore additions/CALayer+RecursiveClone.m"; sourceTree = "<group>"; };
 		70FEF4802FBBEF17FB7A843833DAC168 /* PaymentQueueController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentQueueController.swift; path = Sources/SwiftyStoreKit/PaymentQueueController.swift; sourceTree = "<group>"; };
 		716E64819532390A24E319FA555174F1 /* CSSRuleList+Mutable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "CSSRuleList+Mutable.h"; path = "Source/DOM classes/Core DOM/CSSRuleList+Mutable.h"; sourceTree = "<group>"; };
@@ -500,8 +500,8 @@
 		76E976BCEADF94D4FA0BAAC7868E8952 /* Document.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Document.h; path = "Source/DOM classes/Core DOM/Document.h"; sourceTree = "<group>"; };
 		797666A1AD98C53AB1448E680C2A7934 /* SVGTitleElement.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVGTitleElement.m; path = "Source/DOM classes/Unported or Partial DOM/SVGTitleElement.m"; sourceTree = "<group>"; };
 		7A508FC01E0D5A75F271A508D1FCC36B /* SVGUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVGUtils.h; path = Source/Utils/SVGUtils.h; sourceTree = "<group>"; };
+		7A7EEABC9ED0C00494DF0D8B03162695 /* RZDarkModeKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RZDarkModeKit.h; path = RZUIKit/RZDarkModeKit/RZDarkModeKit/RZDarkModeKit.h; sourceTree = "<group>"; };
 		7B591332A405EC3BC536B1C1A0303D96 /* SVGAngle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVGAngle.h; path = "Source/DOM classes/SVG-DOM/SVGAngle.h"; sourceTree = "<group>"; };
-		7B5F16AEB7F230EA7E49D3C4CA7E9059 /* RZDarkModeKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RZDarkModeKit-umbrella.h"; sourceTree = "<group>"; };
 		7B84272A8B48530C900D83C36894B88F /* SVGGradientLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVGGradientLayer.m; path = "Source/QuartzCore additions/SVGGradientLayer.m"; sourceTree = "<group>"; };
 		7BA44189805CBC6A4465CB8733E5C9BE /* InAppReceiptVerificator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InAppReceiptVerificator.swift; path = Sources/SwiftyStoreKit/InAppReceiptVerificator.swift; sourceTree = "<group>"; };
 		7C525B48F636CBCA5390608015E44CAD /* SVGKParserGradient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVGKParserGradient.m; path = "Source/Parsers/Parser Extensions/SVGKParserGradient.m"; sourceTree = "<group>"; };
@@ -515,7 +515,6 @@
 		81201BF9E402EF2B1CAE03236362A59A /* Pods-RelizKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RelizKit-umbrella.h"; sourceTree = "<group>"; };
 		8309002E38C5E57A3F4C75FF389CCB04 /* SVGPolygonElement.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVGPolygonElement.m; path = "Source/DOM classes/Unported or Partial DOM/SVGPolygonElement.m"; sourceTree = "<group>"; };
 		8421D033E39E18D4BEE157337FDD040C /* CocoaLumberjack-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CocoaLumberjack-prefix.pch"; sourceTree = "<group>"; };
-		893AEF34103B72DB58D7B68AE17DBC5D /* RZDarkModeKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "RZDarkModeKit-Info.plist"; sourceTree = "<group>"; };
 		8A517227B515636A6BA2036008F5019D /* CAShapeLayerWithHitTest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CAShapeLayerWithHitTest.h; path = "Source/QuartzCore additions/CAShapeLayerWithHitTest.h"; sourceTree = "<group>"; };
 		8A9E0ED67270051FD962665ECB55BD5A /* SVGElement.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVGElement.m; path = "Source/DOM classes/Unported or Partial DOM/SVGElement.m"; sourceTree = "<group>"; };
 		8B1DACED487D65FB7D9FA5B4D93E0D50 /* DDFileLogger+Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "DDFileLogger+Internal.h"; path = "Sources/CocoaLumberjack/DDFileLogger+Internal.h"; sourceTree = "<group>"; };
@@ -543,7 +542,7 @@
 		9968A82C41BCF4C0A6FF69D6DB1C161D /* SVGKSourceURL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVGKSourceURL.h; path = Source/Sources/SVGKSourceURL.h; sourceTree = "<group>"; };
 		9A23BE67A49B03D79F2E233F94B81EC3 /* SVGKSourceNSData.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVGKSourceNSData.m; path = Source/Sources/SVGKSourceNSData.m; sourceTree = "<group>"; };
 		9C005A074DE012C70E33840BC40B3E97 /* SwiftyStoreKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyStoreKit.debug.xcconfig; sourceTree = "<group>"; };
-		9CD6DF3F532EA4238E29145BD74D97B8 /* RZDarkModeKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RZDarkModeKit.release.xcconfig; sourceTree = "<group>"; };
+		9D0C500B35BC07F4A0AB051B95A18E66 /* RZDarkModeKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "RZDarkModeKit-Info.plist"; sourceTree = "<group>"; };
 		9D1985CCFAFF2538657C14A5C5565B85 /* SVGTextPositioningElement.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVGTextPositioningElement.m; path = "Source/DOM classes/SVG-DOM/SVGTextPositioningElement.m"; sourceTree = "<group>"; };
 		9D6120D1CF56602C6A10A0EE3CE22C0A /* Comment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Comment.h; path = "Source/DOM classes/Core DOM/Comment.h"; sourceTree = "<group>"; };
 		9D64FFBD64B7C09207AC8B7CDF55D8A4 /* SVGElementInstance_Mutable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVGElementInstance_Mutable.h; path = "Source/DOM classes/SVG-DOM/SVGElementInstance_Mutable.h"; sourceTree = "<group>"; };
@@ -577,7 +576,6 @@
 		B68B22E854D45A81404EA07BC692058D /* Pods-RelizKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RelizKit-Info.plist"; sourceTree = "<group>"; };
 		B7561A0ECED3D1FA157514C639524B9A /* SVGKParserDefsAndUse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVGKParserDefsAndUse.h; path = "Source/Parsers/Parser Extensions/SVGKParserDefsAndUse.h"; sourceTree = "<group>"; };
 		B77A39162C18BFA0402A9BE6A3E441D3 /* CSSValue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSSValue.m; path = "Source/DOM classes/Core DOM/CSSValue.m"; sourceTree = "<group>"; };
-		B7EF4DD906EA1AABF5ABBDA7B3903411 /* RZDarkModeKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RZDarkModeKit.debug.xcconfig; sourceTree = "<group>"; };
 		B81E4F1CCCB74298296DFED044DD281E /* SVGKExporterNSData.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVGKExporterNSData.m; path = Source/Exporters/SVGKExporterNSData.m; sourceTree = "<group>"; };
 		B9EEC3104DE865DAAB98F6ACC63C8EF9 /* DDASLLogCapture.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDASLLogCapture.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDASLLogCapture.h; sourceTree = "<group>"; };
 		BA6C52CE88E022119D016C177E706BB6 /* DDContextFilterLogFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDContextFilterLogFormatter.m; path = Sources/CocoaLumberjack/Extensions/DDContextFilterLogFormatter.m; sourceTree = "<group>"; };
@@ -595,7 +593,6 @@
 		C350788699DDA961C62355749997C7F4 /* OS.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OS.swift; path = Sources/SwiftyStoreKit/OS.swift; sourceTree = "<group>"; };
 		C371DE18AA369991DB75A7806FCB5280 /* SwiftyStoreKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyStoreKit.release.xcconfig; sourceTree = "<group>"; };
 		C437240069B2B274B57D323648FE2581 /* SVGRadialGradientElement.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVGRadialGradientElement.m; path = "Source/DOM classes/Unported or Partial DOM/SVGRadialGradientElement.m"; sourceTree = "<group>"; };
-		C4AF14AB2381C3528E77546AF040E33B /* RZDarkModeKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RZDarkModeKit.swift; path = RZDarkModeKit/RZDarkModeKit.swift; sourceTree = "<group>"; };
 		C50137CB87FDEDB3A6F1DC5A69A97F67 /* SVGGElement.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVGGElement.h; path = "Source/DOM classes/SVG-DOM/SVGGElement.h"; sourceTree = "<group>"; };
 		C53729F7A4A026DCECBEFED13F02EA7A /* SVGTextElement.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVGTextElement.h; path = "Source/DOM classes/Unported or Partial DOM/SVGTextElement.h"; sourceTree = "<group>"; };
 		C576C96D1FB65BAB332D4C93172976ED /* SVGImageElement.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVGImageElement.h; path = "Source/DOM classes/Unported or Partial DOM/SVGImageElement.h"; sourceTree = "<group>"; };
@@ -613,10 +610,12 @@
 		D20D50A6FB12A00001A8363C3C2BE9B7 /* SVGKImage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVGKImage.h; path = Source/SVGKImage.h; sourceTree = "<group>"; };
 		D258C3727BAA43D2578007C5D211AD90 /* SVGRectElement.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVGRectElement.m; path = "Source/DOM classes/Unported or Partial DOM/SVGRectElement.m"; sourceTree = "<group>"; };
 		D3E0CF20285D071B5BFC5CC331728C83 /* SVGGroupElement.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVGGroupElement.m; path = "Source/DOM classes/Unported or Partial DOM/SVGGroupElement.m"; sourceTree = "<group>"; };
+		D452C30C5FEF5858AE8A7919516DEF6A /* RZDarkModeKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RZDarkModeKit-prefix.pch"; sourceTree = "<group>"; };
 		D492E96110403B92672E94E4A1B2751C /* SVGPolylineElement.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVGPolylineElement.m; path = "Source/DOM classes/Unported or Partial DOM/SVGPolylineElement.m"; sourceTree = "<group>"; };
 		D66B1BED4B832BC3582C2E90A1F5AC0C /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/CoreText.framework; sourceTree = DEVELOPER_DIR; };
 		D80B44D1003E458C937EA27A111A6978 /* SVGPreserveAspectRatio.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVGPreserveAspectRatio.m; path = "Source/DOM classes/SVG-DOM/SVGPreserveAspectRatio.m"; sourceTree = "<group>"; };
 		D878F4ECD9E25C07B241C49F3E4DC195 /* InAppReceipt.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InAppReceipt.swift; path = Sources/SwiftyStoreKit/InAppReceipt.swift; sourceTree = "<group>"; };
+		D8E068F075A0FF83EEEBD65A362E6465 /* RZDarkModeKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RZDarkModeKit.release.xcconfig; sourceTree = "<group>"; };
 		D994F9CF655C616A344EE42F199C641E /* DDASLLogCapture.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDASLLogCapture.m; path = Sources/CocoaLumberjack/DDASLLogCapture.m; sourceTree = "<group>"; };
 		D9C938D77786C2B622631427C170AF1A /* BaseClassForAllSVGBasicShapes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BaseClassForAllSVGBasicShapes.h; path = "Source/DOM classes/Unported or Partial DOM/BaseClassForAllSVGBasicShapes.h"; sourceTree = "<group>"; };
 		DC233B440A65A00E746DB97C5102EFD8 /* CLIColor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CLIColor.m; path = Sources/CocoaLumberjack/CLI/CLIColor.m; sourceTree = "<group>"; };
@@ -633,6 +632,7 @@
 		E73BD1B3E11A92F94471D5CEE0F88B2A /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDAbstractDatabaseLogger.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
 		E7E205EE0537C22E09C34C92472703D2 /* DDOSLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDOSLogger.m; path = Sources/CocoaLumberjack/DDOSLogger.m; sourceTree = "<group>"; };
 		E8CB65EA2EEE0FA8039017E228A86263 /* SVGFitToViewBox.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVGFitToViewBox.h; path = "Source/DOM classes/SVG-DOM/SVGFitToViewBox.h"; sourceTree = "<group>"; };
+		E9290665E4C2248143E0B0B93216669F /* RZDarkModeKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RZDarkModeKit-dummy.m"; sourceTree = "<group>"; };
 		E958C4BD2C918641577302C2414B858E /* SVGKPointsAndPathsParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVGKPointsAndPathsParser.h; path = Source/Parsers/SVGKPointsAndPathsParser.h; sourceTree = "<group>"; };
 		E9AA2501AD0AA4E17EF07201C20F111A /* StyleSheetList+Mutable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "StyleSheetList+Mutable.h"; path = "Source/DOM classes/Core DOM/StyleSheetList+Mutable.h"; sourceTree = "<group>"; };
 		EA7E651E845E62DAFA22C9E00F12E164 /* DocumentType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DocumentType.h; path = "Source/DOM classes/Core DOM/DocumentType.h"; sourceTree = "<group>"; };
@@ -747,16 +747,16 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		2D065341B7EB6C97A833F8F347113B54 /* Support Files */ = {
+		34C369B5A82AD8E6D8C82544980BB723 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				535F57AACECCFA4AF672E9415325EE84 /* RZDarkModeKit.modulemap */,
-				62FF80D3587E956A5013D2BAA2A87E6A /* RZDarkModeKit-dummy.m */,
-				893AEF34103B72DB58D7B68AE17DBC5D /* RZDarkModeKit-Info.plist */,
-				70152F18C8F58BB688F1D1D770220DE9 /* RZDarkModeKit-prefix.pch */,
-				7B5F16AEB7F230EA7E49D3C4CA7E9059 /* RZDarkModeKit-umbrella.h */,
-				B7EF4DD906EA1AABF5ABBDA7B3903411 /* RZDarkModeKit.debug.xcconfig */,
-				9CD6DF3F532EA4238E29145BD74D97B8 /* RZDarkModeKit.release.xcconfig */,
+				40DD5BE5B59AE2DB16EA159A1F84FD91 /* RZDarkModeKit.modulemap */,
+				E9290665E4C2248143E0B0B93216669F /* RZDarkModeKit-dummy.m */,
+				9D0C500B35BC07F4A0AB051B95A18E66 /* RZDarkModeKit-Info.plist */,
+				D452C30C5FEF5858AE8A7919516DEF6A /* RZDarkModeKit-prefix.pch */,
+				2586797DF617ABE9E63C832F20966A75 /* RZDarkModeKit-umbrella.h */,
+				2F115F21DAA4F4042D3DFA0CB10A0A55 /* RZDarkModeKit.debug.xcconfig */,
+				D8E068F075A0FF83EEEBD65A362E6465 /* RZDarkModeKit.release.xcconfig */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/RZDarkModeKit";
@@ -797,12 +797,12 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		72F072F1EB33637CCA08F9E9D1797682 /* RZDarkModeKit */ = {
+		7281A9A38B3D10AC7054E33D26213A80 /* RZDarkModeKit */ = {
 			isa = PBXGroup;
 			children = (
-				06144470446880D668590E36B29EDAF8 /* RZDarkModeKit.h */,
-				C4AF14AB2381C3528E77546AF040E33B /* RZDarkModeKit.swift */,
-				2D065341B7EB6C97A833F8F347113B54 /* Support Files */,
+				7A7EEABC9ED0C00494DF0D8B03162695 /* RZDarkModeKit.h */,
+				6E8C4A2707DD69A58BC9AA6B23086911 /* RZDarkModeKit.swift */,
+				34C369B5A82AD8E6D8C82544980BB723 /* Support Files */,
 			);
 			name = RZDarkModeKit;
 			path = RZDarkModeKit;
@@ -1132,7 +1132,7 @@
 			isa = PBXGroup;
 			children = (
 				09A7DA4B7EE4A01C569BACBFE14396E8 /* CocoaLumberjack */,
-				72F072F1EB33637CCA08F9E9D1797682 /* RZDarkModeKit */,
+				7281A9A38B3D10AC7054E33D26213A80 /* RZDarkModeKit */,
 				B266BC68E48378460DC9F9F01476480A /* SVGKit */,
 				E02F49F932FA4A8EB680006BF9F00E0D /* SwiftyStoreKit */,
 			);
@@ -1324,7 +1324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5667072A2CF0645E9E7236063C6AFD11 /* RZDarkModeKit-umbrella.h in Headers */,
-				14C6CBDF4E0C700CE6BE6A691076E1CA /* RZDarkModeKit.h in Headers */,
+				2A2B4D10046E02689738580E4D3F129A /* RZDarkModeKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1705,7 +1705,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7007CDA64CE3A1E77A6B96D57C9D4C73 /* RZDarkModeKit-dummy.m in Sources */,
-				25BC39BD62210E5922686FF10E20CAEB /* RZDarkModeKit.swift in Sources */,
+				6A10704440536997C0D2F8992E5AAFC5 /* RZDarkModeKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1747,7 +1747,7 @@
 /* Begin XCBuildConfiguration section */
 		0E636377C875888684663220F33F6F41 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B7EF4DD906EA1AABF5ABBDA7B3903411 /* RZDarkModeKit.debug.xcconfig */;
+			baseConfigurationReference = 2F115F21DAA4F4042D3DFA0CB10A0A55 /* RZDarkModeKit.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -1927,7 +1927,7 @@
 		};
 		5E15755E9015C3376683CDCB9C715D5F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9CD6DF3F532EA4238E29145BD74D97B8 /* RZDarkModeKit.release.xcconfig */;
+			baseConfigurationReference = D8E068F075A0FF83EEEBD65A362E6465 /* RZDarkModeKit.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
