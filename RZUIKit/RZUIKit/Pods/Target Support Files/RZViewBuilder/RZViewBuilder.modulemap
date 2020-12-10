@@ -1,0 +1,6 @@
+framework module RZViewBuilder {
+  umbrella header "RZViewBuilder-umbrella.h"
+
+  export *
+  module * { export * }
+}

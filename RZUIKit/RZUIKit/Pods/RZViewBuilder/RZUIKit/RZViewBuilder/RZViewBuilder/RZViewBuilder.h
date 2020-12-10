@@ -1,12 +1,10 @@
 //
-//  RZUIKit.h
-//  RZUIKit
+//  RZViewBuilder.h
+//  RZViewBuilder
 //
 //  Created by Александр Сенин on 10.12.2020.
 //
 
 #import <Foundation/Foundation.h>
-
 #import <RZDarkModeKit/RZDarkModeKit.h>
-#import <RZScreensKit/RZScreensKit.h>
-#import <RZViewBuilder/RZViewBuilder.h>
+#import <UIKit/UIKit.h>
