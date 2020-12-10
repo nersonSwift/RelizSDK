@@ -1,30 +1,40 @@
 PODS:
-  - CocoaLumberjack (3.7.0):
-    - CocoaLumberjack/Core (= 3.7.0)
-  - CocoaLumberjack/Core (3.7.0)
   - RZDarkModeKit (2.0.4)
-  - SVGKit (2.1.1):
-    - CocoaLumberjack (~> 3.0)
+  - RZEvent (1.0)
+  - RZScreensKit (1.0)
+  - RZStoreKit (1.0):
+    - SwiftyStoreKit
+  - RZUIKit (2.0):
+    - RZScreensKit
+    - RZViewBuilder
+  - RZViewBuilder (1.0):
+    - RZDarkModeKit
   - SwiftyStoreKit (0.16.1)
 
 DEPENDENCIES:
-  - RZDarkModeKit
-  - SVGKit
-  - SwiftyStoreKit
+  - RZEvent
+  - RZStoreKit
+  - RZUIKit
 
 SPEC REPOS:
   trunk:
-    - CocoaLumberjack
     - RZDarkModeKit
-    - SVGKit
+    - RZEvent
+    - RZScreensKit
+    - RZStoreKit
+    - RZUIKit
+    - RZViewBuilder
     - SwiftyStoreKit
 
 SPEC CHECKSUMS:
-  CocoaLumberjack: e8955b9d337ac307103b0a34fd141c32f27e53c5
   RZDarkModeKit: 3cb201574a3e75c4beccdea572fbec7072e61a39
-  SVGKit: 652cdf7bef8bec8564d04a8511d3ab50c7595fac
+  RZEvent: 32564e92f9b23baeea7e914d0f2a497005a9fc35
+  RZScreensKit: 7591bee2c5d17b8939489ae654d8e0fab1c811be
+  RZStoreKit: 4bf888dc6ad1f1e2c516873b7c5a324c88676813
+  RZUIKit: c31a323c0f90fcb0432e94acc656eb5598301f1b
+  RZViewBuilder: 76472fa8faae0d1aed67aa85e0067e254bc5a342
   SwiftyStoreKit: 6b9c08810269f030586dac1fae8e75871a82e84a
 
-PODFILE CHECKSUM: 1e7a8bbd1d26f9e7770b30485f4ec8452ec1dd34
+PODFILE CHECKSUM: c81db6f450f5707d925d0ad900640bd7a73b3cc3
 
 COCOAPODS: 1.10.0.rc.1

@@ -2,7 +2,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "RelizKit"
-  spec.version      = "1.7.2"
+  spec.version      = "2.0"
   spec.summary      = "RelizKit"
   spec.description  = "Small example to test code sharing via cocoapods."	
   
@@ -47,20 +47,17 @@ Pod::Spec.new do |spec|
 
   spec.subspec 'RZUIKit' do |ss|
     ss.dependency 'RelizKit/CoreOnly'
-    ss.dependency 'RelizKit/RZViewBuilder'
-    ss.dependency 'RelizKit/RZScreensKit'
+    ss.dependency 'RZUIKit'
   end
 
   spec.subspec 'RZViewBuilder' do |ss|
     ss.dependency 'RelizKit/CoreOnly'
-    ss.dependency 'RelizKit/RZDarkModeKit'
-    ss.dependency "SVGKit"
-    ss.source_files = 'RelizKit/RelizKit/RZUIKit/RZViewBuilder/**/*'
+    ss.dependency "RZViewBuilder"
   end
 
   spec.subspec 'RZScreensKit' do |ss|
     ss.dependency 'RelizKit/CoreOnly'
-    ss.source_files = 'RelizKit/RelizKit/RZUIKit/RZScreensKit/**/*'
+    ss.dependency "RZScreensKit"
   end
 
   spec.subspec 'RZDarkModeKit' do |ss|
@@ -69,14 +66,13 @@ Pod::Spec.new do |spec|
   end
 
   spec.subspec 'RZStoreKit' do |ss|
-    ss.source_files = 'RelizKit/RelizKit/RZStoreKit/**/*'
-    ss.dependency "SwiftyStoreKit"
     ss.dependency 'RelizKit/CoreOnly'
+    ss.dependency "RZStoreKit"
   end
 
   spec.subspec 'RZEvent' do |ss|
-    ss.source_files = 'RelizKit/RelizKit/RZEvent/**/*'
     ss.dependency 'RelizKit/CoreOnly'
+    ss.dependency "RZEvent"
   end
 
 end

@@ -1,0 +1,6 @@
+framework module RZStoreKit {
+  umbrella header "RZStoreKit-umbrella.h"
+
+  export *
+  module * { export * }
+}
