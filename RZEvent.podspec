@@ -28,6 +28,7 @@ Pod::Spec.new do |spec|
   spec.swift_version = '5.3'
   spec.ios.deployment_target  = '13.0'
 
+
   spec.requires_arc = true
 
 
