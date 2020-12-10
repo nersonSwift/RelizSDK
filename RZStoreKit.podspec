@@ -25,7 +25,6 @@ Pod::Spec.new do |spec|
 
   spec.source_files = "RZStoreKit/RZStoreKit/**/*"
   spec.exclude_files = "RZStoreKit/RZStoreKit/**/*.plist"
-  spec.dependency "SwiftyStoreKit"
   spec.swift_version = '5.3'
   spec.ios.deployment_target  = '13.0'
 
