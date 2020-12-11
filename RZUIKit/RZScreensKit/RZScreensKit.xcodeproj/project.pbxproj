@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5137354B25838F3E00430CC1 /* RZControlledProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5137354A25838F3E00430CC1 /* RZControlledProtocol.swift */; };
 		515926BA25822C5F00C6596F /* RZScreensKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 515926B825822C5F00C6596F /* RZScreensKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		515926CF2582305700C6596F /* LinesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515926C12582305700C6596F /* LinesController.swift */; };
 		515926D02582305700C6596F /* RZTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515926C32582305700C6596F /* RZTransitionAnimation.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5137354A25838F3E00430CC1 /* RZControlledProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZControlledProtocol.swift; sourceTree = "<group>"; };
 		515926B525822C5F00C6596F /* RZScreensKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RZScreensKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		515926B825822C5F00C6596F /* RZScreensKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZScreensKit.h; sourceTree = "<group>"; };
 		515926B925822C5F00C6596F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -102,9 +104,10 @@
 		515926C92582305700C6596F /* Present */ = {
 			isa = PBXGroup;
 			children = (
+				5137354A25838F3E00430CC1 /* RZControlledProtocol.swift */,
 				515926CA2582305700C6596F /* RZPresenter.swift */,
-				515926CB2582305700C6596F /* RZScreenUI.swift */,
 				515926CC2582305700C6596F /* RZRouter.swift */,
+				515926CB2582305700C6596F /* RZScreenUI.swift */,
 			);
 			path = Present;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				515926D72582305800C6596F /* RZRouter.swift in Sources */,
+				5137354B25838F3E00430CC1 /* RZControlledProtocol.swift in Sources */,
 				515926D32582305800C6596F /* RZScreenController.swift in Sources */,
 				515926D12582305700C6596F /* RZRotater.swift in Sources */,
 				515926D52582305800C6596F /* RZPresenter.swift in Sources */,

@@ -9,16 +9,16 @@
 import SwiftUI
 
 public protocol RZAnyScreen{
-    func testSelf(rowRouter: RZRowRouter) -> AnyView?
+    func testSelf(rowRouter: RZRouterNJProtocol) -> AnyView?
     init()
 }
 extension RZAnyScreen{
-    public func testSelf(rowRouter: RZRowRouter) -> AnyView?{
+    public func testSelf(rowRouter: RZRouterNJProtocol) -> AnyView?{
         return nil
     }
 }
 extension RZAnyScreen where Self: RZScreenUI{
-    public func testSelf(rowRouter: RZRowRouter) -> AnyView?{
+    public func testSelf(rowRouter: RZRouterNJProtocol) -> AnyView?{
         let ro = rowRouter as! R
         return AnyView(self.environmentObject(ro))
     }
@@ -27,10 +27,9 @@ extension RZAnyScreen where Self: RZScreenUI{
 public protocol RZScreenUI: View, RZAnyScreen{
     associatedtype R: RZRouter
     var router: R { get }
-    var screenController: RZScreenControllerProtocol? { get }
-    init()
+    var controller: R.Controller? { get }
 }
 
 extension RZScreenUI{
-    var screenController: RZScreenControllerProtocol? { router.screenController }
+    public var controller: R.Controller? { router.controller }
 }

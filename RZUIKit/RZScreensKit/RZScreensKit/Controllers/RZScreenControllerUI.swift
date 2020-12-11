@@ -14,24 +14,29 @@ public typealias RZScreenControllerUI = UIHostingController<AnyView> & RZScreenC
 public protocol RZScreenControllerUIProtocol: RZScreenControllerProtocol, RZSetPresenterProtocol{
     associatedtype R: RZRouter
     var router: R? {get set}
-    var iPhoneRouter: R.Type? { get }
-    var iPadRouter: R.Type? { get }
+    var iPhoneRouter: RZRouterNJProtocol? { get }
+    var iPadRouter: RZRouterNJProtocol? { get }
+    var macRouter: RZRouterNJProtocol? { get }
 }
 
 extension RZScreenControllerUIProtocol{
-    public var iPhoneRouter: R.Type? { nil }
-    public var iPadRouter: R.Type? { nil }
+    public var iPhoneRouter: RZRouterNJProtocol? { nil }
+    public var iPadRouter: RZRouterNJProtocol? { nil }
+    public var macRouter: RZRouterNJProtocol? { nil }
     
     public func setPresenter(){
-        if UIDevice.current.userInterfaceIdiom == .pad, let type = iPadRouter{
-            router = type.init()
-        }else if UIDevice.current.userInterfaceIdiom == .phone, let type = iPhoneRouter{
-            router = type.init()
-        }else{
-            router = R.init()
-        }
-        router?.screenController = self
-        
+        #if targetEnvironment(macCatalyst)
+            if let macRouter = macRouter{
+                router = macRouter as? Self.R
+            }
+        #else
+            if UIDevice.current.userInterfaceIdiom == .pad, let iPadRouter = iPadRouter{
+                router = iPadRouter as? Self.R
+            }else if UIDevice.current.userInterfaceIdiom == .phone, let iPhoneRouter = iPhoneRouter{
+                router = iPhoneRouter as? Self.R
+            }
+        #endif
+        router?.setInstallableScreen(self)
         if let hostingScreen = self as? UIHostingController<AnyView>, let router = router{
             hostingScreen.rootView = (router.screenType?.init().testSelf(rowRouter: router))!
         }

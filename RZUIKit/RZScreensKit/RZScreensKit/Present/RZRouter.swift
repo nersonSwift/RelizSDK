@@ -8,19 +8,12 @@
 
 import SwiftUI
 
-public typealias RZRouter = RZRowRouter & ObservableObject
+public typealias RZRouter = RZRouterProtocol & ObservableObject
 
-protocol RZRouterProtocol: NSObject{
-    var screenController: RZScreenControllerProtocol? { get set }
+public protocol RZRouterNJProtocol: RZControlledNJProtocol{
     var screenType: RZAnyScreen.Type? { get }
-    init()
 }
+public protocol RZRouterProtocol: RZRouterNJProtocol, RZControlledProtocol{}
 
-
-open class RZRowRouter: NSObject, RZRouterProtocol{
-    weak var screenController: RZScreenControllerProtocol?
-    var screenType: RZAnyScreen.Type? { nil }
-    required public override init() {super.init()}
-}
 
 

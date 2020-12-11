@@ -8,67 +8,21 @@
 
 import UIKit
 
-fileprivate class PresenterInterfase{
+class PresenterInterfase{
     weak var screenController: RZScreenControllerProtocol?
 }
 
-public protocol RZPresenterNoJenericProtocol: NSObject{
+public protocol RZPresenterNoJenericProtocol: RZControlledNJProtocol{
     var view: UIView { get }
     func create()
     func rotate()
     func resize()
-    init(installableScreen: RZScreenControllerProtocol)
 }
 
 extension RZPresenterNoJenericProtocol{
     public func resize() {}
     public func rotate() {}
-    
-    public var view: UIView{
-        screenController?.view ?? UIView()
-    }
-    
-    public var screenController: RZScreenControllerProtocol?{
-        set(screenController){
-            screenControllerInterfase.screenController = screenController
-        }
-        get{
-            screenControllerInterfase.screenController
-        }
-    }
-    
-    public init(installableScreen: RZScreenControllerProtocol) {
-        self.init()
-        screenController = installableScreen
-    }
-    
-    private var key: UnsafeRawPointer? {
-        return UnsafeRawPointer(bitPattern: 16)
-    }
-    
-    private var screenControllerInterfase: PresenterInterfase {
-        if let key = key, let presenterInterfase = objc_getAssociatedObject(self, key) as? PresenterInterfase{
-            return presenterInterfase
-        }
-        let presenterInterfase = PresenterInterfase()
-        
-        if let key = key{
-            objc_setAssociatedObject(self, key, presenterInterfase, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
-        }
-        return presenterInterfase
-    }
 }
-
-
-public protocol RZPresenterProtocol: RZPresenterNoJenericProtocol{
-    associatedtype Controller: RZScreenControllerProtocol
-    var controller: Controller? { get }
-}
-
-extension RZPresenterProtocol {
-    public var controller: Controller?{ screenController as? Controller }
-}
-
 
 public protocol RZScreenModelProtocol{}
 
@@ -96,12 +50,9 @@ extension RZScreenModelSeter{
     }
 }
 
+public protocol RZPresenterProtocol: RZPresenterNoJenericProtocol, RZControlledProtocol{}
 
-public typealias RZPresenterNMJ = NSObject & RZPresenterNoJenericProtocol
-public typealias RZPresenterNJ = NSObject & RZPresenterNoJenericProtocol & RZScreenModelSeter
-public typealias RZPresenterNM = NSObject & RZPresenterProtocol
-public typealias RZPresenter = NSObject & RZPresenterProtocol & RZScreenModelSeter
-
-
-
-
+public typealias RZPresenterNMJ = RZPresenterNoJenericProtocol
+public typealias RZPresenterNJ = RZPresenterNoJenericProtocol & RZScreenModelSeter
+public typealias RZPresenterNM = RZPresenterProtocol
+public typealias RZPresenter = RZPresenterProtocol & RZScreenModelSeter
