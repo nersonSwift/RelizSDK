@@ -9,7 +9,7 @@
 import SwiftUI
 
 
-public typealias RZScreenControllerUI = UIHostingController<AnyView> & RZScreenControllerProtocol & RZScreenControllerUIProtocol
+public typealias RZScreenControllerUI = RZUIHostingController & RZScreenControllerProtocol & RZScreenControllerUIProtocol
 
 public protocol RZScreenControllerUIProtocol: RZScreenControllerProtocol, RZSetPresenterProtocol{
     associatedtype R: RZRouter
@@ -43,5 +43,14 @@ extension RZScreenControllerUIProtocol{
     }
 }
 
+open class RZUIHostingController: UIHostingController<AnyView>{
+    public init(){
+        super.init(rootView: AnyView(Text("OH NO!")))
+    }
+    
+    @objc required dynamic public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
 
 
