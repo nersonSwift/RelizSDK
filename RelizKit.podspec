@@ -48,13 +48,12 @@ Pod::Spec.new do |spec|
   spec.subspec 'RZUIKit' do |ss|
     ss.dependency 'RelizKit/CoreOnly'
     ss.dependency 'RZUIKit'
-    ss.source_files = 'RZUIKit/RZOperators/RZOperators.swift'
   end
 
   spec.subspec 'RZViewBuilder' do |ss|
     ss.dependency 'RelizKit/CoreOnly'
     ss.dependency "RZViewBuilder"
-    ss.source_files = 'RZUIKit/RZOperators/RZOperators.swift'
+    ss.source_files = 'RZUIKit/RZViewBuilder/RZViewBuilder/RZViewBuilder.h'
   end
 
   spec.subspec 'RZScreensKit' do |ss|
@@ -65,7 +64,6 @@ Pod::Spec.new do |spec|
   spec.subspec 'RZDarkModeKit' do |ss|
     ss.dependency 'RelizKit/CoreOnly'
     ss.dependency "RZDarkModeKit"
-    ss.source_files = 'RZUIKit/RZOperators/RZOperators.swift'
   end
 
   spec.subspec 'RZStoreKit' do |ss|
