@@ -54,7 +54,7 @@ Pod::Spec.new do |spec|
   spec.subspec 'RZViewBuilder' do |ss|
     ss.dependency 'RelizKit/CoreOnly'
     ss.dependency "RZViewBuilder"
-    ss.source_files = 'RelizKit/RZUIKit/RZOperators/RZOperators.swift'
+    ss.source_files = 'RZUIKit/RZOperators/RZOperators.swift'
   end
 
   spec.subspec 'RZScreensKit' do |ss|
