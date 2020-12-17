@@ -2,7 +2,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "RZUIKit"
-  spec.version      = "2.0.2"
+  spec.version      = "2.0.3"
   spec.summary      = "Small example to test code sharing."
   spec.description  = "Small example to test code sharing via cocoapods."	
   
@@ -31,7 +31,7 @@ Pod::Spec.new do |spec|
 
   spec.user_target_xcconfig = {
         'HEADER_SEARCH_PATHS' => "$(inherited) ${PODS_ROOT}/RZUIKit/RZUIKit/RZUIKit/RZUIKit"
-    }
+  }
 
   spec.requires_arc = true
 
