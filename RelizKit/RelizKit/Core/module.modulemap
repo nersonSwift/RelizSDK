@@ -1,4 +1,6 @@
 module RelizKit {
+  umbrella header "RelizKit.h"
+
   export *
-  header "RelizKit.h"
+  module * { export * }
 }
