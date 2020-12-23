@@ -1,4 +1,6 @@
-module RZUIKit {
+module RelizKit {
+  umbrella header "RZUIKit.h"
+
   export *
-  header "RZUIKit.h"
+  module * { export * }
 }

@@ -7,12 +7,10 @@
 
 #import <Foundation/Foundation.h>
 
-//! Project version number for RZDarkModeKit.
-FOUNDATION_EXPORT double RZDarkModeKitVersionNumber;
-
-//! Project version string for RZDarkModeKit.
-FOUNDATION_EXPORT const unsigned char RZDarkModeKitVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <RZDarkModeKit/PublicHeader.h>
-
-
+#if !defined(__has_include)
+    #error "Firebase.h won't import anything if your compiler doesn't support __has_include. Please \ import the headers individually."
+#else
+    #if __has_include(<UIKit/UIKit.h>)
+      #import <UIKit/UIKit.h>
+    #endif
+#endif

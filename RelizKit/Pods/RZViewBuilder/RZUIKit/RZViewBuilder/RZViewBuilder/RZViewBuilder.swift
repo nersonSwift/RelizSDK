@@ -64,9 +64,13 @@ public class RZViewBuilder<V: UIView>{
         }
         return self
     }
+    @discardableResult
+    public func color(_ value: RZObservable<UIColor>, _ type: ColorType = .background) -> Self{
+        value.observeClosure = {[weak view] in view?+>.color($0, type)}
+        return self
+    }
     
     func setContentColor(_ value: UIColor){
-        
         switch view {
         case let label as UILabel:
             label <- { $0.textColor = value }
@@ -434,6 +438,11 @@ extension RZViewBuilder where V: UILabel{
         RZLabelSizeController.modUpdate(view)
         return self
     }
+    @discardableResult
+    public func text(_ value: RZObservable<String>) -> Self{
+        value.observeClosure = {[weak view] in view?+>.text($0)}
+        return self
+    }
     
     //MARK: - aligment
     /// `RU: - `
@@ -513,6 +522,11 @@ extension RZViewBuilder where V: UIButton{
         view.setTitle(value, for: .normal)
         return self
     }
+    @discardableResult
+    public func text(_ value: RZObservable<String>) -> Self{
+        value.observeClosure = {[weak view] in view?+>.text($0)}
+        return self
+    }
     
     //MARK: - font
     /// `RU: - `
@@ -559,6 +573,11 @@ extension RZViewBuilder where V: UIImageView{
         view.image = value
         return self
     }
+    @discardableResult
+    public func image(_ value: RZObservable<UIImage?>) -> Self{
+        value.observeClosure = {[weak view] in view?+>.image($0)}
+        return self
+    }
     
     /// `RU: - `
     /// Устанавливает изображение для `UIImageView`
@@ -570,9 +589,15 @@ extension RZViewBuilder where V: UIImageView{
         value.setImageView(view)
         return self
     }
+    @discardableResult
+    public func image(_ value: RZObservable<RZImageSeter>) -> Self{
+        value.observeClosure = {[weak view] in view?+>.image($0)}
+        return self
+    }
 }
 
 extension RZViewBuilder where V: UIScrollView{
+    //MARK: - contentSize
     @discardableResult
     public func contentSize(_ value: CGSize) -> Self{
         view.contentSize = value
@@ -584,12 +609,23 @@ extension RZViewBuilder where V: UIScrollView{
         return self.contentWidth(value.width).contentHeight(value.height)
     }
     
+    //MARK: - contentWidth
+    @discardableResult
+    public func contentWidth(_ value: CGFloat) -> Self{
+        view.contentSize.width = value
+        return self
+    }
     @discardableResult
     public func contentWidth(_ value: RZProtoValue) -> Self{
         value.setValueIn(view, 6) { ($0 as? UIScrollView)?.contentSize.width = value.getValue($0.frame) }
         return self
     }
     
+    @discardableResult
+    public func contentHeight(_ value: CGFloat) -> Self{
+        view.contentSize.height = value
+        return self
+    }
     @discardableResult
     public func contentHeight(_ value: RZProtoValue) -> Self{
         value.setValueIn(view, 7) { ($0 as? UIScrollView)?.contentSize.height = value.getValue($0.frame) }
@@ -598,4 +634,26 @@ extension RZViewBuilder where V: UIScrollView{
 }
 
 
-
+@propertyWrapper
+public class RZObservable<Value> {
+    var observeClosure: (Value)->() = {_ in}{
+        didSet{
+            observeClosure(wrappedValue)
+        }
+    }
+    
+    private var value: Value
+    public var wrappedValue: Value{
+        set(wrappedValue){
+            value = wrappedValue
+            observeClosure(wrappedValue)
+        }
+        get{
+            value
+        }
+    }
+    
+    public init(wrappedValue: Value){
+        self.value = wrappedValue
+    }
+}

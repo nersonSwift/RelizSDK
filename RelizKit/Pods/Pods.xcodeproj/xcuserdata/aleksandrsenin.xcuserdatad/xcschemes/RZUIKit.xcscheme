@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6DD9EC9C582DC5C0FE95B7247C8740D0"
-               BuildableName = "RZUIKit"
+               BuildableName = "RZUIKit.framework"
                BlueprintName = "RZUIKit"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>

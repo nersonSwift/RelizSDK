@@ -188,37 +188,33 @@ public protocol RZScreenControllerPresentingProtocol: RZScreenControllerProtocol
     
     //MARK: - iPhonePresenter
     /// `ru`: - свойство которое которое должно вернуть тип `Presenter` который будет инициализирован для версии `iPhone`
-    var iPhonePresenter: RZPresenterNoJenericProtocol.Type? { get }
+    var iPhonePresenter: RZPresenterNoJenericProtocol? { get }
     
     //MARK: - iPadPresenter
     /// `ru`: - свойство которое которое должно вернуть тип `Presenter` который будет инициализирован для версии `iPad`
-    var iPadPresenter: RZPresenterNoJenericProtocol.Type? { get }
+    var iPadPresenter: RZPresenterNoJenericProtocol? { get }
     
-    var macPresenter: RZPresenterNoJenericProtocol.Type? { get }
+    var macPresenter: RZPresenterNoJenericProtocol? { get }
 }
 
 extension RZScreenControllerPresentingProtocol{
-    public var iPhonePresenter: RZPresenterNoJenericProtocol.Type? { nil }
-    public var iPadPresenter: RZPresenterNoJenericProtocol.Type? { nil }
-    public var macPresenter: RZPresenterNoJenericProtocol.Type? { nil }
+    public var iPhonePresenter: RZPresenterNoJenericProtocol? { nil }
+    public var iPadPresenter: RZPresenterNoJenericProtocol? { nil }
+    public var macPresenter: RZPresenterNoJenericProtocol? { nil }
     
     public func setPresenter(){
         #if targetEnvironment(macCatalyst)
-            if let type = macPresenter{
-                presenter = type.init(installableScreen: self) as? Self.SPDP
-            }else{
-                presenter = SPDP.init(installableScreen: self)
+            if let macPresenter = macPresenter{
+                presenter = macPresenter as? Self.SPDP
             }
         #else
-            if UIDevice.current.userInterfaceIdiom == .pad, let type = iPadPresenter{
-                presenter = type.init(installableScreen: self) as? Self.SPDP
-            }else if UIDevice.current.userInterfaceIdiom == .phone, let type = iPhonePresenter{
-                presenter = type.init(installableScreen: self) as? Self.SPDP
-            }else{
-                presenter = SPDP.init(installableScreen: self)
+            if UIDevice.current.userInterfaceIdiom == .pad, let iPadPresenter = iPadPresenter{
+                presenter = iPadPresenter as? Self.SPDP
+            }else if UIDevice.current.userInterfaceIdiom == .phone, let iPhonePresenter = iPhonePresenter{
+                presenter = iPhonePresenter as? Self.SPDP
             }
         #endif
-        
+        presenter?.setInstallableScreen(self)
         if let presenter = presenter as? RZScreenModelSeterNJ{
             presenter.setModel()
         }

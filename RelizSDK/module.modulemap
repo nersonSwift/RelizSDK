@@ -1,0 +1,6 @@
+module RelizSDK {
+  umbrella header "RelizSDK.h"
+
+  export *
+  module * { export * }
+}

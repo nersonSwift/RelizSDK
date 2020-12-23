@@ -242,7 +242,7 @@ public struct RZProto {
     ///
     ///     print(view.frame.y)   // 50.0
     public var scX: RZProtoValue {
-        guard let val = frame?.width else { return RZProtoValue(.cX, view) }
+        guard let val = frame?.width else { return RZProtoValue(.scX, view) }
         return RZProtoValue(val / 2)
     }
     
@@ -267,7 +267,7 @@ public struct RZProto {
     ///
     ///     print(view.frame.x)   // 50.0
     public var scY: RZProtoValue {
-        guard let val = frame?.height else { return RZProtoValue(.cX, view) }
+        guard let val = frame?.height else { return RZProtoValue(.scX, view) }
         return RZProtoValue(val / 2)
     }
     
