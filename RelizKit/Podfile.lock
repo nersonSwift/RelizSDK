@@ -4,7 +4,7 @@ PODS:
   - RZScreensKit (1.0.2)
   - RZStoreKit (1.0):
     - SwiftyStoreKit
-  - RZUIKit (3.1):
+  - RZUIKit (3.1.2):
     - RZScreensKit
     - RZViewBuilder
   - RZViewBuilder (1.0.4):
@@ -31,7 +31,7 @@ SPEC CHECKSUMS:
   RZEvent: 1c92e370ee95c32f54e2ca4acec07d194a04b2a4
   RZScreensKit: 802485a995bc994f6df46d7a9c84816a04f82e78
   RZStoreKit: 4bf888dc6ad1f1e2c516873b7c5a324c88676813
-  RZUIKit: 12c0688e2678b8e814a49100dd5d73a4bd772f45
+  RZUIKit: 23a9300ddd54dc47c248f769abb255bcbe999069
   RZViewBuilder: 08cbfd836f293dca82f8f34b072d3e36b8771074
   SwiftyStoreKit: 6b9c08810269f030586dac1fae8e75871a82e84a
 

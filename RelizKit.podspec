@@ -30,7 +30,7 @@ Pod::Spec.new do |spec|
   
   spec.subspec 'CoreOnly' do |ss|
     ss.source_files = 'RelizKit/RelizKit/Core/RelizKit.h'
-    ss.preserve_paths = 'RelizKit/RelizKit/Core/module.modulemap'
+    #ss.preserve_paths = 'RelizKit/RelizKit/Core/module.modulemap'
     
     ss.user_target_xcconfig = {
         'HEADER_SEARCH_PATHS' => "$(inherited) ${PODS_ROOT}/RelizKit/RelizKit/RelizKit/Core"
