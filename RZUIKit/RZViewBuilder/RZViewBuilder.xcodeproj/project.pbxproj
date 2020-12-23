@@ -18,6 +18,8 @@
 		5159269925821EFC00C6596F /* RZProtoValueGoup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5159268F25821EFC00C6596F /* RZProtoValueGoup.swift */; };
 		5159269A25821EFC00C6596F /* RZProtoValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5159269025821EFC00C6596F /* RZProtoValue.swift */; };
 		5159269B25821EFC00C6596F /* RZProto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5159269125821EFC00C6596F /* RZProto.swift */; };
+		515F09B525926D690075EBA8 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F09B425926D690075EBA8 /* DictionaryExtension.swift */; };
+		515F09B825926DB90075EBA8 /* RZObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F09B725926DB90075EBA8 /* RZObservable.swift */; };
 		5B9E00D6F6D80EC76B9DD649 /* Pods_RZViewBuilder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46FC4C551146C98742646F3F /* Pods_RZViewBuilder.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +38,8 @@
 		5159268F25821EFC00C6596F /* RZProtoValueGoup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZProtoValueGoup.swift; sourceTree = "<group>"; };
 		5159269025821EFC00C6596F /* RZProtoValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZProtoValue.swift; sourceTree = "<group>"; };
 		5159269125821EFC00C6596F /* RZProto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZProto.swift; sourceTree = "<group>"; };
+		515F09B425926D690075EBA8 /* DictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
+		515F09B725926DB90075EBA8 /* RZObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZObservable.swift; sourceTree = "<group>"; };
 		975CEC1EFBB7262E5831D493 /* Pods-RZViewBuilder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RZViewBuilder.debug.xcconfig"; path = "Target Support Files/Pods-RZViewBuilder/Pods-RZViewBuilder.debug.xcconfig"; sourceTree = "<group>"; };
 		C9D2F32E70B2334C688C4B03 /* Pods-RZViewBuilder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RZViewBuilder.release.xcconfig"; path = "Target Support Files/Pods-RZViewBuilder/Pods-RZViewBuilder.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,6 +80,7 @@
 				5159268625821EFC00C6596F /* Helpers */,
 				5159268C25821EFC00C6596F /* RZProto */,
 				5159268B25821EFC00C6596F /* RZViewBuilder.swift */,
+				515F09B725926DB90075EBA8 /* RZObservable.swift */,
 				5159267C25821E8200C6596F /* RZViewBuilder.h */,
 				5159267D25821E8200C6596F /* Info.plist */,
 			);
@@ -89,6 +94,7 @@
 				5159268825821EFC00C6596F /* Operators.swift */,
 				5159268925821EFC00C6596F /* RZLabelSizeController.swift */,
 				5159268A25821EFC00C6596F /* UIControlExtension.swift */,
+				515F09B425926D690075EBA8 /* DictionaryExtension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -111,7 +117,6 @@
 				975CEC1EFBB7262E5831D493 /* Pods-RZViewBuilder.debug.xcconfig */,
 				C9D2F32E70B2334C688C4B03 /* Pods-RZViewBuilder.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -233,6 +238,8 @@
 				5159269B25821EFC00C6596F /* RZProto.swift in Sources */,
 				5159269425821EFC00C6596F /* RZLabelSizeController.swift in Sources */,
 				5159269625821EFC00C6596F /* RZViewBuilder.swift in Sources */,
+				515F09B525926D690075EBA8 /* DictionaryExtension.swift in Sources */,
+				515F09B825926DB90075EBA8 /* RZObservable.swift in Sources */,
 				5159269A25821EFC00C6596F /* RZProtoValue.swift in Sources */,
 				5159269225821EFC00C6596F /* RZImageSeter.swift in Sources */,
 				5159269325821EFC00C6596F /* Operators.swift in Sources */,
