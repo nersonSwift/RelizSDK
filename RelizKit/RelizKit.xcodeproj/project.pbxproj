@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3F0E8BB5AF73AD0CDB6C8083 /* Pods_RelizKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 176A6CB99712F19AB31090C2 /* Pods_RelizKit.framework */; };
 		511D99B825373CB800E67C68 /* RelizKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 511D99B625373CB800E67C68 /* RelizKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		515F09C425934DBD0075EBA8 /* RZOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F09C325934DBD0075EBA8 /* RZOperators.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -16,6 +17,7 @@
 		511D99B325373CB800E67C68 /* RelizKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RelizKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		511D99B625373CB800E67C68 /* RelizKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RelizKit.h; sourceTree = "<group>"; };
 		511D99B725373CB800E67C68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		515F09C325934DBD0075EBA8 /* RZOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZOperators.swift; sourceTree = "<group>"; };
 		51E1428D257FF88500333C01 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		D6DD68D101C7E9BE53A0FD75 /* Pods-RelizKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RelizKit.release.xcconfig"; path = "Target Support Files/Pods-RelizKit/Pods-RelizKit.release.xcconfig"; sourceTree = "<group>"; };
 		E9DE1ABDB292A00DB7EE9F98 /* Pods-RelizKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RelizKit.debug.xcconfig"; path = "Target Support Files/Pods-RelizKit/Pods-RelizKit.debug.xcconfig"; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 		51EA4BC7253753DF0040BEBC /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				515F09C325934DBD0075EBA8 /* RZOperators.swift */,
 				511D99B625373CB800E67C68 /* RelizKit.h */,
 				51E1428D257FF88500333C01 /* module.modulemap */,
 			);
@@ -129,7 +132,7 @@
 				TargetAttributes = {
 					511D99B225373CB800E67C68 = {
 						CreatedOnToolsVersion = 12.0.1;
-						LastSwiftMigration = 1200;
+						LastSwiftMigration = 1220;
 					};
 				};
 			};
@@ -191,6 +194,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				515F09C425934DBD0075EBA8 /* RZOperators.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
