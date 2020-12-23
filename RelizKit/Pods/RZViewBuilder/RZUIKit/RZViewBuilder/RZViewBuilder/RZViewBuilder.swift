@@ -91,6 +91,12 @@ public class RZViewBuilder<V: UIView>{
         view.layer.cornerRadius = value
         return self
     }
+    @discardableResult
+    public func cornerRadius(_ value: RZObservable<CGFloat>) -> Self{
+        value.observeClosure = {[weak view] in view?+>.cornerRadius($0)}
+        return self
+    }
+    
     
     /// `RU: - `
     /// Устанавливает радиус скругления редактироемому view
@@ -100,6 +106,11 @@ public class RZViewBuilder<V: UIView>{
     @discardableResult
     public func cornerRadius(_ value: RZProtoValue) -> Self{
         value.setValueIn(view, 1) { $0.layer.cornerRadius = value.getValue($0.frame) }
+        return self
+    }
+    @discardableResult
+    public func cornerRadius(_ value: RZObservable<RZProtoValue>) -> Self{
+        value.observeClosure = {[weak view] in view?+>.cornerRadius($0)}
         return self
     }
     
@@ -142,9 +153,11 @@ public class RZViewBuilder<V: UIView>{
     /// - Parameter value
     /// view используемое как маска
     @discardableResult
-    public func mask(_ value: UIView, _ size: RZProtoSize? = nil) -> Self{
-        let size = size ?? RZProtoSize(width: view|*.w, height: view|*.h)
-        value+>.size(size).x(view|*.scX, .center).y(view|*.scY, .center)
+    public func mask(_ value: UIView) -> Self{
+        if value.frame.size == .zero{
+            value+>.size(RZProtoSize(width: view|*.w, height: view|*.h))
+        }
+        value+>.x(view|*.scX, .center).y(view|*.scY, .center)
         view.mask = value
         return self
     }
@@ -167,6 +180,11 @@ extension RZViewBuilder{
     public func frame(_ value: CGRect, _ type: PointType = .topLeft) -> Self {
         return point(value.origin).size(value.size)
     }
+    @discardableResult
+    public func frame(_ value: RZObservable<CGRect>, _ type: PointType = .topLeft) -> Self{
+        value.observeClosure = {[weak view] in view?+>.frame($0, type)}
+        return self
+    }
     
     /// `RU: - `
     /// Устанавливает frame view
@@ -180,6 +198,11 @@ extension RZViewBuilder{
     public func frame(_ value: RZProtoFrame, _ type: PointType = .topLeft) -> Self {
         return point(value.origin).size(value.size)
     }
+    @discardableResult
+    public func frame(_ value: RZObservable<RZProtoFrame>, _ type: PointType = .topLeft) -> Self{
+        value.observeClosure = {[weak view] in view?+>.frame($0, type)}
+        return self
+    }
     
     //MARK: - size
     /// `RU: - `
@@ -191,6 +214,11 @@ extension RZViewBuilder{
     public func size(_ value: CGSize) -> Self{
         return width(value.width).height(value.height)
     }
+    @discardableResult
+    public func size(_ value: RZObservable<CGSize>) -> Self{
+        value.observeClosure = {[weak view] in view?+>.size($0)}
+        return self
+    }
     
     /// `RU: - `
     /// Устанавливает size view
@@ -200,6 +228,11 @@ extension RZViewBuilder{
     @discardableResult
     public func size(_ value: RZProtoSize) -> Self{
         return width(value.width).height(value.height)
+    }
+    @discardableResult
+    public func size(_ value: RZObservable<RZProtoSize>) -> Self{
+        value.observeClosure = {[weak view] in view?+>.size($0)}
+        return self
     }
     
     public enum PointType: String{
@@ -229,6 +262,11 @@ extension RZViewBuilder{
             case .downRight: return x(value.x, .right) .y(value.y, .down)
         }
     }
+    @discardableResult
+    public func point(_ value: RZObservable<CGPoint>, _ type: PointType = .topLeft) -> Self{
+        value.observeClosure = {[weak view] in view?+>.point($0, type)}
+        return self
+    }
     
     /// `RU: - `
     /// Устанавливает point view
@@ -248,6 +286,11 @@ extension RZViewBuilder{
             case .downRight: return x(value.x, .right) .y(value.y, .down)
         }
     }
+    @discardableResult
+    public func point(_ value: RZObservable<RZProtoPoint>, _ type: PointType = .topLeft) -> Self{
+        value.observeClosure = {[weak view] in view?+>.point($0, type)}
+        return self
+    }
     
     //MARK: - point
     /// `RU: - `
@@ -259,6 +302,11 @@ extension RZViewBuilder{
     public func width(_ value: CGFloat) -> Self{
         view.frame.size.width = value
         RZLabelSizeController.modUpdate(view)
+        return self
+    }
+    @discardableResult
+    public func width(_ value: RZObservable<CGFloat>) -> Self{
+        value.observeClosure = {[weak view] in view?+>.width($0)}
         return self
     }
     
@@ -273,6 +321,11 @@ extension RZViewBuilder{
         value.setValueIn(view, 2) { $0.frame.size.width = value.getValue($0.frame); RZLabelSizeController.modUpdate($0) }
         return self
     }
+    @discardableResult
+    public func width(_ value: RZObservable<RZProtoValue>) -> Self{
+        value.observeClosure = {[weak view] in view?+>.width($0)}
+        return self
+    }
     
     //MARK: - height
     /// `RU: - `
@@ -285,6 +338,11 @@ extension RZViewBuilder{
         view.frame.size.height = value
         return self
     }
+    @discardableResult
+    public func height(_ value: RZObservable<CGFloat>) -> Self{
+        value.observeClosure = {[weak view] in view?+>.height($0)}
+        return self
+    }
     
     /// `RU: - `
     /// Устанавливает высоту view
@@ -294,6 +352,11 @@ extension RZViewBuilder{
     @discardableResult
     public func height(_ value: RZProtoValue) -> Self{
         value.setValueIn(view, 3) { $0.frame.size.height = value.getValue($0.frame) }
+        return self
+    }
+    @discardableResult
+    public func height(_ value: RZObservable<RZProtoValue>) -> Self{
+        value.observeClosure = {[weak view] in view?+>.height($0)}
         return self
     }
     
@@ -626,6 +689,7 @@ extension RZViewBuilder where V: UIScrollView{
         view.contentSize.height = value
         return self
     }
+    
     @discardableResult
     public func contentHeight(_ value: RZProtoValue) -> Self{
         value.setValueIn(view, 7) { ($0 as? UIScrollView)?.contentSize.height = value.getValue($0.frame) }
@@ -634,26 +698,4 @@ extension RZViewBuilder where V: UIScrollView{
 }
 
 
-@propertyWrapper
-public class RZObservable<Value> {
-    var observeClosure: (Value)->() = {_ in}{
-        didSet{
-            observeClosure(wrappedValue)
-        }
-    }
-    
-    private var value: Value
-    public var wrappedValue: Value{
-        set(wrappedValue){
-            value = wrappedValue
-            observeClosure(wrappedValue)
-        }
-        get{
-            value
-        }
-    }
-    
-    public init(wrappedValue: Value){
-        self.value = wrappedValue
-    }
-}
+
