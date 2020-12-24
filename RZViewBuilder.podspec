@@ -2,7 +2,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "RZViewBuilder"
-  spec.version      = "1.0.5"
+  spec.version      = "1.0.6"
   spec.summary      = "Small example to test code sharing."
   spec.description  = "Small example to test code sharing via cocoapods."	
   
@@ -10,8 +10,6 @@ Pod::Spec.new do |spec|
 
   spec.license      = "MIT"
   
-
- 
 
   spec.author       = { 
 	"Angel-senpai" => "daniil.murygin68@gmail.com", 
@@ -25,12 +23,7 @@ Pod::Spec.new do |spec|
 
   spec.source_files = "RZUIKit/RZViewBuilder/RZViewBuilder/**/*"
   spec.exclude_files = "RZUIKit/RZViewBuilder/RZViewBuilder/**/*.plist"
-  spec.preserve_paths = 'RZUIKit/RZViewBuilder/RZViewBuilder/module.modulemap'
     
-  spec.user_target_xcconfig = {
-      'HEADER_SEARCH_PATHS' => "$(inherited) ${PODS_ROOT}/RZViewBuilder/RZUIKit/RZViewBuilder/RZViewBuilder"
-  }
-
   spec.dependency 'RZDarkModeKit'
   spec.swift_version = '5.3'
   spec.ios.deployment_target  = '13.0'
