@@ -7,10 +7,13 @@
 
 import UIKit
 
-
 extension UIColor{
     public func dark(_ color: UIColor) -> UIColor {
         let colorL = UIColor { sdf -> UIColor in
+            if RZDarkModeKit.last != sdf.userInterfaceStyle {
+                RZDarkModeKit.last = sdf.userInterfaceStyle
+                RZDarkModeKit.updateColorise()
+            }
             if sdf.isDarkMode{
                 return color
             }else{
@@ -38,7 +41,7 @@ public extension UITraitCollection {
 }
 
 public class RZDarkModeKit {
-    
+    static var last: UIUserInterfaceStyle?
     
     public enum ColorMod {
         public enum ModState{
@@ -63,6 +66,7 @@ public class RZDarkModeKit {
                     darkMod = false
                 }
             }
+            RZDarkModeKit.updateColorise()
         }
         get{
             return autoMod ? .auto : .mod(darkMod ? .dark : .light)
@@ -99,29 +103,8 @@ public class RZDarkModeKit {
         if closer() != nil{
             coloriseClosure.append(closer)
         }
-        
-        if traidObserver == nil{
-            traidObserver = TraidObserver()
-        }
-    }
-    
-    private static var traidObserver: TraidObserver?{
-        didSet{
-            #if UIApplication
-            if let traidObserver = traidObserver{
-                UIApplication.shared.windows.first?.rootViewController?.view.addSubview(traidObserver)
-            }
-            #endif
-        }
     }
 }
-
-class TraidObserver: UIView{
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        RZDarkModeKit.updateColorise()
-    }
-}
-
 
 infix operator <-
 public func <-<T: AnyObject>(object: T, closure: @escaping (T)->()){
