@@ -12,76 +12,76 @@ import UIKit
 // MARK: - InstallableScreenProtocol
 
 
-class ScreensInstaller{
+class UIPacInstaller{
     static var inAnimation: Bool = false
-    static var needOpen: RZScreenControllerProtocol?
+    static var needOpen: RZUIPacControllerNJProtocol?
     
     //MARK: - in
-    static func installScreen(in viewController: UIViewController,
+    static func installUIPacC(in viewController: UIViewController,
                               view: UIView? = nil,
-                              installingScreen: RZScreenControllerProtocol,
+                              installingUIPacC: RZUIPacControllerNJProtocol,
                               animation: RZTransitionAnimation? = nil) -> Bool{
-        if viewController == installingScreen{return false}
-        setChild(viewController, view, installingScreen)
-        started(installingScreen)
-        installingScreen.open()
+        if viewController == installingUIPacC{return false}
+        setChild(viewController, view, installingUIPacC)
+        started(installingUIPacC)
+        installingUIPacC.open()
         
         
-        installingScreen.inAnim = true
+        installingUIPacC.inAnim = true
         inAnimation = true
         
         let end = {
-            installingScreen.inAnim = false
+            installingUIPacC.inAnim = false
             self.inAnimation = false
-            installingScreen.completedOpen()
+            installingUIPacC.completedOpen()
         }
         
-        animation?.funcAnim(nil, installingScreen.rotater, installingScreen.rotater?.superview ?? UIView(), end) ?? end()
+        animation?.funcAnim(nil, installingUIPacC.rotater, installingUIPacC.rotater?.superview ?? UIView(), end) ?? end()
         return true
     }
     
     //MARK: - instead
-    static func installScreen(instead screen: RZScreenControllerProtocol,
-                              installingScreen: RZScreenControllerProtocol? = nil,
+    static func installUIPacC(instead uiPacC: RZUIPacControllerNJProtocol,
+                              installingUIPacC: RZUIPacControllerNJProtocol? = nil,
                               archive: Bool = false,
-                              pastScreen: RZScreenControllerProtocol? = nil,
+                              pastUIPacC: RZUIPacControllerNJProtocol? = nil,
                               saveTranslite: Bool = true,
                               setLine: Bool = true,
                               animation: RZTransitionAnimation? = nil) -> Bool{
         
-        if saveTranslite && (inAnimation || (installingScreen?.inAnim == true)){
+        if saveTranslite && (inAnimation || (installingUIPacC?.inAnim == true)){
             return false
         }
         
         if archive{
-            var pastScreen = pastScreen
-            if pastScreen == nil{
-                pastScreen = screen
+            var pastUIPacC = pastUIPacC
+            if pastUIPacC == nil{
+                pastUIPacC = uiPacC
             }
-            installingScreen?.pastScreen = pastScreen
+            installingUIPacC?.pastUIPacC = pastUIPacC
         }
-        screen.close()
-        if let installingScreen = installingScreen, let parent = screen.parent{
-            if screen == installingScreen {return false}
-            if let selectLine = screen.screenLine, setLine{ RZLineController.setControllerInLine(selectLine, installingScreen) }
-            setChild(parent, screen.rotater?.superview, installingScreen)
-            started(installingScreen)
-            installingScreen.open()
+        uiPacC.close()
+        if let installingUIPacC = installingUIPacC, let parent = uiPacC.parent{
+            if uiPacC == installingUIPacC {return false}
+            if let selectLine = uiPacC.uiPacLine, setLine{ RZLineController.setControllerInLine(selectLine, installingUIPacC) }
+            setChild(parent, uiPacC.rotater?.superview, installingUIPacC)
+            started(installingUIPacC)
+            installingUIPacC.open()
         }
         
-        installingScreen?.inAnim = true
+        installingUIPacC?.inAnim = true
         inAnimation = true
         
         let end = {
-            installingScreen?.inAnim = false
+            installingUIPacC?.inAnim = false
             self.inAnimation = false
-            installingScreen?.completedOpen()
-            screen.completedClose()
+            installingUIPacC?.completedOpen()
+            uiPacC.completedClose()
             
-            removeChild(screen)
+            removeChild(uiPacC)
         }
         
-        animation?.funcAnim(screen.rotater, installingScreen?.rotater, screen.rotater?.superview ?? UIView(), end) ?? end()
+        animation?.funcAnim(uiPacC.rotater, installingUIPacC?.rotater, uiPacC.rotater?.superview ?? UIView(), end) ?? end()
         
         return true
     }
@@ -106,44 +106,43 @@ class ScreensInstaller{
                unInstallingPopUpView.removeFromSuperview()
                backView.removeFromSuperview()
            })
-         
        }
     }
     
-    private static func setChild(_ viewController: UIViewController, _ view: UIView?, _ screen: RZScreenControllerProtocol){
+    private static func setChild(_ viewController: UIViewController, _ view: UIView?, _ uiPacC: RZUIPacControllerNJProtocol){
         let view: UIView = view ?? viewController.view
-        screen.view.frame = view.bounds
-        view.addSubview(screen.view)
+        uiPacC.view.frame = view.bounds
+        view.addSubview(uiPacC.view)
         
         
-        viewController.addChild(screen)
-        screen.didMove(toParent: viewController)
+        viewController.addChild(uiPacC)
+        uiPacC.didMove(toParent: viewController)
         
-        screen.rotater = RZRotater(viewController: screen)
-        screen.rootViewController?.roatateCild()
+        uiPacC.rotater = RZRotater(viewController: uiPacC)
+        uiPacC.rootViewController?.roatateCild()
     }
     
     private static func removeChild(_ viewController: UIViewController){
         viewController.willMove(toParent: nil)
         viewController.removeFromParent()
         viewController.view.removeFromSuperview()
-        (viewController as? RZScreenController)?.rotater?.removeFromSuperview()
+        (viewController as? RZUIPacControllerNJProtocol)?.rotater?.removeFromSuperview()
     }
     
-    private static func started(_ screen: RZScreenControllerProtocol){
+    private static func started(_ uiPacC: RZUIPacControllerNJProtocol){
         
-        if !screen.starting{
-            if let delegating = screen as? RZSetPresenterProtocol{
-                delegating.setPresenter()
+        if !uiPacC.starting{
+            if let delegating = uiPacC as? RZSetUIPacArchitectProtocol{
+                delegating.setArchitect()
             }
             
-            screen.start()
-            screen.starting = true
+            uiPacC.start()
+            uiPacC.starting = true
         }
     }
     
-    static func prepare(_ transitionType: RZTransition.TransitionType, _ screen: UIViewController) -> RZTransition{
-        return RZTransition(transitionType, screen)
+    static func prepare(_ transitionType: RZTransition.TransitionType, _ uiPacC: UIViewController) -> RZTransition{
+        return RZTransition(transitionType, uiPacC)
     }
     
     static func prepare(_ transitionType: RZTransition.TransitionType, _ line: String) -> RZTransition{
@@ -163,11 +162,11 @@ public class RZTransition{
     
     private var transitionType: TransitionType
     
-    private weak var _screen: UIViewController?
+    private weak var _uiPacC: UIViewController?
     private weak var _view: UIView?
     
-    private var _pastScreen: RZScreenControllerProtocol?
-    private var _installingScreen: RZScreenControllerProtocol?
+    private var _pastUIPacC: RZUIPacControllerNJProtocol?
+    private var _installingUIPacC: RZUIPacControllerNJProtocol?
     private var _archive: Bool = false
     private var _saveTranslite: Bool = true
     
@@ -179,16 +178,16 @@ public class RZTransition{
     private var _popUp: RZPopUpViewProtocol?
     
     
-    public init(_ transitionType: TransitionType, _ screen: UIViewController? = nil){
+    public init(_ transitionType: TransitionType, _ uiPacC: UIViewController? = nil){
         self.transitionType = transitionType
-        _screen = screen
+        _uiPacC = uiPacC
     }
     
     public convenience init(_ transitionType: TransitionType, _ line: String){
         self.init(transitionType, RZLineController.getControllerInLine(line)!)
     }
     
-    public convenience init(_ transitionType: TransitionType, _ line: RZScreenLines){
+    public convenience init(_ transitionType: TransitionType, _ line: RZUIPacLines){
         self.init(transitionType, line.id)
     }
     
@@ -200,33 +199,32 @@ public class RZTransition{
     
     @discardableResult
     public func back() -> RZTransition{
-        return screen((_screen as? RZScreenController)?.pastScreen)
+        return uiPacC((_uiPacC as? RZUIPacControllerNJProtocol)?.pastUIPacC)
     }
     
     @discardableResult
-    public func screen(_ screen: RZScreenControllerProtocol?) -> RZTransition {
-        _installingScreen = screen
+    public func uiPacC(_ uiPacC: RZUIPacControllerNJProtocol?) -> RZTransition {
+        _installingUIPacC = uiPacC
         return self
     }
     
     @discardableResult
-    public func popUp(_ screen: RZPopUpViewProtocol?) -> RZTransition {
-        _popUp = screen
+    public func popUp(_ uiPacC: RZPopUpViewProtocol?) -> RZTransition {
+        _popUp = uiPacC
         return self
     }
     
     @discardableResult
     public func line(_ string: String) -> RZTransition {
-        
         _selectLine = string
-        _installingScreen = RZLineController.getControllerInLine(string) ?? _installingScreen
+        _installingUIPacC = RZLineController.getControllerInLine(string) ?? _installingUIPacC
         _setLine = false
         return self
     }
     
     @discardableResult
-    public func line(_ screenLine: RZScreenLines) -> RZTransition {
-        return line(screenLine.id)
+    public func line(_ uiPacCLine: RZUIPacLines) -> RZTransition {
+        return line(uiPacCLine.id)
     }
     
     @discardableResult
@@ -236,9 +234,9 @@ public class RZTransition{
     }
     
     @discardableResult
-    public func archive(_ pastScreen: RZScreenControllerProtocol? = nil) -> RZTransition {
+    public func archive(_ pastUIPacC: RZUIPacControllerNJProtocol? = nil) -> RZTransition {
         _archive = true
-        _pastScreen = pastScreen
+        _pastUIPacC = pastUIPacC
         return self
     }
     
@@ -268,36 +266,36 @@ public class RZTransition{
     public func transit() -> Bool{
         switch transitionType {
         case .In:
-            guard let _screen = _screen else {return false}
-            guard let _installingScreen = _installingScreen else {return false}
-            return ScreensInstaller.installScreen(in: _screen, view: _view, installingScreen: _installingScreen, animation: _animationO)
+            guard let _uiPacC = _uiPacC else {return false}
+            guard let _installingUIPacC = _installingUIPacC else {return false}
+            return UIPacInstaller.installUIPacC(in: _uiPacC, view: _view, installingUIPacC: _installingUIPacC, animation: _animationO)
         case .Instead:
-            guard let _screen = _screen as? RZScreenControllerProtocol else {return false}
-            let test = ScreensInstaller.installScreen(instead: _screen,
-                                                      installingScreen: _installingScreen,
-                                                      archive: _archive,
-                                                      pastScreen: _pastScreen,
-                                                      saveTranslite: _saveTranslite,
-                                                      setLine: _setLine,
-                                                      animation: _animationO)
+            guard let _uiPacC = _uiPacC as? RZUIPacControllerNJProtocol else {return false}
+            let test = UIPacInstaller.installUIPacC(instead: _uiPacC,
+                                                    installingUIPacC: _installingUIPacC,
+                                                    archive: _archive,
+                                                    pastUIPacC: _pastUIPacC,
+                                                    saveTranslite: _saveTranslite,
+                                                    setLine: _setLine,
+                                                    animation: _animationO)
             
             return test
         case .PopUp:
-            guard let _screen = _view else { return false}
+            guard let _view = _view else { return false}
             guard let _popUp = _popUp else { return false }
-            ScreensInstaller.installPopUp(in: _screen,
-                                          installingPopUpView: _popUp,
-                                          anim: _animationO ?? .shiftLeftPopUp,
-                                          anim: _animationC ?? .shiftRightPopUp)
+            UIPacInstaller.installPopUp(in: _view,
+                                        installingPopUpView: _popUp,
+                                        anim: _animationO ?? .shiftLeftPopUp,
+                                        anim: _animationC ?? .shiftRightPopUp)
             return true
         #if targetEnvironment(macCatalyst)
         case .Window:
-            guard let _installingScreen = _installingScreen else {return false}
-            let screenLine = _installingScreen.screenLine ?? _selectLine ?? ""
-            if screenLine == ""{
-                _installingScreen.screenLine = "window"
+            guard let _installingUIPacC = _installingUIPacC else {return false}
+            let uiPacLine = _installingUIPacC.uiPacLine ?? _selectLine ?? ""
+            if uiPacLine == ""{
+                _installingUIPacC.uiPacLine = "window"
             }
-            ScreensInstaller.needOpen = _installingScreen
+            UIPacInstaller.needOpen = _installingUIPacC
             
             UIApplication.shared.requestSceneSessionActivation(nil, userActivity: nil, options: nil, errorHandler: nil)
             
@@ -308,6 +306,7 @@ public class RZTransition{
     }
     
 }
+
 
 
 

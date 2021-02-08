@@ -11,7 +11,7 @@ import SwiftUI
 public typealias RZRouter = RZRouterProtocol & ObservableObject
 
 public protocol RZRouterNJProtocol: RZControlledNJProtocol{
-    var screenType: RZAnyScreen.Type? { get }
+    var rzViewType: RZAnyView.Type? { get }
 }
 public protocol RZRouterProtocol: RZRouterNJProtocol, RZControlledProtocol{}
 

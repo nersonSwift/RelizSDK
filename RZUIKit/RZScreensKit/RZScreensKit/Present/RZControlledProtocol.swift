@@ -9,49 +9,52 @@ import Foundation
 
 
 public protocol RZControlledNJProtocol{
-    var screenController: RZScreenControllerProtocol? {get set}
+    var uiPacController: RZUIPacControllerNJProtocol? {get set}
 }
 
 extension RZControlledNJProtocol{
     public var view: UIView{
-        screenController?.view ?? UIView()
+        uiPacController?.view ?? UIView()
     }
     
-    public var screenController: RZScreenControllerProtocol?{
-        set(screenController){
-            screenControllerInterfase.screenController = screenController
+    public var uiPacController: RZUIPacControllerNJProtocol?{
+        set(uiPacC){
+            uiPacControllerInterfase.uiPacC = uiPacC
         }
         get{
-            screenControllerInterfase.screenController
+            uiPacControllerInterfase.uiPacC
         }
     }
     private var key: UnsafeRawPointer? {
-        return UnsafeRawPointer(bitPattern: 16)
+        return UnsafeRawPointer(bitPattern: "\(Self.self)".hashValue)
     }
     
-    var screenControllerInterfase: PresenterInterfase {
-        if let key = key, let presenterInterfase = objc_getAssociatedObject(self, key) as? PresenterInterfase{
-            return presenterInterfase
+    var uiPacControllerInterfase: RZUIPacArchitectInterfase {
+        if let key = key, let architectInterfase = objc_getAssociatedObject(self, key) as? RZUIPacArchitectInterfase{
+            return architectInterfase
         }
-        let presenterInterfase = PresenterInterfase()
+        let architectInterfase = RZUIPacArchitectInterfase()
         
         if let key = key{
-            objc_setAssociatedObject(self, key, presenterInterfase, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
+            objc_setAssociatedObject(self, key, architectInterfase, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
         }
-        return presenterInterfase
+        return architectInterfase
     }
     
-    public mutating func setInstallableScreen(_ installableScreen: RZScreenControllerProtocol){
-        self.screenController = installableScreen
+    public mutating func setUIPacC(_ uiPacC: RZUIPacControllerNJProtocol){
+        self.uiPacController = uiPacC
     }
 }
 
 
 public protocol RZControlledProtocol: RZControlledNJProtocol{
-    associatedtype Controller: RZScreenControllerProtocol
+    associatedtype Controller: RZUIPacControllerNJProtocol
     var controller: Controller? { get }
+}
+extension RZControlledProtocol where Controller: RZUIPacControllerModeledProtocol{
+    public var model: Controller.UIPacModel! { controller?.model }
 }
 
 extension RZControlledProtocol {
-    public var controller: Controller?{ screenController as? Controller }
+    public var controller: Controller?{ uiPacController as? Controller }
 }

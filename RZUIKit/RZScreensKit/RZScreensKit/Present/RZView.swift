@@ -8,28 +8,28 @@
 
 import SwiftUI
 
-public protocol RZAnyScreen{
+public protocol RZAnyView{
     func testSelf(rowRouter: RZRouterNJProtocol) -> AnyView?
     init()
 }
-extension RZAnyScreen{
+extension RZAnyView{
     public func testSelf(rowRouter: RZRouterNJProtocol) -> AnyView?{
         return nil
     }
 }
-extension RZAnyScreen where Self: RZScreenUI{
+extension RZAnyView where Self: RZView{
     public func testSelf(rowRouter: RZRouterNJProtocol) -> AnyView?{
         let ro = rowRouter as! R
         return AnyView(self.environmentObject(ro))
     }
 }
 
-public protocol RZScreenUI: View, RZAnyScreen{
+public protocol RZView: View, RZAnyView{
     associatedtype R: RZRouter
     var router: R { get }
     var controller: R.Controller? { get }
 }
 
-extension RZScreenUI{
+extension RZView{
     public var controller: R.Controller? { router.controller }
 }

@@ -9,9 +9,9 @@
 import SwiftUI
 
 
-public typealias RZScreenControllerUI = RZUIHostingController & RZScreenControllerProtocol & RZScreenControllerUIProtocol
+public typealias RZUIPacControllerUI = RZUIHostingController & RZUIPacControllerNJProtocol & RZUIPacControllerUIProtocol
 
-public protocol RZScreenControllerUIProtocol: RZScreenControllerProtocol, RZSetPresenterProtocol{
+public protocol RZUIPacControllerUIProtocol: RZUIPacControllerNJProtocol, RZSetUIPacArchitectProtocol{
     associatedtype R: RZRouter
     var router: R? {get set}
     var iPhoneRouter: RZRouterNJProtocol? { get }
@@ -19,12 +19,12 @@ public protocol RZScreenControllerUIProtocol: RZScreenControllerProtocol, RZSetP
     var macRouter: RZRouterNJProtocol? { get }
 }
 
-extension RZScreenControllerUIProtocol{
+extension RZUIPacControllerUIProtocol{
     public var iPhoneRouter: RZRouterNJProtocol? { nil }
     public var iPadRouter: RZRouterNJProtocol? { nil }
     public var macRouter: RZRouterNJProtocol? { nil }
     
-    public func setPresenter(){
+    public func setArchitect(){
         #if targetEnvironment(macCatalyst)
             if let macRouter = macRouter{
                 router = macRouter as? Self.R
@@ -36,9 +36,9 @@ extension RZScreenControllerUIProtocol{
                 router = iPhoneRouter as? Self.R
             }
         #endif
-        router?.setInstallableScreen(self)
-        if let hostingScreen = self as? UIHostingController<AnyView>, let router = router{
-            hostingScreen.rootView = (router.screenType?.init().testSelf(rowRouter: router))!
+        router?.setUIPacC(self)
+        if let hostingController = self as? UIHostingController<AnyView>, let router = router{
+            hostingController.rootView = (router.rzViewType?.init().testSelf(rowRouter: router))!
         }
     }
 }

@@ -496,13 +496,13 @@ extension RZViewBuilder where V: UILabel{
     /// - Parameter value
     /// Устанавливаемый текст
     @discardableResult
-    public func text(_ value: String) -> Self{
+    public func text(_ value: String?) -> Self{
         view.text = value
         RZLabelSizeController.modUpdate(view)
         return self
     }
     @discardableResult
-    public func text(_ value: RZObservable<String>?) -> Self{
+    public func text(_ value: RZObservable<String?>?) -> Self{
         value?.add {[weak view] in view?+>.text($0)}
         return self
     }
@@ -530,7 +530,7 @@ extension RZViewBuilder where V: UILabel{
     /// - Parameter attributes
     /// Добавляемые атрибуты
     @discardableResult
-    public func font(_ value: UIFont, _ attributes: [NSAttributedString.Key:Any] = [:]) -> Self{
+    public func font(_ value: UIFont, _ attributes: [NSAttributedString.Key: Any] = [:]) -> Self{
         if view.text == nil || view.text == "" { view.text = " " }
         view.font = value
         let textAlignment = view.textAlignment
@@ -545,6 +545,12 @@ extension RZViewBuilder where V: UILabel{
         view.textAlignment = textAlignment
         
         RZLabelSizeController.setMod(view, .font(view.font))
+        return self
+    }
+    
+    @discardableResult
+    public func font(_ value: RZObservable<UIFont>?, _ attributes: [NSAttributedString.Key: Any] = [:]) -> Self{
+        value?.add {[weak view] in view?+>.font($0, attributes)}
         return self
     }
     

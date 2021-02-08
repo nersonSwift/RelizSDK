@@ -10,7 +10,7 @@ import UIKit
 
 //MARK: - ScreenControllerProtocol
 /// `ru`: - протокол который используется для создания и переходов контроллеров
-public protocol RZScreenControllerProtocol: UIViewController{
+public protocol RZUIPacControllerNJProtocol: UIViewController{
     
     //MARK: - propertes
     //MARK: - starting
@@ -23,7 +23,7 @@ public protocol RZScreenControllerProtocol: UIViewController{
     
     //MARK: - screenLine
     /// `ru`: - данное свойство отображает идетификатор линии в которой находится
-    var screenLine: String? { get set }
+    var uiPacLine: String? { get set }
     
     //MARK: - isHorizontal
     /// `ru`: - данное свойство отображает ориентацию контроллера
@@ -35,7 +35,7 @@ public protocol RZScreenControllerProtocol: UIViewController{
     
     //MARK: - pastScreen
      /// `ru`: - контроллер который архивируется для обратного перехода
-    var pastScreen: RZScreenControllerProtocol? { get set }
+    var pastUIPacC: RZUIPacControllerNJProtocol? { get set }
     
     
     //MARK: - funcs
@@ -66,17 +66,17 @@ public protocol RZScreenControllerProtocol: UIViewController{
     func resize()
 }
 
-class ScreenControllerInterfase{
+class RZUIPacControllerInterfase{
     var rotater: RZRotater?
     var isHorizontal: Bool = false
     
     var starting: Bool = false
     var inAnim = false
-    var screenLine: String?
-    var pastScreen: RZScreenControllerProtocol?
+    var uiPacLine: String?
+    var pastUIPacC: RZUIPacControllerNJProtocol?
 }
 
-extension RZScreenControllerProtocol{
+extension RZUIPacControllerNJProtocol{
     public func start(){}
     public func open(){}
     public func close(){}
@@ -91,64 +91,64 @@ extension RZScreenControllerProtocol{
         return UnsafeRawPointer(bitPattern: 16)
     }
     
-    private var screenControllerInterfase: ScreenControllerInterfase {
-        if let key = key, let screenControllerInterfase = objc_getAssociatedObject(self, key) as? ScreenControllerInterfase{
-            return screenControllerInterfase
+    private var uiPacControllerInterfase: RZUIPacControllerInterfase {
+        if let key = key, let uiPacControllerInterfase = objc_getAssociatedObject(self, key) as? RZUIPacControllerInterfase{
+            return uiPacControllerInterfase
         }
-        let screenControllerInterfase = ScreenControllerInterfase()
+        let uiPacControllerInterfase = RZUIPacControllerInterfase()
         
         if let key = key{
-            objc_setAssociatedObject(self, key, screenControllerInterfase, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
+            objc_setAssociatedObject(self, key, uiPacControllerInterfase, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
         }
-        return screenControllerInterfase
+        return uiPacControllerInterfase
     }
         
     public var rotater: RZRotater? {
         set(rotater){
-            screenControllerInterfase.rotater = rotater
+            uiPacControllerInterfase.rotater = rotater
         }
         get{
-            screenControllerInterfase.rotater
+            uiPacControllerInterfase.rotater
         }
     }
     public var isHorizontal: Bool {
         set(isHorizontal){
-            screenControllerInterfase.isHorizontal = isHorizontal
+            uiPacControllerInterfase.isHorizontal = isHorizontal
         }
         get{
-            screenControllerInterfase.isHorizontal
+            uiPacControllerInterfase.isHorizontal
         }
     }
     public var starting: Bool {
         set(starting){
-            screenControllerInterfase.starting = starting
+            uiPacControllerInterfase.starting = starting
         }
         get{
-            screenControllerInterfase.starting
+            uiPacControllerInterfase.starting
         }
     }
     public var inAnim: Bool {
         set(inAnim){
-            screenControllerInterfase.inAnim = inAnim
+            uiPacControllerInterfase.inAnim = inAnim
         }
         get{
-            screenControllerInterfase.inAnim
+            uiPacControllerInterfase.inAnim
         }
     }
-    public var screenLine: String? {
-        set(screenLine){
-            screenControllerInterfase.screenLine = screenLine
+    public var uiPacLine: String? {
+        set(uiPacLine){
+            uiPacControllerInterfase.uiPacLine = uiPacLine
         }
         get{
-            screenControllerInterfase.screenLine
+            uiPacControllerInterfase.uiPacLine
         }
     }
-    public var pastScreen: RZScreenControllerProtocol? {
-        set(pastScreen){
-            screenControllerInterfase.pastScreen = pastScreen
+    public var pastUIPacC: RZUIPacControllerNJProtocol? {
+        set(pastUIPacC){
+            uiPacControllerInterfase.pastUIPacC = pastUIPacC
         }
         get{
-            screenControllerInterfase.pastScreen
+            uiPacControllerInterfase.pastUIPacC
         }
     }
     
@@ -172,67 +172,84 @@ extension RZScreenControllerProtocol{
     }
 }
 
-public protocol RZSetPresenterProtocol {
-    func setPresenter()
+public protocol RZSetUIPacArchitectProtocol {
+    func setArchitect()
 }
 
 //MARK: - ScreenController
 /// `ru`: - расширение для `ScreenControllerProtocol` позволяющее делигировать ликику представления в `Presenter`
-public protocol RZScreenControllerPresentingProtocol: RZScreenControllerProtocol, RZSetPresenterProtocol{
-    associatedtype SPDP: RZPresenterNoJenericProtocol
+public protocol RZUIPacControllerPresentingProtocol: RZUIPacControllerNJProtocol, RZSetUIPacArchitectProtocol{
+    associatedtype UIPA: RZUIPacArchitectNoJenericProtocol
     
     //MARK: - propertes
     //MARK: - presenter
     /// `ru`: - свойство которое инициализируется типом указанным в классе реализующем данный протокол
-    var presenter: SPDP? { get set }
+    var architect: UIPA? { get set }
     
     //MARK: - iPhonePresenter
     /// `ru`: - свойство которое которое должно вернуть тип `Presenter` который будет инициализирован для версии `iPhone`
-    var iPhonePresenter: RZPresenterNoJenericProtocol? { get }
+    var iPhoneArchitect: RZUIPacArchitectNoJenericProtocol? { get }
     
     //MARK: - iPadPresenter
     /// `ru`: - свойство которое которое должно вернуть тип `Presenter` который будет инициализирован для версии `iPad`
-    var iPadPresenter: RZPresenterNoJenericProtocol? { get }
+    var iPadArchitect: RZUIPacArchitectNoJenericProtocol? { get }
     
-    var macPresenter: RZPresenterNoJenericProtocol? { get }
+    var macArchitect: RZUIPacArchitectNoJenericProtocol? { get }
 }
 
-extension RZScreenControllerPresentingProtocol{
-    public var iPhonePresenter: RZPresenterNoJenericProtocol? { nil }
-    public var iPadPresenter: RZPresenterNoJenericProtocol? { nil }
-    public var macPresenter: RZPresenterNoJenericProtocol? { nil }
+public class SomeUIPacArchitect: RZUIPacArchitectNoJenericProtocol{ public func create() {} }
+
+extension RZUIPacControllerPresentingProtocol{
+    public var architect: SomeUIPacArchitect?{
+        set{}
+        get{SomeUIPacArchitect()}
+    }
+    public var iPhoneArchitect: RZUIPacArchitectNoJenericProtocol? { nil }
+    public var iPadArchitect: RZUIPacArchitectNoJenericProtocol? { nil }
+    public var macArchitect: RZUIPacArchitectNoJenericProtocol? { nil }
     
-    public func setPresenter(){
+    public func setArchitect(){
         #if targetEnvironment(macCatalyst)
-            if let macPresenter = macPresenter{
-                presenter = macPresenter as? Self.SPDP
+            if let macArchitect = macArchitect{
+                architect = macArchitect as? Self.UIPA
             }
         #else
-            if UIDevice.current.userInterfaceIdiom == .pad, let iPadPresenter = iPadPresenter{
-                presenter = iPadPresenter as? Self.SPDP
-            }else if UIDevice.current.userInterfaceIdiom == .phone, let iPhonePresenter = iPhonePresenter{
-                presenter = iPhonePresenter as? Self.SPDP
+            if UIDevice.current.userInterfaceIdiom == .pad, let iPadArchitect = iPadArchitect{
+                architect = iPadArchitect as? Self.UIPA
+            }else if UIDevice.current.userInterfaceIdiom == .phone, let iPhoneArchitect = iPhoneArchitect{
+                architect = iPhoneArchitect as? Self.UIPA
             }
         #endif
-        presenter?.setInstallableScreen(self)
-        if let presenter = presenter as? RZScreenModelSeterNJ{
-            presenter.setModel()
-        }
+        architect?.setUIPacC(self)
+//        if let presenter = presenter as? RZScreenModelSeterNJ{
+//            presenter.setModel()
+//        }
     }
     
-    public func rotate(){ presenter?.rotate() }
+    public func rotate(){ architect?.rotate() }
     
-    public func resize(){ presenter?.resize() }
+    public func resize(){ architect?.resize() }
 }
 
+public struct SomeUIPacModel: RZUIPacModelProtocol {}
+public protocol RZUIPacControllerModeledProtocol: RZUIPacControllerNJProtocol{
+    associatedtype UIPacModel: RZUIPacModelProtocol
+    var model: UIPacModel {get set}
+}
 
-public typealias RZScreenController = UIViewController & RZScreenControllerProtocol
-public typealias RZScreenControllerPresenting = RZScreenController & RZScreenControllerPresentingProtocol
+extension RZUIPacControllerModeledProtocol{
+    public var model: SomeUIPacModel {
+        set{}
+        get{SomeUIPacModel()}
+    }
+}
 
-public typealias RZScreenNavigationController = UINavigationController & RZScreenControllerProtocol
-public typealias RZScreenNavigationControllerPresenting = RZScreenNavigationController & RZScreenControllerPresentingProtocol
+public typealias RZUIPacControllerProtocol = RZUIPacControllerNJProtocol &
+                                             RZUIPacControllerPresentingProtocol &
+                                             RZUIPacControllerModeledProtocol
 
-public typealias RZScreenTabBarController = UITabBarController & RZScreenControllerProtocol
-public typealias RZScreenTabBarControllerPresenting = RZScreenTabBarController & RZScreenControllerPresentingProtocol
+public typealias RZUIPacController = UIViewController & RZUIPacControllerProtocol
+public typealias RZUIPacNavigationController = UINavigationController & RZUIPacControllerProtocol
+public typealias RZUIPacTabBarController = UITabBarController & RZUIPacControllerProtocol
 
 

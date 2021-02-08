@@ -29,43 +29,6 @@ public class RZRootController: UIViewController {
         instancesClosures.append {[weak rootController] in rootController}
     }
     
-
-    
-//    public static func setupRootViewController(_ installableScreenProtocol: RZScreenControllerProtocol) -> RZRootController{
-//        return setupRootViewController(["Main": installableScreenProtocol], "Main")
-//    }
-//
-//    public static func setupRootViewController(_ screenLines: [RZLine], _ select: RZScreenLines) -> RZRootController{
-//        setupRootViewController(screenLines, select.id)
-//    }
-//
-//    public static func setupRootViewController(_ screenLines: [RZLine], _ select: String) -> RZRootController{
-//        if let rVC = ScreensInstaller.needOpen{
-//            ScreensInstaller.needOpen = nil
-//            return rVC
-//        }
-//        let rVC = RZRootController()
-//        rVC.lines = screenLines
-//        rVC.select = select
-//        return rVC
-//    }
-    
-//    public static func setupRootViewController(_ screenLines: [String: RZScreenControllerProtocol], _ select: String) -> RZRootController{
-//        var lines: [RZLine] = []
-//        screenLines.forEach(){
-//            lines.append(RZLine(id: $0.key, controller: $0.value))
-//        }
-//        return setupRootViewController(lines, select)
-//    }
-    
-//    public static func setupRootViewController(_ screenLines: [RZScreenLines: RZScreenControllerProtocol], _ select: RZScreenLines) -> RZRootController{
-//        var lines: [RZLine] = []
-//        screenLines.forEach(){
-//            lines.append(RZLine(id: $0.key, controller: $0.value))
-//        }
-//        return setupRootViewController(lines, select)
-//    }
-    
     public static func setupRootViewController(scene: UIScene?) -> UIWindow?{
         if let windowScene = scene as? UIWindowScene {
             
@@ -90,8 +53,8 @@ public class RZRootController: UIViewController {
         Self.addInstances(self)
         let plase = UIView(frame: view.bounds)
         view.addSubview(plase)
-        if let screen = ScreensInstaller.needOpen{
-            RZTransition(.In, self).view(plase).screen(screen).transit()
+        if let uiPacC = UIPacInstaller.needOpen{
+            RZTransition(.In, self).view(plase).uiPacC(uiPacC).transit()
         }else{
             RZTransition(.In, self).view(plase).line(RZLineController.rootLine).transit()
         }
@@ -108,7 +71,7 @@ public class RZRootController: UIViewController {
             orientation = RZRotater.lastOrintation
         }
         for child in children{
-            if let child = child as? RZScreenControllerProtocol{
+            if let child = child as? RZUIPacControllerNJProtocol{
                 RZRotater.resizeAllChild(parent: false,
                                          child: child,
                                          parentOrientation: orientation,
