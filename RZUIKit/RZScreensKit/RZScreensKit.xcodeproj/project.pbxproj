@@ -14,10 +14,10 @@
 		515926D12582305700C6596F /* RZRotater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515926C42582305700C6596F /* RZRotater.swift */; };
 		515926D22582305700C6596F /* RZPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515926C62582305700C6596F /* RZPopUpView.swift */; };
 		515926D32582305800C6596F /* RZUIPacController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515926C72582305700C6596F /* RZUIPacController.swift */; };
-		515926D42582305800C6596F /* RZUIPacControllerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515926C82582305700C6596F /* RZUIPacControllerUI.swift */; };
-		515926D52582305800C6596F /* RZUIPacArchitect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515926CA2582305700C6596F /* RZUIPacArchitect.swift */; };
-		515926D62582305800C6596F /* RZView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515926CB2582305700C6596F /* RZView.swift */; };
-		515926D72582305800C6596F /* RZRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515926CC2582305700C6596F /* RZRouter.swift */; };
+		515926D42582305800C6596F /* RZSUIPacController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515926C82582305700C6596F /* RZSUIPacController.swift */; };
+		515926D52582305800C6596F /* RZUIPacView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515926CA2582305700C6596F /* RZUIPacView.swift */; };
+		515926D62582305800C6596F /* RZSUIPacView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515926CB2582305700C6596F /* RZSUIPacView.swift */; };
+		515926D72582305800C6596F /* RZUIPacRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515926CC2582305700C6596F /* RZUIPacRouter.swift */; };
 		515926D82582305800C6596F /* RZRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515926CD2582305700C6596F /* RZRootController.swift */; };
 		515926D92582305800C6596F /* UIPacInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515926CE2582305700C6596F /* UIPacInstaller.swift */; };
 /* End PBXBuildFile section */
@@ -32,10 +32,10 @@
 		515926C42582305700C6596F /* RZRotater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZRotater.swift; sourceTree = "<group>"; };
 		515926C62582305700C6596F /* RZPopUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZPopUpView.swift; sourceTree = "<group>"; };
 		515926C72582305700C6596F /* RZUIPacController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZUIPacController.swift; sourceTree = "<group>"; };
-		515926C82582305700C6596F /* RZUIPacControllerUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZUIPacControllerUI.swift; sourceTree = "<group>"; };
-		515926CA2582305700C6596F /* RZUIPacArchitect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZUIPacArchitect.swift; sourceTree = "<group>"; };
-		515926CB2582305700C6596F /* RZView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZView.swift; sourceTree = "<group>"; };
-		515926CC2582305700C6596F /* RZRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZRouter.swift; sourceTree = "<group>"; };
+		515926C82582305700C6596F /* RZSUIPacController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZSUIPacController.swift; sourceTree = "<group>"; };
+		515926CA2582305700C6596F /* RZUIPacView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZUIPacView.swift; sourceTree = "<group>"; };
+		515926CB2582305700C6596F /* RZSUIPacView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZSUIPacView.swift; sourceTree = "<group>"; };
+		515926CC2582305700C6596F /* RZUIPacRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZUIPacRouter.swift; sourceTree = "<group>"; };
 		515926CD2582305700C6596F /* RZRootController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZRootController.swift; sourceTree = "<group>"; };
 		515926CE2582305700C6596F /* UIPacInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPacInstaller.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,11 +71,9 @@
 			isa = PBXGroup;
 			children = (
 				515926C52582305700C6596F /* Controllers */,
+				516DFC4925D6915E00E9E18B /* Views */,
+				515926C92582305700C6596F /* Router */,
 				515926C22582305700C6596F /* Helpers */,
-				515926C12582305700C6596F /* LinesController.swift */,
-				515926C92582305700C6596F /* Present */,
-				515926CD2582305700C6596F /* RZRootController.swift */,
-				515926CE2582305700C6596F /* UIPacInstaller.swift */,
 				515926B825822C5F00C6596F /* RZScreensKit.h */,
 				515926B925822C5F00C6596F /* Info.plist */,
 			);
@@ -85,6 +83,8 @@
 		515926C22582305700C6596F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				515926CE2582305700C6596F /* UIPacInstaller.swift */,
+				515926C12582305700C6596F /* LinesController.swift */,
 				515926C32582305700C6596F /* RZTransitionAnimation.swift */,
 				515926C42582305700C6596F /* RZRotater.swift */,
 			);
@@ -96,20 +96,28 @@
 			children = (
 				515926C62582305700C6596F /* RZPopUpView.swift */,
 				515926C72582305700C6596F /* RZUIPacController.swift */,
-				515926C82582305700C6596F /* RZUIPacControllerUI.swift */,
+				515926C82582305700C6596F /* RZSUIPacController.swift */,
+				515926CD2582305700C6596F /* RZRootController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		515926C92582305700C6596F /* Present */ = {
+		515926C92582305700C6596F /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				515926CC2582305700C6596F /* RZUIPacRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		516DFC4925D6915E00E9E18B /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				5137354A25838F3E00430CC1 /* RZControlledProtocol.swift */,
-				515926CA2582305700C6596F /* RZUIPacArchitect.swift */,
-				515926CC2582305700C6596F /* RZRouter.swift */,
-				515926CB2582305700C6596F /* RZView.swift */,
+				515926CA2582305700C6596F /* RZUIPacView.swift */,
+				515926CB2582305700C6596F /* RZSUIPacView.swift */,
 			);
-			path = Present;
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,18 +199,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				515926D72582305800C6596F /* RZRouter.swift in Sources */,
+				515926D72582305800C6596F /* RZUIPacRouter.swift in Sources */,
 				5137354B25838F3E00430CC1 /* RZControlledProtocol.swift in Sources */,
 				515926D32582305800C6596F /* RZUIPacController.swift in Sources */,
 				515926D12582305700C6596F /* RZRotater.swift in Sources */,
-				515926D52582305800C6596F /* RZUIPacArchitect.swift in Sources */,
+				515926D52582305800C6596F /* RZUIPacView.swift in Sources */,
 				515926CF2582305700C6596F /* LinesController.swift in Sources */,
 				515926D82582305800C6596F /* RZRootController.swift in Sources */,
 				515926D02582305700C6596F /* RZTransitionAnimation.swift in Sources */,
 				515926D92582305800C6596F /* UIPacInstaller.swift in Sources */,
-				515926D62582305800C6596F /* RZView.swift in Sources */,
+				515926D62582305800C6596F /* RZSUIPacView.swift in Sources */,
 				515926D22582305700C6596F /* RZPopUpView.swift in Sources */,
-				515926D42582305800C6596F /* RZUIPacControllerUI.swift in Sources */,
+				515926D42582305800C6596F /* RZSUIPacController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

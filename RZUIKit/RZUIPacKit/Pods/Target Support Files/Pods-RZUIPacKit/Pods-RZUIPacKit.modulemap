@@ -1,0 +1,6 @@
+framework module Pods_RZUIPacKit {
+  umbrella header "Pods-RZUIPacKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

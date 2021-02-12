@@ -1,0 +1,20 @@
+PODS:
+  - RZDarkModeKit (2.0.6)
+  - RZViewBuilder (2.0):
+    - RZDarkModeKit
+
+DEPENDENCIES:
+  - RZViewBuilder
+
+SPEC REPOS:
+  trunk:
+    - RZDarkModeKit
+    - RZViewBuilder
+
+SPEC CHECKSUMS:
+  RZDarkModeKit: 1a6f574e6d0ac4b67cfb1801754fad362235b771
+  RZViewBuilder: 10047dbc6bf7e9e8d7a92555c7c9531d10d5db6a
+
+PODFILE CHECKSUM: 4cb24251b7ee3a9dc0f448c053918b1a21a43ddd
+
+COCOAPODS: 1.10.1

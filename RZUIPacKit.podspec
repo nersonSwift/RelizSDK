@@ -1,7 +1,8 @@
+
 Pod::Spec.new do |spec|
 
-  spec.name         = "RZUIKit"
-  spec.version      = "4"
+  spec.name         = "RZUIPacKit"
+  spec.version      = "1.0"
   spec.summary      = "Small example to test code sharing."
   spec.description  = "Small example to test code sharing via cocoapods."	
   
@@ -22,18 +23,12 @@ Pod::Spec.new do |spec|
 	:tag => spec.name.to_s + "_v" + spec.version.to_s
   }
 
-  spec.source_files = "RZUIKit/RZUIKit/RZUIKit/RZUIKit.h"
-  spec.preserve_paths = 'RZUIKit/RZUIKit/RZUIKit/module.modulemap'
-  spec.exclude_files = "RZUIKit/RZUIKit/RZUIKit/**/*.plist"
+  spec.source_files = "RZUIKit/RZUIPacKit/RZUIPacKit/**/*"
+  spec.exclude_files = "RZUIKit/RZUIPacKit/RZUIPacKit/**/*.plist"
   spec.swift_version = '5.3'
   spec.ios.deployment_target  = '13.0'
 
-  spec.user_target_xcconfig = {
-        'HEADER_SEARCH_PATHS' => "$(inherited) ${PODS_ROOT}/RZUIKit/RZUIKit/RZUIKit/RZUIKit"
-  }
-
   spec.requires_arc = true
 
-  spec.dependency "RZUIPacKit"
-  spec.dependency "RZViewBuilder"
+
 end

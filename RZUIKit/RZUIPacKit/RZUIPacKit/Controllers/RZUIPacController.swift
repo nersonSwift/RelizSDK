@@ -7,6 +7,9 @@
 //
 
 import UIKit
+#if canImport(RZViewBuilder)
+    import RZViewBuilder
+#endif
 
 //MARK: - ScreenControllerProtocol
 /// `ru`: - протокол который используется для создания и переходов контроллеров
@@ -219,6 +222,9 @@ extension RZUIPacControllerViewingProtocol{
             }else if UIDevice.current.userInterfaceIdiom == .phone, let iPhoneRZUIPacView = iPhoneRZUIPacView{
                 rzUIView = iPhoneRZUIPacView as? Self.UIPA
             }
+        #endif
+        #if canImport(RZViewBuilder)
+            router.setRZObservables()
         #endif
         if let rzUIView = view as? UIPA{
             self.rzUIView = rzUIView
