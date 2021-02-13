@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "RZUIKit"
-  spec.version      = "4"
+  spec.version      = "4.0"
   spec.summary      = "Small example to test code sharing."
   spec.description  = "Small example to test code sharing via cocoapods."	
   
