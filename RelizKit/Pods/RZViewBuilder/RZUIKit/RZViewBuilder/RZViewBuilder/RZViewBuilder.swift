@@ -65,8 +65,8 @@ public class RZViewBuilder<V: UIView>{
         return self
     }
     @discardableResult
-    public func color(_ value: RZObservable<UIColor>, _ type: ColorType = .background) -> Self{
-        value.observeClosure = {[weak view] in view?+>.color($0, type)}
+    public func color(_ value: RZObservable<UIColor>?, _ type: ColorType = .background) -> Self{
+        value?.add {[weak view] in view?+>.color($0, type)}
         return self
     }
     
@@ -92,8 +92,8 @@ public class RZViewBuilder<V: UIView>{
         return self
     }
     @discardableResult
-    public func cornerRadius(_ value: RZObservable<CGFloat>) -> Self{
-        value.observeClosure = {[weak view] in view?+>.cornerRadius($0)}
+    public func cornerRadius(_ value: RZObservable<CGFloat>?) -> Self{
+        value?.add  {[weak view] in view?+>.cornerRadius($0)}
         return self
     }
     
@@ -109,8 +109,8 @@ public class RZViewBuilder<V: UIView>{
         return self
     }
     @discardableResult
-    public func cornerRadius(_ value: RZObservable<RZProtoValue>) -> Self{
-        value.observeClosure = {[weak view] in view?+>.cornerRadius($0)}
+    public func cornerRadius(_ value: RZObservable<RZProtoValue>?) -> Self{
+        value?.add {[weak view] in view?+>.cornerRadius($0)}
         return self
     }
     
@@ -181,8 +181,8 @@ extension RZViewBuilder{
         return point(value.origin).size(value.size)
     }
     @discardableResult
-    public func frame(_ value: RZObservable<CGRect>, _ type: PointType = .topLeft) -> Self{
-        value.observeClosure = {[weak view] in view?+>.frame($0, type)}
+    public func frame(_ value: RZObservable<CGRect>?, _ type: PointType = .topLeft) -> Self{
+        value?.add {[weak view] in view?+>.frame($0, type)}
         return self
     }
     
@@ -199,8 +199,8 @@ extension RZViewBuilder{
         return point(value.origin).size(value.size)
     }
     @discardableResult
-    public func frame(_ value: RZObservable<RZProtoFrame>, _ type: PointType = .topLeft) -> Self{
-        value.observeClosure = {[weak view] in view?+>.frame($0, type)}
+    public func frame(_ value: RZObservable<RZProtoFrame>?, _ type: PointType = .topLeft) -> Self{
+        value?.add {[weak view] in view?+>.frame($0, type)}
         return self
     }
     
@@ -215,8 +215,8 @@ extension RZViewBuilder{
         return width(value.width).height(value.height)
     }
     @discardableResult
-    public func size(_ value: RZObservable<CGSize>) -> Self{
-        value.observeClosure = {[weak view] in view?+>.size($0)}
+    public func size(_ value: RZObservable<CGSize>?) -> Self{
+        value?.add {[weak view] in view?+>.size($0)}
         return self
     }
     
@@ -230,8 +230,8 @@ extension RZViewBuilder{
         return width(value.width).height(value.height)
     }
     @discardableResult
-    public func size(_ value: RZObservable<RZProtoSize>) -> Self{
-        value.observeClosure = {[weak view] in view?+>.size($0)}
+    public func size(_ value: RZObservable<RZProtoSize>?) -> Self{
+        value?.add {[weak view] in view?+>.size($0)}
         return self
     }
     
@@ -263,8 +263,8 @@ extension RZViewBuilder{
         }
     }
     @discardableResult
-    public func point(_ value: RZObservable<CGPoint>, _ type: PointType = .topLeft) -> Self{
-        value.observeClosure = {[weak view] in view?+>.point($0, type)}
+    public func point(_ value: RZObservable<CGPoint>?, _ type: PointType = .topLeft) -> Self{
+        value?.add {[weak view] in view?+>.point($0, type)}
         return self
     }
     
@@ -287,8 +287,8 @@ extension RZViewBuilder{
         }
     }
     @discardableResult
-    public func point(_ value: RZObservable<RZProtoPoint>, _ type: PointType = .topLeft) -> Self{
-        value.observeClosure = {[weak view] in view?+>.point($0, type)}
+    public func point(_ value: RZObservable<RZProtoPoint>?, _ type: PointType = .topLeft) -> Self{
+        value?.add {[weak view] in view?+>.point($0, type)}
         return self
     }
     
@@ -305,8 +305,8 @@ extension RZViewBuilder{
         return self
     }
     @discardableResult
-    public func width(_ value: RZObservable<CGFloat>) -> Self{
-        value.observeClosure = {[weak view] in view?+>.width($0)}
+    public func width(_ value: RZObservable<CGFloat>?) -> Self{
+        value?.add {[weak view] in view?+>.width($0)}
         return self
     }
     
@@ -322,8 +322,8 @@ extension RZViewBuilder{
         return self
     }
     @discardableResult
-    public func width(_ value: RZObservable<RZProtoValue>) -> Self{
-        value.observeClosure = {[weak view] in view?+>.width($0)}
+    public func width(_ value: RZObservable<RZProtoValue>?) -> Self{
+        value?.add {[weak view] in view?+>.width($0)}
         return self
     }
     
@@ -339,8 +339,8 @@ extension RZViewBuilder{
         return self
     }
     @discardableResult
-    public func height(_ value: RZObservable<CGFloat>) -> Self{
-        value.observeClosure = {[weak view] in view?+>.height($0)}
+    public func height(_ value: RZObservable<CGFloat>?) -> Self{
+        value?.add {[weak view] in view?+>.height($0)}
         return self
     }
     
@@ -355,8 +355,8 @@ extension RZViewBuilder{
         return self
     }
     @discardableResult
-    public func height(_ value: RZObservable<RZProtoValue>) -> Self{
-        value.observeClosure = {[weak view] in view?+>.height($0)}
+    public func height(_ value: RZObservable<RZProtoValue>?) -> Self{
+        value?.add {[weak view] in view?+>.height($0)}
         return self
     }
     
@@ -502,8 +502,8 @@ extension RZViewBuilder where V: UILabel{
         return self
     }
     @discardableResult
-    public func text(_ value: RZObservable<String>) -> Self{
-        value.observeClosure = {[weak view] in view?+>.text($0)}
+    public func text(_ value: RZObservable<String>?) -> Self{
+        value?.add {[weak view] in view?+>.text($0)}
         return self
     }
     
@@ -586,8 +586,8 @@ extension RZViewBuilder where V: UIButton{
         return self
     }
     @discardableResult
-    public func text(_ value: RZObservable<String>) -> Self{
-        value.observeClosure = {[weak view] in view?+>.text($0)}
+    public func text(_ value: RZObservable<String>?) -> Self{
+        value?.add {[weak view] in view?+>.text($0)}
         return self
     }
     
@@ -637,8 +637,8 @@ extension RZViewBuilder where V: UIImageView{
         return self
     }
     @discardableResult
-    public func image(_ value: RZObservable<UIImage?>) -> Self{
-        value.observeClosure = {[weak view] in view?+>.image($0)}
+    public func image(_ value: RZObservable<UIImage?>?) -> Self{
+        value?.add {[weak view] in view?+>.image($0)}
         return self
     }
     
@@ -653,8 +653,8 @@ extension RZViewBuilder where V: UIImageView{
         return self
     }
     @discardableResult
-    public func image(_ value: RZObservable<RZImageSeter>) -> Self{
-        value.observeClosure = {[weak view] in view?+>.image($0)}
+    public func image(_ value: RZObservable<RZImageSeter>?) -> Self{
+        value?.add {[weak view] in view?+>.image($0)}
         return self
     }
 }

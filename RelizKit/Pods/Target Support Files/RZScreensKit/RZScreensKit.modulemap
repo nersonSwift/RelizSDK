@@ -1,6 +1,0 @@
-framework module RZScreensKit {
-  umbrella header "RZScreensKit-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -9,17 +9,25 @@ import Foundation
 
 @propertyWrapper
 public class RZObservable<Value> {
-    public var observeClosure: (Value)->() = {_ in}{
-        didSet{
-            observeClosure(wrappedValue)
-        }
+    var observeClosures = [Int: (Value)->()]()
+    var counter: Int = 0
+    
+    @discardableResult
+    public func add(_ observeClosure: @escaping (Value)->()) -> Int{
+        observeClosure(wrappedValue)
+        observeClosures[counter] = observeClosure
+        counter += 1
+        return counter - 1
+    }
+    public func remove(_ key: Int){
+        observeClosures[key] = nil
     }
     
     private var value: Value
     public var wrappedValue: Value{
         set(wrappedValue){
             value = wrappedValue
-            observeClosure(wrappedValue)
+            observeClosures.forEach{ $0.value(wrappedValue) }
         }
         get{
             value
@@ -55,7 +63,7 @@ public func <|<Key: Hashable, Value>(left: RZSwith<Key, Value>, right: (Key, Val
 public func ?><Key: Hashable, Value>(left: RZObservable<Key>, right: RZSwith<Key, Value>) -> RZObservable<Value>?{
     guard let value = right.dictenary.first?.value else { return nil }
     let observable = RZObservable<Value>(wrappedValue: value)
-    left.observeClosure = {[weak observable] in
+    left.add {[weak observable] in
         guard let observable = observable else { return }
         guard let value = right.dictenary[$0] else { return }
         observable.wrappedValue = value
@@ -70,15 +78,15 @@ public func ?><Key: Hashable, Value>(left: RZObservable<Key>, right: RZSwith<Key
     
     let observable = RZObservable<Value>(wrappedValue: obValue)
     var oldKey = value.key
-    left.observeClosure = {[weak observable] in
+    var oldClosureKey = -1
+    left.add {[weak observable] in
         guard let observable = observable else { return }
         guard let value = right.dictenary[$0] else { return }
         guard let old = right.dictenary[oldKey] else { return }
         
+        old.remove(oldClosureKey)
         oldKey = $0
-         
-        old.observeClosure = {_ in}
-        value.observeClosure = {[weak observable] in
+        oldClosureKey = value.add {[weak observable] in
             observable?.wrappedValue = $0
         }
     }
