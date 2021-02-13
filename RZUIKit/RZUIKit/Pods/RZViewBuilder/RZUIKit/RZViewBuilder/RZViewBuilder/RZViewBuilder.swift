@@ -64,9 +64,13 @@ public class RZViewBuilder<V: UIView>{
         }
         return self
     }
+    @discardableResult
+    public func color(_ value: RZObservable<UIColor>?, _ type: ColorType = .background) -> Self{
+        value?.add {[weak view] in view?+>.color($0, type)}
+        return self
+    }
     
     func setContentColor(_ value: UIColor){
-        
         switch view {
         case let label as UILabel:
             label <- { $0.textColor = value }
@@ -87,6 +91,12 @@ public class RZViewBuilder<V: UIView>{
         view.layer.cornerRadius = value
         return self
     }
+    @discardableResult
+    public func cornerRadius(_ value: RZObservable<CGFloat>?) -> Self{
+        value?.add  {[weak view] in view?+>.cornerRadius($0)}
+        return self
+    }
+    
     
     /// `RU: - `
     /// Устанавливает радиус скругления редактироемому view
@@ -96,6 +106,11 @@ public class RZViewBuilder<V: UIView>{
     @discardableResult
     public func cornerRadius(_ value: RZProtoValue) -> Self{
         value.setValueIn(view, 1) { $0.layer.cornerRadius = value.getValue($0.frame) }
+        return self
+    }
+    @discardableResult
+    public func cornerRadius(_ value: RZObservable<RZProtoValue>?) -> Self{
+        value?.add {[weak view] in view?+>.cornerRadius($0)}
         return self
     }
     
@@ -138,9 +153,11 @@ public class RZViewBuilder<V: UIView>{
     /// - Parameter value
     /// view используемое как маска
     @discardableResult
-    public func mask(_ value: UIView, _ size: RZProtoSize? = nil) -> Self{
-        let size = size ?? RZProtoSize(width: view|*.w, height: view|*.h)
-        value+>.size(size).x(view|*.scX, .center).y(view|*.scY, .center)
+    public func mask(_ value: UIView) -> Self{
+        if value.frame.size == .zero{
+            value+>.size(RZProtoSize(width: view|*.w, height: view|*.h))
+        }
+        value+>.x(view|*.scX, .center).y(view|*.scY, .center)
         view.mask = value
         return self
     }
@@ -163,6 +180,11 @@ extension RZViewBuilder{
     public func frame(_ value: CGRect, _ type: PointType = .topLeft) -> Self {
         return point(value.origin).size(value.size)
     }
+    @discardableResult
+    public func frame(_ value: RZObservable<CGRect>?, _ type: PointType = .topLeft) -> Self{
+        value?.add {[weak view] in view?+>.frame($0, type)}
+        return self
+    }
     
     /// `RU: - `
     /// Устанавливает frame view
@@ -176,6 +198,11 @@ extension RZViewBuilder{
     public func frame(_ value: RZProtoFrame, _ type: PointType = .topLeft) -> Self {
         return point(value.origin).size(value.size)
     }
+    @discardableResult
+    public func frame(_ value: RZObservable<RZProtoFrame>?, _ type: PointType = .topLeft) -> Self{
+        value?.add {[weak view] in view?+>.frame($0, type)}
+        return self
+    }
     
     //MARK: - size
     /// `RU: - `
@@ -187,6 +214,11 @@ extension RZViewBuilder{
     public func size(_ value: CGSize) -> Self{
         return width(value.width).height(value.height)
     }
+    @discardableResult
+    public func size(_ value: RZObservable<CGSize>?) -> Self{
+        value?.add {[weak view] in view?+>.size($0)}
+        return self
+    }
     
     /// `RU: - `
     /// Устанавливает size view
@@ -196,6 +228,11 @@ extension RZViewBuilder{
     @discardableResult
     public func size(_ value: RZProtoSize) -> Self{
         return width(value.width).height(value.height)
+    }
+    @discardableResult
+    public func size(_ value: RZObservable<RZProtoSize>?) -> Self{
+        value?.add {[weak view] in view?+>.size($0)}
+        return self
     }
     
     public enum PointType: String{
@@ -225,6 +262,11 @@ extension RZViewBuilder{
             case .downRight: return x(value.x, .right) .y(value.y, .down)
         }
     }
+    @discardableResult
+    public func point(_ value: RZObservable<CGPoint>?, _ type: PointType = .topLeft) -> Self{
+        value?.add {[weak view] in view?+>.point($0, type)}
+        return self
+    }
     
     /// `RU: - `
     /// Устанавливает point view
@@ -244,6 +286,11 @@ extension RZViewBuilder{
             case .downRight: return x(value.x, .right) .y(value.y, .down)
         }
     }
+    @discardableResult
+    public func point(_ value: RZObservable<RZProtoPoint>?, _ type: PointType = .topLeft) -> Self{
+        value?.add {[weak view] in view?+>.point($0, type)}
+        return self
+    }
     
     //MARK: - point
     /// `RU: - `
@@ -255,6 +302,11 @@ extension RZViewBuilder{
     public func width(_ value: CGFloat) -> Self{
         view.frame.size.width = value
         RZLabelSizeController.modUpdate(view)
+        return self
+    }
+    @discardableResult
+    public func width(_ value: RZObservable<CGFloat>?) -> Self{
+        value?.add {[weak view] in view?+>.width($0)}
         return self
     }
     
@@ -269,6 +321,11 @@ extension RZViewBuilder{
         value.setValueIn(view, 2) { $0.frame.size.width = value.getValue($0.frame); RZLabelSizeController.modUpdate($0) }
         return self
     }
+    @discardableResult
+    public func width(_ value: RZObservable<RZProtoValue>?) -> Self{
+        value?.add {[weak view] in view?+>.width($0)}
+        return self
+    }
     
     //MARK: - height
     /// `RU: - `
@@ -281,6 +338,11 @@ extension RZViewBuilder{
         view.frame.size.height = value
         return self
     }
+    @discardableResult
+    public func height(_ value: RZObservable<CGFloat>?) -> Self{
+        value?.add {[weak view] in view?+>.height($0)}
+        return self
+    }
     
     /// `RU: - `
     /// Устанавливает высоту view
@@ -290,6 +352,11 @@ extension RZViewBuilder{
     @discardableResult
     public func height(_ value: RZProtoValue) -> Self{
         value.setValueIn(view, 3) { $0.frame.size.height = value.getValue($0.frame) }
+        return self
+    }
+    @discardableResult
+    public func height(_ value: RZObservable<RZProtoValue>?) -> Self{
+        value?.add {[weak view] in view?+>.height($0)}
         return self
     }
     
@@ -434,6 +501,11 @@ extension RZViewBuilder where V: UILabel{
         RZLabelSizeController.modUpdate(view)
         return self
     }
+    @discardableResult
+    public func text(_ value: RZObservable<String>?) -> Self{
+        value?.add {[weak view] in view?+>.text($0)}
+        return self
+    }
     
     //MARK: - aligment
     /// `RU: - `
@@ -513,6 +585,11 @@ extension RZViewBuilder where V: UIButton{
         view.setTitle(value, for: .normal)
         return self
     }
+    @discardableResult
+    public func text(_ value: RZObservable<String>?) -> Self{
+        value?.add {[weak view] in view?+>.text($0)}
+        return self
+    }
     
     //MARK: - font
     /// `RU: - `
@@ -559,6 +636,11 @@ extension RZViewBuilder where V: UIImageView{
         view.image = value
         return self
     }
+    @discardableResult
+    public func image(_ value: RZObservable<UIImage?>?) -> Self{
+        value?.add {[weak view] in view?+>.image($0)}
+        return self
+    }
     
     /// `RU: - `
     /// Устанавливает изображение для `UIImageView`
@@ -570,9 +652,15 @@ extension RZViewBuilder where V: UIImageView{
         value.setImageView(view)
         return self
     }
+    @discardableResult
+    public func image(_ value: RZObservable<RZImageSeter>?) -> Self{
+        value?.add {[weak view] in view?+>.image($0)}
+        return self
+    }
 }
 
 extension RZViewBuilder where V: UIScrollView{
+    //MARK: - contentSize
     @discardableResult
     public func contentSize(_ value: CGSize) -> Self{
         view.contentSize = value
@@ -584,9 +672,21 @@ extension RZViewBuilder where V: UIScrollView{
         return self.contentWidth(value.width).contentHeight(value.height)
     }
     
+    //MARK: - contentWidth
+    @discardableResult
+    public func contentWidth(_ value: CGFloat) -> Self{
+        view.contentSize.width = value
+        return self
+    }
     @discardableResult
     public func contentWidth(_ value: RZProtoValue) -> Self{
         value.setValueIn(view, 6) { ($0 as? UIScrollView)?.contentSize.width = value.getValue($0.frame) }
+        return self
+    }
+    
+    @discardableResult
+    public func contentHeight(_ value: CGFloat) -> Self{
+        view.contentSize.height = value
         return self
     }
     

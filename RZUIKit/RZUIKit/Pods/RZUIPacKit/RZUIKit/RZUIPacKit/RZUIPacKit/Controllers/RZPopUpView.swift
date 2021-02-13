@@ -25,7 +25,7 @@ open class RZPopUpView: UIView, RZPopUpViewProtocol{
 }
 
 
-public protocol PopUpScreenProtocol: RZScreenControllerProtocol{
+public protocol PopUpScreenProtocol: RZUIPacControllerNJProtocol{
     var closeClosure: (()->())? { get set }
     var backView: UIView { get }
     var backViewInstance: UIView? { get set }

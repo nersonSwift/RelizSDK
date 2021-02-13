@@ -4,5 +4,5 @@
 target 'RZUIKit' do
   use_frameworks!
   pod 'RZViewBuilder'
-  pod 'RZScreensKit'
+  pod 'RZUIPacKit'
 end

@@ -13,8 +13,8 @@
     #if __has_include(<RZDarkModeKit/RZDarkModeKit.h>)
       #import <RZDarkModeKit/RZDarkModeKit.h>
     #endif
-    #if __has_include(<RZScreensKit/RZScreensKit.h>)
-      #import <RZScreensKit/RZScreensKit.h>
+    #if __has_include(<RZUIPacKit/RZUIPacKit.h>)
+      #import <RZUIPacKit/RZUIPacKit.h>
     #endif
     #if __has_include(<RZViewBuilder/RZViewBuilder.h>)
       #import <RZViewBuilder/RZViewBuilder.h>

@@ -1,8 +1,8 @@
 //
-//  RZDarkModeKit.h
-//  RZDarkModeKit
+//  RZUIPacKit.h
+//  RZUIPacKit
 //
-//  Created by Александр Сенин on 08.12.2020.
+//  Created by Александр Сенин on 12.02.2021.
 //
 
 #import <Foundation/Foundation.h>
@@ -12,5 +12,8 @@
 #else
     #if __has_include(<UIKit/UIKit.h>)
       #import <UIKit/UIKit.h>
+    #endif
+    #if __has_include(<SwiftUI/SwiftUI.h>)
+        #import <SwiftUI/SwiftUI.h>
     #endif
 #endif

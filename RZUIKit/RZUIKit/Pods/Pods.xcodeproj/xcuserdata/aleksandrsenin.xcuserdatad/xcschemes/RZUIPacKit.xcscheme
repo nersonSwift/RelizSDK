@@ -14,9 +14,9 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F2F6E512D00F4F002C5D2E0EED921AD5"
-               BuildableName = "RZScreensKit.framework"
-               BlueprintName = "RZScreensKit"
+               BlueprintIdentifier = "5BDFBCA9A4A17D1621F7B2D99C7D3EB5"
+               BuildableName = "RZUIPacKit.framework"
+               BlueprintName = "RZUIPacKit"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

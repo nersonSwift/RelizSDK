@@ -10,8 +10,8 @@
 #endif
 #endif
 
-#import "RZScreensKit.h"
+#import "RZUIPacKit.h"
 
-FOUNDATION_EXPORT double RZScreensKitVersionNumber;
-FOUNDATION_EXPORT const unsigned char RZScreensKitVersionString[];
+FOUNDATION_EXPORT double RZUIPacKitVersionNumber;
+FOUNDATION_EXPORT const unsigned char RZUIPacKitVersionString[];
 

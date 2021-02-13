@@ -15,6 +15,18 @@ postfix operator |*
 infix operator <>
 infix operator ><
 
+precedencegroup SecondTernaryPrecedence {
+    associativity: right
+}
+
+precedencegroup FirstTernaryPrecedence {
+    associativity: left
+    higherThan: SecondTernaryPrecedence
+}
+
+infix operator ?> : SecondTernaryPrecedence
+infix operator <| : FirstTernaryPrecedence
+
 public postfix func +><V: UIView>(view: V) -> RZViewBuilder<V>{
     RZViewBuilder(view)
 }
