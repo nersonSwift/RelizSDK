@@ -26,26 +26,23 @@ extension RZSUIPacControllerProtocol{
     public var macViewType: RZAnySUIPacView.Type? { nil }
     
     public func setView(){
-        var rzView: RZAnySUIPacView?
+        var anyView: AnyView?
         #if targetEnvironment(macCatalyst)
             if let macViewType = macViewType{
-                rzView = macViewType.init()
+                anyView = macViewType.createSelf(router)
             }
         #else
             if UIDevice.current.userInterfaceIdiom == .pad, let iPadViewType = iPadViewType{
-                rzView = iPadViewType.init()
+                anyView = iPadViewType.createSelf(router)
             }else if UIDevice.current.userInterfaceIdiom == .phone, let iPhoneViewType = iPhoneViewType{
-                rzView = iPhoneViewType.init()
+                anyView = iPhoneViewType.createSelf(router)
             }
         #endif
         #if canImport(RZViewBuilder)
             router.setRZObservables()
         #endif
-        
-        var rzViewL = rzView as? RZControlledNJProtocol & RZAnySUIPacView
-        rzViewL?.setUIPacC(self)
-        if let hostingController = self as? UIHostingController<AnyView>{
-            hostingController.rootView = (rzViewL?.testSelf(rowRouter: router))!
+        if let hostingController = self as? UIHostingController<AnyView>, let anyView = anyView{
+            hostingController.rootView = anyView
         }
     }
 }

@@ -181,7 +181,7 @@ public protocol RZSetUIPacViewProtocol {
 
 //MARK: - ScreenController
 /// `ru`: - расширение для `ScreenControllerProtocol` позволяющее делигировать ликику представления в `Presenter`
-public protocol RZUIPacControllerViewingProtocol: RZUIPacControllerNJProtocol, RZSetUIPacViewProtocol{
+public protocol RZUIPacControllerViewingProtocol: RZUIPacControllerRouteredProtocol, RZSetUIPacViewProtocol{
     associatedtype UIPA: RZUIPacViewNoJenericProtocol
     
     //MARK: - propertes
@@ -191,13 +191,13 @@ public protocol RZUIPacControllerViewingProtocol: RZUIPacControllerNJProtocol, R
     
     //MARK: - iPhonePresenter
     /// `ru`: - свойство которое которое должно вернуть тип `Presenter` который будет инициализирован для версии `iPhone`
-    var iPhoneRZUIPacView: RZUIPacViewNoJenericProtocol? { get }
+    var iPhoneRZUIPacView: RZUIPacViewNoJenericProtocol.Type? { get }
     
     //MARK: - iPadPresenter
     /// `ru`: - свойство которое которое должно вернуть тип `Presenter` который будет инициализирован для версии `iPad`
-    var iPadRZUIPacView: RZUIPacViewNoJenericProtocol? { get }
+    var iPadRZUIPacView: RZUIPacViewNoJenericProtocol.Type? { get }
     
-    var macRZUIPacView: RZUIPacViewNoJenericProtocol? { get }
+    var macRZUIPacView: RZUIPacViewNoJenericProtocol.Type? { get }
 }
 
 public class SomeUIPacView: UIView, RZUIPacViewNoJenericProtocol{ public func create() {} }
@@ -207,20 +207,20 @@ extension RZUIPacControllerViewingProtocol{
         set{}
         get{SomeUIPacView()}
     }
-    public var iPhoneRZUIPacView: RZUIPacViewNoJenericProtocol? { nil }
-    public var iPadRZUIPacView: RZUIPacViewNoJenericProtocol? { nil }
-    public var macRZUIPacView: RZUIPacViewNoJenericProtocol? { nil }
+    public var iPhoneRZUIPacView: RZUIPacViewNoJenericProtocol.Type? { nil }
+    public var iPadRZUIPacView: RZUIPacViewNoJenericProtocol.Type? { nil }
+    public var macRZUIPacView: RZUIPacViewNoJenericProtocol.Type? { nil }
     
     public func setView(){
         #if targetEnvironment(macCatalyst)
             if let macRZUIPacView = macRZUIPacView{
-                rzUIView = macRZUIPacView as? Self.UIPA
+                rzUIView = macRZUIPacView.createSelf(router) as? Self.UIPA
             }
         #else
             if UIDevice.current.userInterfaceIdiom == .pad, let iPadRZUIPacView = iPadRZUIPacView{
-                rzUIView = iPadRZUIPacView as? Self.UIPA
+                rzUIView = iPadRZUIPacView.createSelf(router) as? Self.UIPA
             }else if UIDevice.current.userInterfaceIdiom == .phone, let iPhoneRZUIPacView = iPhoneRZUIPacView{
-                rzUIView = iPhoneRZUIPacView as? Self.UIPA
+                rzUIView = iPhoneRZUIPacView.createSelf(router) as? Self.UIPA
             }
         #endif
         #if canImport(RZViewBuilder)
@@ -231,23 +231,20 @@ extension RZUIPacControllerViewingProtocol{
         }else{
             view = rzUIView ?? view
         }
-        rzUIView?.setUIPacC(self)
     }
     
     public func rotate(){ rzUIView?.rotate() }
     public func resize(){ rzUIView?.resize() }
 }
 
-public class SomeUIPacRouter<T: RZUIPacControllerProtocol>: RZUIPacRouter {
-    public typealias Controller = T
-}
+public class SomeUIPacRouter: RZUIPacRouter {}
 public protocol RZUIPacControllerRouteredProtocol: RZUIPacControllerNJProtocol{
     associatedtype UIPacRouter: RZUIPacRouterProtocol
     var router: UIPacRouter {get set}
 }
 
 extension RZUIPacControllerRouteredProtocol where Self: RZUIPacControllerProtocol{
-    public var router: SomeUIPacRouter<Self> {
+    public var router: SomeUIPacRouter{
         set{}
         get{SomeUIPacRouter()}
     }
@@ -255,9 +252,7 @@ extension RZUIPacControllerRouteredProtocol where Self: RZUIPacControllerProtoco
 
 
 
-public typealias RZUIPacControllerProtocol = RZUIPacControllerNJProtocol &
-                                             RZUIPacControllerViewingProtocol &
-                                             RZUIPacControllerRouteredProtocol
+public typealias RZUIPacControllerProtocol = RZUIPacControllerNJProtocol & RZUIPacControllerViewingProtocol
 
 public typealias RZUIPacController = UIViewController & RZUIPacControllerProtocol
 public typealias RZUIPacNavigationController = UINavigationController & RZUIPacControllerProtocol

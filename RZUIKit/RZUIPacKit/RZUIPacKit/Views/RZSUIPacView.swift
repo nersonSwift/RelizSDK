@@ -9,20 +9,17 @@
 import SwiftUI
 
 public protocol RZAnySUIPacView{
-    func testSelf(rowRouter: RZUIPacRouterNJProtocol) -> AnyView?
-    init()
+    static func createSelf(_ rowRouter: RZUIPacRouterNJProtocol) -> AnyView?
 }
 extension RZAnySUIPacView{
-    public func testSelf(rowRouter: RZUIPacRouterNJProtocol) -> AnyView?{
-        return nil
-    }
+    public static func createSelf(_ rowRouter: RZUIPacRouterNJProtocol) -> AnyView? { nil }
 }
 extension RZAnySUIPacView where Self: RZSUIPacView{
-    public func testSelf(rowRouter: RZUIPacRouterNJProtocol) -> AnyView?{
-        let ro = rowRouter as! Controller.UIPacRouter
-        return AnyView(self.environmentObject(ro))
+    public static func createSelf(_ rowRouter: RZUIPacRouterNJProtocol) -> AnyView? {
+        guard let ro = rowRouter as? UIPacRouter else { return nil }
+        return AnyView(Self(router: ro))
     }
 }
 
-public protocol RZSUIPacView: View, RZAnySUIPacView, RZControlledProtocol{}
+public protocol RZSUIPacView: View, RZAnySUIPacView, RZSUIRouted{}
 
