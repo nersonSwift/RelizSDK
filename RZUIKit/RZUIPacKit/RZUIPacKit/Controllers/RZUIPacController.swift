@@ -42,10 +42,12 @@ public protocol RZUIPacControllerNJProtocol: UIViewController{
     
     
     //MARK: - funcs
+    func preparePac()
     //MARK: - start
     /// `ru`: - метод который вызывается при первой устрановке экрана на представление
     func start()
     
+    func didCreate()
     //MARK: - open
     /// `ru`: - метод который вызывается при каждой установке экрана на представление
     func open()
@@ -80,7 +82,9 @@ class RZUIPacControllerInterfase{
 }
 
 extension RZUIPacControllerNJProtocol{
+    public func preparePac(){}
     public func start(){}
+    public func didCreate(){}
     public func open(){}
     public func close(){}
     public func completedOpen(){}
@@ -182,13 +186,6 @@ public protocol RZSetUIPacViewProtocol {
 //MARK: - ScreenController
 /// `ru`: - расширение для `ScreenControllerProtocol` позволяющее делигировать ликику представления в `Presenter`
 public protocol RZUIPacControllerViewingProtocol: RZUIPacControllerRouteredProtocol, RZSetUIPacViewProtocol{
-    associatedtype UIPA: RZUIPacViewNoJenericProtocol
-    
-    //MARK: - propertes
-    //MARK: - presenter
-    /// `ru`: - свойство которое инициализируется типом указанным в классе реализующем данный протокол
-    var rzUIView: UIPA? { get set }
-    
     //MARK: - iPhonePresenter
     /// `ru`: - свойство которое которое должно вернуть тип `Presenter` который будет инициализирован для версии `iPhone`
     var iPhoneRZUIPacView: RZUIPacViewNoJenericProtocol.Type? { get }
@@ -200,41 +197,38 @@ public protocol RZUIPacControllerViewingProtocol: RZUIPacControllerRouteredProto
     var macRZUIPacView: RZUIPacViewNoJenericProtocol.Type? { get }
 }
 
-public class SomeUIPacView: UIView, RZUIPacViewNoJenericProtocol{ public func create() {} }
-
 extension RZUIPacControllerViewingProtocol{
-    public var rzUIView: SomeUIPacView?{
-        set{}
-        get{SomeUIPacView()}
-    }
     public var iPhoneRZUIPacView: RZUIPacViewNoJenericProtocol.Type? { nil }
     public var iPadRZUIPacView: RZUIPacViewNoJenericProtocol.Type? { nil }
     public var macRZUIPacView: RZUIPacViewNoJenericProtocol.Type? { nil }
     
     public func setView(){
-        #if targetEnvironment(macCatalyst)
-            if let macRZUIPacView = macRZUIPacView{
-                rzUIView = macRZUIPacView.createSelf(router) as? Self.UIPA
-            }
-        #else
-            if UIDevice.current.userInterfaceIdiom == .pad, let iPadRZUIPacView = iPadRZUIPacView{
-                rzUIView = iPadRZUIPacView.createSelf(router) as? Self.UIPA
-            }else if UIDevice.current.userInterfaceIdiom == .phone, let iPhoneRZUIPacView = iPhoneRZUIPacView{
-                rzUIView = iPhoneRZUIPacView.createSelf(router) as? Self.UIPA
-            }
-        #endif
+        var rzUIView: RZUIPacViewNoJenericProtocol?
+        
+        if let rzUIViewL = view as? RZUIPacViewNoJenericProtocol{
+            rzUIView = rzUIViewL
+        }else{
+            #if targetEnvironment(macCatalyst)
+                if let macRZUIPacView = macRZUIPacView{
+                    rzUIView = macRZUIPacView.createSelf()
+                }
+            #else
+                if UIDevice.current.userInterfaceIdiom == .pad, let iPadRZUIPacView = iPadRZUIPacView{
+                    rzUIView = iPadRZUIPacView.createSelf()
+                }else if UIDevice.current.userInterfaceIdiom == .phone, let iPhoneRZUIPacView = iPhoneRZUIPacView{
+                    rzUIView = iPhoneRZUIPacView.createSelf()
+                }
+            #endif
+            view = rzUIView ?? view
+        }
         #if canImport(RZViewBuilder)
             router.setRZObservables()
         #endif
-        if let rzUIView = view as? UIPA{
-            self.rzUIView = rzUIView
-        }else{
-            view = rzUIView ?? view
-        }
+        rzUIView?.setRouter(router)
     }
     
-    public func rotate(){ rzUIView?.rotate() }
-    public func resize(){ rzUIView?.resize() }
+    public func rotate(){ (view as? RZUIPacViewNoJenericProtocol)?.rotate() }
+    public func resize(){ (view as? RZUIPacViewNoJenericProtocol)?.resize() }
 }
 
 public class SomeUIPacRouter: RZUIPacRouter {}

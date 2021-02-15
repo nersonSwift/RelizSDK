@@ -10,7 +10,6 @@ import Foundation
 public protocol RZUIRouted{
     associatedtype UIPacRouter: RZUIPacRouter
     var router: UIPacRouter! { get set }
-    init(router: UIPacRouter)
 }
 
 public protocol RZSUIRouted{

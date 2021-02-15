@@ -126,6 +126,7 @@ class UIPacInstaller{
     
     private static func setView(_ uiPacC: RZUIPacControllerNJProtocol){
         if !uiPacC.starting{
+            uiPacC.preparePac()
             if let delegating = uiPacC as? RZSetUIPacViewProtocol{
                 delegating.setView()
             }
@@ -142,6 +143,8 @@ class UIPacInstaller{
     private static func started(_ uiPacC: RZUIPacControllerNJProtocol){
         if !uiPacC.starting{
             uiPacC.start()
+            (uiPacC.view as? RZUIPacViewNoJenericProtocol)?.create()
+            uiPacC.didCreate()
             uiPacC.starting = true
         }
     }
