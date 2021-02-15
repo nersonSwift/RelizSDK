@@ -142,9 +142,12 @@ class UIPacInstaller{
     
     private static func started(_ uiPacC: RZUIPacControllerNJProtocol){
         if !uiPacC.starting{
+            let uiPacV = uiPacC.view as? RZUIPacViewNoJenericProtocol
+            uiPacC.initActions()
+            uiPacV?.initActions()
             uiPacC.start()
-            (uiPacC.view as? RZUIPacViewNoJenericProtocol)?.create()
-            uiPacC.didCreate()
+            uiPacV?.create()
+            if uiPacV != nil{ uiPacC.didCreated() }
             uiPacC.starting = true
         }
     }

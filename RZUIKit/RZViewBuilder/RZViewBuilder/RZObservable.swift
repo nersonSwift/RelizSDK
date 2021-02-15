@@ -58,11 +58,16 @@ public class RZObservable<Value>: RZObservableProtocol {
     
     @discardableResult
     public func add(_ observeClosure: @escaping (Value)->()) -> Int{
-        observeClosure(wrappedValue)
         observeClosures[counter] = observeClosure
         counter += 1
         return counter - 1
     }
+    @discardableResult
+    public func addUse(_ observeClosure: @escaping (Value)->()) -> Int{
+        observeClosure(wrappedValue)
+        return add(observeClosure)
+    }
+    
     public func remove(_ key: Int){
         observeClosures[key] = nil
     }

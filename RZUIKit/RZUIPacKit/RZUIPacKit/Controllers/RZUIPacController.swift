@@ -43,11 +43,13 @@ public protocol RZUIPacControllerNJProtocol: UIViewController{
     
     //MARK: - funcs
     func preparePac()
+    
+    func initActions()
     //MARK: - start
     /// `ru`: - метод который вызывается при первой устрановке экрана на представление
     func start()
     
-    func didCreate()
+    func didCreated()
     //MARK: - open
     /// `ru`: - метод который вызывается при каждой установке экрана на представление
     func open()
@@ -83,8 +85,10 @@ class RZUIPacControllerInterfase{
 
 extension RZUIPacControllerNJProtocol{
     public func preparePac(){}
+    public func initActions(){}
     public func start(){}
-    public func didCreate(){}
+    public func didCreated(){}
+    
     public func open(){}
     public func close(){}
     public func completedOpen(){}

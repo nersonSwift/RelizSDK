@@ -9,7 +9,9 @@
 import UIKit
 
 public protocol RZUIPacViewNoJenericProtocol: UIView{
+    func initActions()
     func create()
+    
     func rotate()
     func resize()
     
@@ -19,7 +21,9 @@ public protocol RZUIPacViewNoJenericProtocol: UIView{
 }
 
 extension RZUIPacViewNoJenericProtocol{
+    public func initActions() {}
     public func create() {}
+    
     public func resize() {}
     public func rotate() {}
     
