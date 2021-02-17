@@ -212,7 +212,7 @@ public struct RZProtoValue{
         }
         
         if let value = value{
-            return value
+            return reverst ? -value : value
         }
         
         return 0
