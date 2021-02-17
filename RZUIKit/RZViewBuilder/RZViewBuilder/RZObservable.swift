@@ -47,42 +47,51 @@ extension ObservableObject{
 }
 
 public struct RZUIAnimation {
-    @RZObservable private var _duration: TimeInterval = 0
-    @RZObservable private var _delay: TimeInterval = 0
-    @RZObservable private var _dampingRatio: CGFloat = 0
-    @RZObservable private var _velocity: CGFloat = 0
-    @RZObservable private var _options: UIView.AnimationOptions = []
+    private var _duration: TimeInterval = 0
+    private var _delay: TimeInterval = 0
+    private var _dampingRatio: CGFloat = 0
+    private var _velocity: CGFloat = 0
+    private var _options: UIView.AnimationOptions = []
+    
+    private var rzoDuration: RZObservable<TimeInterval>?
+    private var rzoDelay: RZObservable<TimeInterval>?
+    private var rzoDampingRatio: RZObservable<CGFloat>?
+    private var rzoVelocity: RZObservable<CGFloat>?
+    private var rzoOptions: RZObservable<UIView.AnimationOptions>?
     
     public func duration(_ value: TimeInterval) -> Self {
         var animation = self
         animation._duration = value
+        animation.rzoDuration = nil
         return animation
     }
     public func duration(_ value: RZObservable<TimeInterval>?) -> Self {
         var animation = self
-        if let value = value{ animation.__duration = value }
+        animation.rzoDuration = value
         return animation
     }
     
     public func delay(_ value: TimeInterval) -> Self {
         var animation = self
         animation._delay = value
+        animation.rzoDelay = nil
         return animation
     }
     public func delay(_ value: RZObservable<TimeInterval>?) -> Self {
         var animation = self
-        if let value = value{ animation.__delay = value }
+        animation.rzoDelay = value
         return animation
     }
     
     public func options(_ value: UIView.AnimationOptions) -> Self {
         var animation = self
         animation._options = value
+        animation.rzoOptions = nil
         return animation
     }
     public func options(_ value: RZObservable<UIView.AnimationOptions>?) -> Self {
         var animation = self
-        if let value = value{ animation.__options = value }
+        animation.rzoOptions = value
         return animation
     }
     
@@ -90,21 +99,25 @@ public struct RZUIAnimation {
         var animation = self
         animation._dampingRatio = dampingRatio
         animation._velocity = velocity
+        
+        animation.rzoDampingRatio = nil
+        animation.rzoVelocity = nil
+        
         return animation
     }
     public func damping(_ dampingRatio: RZObservable<CGFloat>?, _ velocity: RZObservable<CGFloat>?) -> Self {
         var animation = self
-        if let dampingRatio = dampingRatio{ animation.__dampingRatio = dampingRatio }
-        if let velocity = velocity{ animation.__velocity = velocity }
+        animation.rzoDampingRatio = dampingRatio
+        animation.rzoVelocity = velocity
         return animation
     }
     
     public func animate(_ action: @escaping ()->(), _ completion: @escaping (Bool)->() = {_ in}){
         UIView.animate(
-            withDuration: _duration,
-            delay: _delay,
-            usingSpringWithDamping: _dampingRatio,
-            initialSpringVelocity: _velocity, options: _options,
+            withDuration: rzoDuration?.wrappedValue ?? _duration,
+            delay: rzoDelay?.wrappedValue ?? _delay,
+            usingSpringWithDamping: rzoDampingRatio?.wrappedValue ?? _dampingRatio,
+            initialSpringVelocity: rzoVelocity?.wrappedValue ?? _velocity, options: rzoOptions?.wrappedValue ?? _options,
             animations: action,
             completion: completion
         )
