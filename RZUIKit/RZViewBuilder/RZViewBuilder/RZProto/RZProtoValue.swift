@@ -218,24 +218,24 @@ public struct RZProtoValue{
         return 0
     }
     
-    func setValueIn(_ view: UIView, _ tag: Int, _ remove: Bool = true,  _ closure: @escaping ((UIView) -> ())){
-        if let key = UnsafeRawPointer(bitPattern: 1){
-            var observeController = objc_getAssociatedObject(view, key) as? RZObserveController
-            if observeController == nil{
-                observeController = RZObserveController()
-                objc_setAssociatedObject(view, key, observeController, .OBJC_ASSOCIATION_RETAIN)
-            }
-            if remove{
-                observeController?.remove(tag)
-            }
-            checkObserv(view, tag, self, observeController, closure)
+    func setValueIn(_ view: UIView, _ tag: RZObserveController.Tag, _ remove: Bool = true,  _ closure: @escaping ((UIView) -> ())){
+        let key = "RZObserveController"
+    
+        var observeController = Associated(view).get(.hashable(key)) as? RZObserveController
+        if observeController == nil{
+            observeController = RZObserveController()
+            Associated(view).set(observeController, .hashable(key), .OBJC_ASSOCIATION_RETAIN)
         }
+        if remove{
+            observeController?.remove(tag)
+        }
+        checkObserv(view, tag, self, observeController, closure)
         
         closure(view)
     }
     
     private func checkObserv(_ view: UIView,
-                             _ tag: Int,
+                             _ tag: RZObserveController.Tag,
                              _ protoValue: RZProtoValue,
                              _ observeController: RZObserveController?,
                              _ closure: @escaping ((UIView) -> ())){
@@ -317,11 +317,34 @@ public struct RZProtoValue{
 
 
 class RZObserveController{
-    var observes: [(Int, [RZObserve])] = []
+    enum Tag: String {
+        case cornerRadius
+        
+        case width
+        case height
+        case x
+        case y
+        
+        case tx
+        case ty
+        
+        case ta
+        case tb
+        case tc
+        case td
+        
+        case contentWidth
+        case contentHeight
+        
+        var pointer: UnsafeRawPointer { UnsafeRawPointer(bitPattern: rawValue.hashValue)! }
+    }
+    
+    
+    var observes: [(Tag, [RZObserve])] = []
     
     func add(_ view: UIView,
              _ observeView: UIView,
-             _ tag: Int,
+             _ tag: Tag,
              _ protoTag: RZProtoValue.RZProtoTag?,
              _ closure: @escaping (UIView) -> ()){
         observes.forEach{ $0.1.forEach{ $0.removeObserve()} }
@@ -335,7 +358,7 @@ class RZObserveController{
         observe.closure = closure
         
         var setFlag = true
-        var observesL = [(Int, [RZObserve])]()
+        var observesL = [(Tag, [RZObserve])]()
         for (key, value) in observes{
             if key == tag{
                 var value = value
@@ -360,8 +383,7 @@ class RZObserveController{
         
     }
     
-    func remove(_ tag: Int){
-        
+    func remove(_ tag: Tag){
         observes = observes.filter{ $0.0 != tag }
         
     }
@@ -370,7 +392,7 @@ class RZObserveController{
 class RZObserve{
     var keys: [NSKeyValueObservation?] = []
     var closure: ((UIView) -> ())?
-    var tag: Int = 0
+    var tag: RZObserveController.Tag = .cornerRadius
     var protoTag: RZProtoValue.RZProtoTag?
     weak var view: UIView?
     weak var observeView: UIView?
@@ -396,16 +418,22 @@ class RZObserve{
                 
             if protoTag == .cX || protoTag == .mX, old.width == 0 && old.minX == 0 {return}
             if protoTag == .cY || protoTag == .mY, old.height == 0 && old.minY == 0 {return}
-                
-            if view != observeView ||
-                (self.tag == 2 && protoTag != .w && protoTag != .cX && protoTag != .mX) ||
-                (self.tag == 3 && protoTag != .h && protoTag != .cY && protoTag != .mY) ||
-                (self.tag == 4 && protoTag != .x && protoTag != .cX && protoTag != .mX) ||
-                (self.tag == 5 && protoTag != .y && protoTag != .cY && protoTag != .mY) ||
-                (self.tag == 1)
-            {
-                self.closure?(view)
+            
+            var ifWidth: Bool {
+                (self.tag == .width || self.tag == .ta || self.tag == .tb || self.tag == .tc || self.tag == .td)  &&
+                (protoTag == .w || protoTag == .cX || protoTag == .mX)
             }
+            var ifHeight: Bool {
+                (self.tag == .height || self.tag == .ta || self.tag == .tb || self.tag == .tc || self.tag == .td) &&
+                (protoTag == .h || protoTag == .cY || protoTag == .mY)
+            }
+            
+            var ifX: Bool { (self.tag == .x || self.tag == .tx) && (protoTag == .x || protoTag == .cX || protoTag == .mX) }
+            var ifY: Bool { (self.tag == .y || self.tag == .ty) && (protoTag == .y || protoTag == .cX || protoTag == .mX) }
+           
+            
+            if view == observeView, ifWidth || ifHeight || ifX || ifY { return }
+            self.closure?(view)
         }
         keys.append(observeKey)
         
@@ -419,19 +447,24 @@ class RZObserve{
             old.x -= observeView.center.x
             old.y -= observeView.center.y
             
-            
             if protoTag == .w || protoTag == .x || protoTag == .cX || protoTag == .mX, old.x == 0 {return}
             if protoTag == .h || protoTag == .y || protoTag == .cY || protoTag == .mY, old.y == 0 {return}
                 
-            if view != observeView ||
-                (self.tag == 2 && protoTag != .w && protoTag != .cX && protoTag != .mX) ||
-                (self.tag == 3 && protoTag != .h && protoTag != .cY && protoTag != .mY) ||
-                (self.tag == 4 && protoTag != .x && protoTag != .cX && protoTag != .mX) ||
-                (self.tag == 5 && protoTag != .y && protoTag != .cY && protoTag != .mY) ||
-                (self.tag == 1)
-            {
-                self.closure?(view)
+            var ifWidth: Bool  {
+                (self.tag == .width || self.tag == .ta || self.tag == .tb || self.tag == .tc || self.tag == .td)  &&
+                (protoTag == .w || protoTag == .cX || protoTag == .mX)
             }
+            var ifHeight: Bool {
+                (self.tag == .height || self.tag == .ta || self.tag == .tb || self.tag == .tc || self.tag == .td) &&
+                (protoTag == .h || protoTag == .cY || protoTag == .mY)
+            }
+            
+            var ifX: Bool  { (self.tag == .x || self.tag == .tx) && (protoTag == .x || protoTag == .cX || protoTag == .mX) }
+            var ifY: Bool  { (self.tag == .y || self.tag == .ty) && (protoTag == .y || protoTag == .cX || protoTag == .mX) }
+           
+            
+            if view == observeView, ifWidth || ifHeight || ifX || ifY { return }
+            self.closure?(view)
         }
         keys.append(observeKey1)
     }

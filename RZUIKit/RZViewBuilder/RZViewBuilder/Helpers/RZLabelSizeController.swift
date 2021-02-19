@@ -14,36 +14,43 @@ class RZLabelSizeController{
     }
     
     static func setMod(_ view: UIView, _ mod: LabelSizeMod){
-        guard let key = UnsafeRawPointer(bitPattern: 2) else {return}
-        var labelSize = objc_getAssociatedObject(view, key) as? RZLabelSize
-        if labelSize == nil{
-            labelSize = RZLabelSize()
-            objc_setAssociatedObject(view, key, labelSize, .OBJC_ASSOCIATION_RETAIN)
-        }
+        let labelSize = getLabelSize(view)
+        
         switch mod{
         case .sizeToFit:
-            labelSize?.view = view
-            labelSize?.sizeToFit = true
-        case .font(let font):
-            labelSize?.difoulFont = font
+            labelSize.view = view
+            labelSize.sizeToFit = true
+        default: break
         }
     }
     
-    static func modUpdate(_ view: UIView){
-        guard let key = UnsafeRawPointer(bitPattern: 2) else {return}
-        guard let labelSize = objc_getAssociatedObject(view, key) as? RZLabelSize else {return}
+    static func modUpdate(_ view: UIView, _ updateWidth: Bool = false){
+        let labelSize = getLabelSize(view)
+        if updateWidth { labelSize.defoultWidth = view.frame.width }
         labelSize.update()
+    }
+    
+    private static func getLabelSize(_ view: UIView) -> RZLabelSize{
+        let key = "RZLabelSize"
+        var labelSize = Associated(view).get(.hashable(key)) as? RZLabelSize
+        if labelSize == nil{
+            labelSize = RZLabelSize()
+            Associated(view).set(labelSize, .hashable(key), .OBJC_ASSOCIATION_RETAIN)
+        }
+        return labelSize!
     }
 }
 
 class RZLabelSize{
-    var difoulFont: UIFont?
-    var sizes: Bool = false
-    var sizeToFit: Bool = false
     weak var view: UIView?
+    var sizeToFit: Bool = false
+    var defoultWidth: CGFloat = .zero
     
     func update(){
-        if sizeToFit { view?.sizeToFit() }
+        if sizeToFit {
+            view?.frame.size.width = defoultWidth
+            view?.sizeToFit()
+        }
     }
     
 }

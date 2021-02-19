@@ -17,7 +17,7 @@ extension ObservableObject{
     {
         let key = "\(bindingKey)\(publisherKey)"
         
-        if let rzObservable = getAssociated(key.hashValue) as? RZObservable<T>{return rzObservable }
+        if let rzObservable = getAssociated(key) as? RZObservable<T>{return rzObservable }
         
         let binding = ObservedObject(initialValue: self).projectedValue[keyPath: bindingKey]
         let rzObservable = RZPublisherObservable(binding: binding)
@@ -26,16 +26,16 @@ extension ObservableObject{
             rzObservable?.update(value)
         }
         
-        setAssociated(key.hashValue, rzObservable)
+        setAssociated(key, rzObservable)
         return rzObservable
     }
     
-    private func setAssociated(_ int: Int, _ obj: Any){
-        objc_setAssociatedObject(self, UnsafeRawPointer(bitPattern: int)!, obj, .OBJC_ASSOCIATION_RETAIN)
+    private func setAssociated(_ key: String, _ obj: Any){
+        Associated(self).set(obj, .hashable(key), .OBJC_ASSOCIATION_RETAIN)
     }
     
-    private func getAssociated(_ int: Int) -> Any?{
-        objc_getAssociatedObject(self, UnsafeRawPointer(bitPattern: int)!)
+    private func getAssociated(_ key: String) -> Any?{
+        Associated(self).get(.hashable(key))
     }
     
     public func setRZObservables(){
@@ -150,7 +150,7 @@ public protocol RZObservableProtocol: class {
 }
 
 @propertyWrapper
-public class RZObservable<Value>: RZObservableProtocol {
+public class RZObservable<Value>: NSObject, RZObservableProtocol {
     //MARK: - Result
     public class Result{
         private weak var rzObservable: RZObservable<Value>?
@@ -341,6 +341,20 @@ extension RZObservable where Value == Bool{
         return self ?> RZSwith(mapD)
     }
 }
+extension RZObservable where Value == String{
+    func setTextObserve(_ textField: UITextField){
+        textField.addAction(for: .editingChanged) {[weak self, weak textField] in
+            if self?.wrappedValue != textField?.text{
+                self?.wrappedValue = textField?.text ?? ""
+            }
+        }
+    }
+    
+    func setTextObserve(_ textView: UITextView){
+        RZTextViewDelegate.setDelegate(textView, self)
+    }
+}
+
 
 public class RZPublisherObservable<Value>: RZObservable<Value>{
     public var binding: Binding<Value>?
@@ -373,6 +387,87 @@ public class RZPublisherObservable<Value>: RZObservable<Value>{
     public init(binding: Binding<Value>){
         super.init(wrappedValue: binding.wrappedValue)
         self.binding = binding
+    }
+}
+
+class RZTextViewDelegate: NSObject, UITextViewDelegate{
+    weak var dopDelegate: UITextViewDelegate?
+    weak var rzObservable: RZObservable<String>?
+    weak var textView: UITextView?
+    var key: NSKeyValueObservation?
+    
+    static func setDelegate(_ textView: UITextView, _ rzObservable: RZObservable<String>){
+        let delegate = RZTextViewDelegate()
+        
+        delegate.textView = textView
+        delegate.rzObservable = rzObservable
+        Associated(textView).set(delegate, .hashable("RZTextViewDelegate"), .OBJC_ASSOCIATION_RETAIN)
+        
+        if let delegateL = delegate.textView?.delegate{
+            if !(delegateL is RZTextViewDelegate){
+                delegate.dopDelegate = delegateL
+            }
+        }
+        textView.delegate = delegate
+         
+        delegate.key = delegate.textView?.observe(\.delegate, options: [.old, .new], changeHandler: {textView, value in
+            if value.newValue is RZTextViewDelegate { return }
+            if let rzTextViewDelegate = value.oldValue as? RZTextViewDelegate{
+                rzTextViewDelegate.dopDelegate = value.newValue as? UITextViewDelegate
+                textView.delegate = rzTextViewDelegate
+            }
+        })
+    }
+    
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool{
+        dopDelegate?.textViewShouldBeginEditing?(textView) ?? true
+    }
+
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool{
+        dopDelegate?.textViewShouldEndEditing?(textView) ?? true
+    }
+
+    func textViewDidBeginEditing(_ textView: UITextView){
+        dopDelegate?.textViewDidBeginEditing?(textView)
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView){
+        dopDelegate?.textViewDidEndEditing?(textView)
+    }
+
+    func textView(
+        _ textView: UITextView,
+        shouldChangeTextIn range: NSRange,
+        replacementText text: String
+    ) -> Bool{
+        dopDelegate?.textView?(textView, shouldChangeTextIn: range, replacementText: text) ?? true
+    }
+
+    func textViewDidChange(_ textView: UITextView){
+        dopDelegate?.textViewDidChange?(textView)
+        if rzObservable?.wrappedValue != textView.text{ rzObservable?.wrappedValue = textView.text }
+    }
+
+    func textViewDidChangeSelection(_ textView: UITextView){
+        dopDelegate?.textViewDidChangeSelection?(textView)
+    }
+
+    func textView(
+        _ textView: UITextView,
+        shouldInteractWith URL: URL,
+        in characterRange: NSRange,
+        interaction: UITextItemInteraction
+    ) -> Bool{
+        dopDelegate?.textView?(textView, shouldInteractWith: URL, in: characterRange, interaction: interaction) ?? true
+    }
+
+    func textView(
+        _ textView: UITextView,
+        shouldInteractWith textAttachment: NSTextAttachment,
+        in characterRange: NSRange,
+        interaction: UITextItemInteraction
+    ) -> Bool{
+        dopDelegate?.textView?(textView, shouldInteractWith: textAttachment, in: characterRange, interaction: interaction) ?? true
     }
 }
 
@@ -410,7 +505,7 @@ public func ?><Key: Hashable, Value>(left: RZObservable<Key>, right: RZSwith<Key
     }
     let key = -obj.key
     obj.use(.noAnimate)
-    objc_setAssociatedObject(left, UnsafeRawPointer(bitPattern: key)!, observable, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
+    Associated(left).set(observable, .hashable(key), .OBJC_ASSOCIATION_RETAIN)
     return observable
 }
 
@@ -434,7 +529,54 @@ public func ?><Key: Hashable, Value>(left: RZObservable<Key>, right: RZSwith<Key
     }
     let key = -obj.key
     obj.use(.noAnimate)
-    objc_setAssociatedObject(left, UnsafeRawPointer(bitPattern: key)!, observable, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
+    Associated(left).set(observable, .hashable(key), .OBJC_ASSOCIATION_RETAIN)
     return observable
 }
 
+
+public struct Associated{
+    public enum SetKey {
+        case random
+        case hashable(AnyHashable)
+        case pointer(UnsafeRawPointer)
+    }
+    
+    private weak var object: AnyObject?
+    
+    public init(_ object: AnyObject){
+        self.object = object
+    }
+    
+    @discardableResult
+    public func set(_ value: Any?, _ key: SetKey, _ policy: objc_AssociationPolicy) -> SetKey? {
+        guard let object = object else {return nil}
+        let key = getKey(key)
+        objc_setAssociatedObject(object, key, value, policy)
+        return .pointer(key)
+    }
+    
+    public func get(_ key: SetKey) -> Any?{
+        guard let object = object else {return nil}
+        let key = getKey(key)
+        return objc_getAssociatedObject(object, key)
+    }
+    
+    private func getKey(_ key: SetKey) -> UnsafeRawPointer{
+        var pointerKey: UnsafeRawPointer
+        
+        switch key {
+        case .random:
+            var pointer: UnsafeRawPointer?
+            repeat{
+                pointer = UnsafeRawPointer(bitPattern: Int(arc4random()))
+            }while pointer == nil
+            pointerKey = pointer!
+        case .hashable(let anyHashable):
+            pointerKey = UnsafeRawPointer(bitPattern: anyHashable.hashValue)!
+        case .pointer(let pointer):
+            pointerKey = pointer
+        }
+        
+        return pointerKey
+    }
+}
