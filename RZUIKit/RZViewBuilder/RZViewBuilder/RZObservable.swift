@@ -113,14 +113,27 @@ public struct RZUIAnimation {
     }
     
     public func animate(_ action: @escaping ()->(), _ completion: @escaping (Bool)->() = {_ in}){
-        UIView.animate(
-            withDuration: rzoDuration?.wrappedValue ?? _duration,
-            delay: rzoDelay?.wrappedValue ?? _delay,
-            usingSpringWithDamping: rzoDampingRatio?.wrappedValue ?? _dampingRatio,
-            initialSpringVelocity: rzoVelocity?.wrappedValue ?? _velocity, options: rzoOptions?.wrappedValue ?? _options,
-            animations: action,
-            completion: completion
-        )
+        let usingSpringWithDamping = rzoDampingRatio?.wrappedValue ?? _dampingRatio
+        let initialSpringVelocity = rzoVelocity?.wrappedValue ?? _velocity
+        if usingSpringWithDamping == 0, initialSpringVelocity == 0{
+            UIView.animate(
+                withDuration: rzoDuration?.wrappedValue ?? _duration,
+                delay: rzoDelay?.wrappedValue ?? _delay,
+                options: rzoOptions?.wrappedValue ?? _options,
+                animations: action,
+                completion: completion
+            )
+        }else{
+            UIView.animate(
+                withDuration: rzoDuration?.wrappedValue ?? _duration,
+                delay: rzoDelay?.wrappedValue ?? _delay,
+                usingSpringWithDamping: usingSpringWithDamping,
+                initialSpringVelocity: initialSpringVelocity,
+                options: rzoOptions?.wrappedValue ?? _options,
+                animations: action,
+                completion: completion
+            )
+        }
     }
     
     
@@ -143,6 +156,7 @@ extension RZUIAnimation{
     
     public static var standart: Self { Self.duration(0.3) }
     public static var ezDamping: Self { Self.duration(0.8).damping(0.8, 0.3).options(.curveEaseOut) }
+    public static var slowEzOut: Self { Self.duration(2).options(.curveEaseOut) }
 }
 
 public protocol RZObservableProtocol: class {
@@ -154,10 +168,10 @@ public class RZObservable<Value>: NSObject, RZObservableProtocol {
     //MARK: - Result
     public class Result{
         private weak var rzObservable: RZObservable<Value>?
-        var key: Int
-        var action: RZObservable.Action
+        public var key: Int
+        public var action: RZObservable.Action
         
-        var value: Value? {
+        public var value: Value? {
             set(value){
                 guard let value = value else { return }
                 rzObservable?.wrappedValue = value
@@ -167,8 +181,8 @@ public class RZObservable<Value>: NSObject, RZObservableProtocol {
             }
         }
         
-        func use(_ useType: RZObservable.UseType = .animate){ rzObservable?.use(useType, key) }
-        func remove(){ rzObservable?.remove(key) }
+        public func use(_ useType: RZObservable.UseType = .animate){ rzObservable?.use(useType, key) }
+        public func remove(){ rzObservable?.remove(key) }
         
         
         init(_ rzObservable: RZObservable<Value>, _ key: Int, _ action: RZObservable.Action){
@@ -187,22 +201,22 @@ public class RZObservable<Value>: NSObject, RZObservableProtocol {
             case useDefaultAnimate(_ animation: RZUIAnimation)
         }
         
-        public var closure: ((Value)->())?
+        public var closure: ((Value, Value)->())?
         public var animation: RZUIAnimation?
         
-        public func use(_ useType: UseType = .animate, value: Value){
+        public func use(_ useType: UseType = .animate, valueOld: Value, valueNew: Value){
             switch useType{
             case .animate:
-                animation != nil ? animation?.animate{ [weak self] in self?.closure?(value) } : closure?(value)
+                animation != nil ? animation?.animate{ [weak self] in self?.closure?(valueOld, valueNew) } : closure?(valueOld, valueNew)
             case .noAnimate:
-                closure?(value)
+                closure?(valueOld, valueNew)
             case .useAnimate(let animation):
-                animation.animate{ [weak self] in self?.closure?(value) }
+                animation.animate{ [weak self] in self?.closure?(valueOld, valueNew) }
             case .useDefaultAnimate(let animation):
-                (self.animation ?? animation).animate{ [weak self] in self?.closure?(value) }
+                (self.animation ?? animation).animate{ [weak self] in self?.closure?(valueOld, valueNew) }
             }
         }
-        public init(_ animation: RZUIAnimation?, _ closure: @escaping (Value)->()) {
+        public init(_ animation: RZUIAnimation?, _ closure: @escaping (Value, Value)->()) {
             self.animation = animation
             self.closure = closure
         }
@@ -232,12 +246,13 @@ public class RZObservable<Value>: NSObject, RZObservableProtocol {
     
     public var wrappedValue: Value{
         set(wrappedValue){
+            let old = value
             value = wrappedValue
             observeResults.forEach{
                 if let defaultAnimetion = defaultAnimetion{
-                    $0.action.use(.useDefaultAnimate(defaultAnimetion), value: wrappedValue)
+                    $0.action.use(.useDefaultAnimate(defaultAnimetion), valueOld: old, valueNew: wrappedValue)
                 }else{
-                    $0.action.use(value: wrappedValue)
+                    $0.action.use(valueOld: old, valueNew: wrappedValue)
                 }
             }
         }
@@ -250,16 +265,16 @@ public class RZObservable<Value>: NSObject, RZObservableProtocol {
         guard let action = getAction(key) else { return }
         switch useType {
         case .animate:
-            action.use(.animate, value: wrappedValue)
+            action.use(.animate, valueOld: wrappedValue, valueNew: wrappedValue)
         case .noAnimate:
-            action.use(.noAnimate, value: wrappedValue)
+            action.use(.noAnimate, valueOld: wrappedValue, valueNew: wrappedValue)
         case .useAnimate(let animation):
-            action.use(.useAnimate(animation), value: wrappedValue)
+            action.use(.useAnimate(animation), valueOld: wrappedValue, valueNew: wrappedValue)
         case .useDefaultAnimate:
             if let defaultAnimetion = defaultAnimetion{
-                action.use(.useAnimate(defaultAnimetion), value: wrappedValue)
+                action.use(.useAnimate(defaultAnimetion), valueOld: wrappedValue, valueNew: wrappedValue)
             }else{
-                action.use(.animate, value: wrappedValue)
+                action.use(.animate, valueOld: wrappedValue, valueNew: wrappedValue)
             }
         }
     }
@@ -279,6 +294,11 @@ public class RZObservable<Value>: NSObject, RZObservableProtocol {
     //MARK: - Public
     @discardableResult
     public func add(_ animation: RZUIAnimation? = nil, _ observeClosure: @escaping (Value)->()) -> Result{
+        return add(animation){_, value in observeClosure(value)}
+    }
+    
+    @discardableResult
+    public func add(_ animation: RZUIAnimation? = nil, _ observeClosure: @escaping (Value, Value)->()) -> Result{
         var animation = animation
     
         if animation == nil, let prepareAnimetion = prepareAnimetion{
@@ -354,7 +374,9 @@ extension RZObservable where Value == String{
         RZTextViewDelegate.setDelegate(textView, self)
     }
 }
-
+extension RZObservable: RZProtoValueProtocol where Value == RZProtoValue{
+    public func getValue(_ frame: CGRect) -> CGFloat {wrappedValue.getValue(frame)}
+}
 
 public class RZPublisherObservable<Value>: RZObservable<Value>{
     public var binding: Binding<Value>?
@@ -374,12 +396,13 @@ public class RZPublisherObservable<Value>: RZObservable<Value>{
     }
     
     public func update(_ value: Value){
+        let old = self.value
         self.value = value
         self.observeResults.forEach{
             if let defaultAnimetion = defaultAnimetion{
-                $0.action.use(.useDefaultAnimate(defaultAnimetion), value: wrappedValue)
+                $0.action.use(.useDefaultAnimate(defaultAnimetion), valueOld: old, valueNew: wrappedValue)
             }else{
-                $0.action.use(value: wrappedValue)
+                $0.action.use(valueOld: old, valueNew: wrappedValue)
             }
         }
     }

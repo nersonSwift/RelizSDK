@@ -7,6 +7,10 @@
 
 import UIKit
 
+public protocol RZProtoValueProtocol {
+    func getValue(_ frame: CGRect) -> CGFloat
+}
+
 //MARK: - RZProtoValue
 /// `RU: -`
 /// Структура для упрощения синтаксиса верстки
@@ -114,14 +118,14 @@ import UIKit
 ///
 ///     print(view2.frame.width)   // 130
 ///     print(view2.frame.height)  // 40
-public struct RZProtoValue{
+public struct RZProtoValue: RZProtoValueProtocol{
     private var value: CGFloat?
     private var selfTag: RZProtoTag?
     private var procent: CGFloat?
     private var reverst: Bool = false
     private weak var observView: UIView?
     
-    private var range: RZProtoValueGoup?
+    var operation: RZProtoOperationProtocol?
     
     public enum RZProtoTag{
         case w
@@ -182,8 +186,8 @@ public struct RZProtoValue{
         }
     }
     
-    func getValue(_ frame: CGRect = .zero) -> CGFloat{
-        if let range = range { return range.getValue(frame) }
+    public func getValue(_ frame: CGRect = .zero) -> CGFloat{
+        if let range = operation { return range.getValue(frame) }
         
         let frame = observView?.frame ?? frame
         
@@ -234,17 +238,18 @@ public struct RZProtoValue{
         closure(view)
     }
     
-    private func checkObserv(_ view: UIView,
-                             _ tag: RZObserveController.Tag,
-                             _ protoValue: RZProtoValue,
-                             _ observeController: RZObserveController?,
-                             _ closure: @escaping ((UIView) -> ())){
+    func checkObserv(
+        _ view: UIView,
+        _ tag: RZObserveController.Tag,
+        _ protoValue: RZProtoValue,
+        _ observeController: RZObserveController?,
+        _ closure: @escaping ((UIView) -> ())
+    ){
         if let observView = observView{
             observeController?.add(view, observView, tag, selfTag, closure)
         }
-        if let range = range{
-            range.spaceFirst.checkObserv(view, tag, protoValue, observeController, closure)
-            range.spaceSecond.checkObserv(view, tag, protoValue, observeController, closure)
+        if let range = operation{
+            range.checkObserv(view, tag, protoValue, observeController, closure)
         }
     }
     
@@ -257,62 +262,61 @@ public struct RZProtoValue{
     }
     init(){}
     
-    public static func %(left: CGFloat, right: RZProtoValue) -> RZProtoValue{
-        var right = right
-        right.procent = left
-        return right
-    }
-    
-    public static func %(left: RZProtoValue, right: RZProtoValue) -> RZProtoValue{
-        var right = right
-        right.procent = left.value
-        return right
-    }
-    
-    public static func +(left: RZProtoValue, right: RZProtoValue) -> RZProtoValue{
-        var value = RZProtoValue()
-        value.range = RZProtoValueGoup(left, right, .p)
-        return value
-    }
-    
-    public static func -(left: RZProtoValue, right: RZProtoValue) -> RZProtoValue{
-        var value = RZProtoValue()
-        value.range = RZProtoValueGoup(left, right, .m)
-        return value
-    }
-    
-    public static func /(left: RZProtoValue, right: RZProtoValue) -> RZProtoValue{
-        var value = RZProtoValue()
-        value.range = RZProtoValueGoup(left, right, .d)
-        return value
-    }
-    
-    public static func *(left: RZProtoValue, right: RZProtoValue) -> RZProtoValue{
-        var value = RZProtoValue()
-        value.range = RZProtoValueGoup(left, right, .u)
-        return value
-    }
-    
-    
-    public static func <>(left: RZProtoValue, right: RZProtoValue) -> RZProtoValue{
-        var value = RZProtoValue()
-        value.range = RZProtoValueGoup(left, right, .rang)
-        return value
-    }
-    public static func ><(left: RZProtoValue, right: RZProtoValue) -> RZProtoValue{
-        var value = RZProtoValue()
-        value.range = RZProtoValueGoup(left, right, .center)
-        return value
-    }
-    public static prefix func -(right: RZProtoValue) -> RZProtoValue{
-        var right = right
-        right.reverst.toggle()
-        return right
-    }
-    
     public static func value(_ value: CGFloat) -> RZProtoValue{
         RZProtoValue(value)
     }
+}
+
+
+public func %(left: RZProtoValue, right: RZProtoValue) -> RZProtoValue{
+    var value = RZProtoValue()
+    value.operation = RZProtoOperationGoup(left, right, .procent)
+    return value
+}
+
+public func %(left: CGFloat, right: RZProtoValue) -> RZProtoValue{
+    return left* % right
+}
+
+public func +(left: RZProtoValueProtocol, right: RZProtoValueProtocol) -> RZProtoValue{
+    var value = RZProtoValue()
+    value.operation = RZProtoOperationGoup(left, right, .p)
+    return value
+}
+
+public func -(left: RZProtoValueProtocol, right: RZProtoValueProtocol) -> RZProtoValue{
+    var value = RZProtoValue()
+    value.operation = RZProtoOperationGoup(left, right, .m)
+    return value
+}
+
+public func /(left: RZProtoValueProtocol, right: RZProtoValueProtocol) -> RZProtoValue{
+    var value = RZProtoValue()
+    value.operation = RZProtoOperationGoup(left, right, .d)
+    return value
+}
+
+public func *(left: RZProtoValueProtocol, right: RZProtoValueProtocol) -> RZProtoValue{
+    var value = RZProtoValue()
+    value.operation = RZProtoOperationGoup(left, right, .u)
+    return value
+}
+
+
+public func <>(left: RZProtoValueProtocol, right: RZProtoValueProtocol) -> RZProtoValue{
+    var value = RZProtoValue()
+    value.operation = RZProtoOperationGoup(left, right, .rang)
+    return value
+}
+public func ><(left: RZProtoValueProtocol, right: RZProtoValueProtocol) -> RZProtoValue{
+    var value = RZProtoValue()
+    value.operation = RZProtoOperationGoup(left, right, .center)
+    return value
+}
+public prefix func -(right: RZProtoValueProtocol) -> RZProtoValue{
+    var value = RZProtoValue()
+    value.operation = RZProtoOperation(right, .reverst)
+    return value
 }
 
 
@@ -376,7 +380,6 @@ class RZObserveController{
         
         observes.reversed().forEach{
             $0.1.forEach{
-                
                 $0.setObserve()
             }
         }

@@ -15,7 +15,7 @@
 		5159269625821EFC00C6596F /* RZViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5159268B25821EFC00C6596F /* RZViewBuilder.swift */; };
 		5159269725821EFC00C6596F /* RZProtoFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5159268D25821EFC00C6596F /* RZProtoFrame.swift */; };
 		5159269825821EFC00C6596F /* RZProtoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5159268E25821EFC00C6596F /* RZProtoTest.swift */; };
-		5159269925821EFC00C6596F /* RZProtoValueGoup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5159268F25821EFC00C6596F /* RZProtoValueGoup.swift */; };
+		5159269925821EFC00C6596F /* RZProtoOperationGoup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5159268F25821EFC00C6596F /* RZProtoOperationGoup.swift */; };
 		5159269A25821EFC00C6596F /* RZProtoValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5159269025821EFC00C6596F /* RZProtoValue.swift */; };
 		5159269B25821EFC00C6596F /* RZProto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5159269125821EFC00C6596F /* RZProto.swift */; };
 		515F09B525926D690075EBA8 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F09B425926D690075EBA8 /* DictionaryExtension.swift */; };
@@ -35,7 +35,7 @@
 		5159268B25821EFC00C6596F /* RZViewBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZViewBuilder.swift; sourceTree = "<group>"; };
 		5159268D25821EFC00C6596F /* RZProtoFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZProtoFrame.swift; sourceTree = "<group>"; };
 		5159268E25821EFC00C6596F /* RZProtoTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZProtoTest.swift; sourceTree = "<group>"; };
-		5159268F25821EFC00C6596F /* RZProtoValueGoup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZProtoValueGoup.swift; sourceTree = "<group>"; };
+		5159268F25821EFC00C6596F /* RZProtoOperationGoup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZProtoOperationGoup.swift; sourceTree = "<group>"; };
 		5159269025821EFC00C6596F /* RZProtoValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZProtoValue.swift; sourceTree = "<group>"; };
 		5159269125821EFC00C6596F /* RZProto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZProto.swift; sourceTree = "<group>"; };
 		515F09B425926D690075EBA8 /* DictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 			children = (
 				5159268D25821EFC00C6596F /* RZProtoFrame.swift */,
 				5159268E25821EFC00C6596F /* RZProtoTest.swift */,
-				5159268F25821EFC00C6596F /* RZProtoValueGoup.swift */,
+				5159268F25821EFC00C6596F /* RZProtoOperationGoup.swift */,
 				5159269025821EFC00C6596F /* RZProtoValue.swift */,
 				5159269125821EFC00C6596F /* RZProto.swift */,
 			);
@@ -234,7 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5159269725821EFC00C6596F /* RZProtoFrame.swift in Sources */,
-				5159269925821EFC00C6596F /* RZProtoValueGoup.swift in Sources */,
+				5159269925821EFC00C6596F /* RZProtoOperationGoup.swift in Sources */,
 				5159269B25821EFC00C6596F /* RZProto.swift in Sources */,
 				5159269425821EFC00C6596F /* RZLabelSizeController.swift in Sources */,
 				5159269625821EFC00C6596F /* RZViewBuilder.swift in Sources */,

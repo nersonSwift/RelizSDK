@@ -163,6 +163,48 @@ public class RZViewBuilder<V: UIView>{
         return self
     }
     
+    @discardableResult
+    public func alpha(_ value: CGFloat) -> Self{
+        view.alpha = value
+        return self
+    }
+    @discardableResult
+    public func alpha(_ value: RZObservable<CGFloat>?) -> Self{
+        value?.add {[weak view] in view?+>.alpha($0)}.use(.noAnimate)
+        return self
+    }
+    
+    @discardableResult
+    public func isHidden(_ value: Bool) -> Self{
+        view.isHidden = value
+        return self
+    }
+    @discardableResult
+    public func isHidden(_ value: RZObservable<Bool>?) -> Self{
+        value?.add {[weak view] in view?+>.isHidden($0)}.use(.noAnimate)
+        return self
+    }
+    
+    @discardableResult
+    public func template(_ value: RZVBTemplate<V>) -> Self{
+        value.use(view: view)
+        return self
+    }
+    @discardableResult
+    public func template(_ value: RZObservable<RZVBTemplate<V>>?) -> Self{
+        value?.add {[weak view] in view?+>.template($0)}.use(.noAnimate)
+        return self
+    }
+    @discardableResult
+    public func template(_ value: (V)->()) -> Self{
+        value(view)
+        return self
+    }
+    @discardableResult
+    public func template(_ value: RZObservable<(V)->()>?) -> Self{
+        value?.add {[weak view] in view?+>.template($0)}.use(.noAnimate)
+        return self
+    }
     
 }
 
@@ -953,4 +995,8 @@ extension RZViewBuilder where V: UIScrollView{
 }
 
 
-
+public struct RZVBTemplate<View: UIView> {
+    private var template: (View)->()
+    public func use(view: View){ template(view) }
+    public init(_ template: @escaping (View)->()) { self.template = template }
+}
