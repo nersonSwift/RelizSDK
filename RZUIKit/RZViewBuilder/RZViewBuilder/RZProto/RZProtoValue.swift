@@ -372,6 +372,13 @@ class RZObserveController{
         }
         observes[tag]?.append(RZObserve(view, tag, protoValue, closure))
     }
+    func add(_ tag: Tag, _ rzoProtoValue: RZObservable<RZProtoValue>, _ closure: @escaping (UIView) -> ()){
+        guard let view = view else { return }
+        if observes[tag] == nil{
+            observes[tag] = []
+        }
+        observes[tag]?.append(RZObserve(view, tag, rzoProtoValue, self, closure))
+    }
     
     func remove(_ tag: Tag){
         observes[tag] = nil
@@ -413,6 +420,23 @@ class RZObserve{
         self.closure = closure
         setObserve()
     }
+    convenience init(
+        _ view: UIView,
+        _ tag: RZObserveController.Tag,
+        _ rzoProtoValue: RZObservable<RZProtoValue>,
+        _ observeController: RZObserveController?,
+        _ closure: @escaping ((UIView) -> ())
+    ){
+        self.init(view, tag, rzoProtoValue.wrappedValue, closure)
+        rzoProtoValue.add {[weak self, weak observeController] proto in
+            guard let self = self else {return}
+            guard let view = self.view else {return}
+            guard let observeController = observeController else {return}
+            guard let closure = self.closure else {return}
+            proto.checkObserv(tag, observeController, closure)
+            closure(view)
+        }
+    }
     
     private func setObserve(){
         result = protoValue?.$value.add{[weak self]_ in
@@ -432,3 +456,4 @@ class RZObserve{
         result?.remove()
     }
 }
+
