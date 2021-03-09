@@ -9,13 +9,31 @@ import UIKit
 
 protocol RZProtoOperationProtocol {
     func checkObserv(
-        _ view: UIView,
         _ tag: RZObserveController.Tag,
-        _ protoValue: RZProtoValue,
         _ observeController: RZObserveController?,
         _ closure: @escaping ((UIView) -> ())
     )
     func getValue(_ frame: CGRect) -> CGFloat
+}
+extension RZProtoOperationProtocol{
+    func checkObservAt(
+        _ value: RZProtoValueProtocol,
+        _ tag: RZObserveController.Tag,
+        _ observeController: RZObserveController?,
+        _ closure: @escaping ((UIView) -> ())
+    ){
+        if let value = value as? RZProtoValue{
+            value.checkObserv(tag, observeController, closure)
+        }
+        if let value = value as? RZObservable<RZProtoValue>{
+            value.add {[weak observeController] proto in
+                guard let observeController = observeController else {return}
+                guard let view = observeController.view else {return}
+                proto.checkObserv(tag, observeController, closure)
+                closure(view)
+            }
+        }
+    }
 }
 
 class RZProtoOperation: RZProtoOperationProtocol{
@@ -24,6 +42,7 @@ class RZProtoOperation: RZProtoOperationProtocol{
     
     enum RZProtoOperationType {
         case reverst
+        case wrap
     }
     
     init(_ value: RZProtoValueProtocol, _ type: RZProtoOperationType){
@@ -32,31 +51,19 @@ class RZProtoOperation: RZProtoOperationProtocol{
     }
     
     func checkObserv(
-        _ view: UIView,
         _ tag: RZObserveController.Tag,
-        _ protoValue: RZProtoValue,
         _ observeController: RZObserveController?,
         _ closure: @escaping ((UIView) -> ())
     ){
-        if let value = value as? RZProtoValue{
-            value.checkObserv(view, tag, protoValue, observeController, closure)
-        }
-        if let value = value as? RZObservable<RZProtoValue>{
-            value.add {[weak view, weak observeController] proto in
-                guard let view = view else {return}
-                proto.checkObserv(view, tag, protoValue, observeController, closure)
-                closure(view)
-            }
-        }
+        checkObservAt(value, tag, observeController, closure)
     }
     
     func getValue(_ frame: CGRect) -> CGFloat {
         switch type {
             case .reverst: return -value.getValue(frame)
+            case .wrap:    return value.getValue(frame)
         }
     }
-    
-    
 }
 
 class RZProtoOperationGoup: RZProtoOperationProtocol {
@@ -82,33 +89,12 @@ class RZProtoOperationGoup: RZProtoOperationProtocol {
     }
     
     func checkObserv(
-        _ view: UIView,
         _ tag: RZObserveController.Tag,
-        _ protoValue: RZProtoValue,
         _ observeController: RZObserveController?,
         _ closure: @escaping ((UIView) -> ())
     ){
-        if let spaceFirst = spaceFirst as? RZProtoValue{
-            spaceFirst.checkObserv(view, tag, protoValue, observeController, closure)
-        }
-        if let spaceSecond = spaceSecond as? RZProtoValue{
-            spaceSecond.checkObserv(view, tag, protoValue, observeController, closure)
-        }
-        
-        if let spaceFirst = spaceFirst as? RZObservable<RZProtoValue>{
-            spaceFirst.add {[weak view, weak observeController] proto in
-                guard let view = view else {return}
-                proto.checkObserv(view, tag, protoValue, observeController, closure)
-                closure(view)
-            }
-        }
-        if let spaceSecond = spaceSecond as? RZObservable<RZProtoValue>{
-            spaceSecond.add {[weak view, weak observeController] proto in
-                guard let view = view else {return}
-                proto.checkObserv(view, tag, protoValue, observeController, closure)
-                closure(view)
-            }
-        }
+        checkObservAt(spaceFirst, tag, observeController, closure)
+        checkObservAt(spaceSecond, tag, observeController, closure)
     }
     
     func getValue(_ frame: CGRect) -> CGFloat{
@@ -141,7 +127,6 @@ class RZProtoOperationGoup: RZProtoOperationProtocol {
             return first * second
         case .d:
             return first / second
-        
         }
     }
 }

@@ -652,6 +652,17 @@ extension RZViewBuilder{
         return self
     }
     
+    @discardableResult
+    public func transform(_ value: CGAffineTransform) -> Self{
+        view.transform = value
+        return self
+    }
+    @discardableResult
+    public func transform(_ value: RZObservable<CGAffineTransform>?) -> Self{
+        value?.add {[weak view] in view?+>.transform($0)}.use(.noAnimate)
+        return self
+    }
+    
     
     //MARK: - sizeToFit
     /// `RU: - `
@@ -884,7 +895,7 @@ extension RZViewBuilder where V: UIButton{
     }
     @discardableResult
     public func text(_ value: RZObservable<String>?) -> Self{
-        value?.add {[weak view] in view?+>.text($0)}
+        value?.add {[weak view] in view?+>.text($0)}.use(.noAnimate)
         return self
     }
     

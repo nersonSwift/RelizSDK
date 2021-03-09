@@ -55,5 +55,15 @@ public postfix func *(value: CGFloat) -> RZProtoValue{
     .value(value)
 }
 
+public postfix func *(value: RZObservable<RZProtoValue>) -> RZProtoValue{
+    var proto = RZProtoValue()
+    proto.operation = RZProtoOperation(value, .wrap)
+    return proto
+}
 
+public postfix func *(value: RZObservable<CGFloat>) -> RZProtoValue{
+    var proto = RZProtoValue()
+    proto.operation = RZProtoOperation(value, .wrap)
+    return proto
+}
 

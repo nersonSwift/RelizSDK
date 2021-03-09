@@ -374,8 +374,17 @@ extension RZObservable where Value == String{
         RZTextViewDelegate.setDelegate(textView, self)
     }
 }
-extension RZObservable: RZProtoValueProtocol where Value == RZProtoValue{
-    public func getValue(_ frame: CGRect) -> CGFloat {wrappedValue.getValue(frame)}
+extension RZObservable: RZProtoValueProtocol {
+    public func getValue(_ frame: CGRect) -> CGFloat {
+        switch wrappedValue {
+        case let value as CGFloat:
+            return value
+        case let value as RZProtoValue:
+            return value.getValue(frame)
+        default:
+            return .zero
+        }
+    }
 }
 
 public class RZPublisherObservable<Value>: RZObservable<Value>{
