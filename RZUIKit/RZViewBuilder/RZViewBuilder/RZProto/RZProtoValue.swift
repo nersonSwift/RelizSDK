@@ -271,10 +271,11 @@ public struct RZProtoValue: RZProtoValueProtocol{
         
         let rzValue = self.$value
         let filter = self.filter
+        value = RZProtoValue.getValueAt(selfTag, observ?.frame ?? .zero)
         observ?.rzFrame.add{[weak rzValue] old, new in
             if !filter(old, new) {return}
             rzValue?.wrappedValue = RZProtoValue.getValueAt(selfTag, new)
-        }.use(.noAnimate)
+        }
     }
     init(){}
     
