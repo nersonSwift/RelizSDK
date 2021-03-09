@@ -267,12 +267,13 @@ public struct RZProtoValue: RZProtoValueProtocol{
     }
     init(_ selfTag: RZProtoTag, _ observ: UIView? = nil){
         self.selfTag = selfTag
+        guard let observ = observ else {return}
         observeFlag = true
         
         let rzValue = self.$value
         let filter = self.filter
-        value = RZProtoValue.getValueAt(selfTag, observ?.frame ?? .zero)
-        observ?.rzFrame.add{[weak rzValue] old, new in
+        value = RZProtoValue.getValueAt(selfTag, observ.frame)
+        observ.rzFrame.add{[weak rzValue] old, new in
             if !filter(old, new) {return}
             rzValue?.wrappedValue = RZProtoValue.getValueAt(selfTag, new)
         }
