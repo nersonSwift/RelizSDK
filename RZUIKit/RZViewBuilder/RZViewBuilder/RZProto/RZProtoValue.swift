@@ -11,6 +11,12 @@ protocol RZProtoValueProtocol {
     func getValue(_ frame: CGRect) -> CGFloat
 }
 
+public enum ScreenOrientation {
+    case vertical
+    case horizontal
+    case auto
+}
+
 //MARK: - RZProtoValue
 /// `RU: -`
 /// Структура для упрощения синтаксиса верстки
@@ -185,8 +191,18 @@ public struct RZProtoValue: RZProtoValueProtocol{
     ///
     /// - Parameter value
     /// Тег имеющий такую же симвализацию как и `RZProto`
-    public static func screenTag(_ value: RZProtoTag) -> RZProtoValue{
-        let proto = RZProto(UIScreen.main.bounds)
+    public static func screenTag(_ value: RZProtoTag, _ orientation: ScreenOrientation = .vertical) -> RZProtoValue{
+        var bounds = UIScreen.main.bounds
+        switch orientation {
+        case .vertical:
+            if bounds.width < bounds.height {break}
+            bounds.size = CGSize(width: bounds.height, height: bounds.width)
+        case .horizontal:
+            if bounds.width > bounds.height {break}
+            bounds.size = CGSize(width: bounds.height, height: bounds.width)
+        default: break
+        }
+        let proto = RZProto(bounds)
         switch value {
             case .w: return proto.w
             case .h: return proto.h
