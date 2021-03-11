@@ -205,7 +205,21 @@ public class RZViewBuilder<V: UIView>{
         value?.add {[weak view] in view?+>.template($0)}.use(.noAnimate)
         return self
     }
-    
+    @discardableResult
+    public func template(_ values: [RZVBTemplate<V>]) -> Self{
+        values.forEach{template($0)}
+        return self
+    }
+    @discardableResult
+    public func template(_ values: RZVBTemplate<V>...) -> Self{
+        values.forEach{template($0)}
+        return self
+    }
+    @discardableResult
+    public func template(@RZVBTemplateBuilder _ values: ()->[RZVBTemplate<V>]) -> Self{
+        template(values())
+        return self
+    }
 }
 
 //MARK: - Frame only
@@ -1010,4 +1024,48 @@ public struct RZVBTemplate<View: UIView> {
     private var template: (View)->()
     public func use(view: View){ template(view) }
     public init(_ template: @escaping (View)->()) { self.template = template }
+}
+
+public enum RZVBTemplatePosition{
+    case vertical
+    case horizontal
+    case all
+    
+    case right
+    case left
+    case up
+    case down
+}
+
+extension RZVBTemplate{
+    public static func custom(_ template: @escaping (View)->()) -> Self {RZVBTemplate(template)}
+    
+    public static func center(_ position: RZVBTemplatePosition = .all) -> Self {
+        .custom {
+            switch position {
+                case .vertical:   $0+>.y(.screenTag(.scY), .center)
+                case .horizontal: $0+>.x(.screenTag(.scX), .center)
+                default:          $0+>.x(.screenTag(.scX), .center).y(.screenTag(.scY), .center)
+            }
+        }
+    }
+    
+    public static func space(_ position: RZVBTemplatePosition = .all, _ value: RZProtoValue) -> Self {
+        .custom {
+            switch position {
+                case .left:  $0+>.x(value)
+                case .right: $0+>.x(.screenTag(.w) - value, .right)
+                case .up:    $0+>.y(value)
+                case .down:  $0+>.y(.screenTag(.h) - value, .down)
+            default: break
+            }
+        }
+    }
+    
+}
+
+@_functionBuilder public struct RZVBTemplateBuilder{
+    public static func buildBlock<View: UIView>(_ atrs: RZVBTemplate<View>...) -> [RZVBTemplate<View>] {
+        return atrs
+    }
 }
