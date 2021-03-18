@@ -13,7 +13,7 @@ protocol RZProtoOperationProtocol {
         _ observeController: RZObserveController?,
         _ closure: @escaping ((UIView) -> ())
     )
-    func getValue(_ frame: CGRect) -> CGFloat
+    func getValue(_ view: UIView) -> CGFloat
 }
 extension RZProtoOperationProtocol{
     func checkObservAt(
@@ -53,10 +53,10 @@ class RZProtoOperation: RZProtoOperationProtocol{
         checkObservAt(value, tag, observeController, closure)
     }
     
-    func getValue(_ frame: CGRect) -> CGFloat {
+    func getValue(_ view: UIView) -> CGFloat {
         switch type {
-            case .reverst: return -value.getValue(frame)
-            case .wrap:    return value.getValue(frame)
+            case .reverst: return -value.getValue(view)
+            case .wrap:    return value.getValue(view)
         }
     }
 }
@@ -92,9 +92,9 @@ class RZProtoOperationGoup: RZProtoOperationProtocol {
         checkObservAt(spaceSecond, tag, observeController, closure)
     }
     
-    func getValue(_ frame: CGRect) -> CGFloat{
-        let first = spaceFirst.getValue(frame)
-        let second = spaceSecond.getValue(frame)
+    func getValue(_ view: UIView) -> CGFloat{
+        let first = spaceFirst.getValue(view)
+        let second = spaceSecond.getValue(view)
         
         switch type {
         case .rang:

@@ -17,8 +17,8 @@ public struct RZProtoSize {
         self.height = height
     }
     
-    func getValue(_ frame: CGRect) -> CGSize{
-        return CGSize(width: width.getValue(frame), height: height.getValue(frame))
+    func getValue(_ view: UIView) -> CGSize{
+        return CGSize(width: width.getValue(view), height: height.getValue(view))
     }
 }
 
@@ -32,8 +32,8 @@ public struct RZProtoPoint {
         self.y = y
     }
     
-    func getValue(_ frame: CGRect) -> CGPoint{
-        return CGPoint(x: x.getValue(frame), y: y.getValue(frame))
+    func getValue(_ view: UIView) -> CGPoint{
+        return CGPoint(x: x.getValue(view), y: y.getValue(view))
     }
 }
 
@@ -49,7 +49,7 @@ public struct RZProtoFrame {
         self.size = size
         self.origin = origin
     }
-    func getValue(_ frame: CGRect) -> CGRect{
-        return CGRect(origin: origin.getValue(frame), size: size.getValue(frame))
+    func getValue(_ view: UIView) -> CGRect{
+        return CGRect(origin: origin.getValue(view), size: size.getValue(view))
     }
 }

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol RZProtoValueProtocol {
-    func getValue(_ frame: CGRect) -> CGFloat
+    func getValue(_ view: UIView) -> CGFloat
 }
 
 public enum ScreenOrientation {
@@ -127,13 +127,14 @@ public enum ScreenOrientation {
 public struct RZProtoValue: RZProtoValueProtocol{
     @RZObservable var value: CGFloat?
     private var observeFlag: Bool = false
+    private var isSelfTag: Bool = false
     
-    private var selfTag: RZProtoTag?
+    private var protoTag: RZProtoTag?
     
     var operation: RZProtoOperationProtocol?
     
     private func filter(_ old: CGRect, _ new: CGRect) -> Bool {
-        switch selfTag {
+        switch protoTag {
             case .w: return old.width != new.width
             case .h: return old.height != new.height
             
@@ -221,13 +222,13 @@ public struct RZProtoValue: RZProtoValueProtocol{
         }
     }
     
-    public func getValue(_ frame: CGRect = .zero) -> CGFloat{
-        if let operation = operation { return operation.getValue(frame) }
+    public func getValue(_ view: UIView = UIView()) -> CGFloat{
+        if let operation = operation { return operation.getValue(view) }
                 
         if let value = value{
             return value
-        }else if let selfTag = selfTag{
-            return Self.getValueAt(selfTag, frame)
+        }else if let selfTag = protoTag{
+            return Self.getValueAt(selfTag, view.frame)
         }else{
             return 0
         }
@@ -282,16 +283,16 @@ public struct RZProtoValue: RZProtoValueProtocol{
         observeFlag = true
     }
     init(_ selfTag: RZProtoTag, _ observ: UIView? = nil){
-        self.selfTag = selfTag
+        self.protoTag = selfTag
         guard let observ = observ else {return}
         observeFlag = true
         
         let rzValue = self.$value
         let filter = self.filter
         value = RZProtoValue.getValueAt(selfTag, observ.frame)
-        observ.rzFrame.add{[weak rzValue] old, new in
-            if !filter(old, new) {return}
-            rzValue?.wrappedValue = RZProtoValue.getValueAt(selfTag, new)
+        observ.rzFrame.add{[weak rzValue] in
+            if !filter($0.old, $0.new) {return}
+            rzValue?.wrappedValue = RZProtoValue.getValueAt(selfTag, $0.new)
         }
     }
     init(){}
@@ -444,12 +445,12 @@ class RZObserve{
         _ closure: @escaping ((UIView) -> ())
     ){
         self.init(view, tag, rzoProtoValue.wrappedValue, closure)
-        rzoProtoValue.add {[weak self, weak observeController] proto in
+        rzoProtoValue.add {[weak self, weak observeController] in
             guard let self = self else {return}
             guard let view = self.view else {return}
             guard let observeController = observeController else {return}
             guard let closure = self.closure else {return}
-            proto.checkObserv(tag, observeController, closure)
+            $0.new.checkObserv(tag, observeController, closure)
             closure(view)
         }
     }
