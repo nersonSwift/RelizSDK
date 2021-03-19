@@ -237,11 +237,8 @@ public class RZObservable<Value>: NSObject, RZObservableProtocol {
             let aComplition = actionData.animationComplition
             switch aUseType{
             case .animate:
-                if animation != nil{
-                    animation?.animate({ [weak self] in self?.closure?(actionData) }, {_ in aComplition.complition()})
-                }else{
-                    closure?(actionData)
-                }
+                let animation = self.animation ?? .duration(0)
+                animation.animate({ [weak self] in self?.closure?(actionData) }, {_ in aComplition.complition()})
                 
             case .noAnimate:
                 closure?(actionData)

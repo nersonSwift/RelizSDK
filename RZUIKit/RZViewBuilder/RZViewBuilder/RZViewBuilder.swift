@@ -195,7 +195,7 @@ public class RZViewBuilder<V: UIView>{
         value?.add {[weak view] in
             guard let view = view else {return}
             $0.new.use(view: view, $0.animationComplition)
-        }
+        }.use(.noAnimate)
         return self
     }
     @discardableResult
@@ -1048,6 +1048,7 @@ public struct RZVBTemplate<View: UIView> {
 //    case up
 //    case down
 //}
+
 
 //extension RZVBTemplate{
 //    public static func custom(_ template: @escaping (View)->()) -> Self {RZVBTemplate(template)}
