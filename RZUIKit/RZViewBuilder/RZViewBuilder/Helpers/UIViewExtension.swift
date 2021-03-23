@@ -19,6 +19,12 @@ extension UIView{
         }
     }
     
+    public static var isAnimation: Bool {
+        let view = UIView()
+        view.alpha = 0
+        return view.layer.animationKeys() != nil
+    }
+    
     private var observeControllerKey: String {"RZObserveController"}
     var observeController: RZObserveController{
         if let observeController = Associated(self).get(.hashable(observeControllerKey)) as? RZObserveController{

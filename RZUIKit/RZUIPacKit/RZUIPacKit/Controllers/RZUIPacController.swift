@@ -192,19 +192,19 @@ public protocol RZSetUIPacViewProtocol {
 public protocol RZUIPacControllerViewingProtocol: RZUIPacControllerRouteredProtocol, RZSetUIPacViewProtocol{
     //MARK: - iPhonePresenter
     /// `ru`: - свойство которое которое должно вернуть тип `Presenter` который будет инициализирован для версии `iPhone`
-    var iPhoneRZUIPacView: RZUIPacViewNoJenericProtocol.Type? { get }
+    var iPhoneViewType: RZUIPacViewNoJenericProtocol.Type? { get }
     
     //MARK: - iPadPresenter
     /// `ru`: - свойство которое которое должно вернуть тип `Presenter` который будет инициализирован для версии `iPad`
-    var iPadRZUIPacView: RZUIPacViewNoJenericProtocol.Type? { get }
+    var iPadViewType: RZUIPacViewNoJenericProtocol.Type? { get }
     
-    var macRZUIPacView: RZUIPacViewNoJenericProtocol.Type? { get }
+    var macViewType: RZUIPacViewNoJenericProtocol.Type? { get }
 }
 
 extension RZUIPacControllerViewingProtocol{
-    public var iPhoneRZUIPacView: RZUIPacViewNoJenericProtocol.Type? { nil }
-    public var iPadRZUIPacView: RZUIPacViewNoJenericProtocol.Type? { nil }
-    public var macRZUIPacView: RZUIPacViewNoJenericProtocol.Type? { nil }
+    public var iPhoneViewType: RZUIPacViewNoJenericProtocol.Type? { nil }
+    public var iPadViewType: RZUIPacViewNoJenericProtocol.Type? { nil }
+    public var macViewType: RZUIPacViewNoJenericProtocol.Type? { nil }
     
     public func setView(){
         var rzUIView: RZUIPacViewNoJenericProtocol?
@@ -213,13 +213,13 @@ extension RZUIPacControllerViewingProtocol{
             rzUIView = rzUIViewL
         }else{
             #if targetEnvironment(macCatalyst)
-                if let macRZUIPacView = macRZUIPacView{
-                    rzUIView = macRZUIPacView.createSelf()
+                if let macViewType = macViewType{
+                    rzUIView = macViewType.createSelf()
                 }
             #else
-                if UIDevice.current.userInterfaceIdiom == .pad, let iPadRZUIPacView = iPadRZUIPacView{
+                if UIDevice.current.userInterfaceIdiom == .pad, let iPadRZUIPacView = iPadViewType{
                     rzUIView = iPadRZUIPacView.createSelf()
-                }else if UIDevice.current.userInterfaceIdiom == .phone, let iPhoneRZUIPacView = iPhoneRZUIPacView{
+                }else if UIDevice.current.userInterfaceIdiom == .phone, let iPhoneRZUIPacView = iPhoneViewType{
                     rzUIView = iPhoneRZUIPacView.createSelf()
                 }
             #endif

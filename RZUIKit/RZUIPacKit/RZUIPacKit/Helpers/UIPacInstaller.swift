@@ -121,7 +121,7 @@ class UIPacInstaller{
         uiPacC.didMove(toParent: viewController)
         
         uiPacC.rotater = RZRotater(viewController: uiPacC)
-        uiPacC.rootViewController?.roatateCild()
+        uiPacC.rootViewController?.roatateCild(false)
     }
     
     private static func setView(_ uiPacC: RZUIPacControllerNJProtocol){

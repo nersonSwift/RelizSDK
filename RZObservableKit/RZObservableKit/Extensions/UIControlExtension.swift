@@ -1,11 +1,12 @@
 //
-//  File.swift
-//  RelizKit
+//  UIControlExtension.swift
+//  RZObservableKit
 //
-//  Created by Александр Сенин on 16.10.2020.
+//  Created by Александр Сенин on 23.03.2021.
 //
 
 import UIKit
+
 fileprivate final class ClosureSleeve: NSObject {
     let closure: ()->()
 
