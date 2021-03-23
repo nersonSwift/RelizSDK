@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RZObservableKit
 
 protocol RZProtoValueProtocol {
     func getValue(_ view: UIView) -> CGFloat
@@ -428,7 +429,7 @@ class RZObserve{
     private var protoValue: RZProtoValue?
     private var closure: ((UIView) -> ())?
     
-    private var result: RZObservable<CGFloat?>.Result?
+    private var result: RZOResult<CGFloat?>?
     
     init(_ view: UIView, _ tag: RZObserveController.Tag, _ protoValue: RZProtoValue, _ closure: @escaping ((UIView) -> ())){
         self.view = view
@@ -456,7 +457,7 @@ class RZObserve{
     }
     
     private func setObserve(){
-        result = protoValue?.$value.add{[weak self]_ in
+        result = protoValue?.$value.add{[weak self] _ in
             guard let self = self else {return}
             guard let view = self.view else {return}
             UIViewUppdateProcess.startProcesses(view, self.tag) {

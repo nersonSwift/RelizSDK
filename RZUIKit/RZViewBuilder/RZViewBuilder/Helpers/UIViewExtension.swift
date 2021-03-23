@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RZObservableKit
 
 extension UIView{
     private var rzFrameKey: String {"frame"}

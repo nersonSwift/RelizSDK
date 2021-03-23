@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RZObservableKit
 
 class RZLabelSizeController{
     enum LabelSizeMod {

@@ -5,5 +5,6 @@ target 'RZViewBuilder' do
   use_frameworks!
 
   pod "RZDarkModeKit" 
+  pod "RZObservableKit"
 
 end

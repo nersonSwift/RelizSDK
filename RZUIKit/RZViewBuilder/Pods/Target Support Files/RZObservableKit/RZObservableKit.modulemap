@@ -1,0 +1,6 @@
+framework module RZObservableKit {
+  umbrella header "RZObservableKit-umbrella.h"
+
+  export *
+  module * { export * }
+}
