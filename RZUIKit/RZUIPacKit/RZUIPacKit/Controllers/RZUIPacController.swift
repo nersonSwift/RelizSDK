@@ -7,9 +7,7 @@
 //
 
 import UIKit
-#if canImport(RZViewBuilder)
-    import RZViewBuilder
-#endif
+import RZObservableKit
 
 //MARK: - ScreenControllerProtocol
 /// `ru`: - протокол который используется для создания и переходов контроллеров
@@ -225,9 +223,7 @@ extension RZUIPacControllerViewingProtocol{
             #endif
             view = rzUIView ?? view
         }
-        #if canImport(RZViewBuilder)
-            router.setRZObservables()
-        #endif
+        router.setRZObservables()
         rzUIView?.setRouter(router)
     }
     

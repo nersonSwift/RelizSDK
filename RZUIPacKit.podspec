@@ -25,6 +25,8 @@ Pod::Spec.new do |spec|
 
   spec.source_files = "RZUIKit/RZUIPacKit/RZUIPacKit/**/*"
   spec.exclude_files = "RZUIKit/RZUIPacKit/RZUIPacKit/**/*.plist"
+
+  spec.dependency 'RZObservableKit'
   spec.swift_version = '5.3'
   spec.ios.deployment_target  = '13.0'
 

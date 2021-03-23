@@ -2,6 +2,6 @@
 target 'RZUIPacKit' do
   use_frameworks!
 
-  pod 'RZViewBuilder' 
+  pod 'RZObservableKit'
 
 end

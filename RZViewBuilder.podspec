@@ -25,6 +25,7 @@ Pod::Spec.new do |spec|
   spec.exclude_files = "RZUIKit/RZViewBuilder/RZViewBuilder/**/*.plist"
     
   spec.dependency 'RZDarkModeKit'
+  spec.dependency 'RZObservableKit'
   spec.swift_version = '5.3'
   spec.ios.deployment_target  = '13.0'
 

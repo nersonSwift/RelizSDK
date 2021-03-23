@@ -1,6 +1,0 @@
-framework module RZDarkModeKit {
-  umbrella header "RZDarkModeKit-umbrella.h"
-
-  export *
-  module * { export * }
-}

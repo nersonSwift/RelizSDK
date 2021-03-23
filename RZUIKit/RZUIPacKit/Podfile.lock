@@ -1,20 +1,16 @@
 PODS:
-  - RZDarkModeKit (2.0.6)
-  - RZViewBuilder (2.0):
-    - RZDarkModeKit
+  - RZObservableKit (1.0.1)
 
 DEPENDENCIES:
-  - RZViewBuilder
+  - RZObservableKit
 
 SPEC REPOS:
   trunk:
-    - RZDarkModeKit
-    - RZViewBuilder
+    - RZObservableKit
 
 SPEC CHECKSUMS:
-  RZDarkModeKit: 1a6f574e6d0ac4b67cfb1801754fad362235b771
-  RZViewBuilder: 10047dbc6bf7e9e8d7a92555c7c9531d10d5db6a
+  RZObservableKit: 06af0dd1d9a04e63649b26527af7235931b5e855
 
-PODFILE CHECKSUM: 4cb24251b7ee3a9dc0f448c053918b1a21a43ddd
+PODFILE CHECKSUM: a2cf165e7bc166a6c07333259ac82154c69c6f96
 
 COCOAPODS: 1.10.1

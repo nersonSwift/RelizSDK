@@ -14,9 +14,9 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A05FB51FBAD77671EF36D43B738B6B39"
-               BuildableName = "RZDarkModeKit.framework"
-               BlueprintName = "RZDarkModeKit"
+               BlueprintIdentifier = "9ABBF8241B5BF3E943AAF13C4B2E2915"
+               BuildableName = "RZObservableKit.framework"
+               BlueprintName = "RZObservableKit"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

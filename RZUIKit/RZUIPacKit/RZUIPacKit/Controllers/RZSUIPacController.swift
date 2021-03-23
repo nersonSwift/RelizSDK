@@ -7,9 +7,7 @@
 //
 
 import SwiftUI
-#if canImport(RZViewBuilder)
-    import RZViewBuilder
-#endif
+import RZObservableKit
 
 
 public typealias RZSUIPacController = RZUIHostingController & RZSUIPacControllerProtocol
@@ -38,9 +36,8 @@ extension RZSUIPacControllerProtocol{
                 anyView = iPhoneViewType.createSelf(router)
             }
         #endif
-        #if canImport(RZViewBuilder)
-            router.setRZObservables()
-        #endif
+        
+        router.setRZObservables()
         if let hostingController = self as? UIHostingController<AnyView>, let anyView = anyView{
             hostingController.rootView = anyView
         }
