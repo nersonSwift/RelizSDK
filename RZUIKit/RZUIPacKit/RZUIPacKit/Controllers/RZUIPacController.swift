@@ -190,41 +190,36 @@ public protocol RZSetUIPacViewProtocol {
 public protocol RZUIPacControllerViewingProtocol: RZUIPacControllerRouteredProtocol, RZSetUIPacViewProtocol{
     //MARK: - iPhonePresenter
     /// `ru`: - свойство которое которое должно вернуть тип `Presenter` который будет инициализирован для версии `iPhone`
-    var iPhoneViewType: RZUIPacViewNoJenericProtocol.Type? { get }
+    var iPhoneViewType: RZUIPacAnyViewProtocol.Type? { get }
     
     //MARK: - iPadPresenter
     /// `ru`: - свойство которое которое должно вернуть тип `Presenter` который будет инициализирован для версии `iPad`
-    var iPadViewType: RZUIPacViewNoJenericProtocol.Type? { get }
+    var iPadViewType: RZUIPacAnyViewProtocol.Type? { get }
     
-    var macViewType: RZUIPacViewNoJenericProtocol.Type? { get }
+    var macViewType: RZUIPacAnyViewProtocol.Type? { get }
 }
 
 extension RZUIPacControllerViewingProtocol{
-    public var iPhoneViewType: RZUIPacViewNoJenericProtocol.Type? { nil }
-    public var iPadViewType: RZUIPacViewNoJenericProtocol.Type? { nil }
-    public var macViewType: RZUIPacViewNoJenericProtocol.Type? { nil }
+    public var iPhoneViewType: RZUIPacAnyViewProtocol.Type? { nil }
+    public var iPadViewType: RZUIPacAnyViewProtocol.Type? { nil }
+    public var macViewType: RZUIPacAnyViewProtocol.Type? { nil }
     
     public func setView(){
-        var rzUIView: RZUIPacViewNoJenericProtocol?
-        
-        if let rzUIViewL = view as? RZUIPacViewNoJenericProtocol{
-            rzUIView = rzUIViewL
-        }else{
-            #if targetEnvironment(macCatalyst)
-                if let macViewType = macViewType{
-                    rzUIView = macViewType.createSelf()
-                }
-            #else
-                if UIDevice.current.userInterfaceIdiom == .pad, let iPadRZUIPacView = iPadViewType{
-                    rzUIView = iPadRZUIPacView.createSelf()
-                }else if UIDevice.current.userInterfaceIdiom == .phone, let iPhoneRZUIPacView = iPhoneViewType{
-                    rzUIView = iPhoneRZUIPacView.createSelf()
-                }
-            #endif
-            view = rzUIView ?? view
-        }
         router.setRZObservables()
-        rzUIView?.setRouter(router)
+        if view is RZUIPacViewNoJenericProtocol {return}
+        var rzUIView: UIView?
+        #if targetEnvironment(macCatalyst)
+            if let macViewType = macViewType{
+                rzUIView = macViewType.createSelf(router)
+            }
+        #else
+            if UIDevice.current.userInterfaceIdiom == .pad, let iPadRZUIPacView = iPadViewType{
+                rzUIView = iPadRZUIPacView.createSelf(router)
+            }else if UIDevice.current.userInterfaceIdiom == .phone, let iPhoneRZUIPacView = iPhoneViewType{
+                rzUIView = iPhoneRZUIPacView.createSelf(router)
+            }
+        #endif
+        view = rzUIView ?? view
     }
     
     public func rotate(){ (view as? RZUIPacViewNoJenericProtocol)?.rotate() }

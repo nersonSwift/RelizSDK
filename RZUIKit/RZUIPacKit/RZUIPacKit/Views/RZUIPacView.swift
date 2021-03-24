@@ -8,14 +8,12 @@
 
 import UIKit
 
-public protocol RZUIPacViewNoJenericProtocol: UIView{
+public protocol RZUIPacViewNoJenericProtocol: UIView, RZUIPacAnyViewProtocol{
     func initActions()
     func create()
     
     func rotate()
     func resize()
-    
-    func setRouter(_ router: RZUIPacRouterNJProtocol)
     
     static func createSelf() -> Self?
 }
@@ -27,17 +25,15 @@ extension RZUIPacViewNoJenericProtocol{
     public func resize() {}
     public func rotate() {}
     
-    public func setRouter(_ router: RZUIPacRouterNJProtocol) {}
-    
-    public static func createSelf() -> Self? {nil}
+    public static func createSelf(_ rowRouter: RZUIPacRouterNJProtocol) -> UIView? { nil }
 }
 
 extension RZUIPacViewNoJenericProtocol where Self: RZUIPacViewProtocol{
-    public static func createSelf() -> Self? { Self(frame: .zero) }
-    public func setRouter(_ router: RZUIPacRouterNJProtocol) {
-        guard let router = router as? UIPacRouter else {return}
-        var view = self
+    public static func createSelf(_ rowRouter: RZUIPacRouterNJProtocol) -> UIView? {
+        guard let router = rowRouter as? UIPacRouter else {return nil}
+        var view = Self(frame: .zero)
         view.router = router
+        return view
     }
 }
 
