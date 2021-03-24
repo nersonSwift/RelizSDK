@@ -25,10 +25,10 @@ class RZUIViewWraper: UIView{
         let controller = UIHostingController(rootView: RZObserveView<V, Self, ObObj>(view, uiView: self).environmentObject(observable))
         let view = controller.view ?? UIView()
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
-//        rzFrame.add{[weak view] in
-//            view?.frame.size.width = $0.new.width
-//            view?.frame.size.height = $0.new.height
-//        }.use(.noAnimate)
+        rzFrame.add{[weak view] in
+            view?.frame.size.width = $0.new.width
+            view?.frame.size.height = $0.new.height
+        }.use(.noAnimate)
         addSubview(view)
     }
         

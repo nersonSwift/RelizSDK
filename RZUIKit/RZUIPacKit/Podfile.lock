@@ -1,5 +1,5 @@
 PODS:
-  - RZObservableKit (1.0.1)
+  - RZObservableKit (1.0.2)
 
 DEPENDENCIES:
   - RZObservableKit
@@ -9,7 +9,7 @@ SPEC REPOS:
     - RZObservableKit
 
 SPEC CHECKSUMS:
-  RZObservableKit: 06af0dd1d9a04e63649b26527af7235931b5e855
+  RZObservableKit: 69ba2575ca9017e2317d5a89ce65e9359394723f
 
 PODFILE CHECKSUM: a2cf165e7bc166a6c07333259ac82154c69c6f96
 

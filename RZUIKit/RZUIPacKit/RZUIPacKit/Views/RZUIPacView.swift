@@ -14,8 +14,6 @@ public protocol RZUIPacViewNoJenericProtocol: UIView, RZUIPacAnyViewProtocol{
     
     func rotate()
     func resize()
-    
-    static func createSelf() -> Self?
 }
 
 extension RZUIPacViewNoJenericProtocol{
