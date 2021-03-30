@@ -7,36 +7,36 @@
 
 import Foundation
 
-public class RZSwith<Key: Hashable, Value>{
-    var dictenary = [Key: Value]()
+public class RZSwitch<Key: Hashable, Value>{
+    var dictionary = [Key: Value]()
     
     init(_ key: Key, _ value: Value) {
-        dictenary[key] = value
+        dictionary[key] = value
     }
-    init(_ dictenary: [Key: Value]){
-        self.dictenary = dictenary
+    init(_ dictionary: [Key: Value]){
+        self.dictionary = dictionary
     }
     
     func add(_ value: (Key, Value)){
-        dictenary[value.0] = value.1
+        dictionary[value.0] = value.1
     }
 }
 
-public func <|<Key: Hashable, Value>(left: (Key, Value), right: (Key, Value)) -> RZSwith<Key, Value>{
-    RZSwith(left.0, left.1) <| right
+public func <|<Key: Hashable, Value>(left: (Key, Value), right: (Key, Value)) -> RZSwitch<Key, Value>{
+    RZSwitch(left.0, left.1) <| right
 }
 
-public func <|<Key: Hashable, Value>(left: RZSwith<Key, Value>, right: (Key, Value)) -> RZSwith<Key, Value>{
+public func <|<Key: Hashable, Value>(left: RZSwitch<Key, Value>, right: (Key, Value)) -> RZSwitch<Key, Value>{
     left.add(right)
     return left
 }
 
-public func ?><Key: Hashable, Value>(left: RZObservable<Key>, right: RZSwith<Key, Value>) -> RZObservable<Value>?{
-    guard let value = right.dictenary.first?.value else { return nil }
+public func ?><Key: Hashable, Value>(left: RZObservable<Key>, right: RZSwitch<Key, Value>) -> RZObservable<Value>?{
+    guard let value = right.dictionary.first?.value else { return nil }
     let observable = RZObservable<Value>(wrappedValue: value)
     let obj = left.add {[weak observable] in
         guard let observable = observable else { return }
-        guard let value = right.dictenary[$0.new] else { return }
+        guard let value = right.dictionary[$0.new] else { return }
         observable.setValue($0.useType, value: value)
     }
     let key = -obj.key
@@ -45,8 +45,8 @@ public func ?><Key: Hashable, Value>(left: RZObservable<Key>, right: RZSwith<Key
     return observable
 }
 
-public func ?><Key: Hashable, Value>(left: RZObservable<Key>, right: RZSwith<Key, RZObservable<Value>>) -> RZObservable<Value>?{
-    guard let value = right.dictenary.first else { return nil }
+public func ?><Key: Hashable, Value>(left: RZObservable<Key>, right: RZSwitch<Key, RZObservable<Value>>) -> RZObservable<Value>?{
+    guard let value = right.dictionary.first else { return nil }
     let obValue = value.value.wrappedValue
     
     let observable = RZObservable<Value>(wrappedValue: obValue)
@@ -54,8 +54,8 @@ public func ?><Key: Hashable, Value>(left: RZObservable<Key>, right: RZSwith<Key
     var oldClosureKey = -1
     let obj = left.add {[weak observable] in
         guard let observable = observable else { return }
-        guard let value = right.dictenary[$0.new] else { return }
-        guard let old = right.dictenary[oldKey] else { return }
+        guard let value = right.dictionary[$0.new] else { return }
+        guard let old = right.dictionary[oldKey] else { return }
         
         old.remove(oldClosureKey)
         oldKey = $0.new

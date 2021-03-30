@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-public protocol RZObservableProtocol: class {
+protocol RZObservableProtocol: class {
     var objectWillChange: ObservableObjectPublisher? {get set}
 }
 
@@ -47,10 +47,9 @@ public class RZOResult<Value>{
         self.action = action
     }
 }
-
-//MARK: - RZAnimationComplition
-public class RZAnimationComplition{
-    public var complition = {}
+//MARK: - RZAnimationCompletion
+public class RZAnimationCompletion{
+    public var completion = {}
 }
 
 //MARK: - Action
@@ -68,28 +67,28 @@ public class RZOAction<Value>{
     public func use(_ aUseType: AUseType = .animate, _ actionData: RZOActionData<Value>){
         var actionData = actionData
         actionData.animation = animation
-        let aComplition = actionData.animationComplition
+        let aCompletion = actionData.animationCompletion
         switch aUseType{
         case .animate:
             if UIView.isAnimation{
                 let animation = self.animation ?? .duration(0)
-                animation.animate({ [weak self] in self?.closure?(actionData) }, {_ in aComplition.complition()})
+                animation.animate({ [weak self] in self?.closure?(actionData) }, {_ in aCompletion.completion()})
             }else{
                 closure?(actionData)
-                aComplition.complition()
+                aCompletion.completion()
             }
             
         case .noAnimate:
             closure?(actionData)
-            aComplition.complition()
+            aCompletion.completion()
             
         case .useAnimate(let animation):
             actionData.animation = animation
-            animation.animate({[weak self] in self?.closure?(actionData) }, {_ in aComplition.complition()})
+            animation.animate({[weak self] in self?.closure?(actionData) }, {_ in aCompletion.completion()})
             
         case .useDefaultAnimate(let animation):
             actionData.animation = self.animation ?? animation
-            (self.animation ?? animation).animate({ [weak self] in self?.closure?(actionData) }, {_ in aComplition.complition()})
+            (self.animation ?? animation).animate({ [weak self] in self?.closure?(actionData) }, {_ in aCompletion.completion()})
         }
     }
 
@@ -104,13 +103,13 @@ public class RZOAction<Value>{
 public struct RZOActionData<Value>{
     public var animation: RZUIAnimation?
     public var useType: RZOUseType
-    public let animationComplition = RZAnimationComplition()
+    public let animationCompletion = RZAnimationCompletion()
     
     public var old: Value
     public var new: Value
     
-    func complition(_ value: @escaping ()->()){
-        animationComplition.complition = value
+    public func completion(_ value: @escaping ()->()){
+        animationCompletion.completion = value
     }
 }
 
@@ -119,8 +118,9 @@ public struct RZOActionData<Value>{
 public class RZObservable<Value>: NSObject, RZObservableProtocol {
     //MARK: - Property
     //MARK: - Internal
-    var prepareAnimetion: RZUIAnimation?
-    var defaultAnimetion: RZUIAnimation?
+    var objectWillChange: ObservableObjectPublisher?
+    var prepareAnimation: RZUIAnimation?
+    var defaultAnimation: RZUIAnimation?
     var observeResults = [RZOResult<Value>]()
     
     var counter: Int = 1
@@ -128,7 +128,6 @@ public class RZObservable<Value>: NSObject, RZObservableProtocol {
     var value: Value {didSet{ objectWillChange?.send() }}
     
     //MARK: - Public
-    public var objectWillChange: ObservableObjectPublisher?
     public var projectedValue: RZObservable<Value> {return self}
     
     public var wrappedValue: Value{
@@ -145,7 +144,7 @@ public class RZObservable<Value>: NSObject, RZObservableProtocol {
         let actionData = RZOActionData(animation: nil, useType: useType, old: old ?? wrappedValue, new: wrappedValue)
         switch useType {
         case .animate:
-            if let defaultAnimetion = defaultAnimetion{
+            if let defaultAnimetion = defaultAnimation{
                 action.use(.useDefaultAnimate(defaultAnimetion), actionData)
             }else{
                 action.use(.animate, actionData)
@@ -155,7 +154,7 @@ public class RZObservable<Value>: NSObject, RZObservableProtocol {
         case .useAnimate(let animation):
             action.use(.useAnimate(animation), actionData)
         case .useDefaultAnimate:
-            if let defaultAnimetion = defaultAnimetion{
+            if let defaultAnimetion = defaultAnimation{
                 action.use(.useAnimate(defaultAnimetion), actionData)
             }else{
                 action.use(.animate, actionData)
@@ -180,9 +179,9 @@ public class RZObservable<Value>: NSObject, RZObservableProtocol {
     public func add(_ animation: RZUIAnimation? = nil, _ observeClosure: @escaping (RZOActionData<Value>)->()) -> RZOResult<Value>{
         var animation = animation
     
-        if animation == nil, let prepareAnimetion = prepareAnimetion{
+        if animation == nil, let prepareAnimetion = prepareAnimation{
             animation = prepareAnimetion
-            self.prepareAnimetion = nil
+            self.prepareAnimation = nil
         }
         let result = RZOResult(self, counter, RZOAction(animation, observeClosure))
         observeResults.append(result)
@@ -203,13 +202,13 @@ public class RZObservable<Value>: NSObject, RZObservableProtocol {
     
     @discardableResult
     public func animation(_ animation: RZUIAnimation) -> Self{
-        prepareAnimetion = animation
+        prepareAnimation = animation
         return self
     }
     
     //MARK: - inits
     public init(wrappedValue: Value, _ animation: RZUIAnimation){
-        defaultAnimetion = animation
+        defaultAnimation = animation
         self.value = wrappedValue
     }
     public init(wrappedValue: Value){
@@ -219,8 +218,8 @@ public class RZObservable<Value>: NSObject, RZObservableProtocol {
 
 //MARK: - RZPublisherObservable
 public class RZPublisherObservable<Value>: RZObservable<Value>{
-    public var binding: Binding<Value>?
-    public var anyCancellable: AnyCancellable?
+    var binding: Binding<Value>?
+    var anyCancellable: AnyCancellable?
     
     override public var wrappedValue: Value{
         set(wrappedValue){
@@ -235,11 +234,11 @@ public class RZPublisherObservable<Value>: RZObservable<Value>{
         }
     }
     
-    public func update(_ value: Value){
+    func update(_ value: Value){
         setValue(.animate, value: value)
     }
     
-    public init(binding: Binding<Value>){
+    init(binding: Binding<Value>){
         super.init(wrappedValue: binding.wrappedValue)
         self.binding = binding
     }
@@ -248,7 +247,7 @@ public class RZPublisherObservable<Value>: RZObservable<Value>{
 //MARK: - Extensions
 //MARK: - Switcher
 extension RZObservable where Value: Hashable{
-    public func switcher<SValue>(_ map: [Value: SValue]) -> RZObservable<SValue>?{ self ?> RZSwith(map) }
+    public func switcher<SValue>(_ map: [Value: SValue]) -> RZObservable<SValue>?{ self ?> RZSwitch(map) }
 }
 extension RZObservable where Value == Int{
     public func switcher<SValue>(_ map: SValue...) -> RZObservable<SValue>?{ switcher(map) }
@@ -257,7 +256,7 @@ extension RZObservable where Value == Int{
         for (i, value) in map.enumerated(){
             mapD[i] = value
         }
-        return self ?> RZSwith(mapD)
+        return self ?> RZSwitch(mapD)
     }
 }
 extension RZObservable where Value == Bool{
@@ -267,7 +266,7 @@ extension RZObservable where Value == Bool{
         var mapD = [Value: SValue]()
         mapD[true]  = map[0]
         mapD[false] = map[1]
-        return self ?> RZSwith(mapD)
+        return self ?> RZSwitch(mapD)
     }
 }
 

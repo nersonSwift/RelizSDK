@@ -195,7 +195,7 @@ public class RZViewBuilder<V: UIView>{
     public func template(_ value: RZObservable<RZVBTemplate<V>>?) -> Self{
         value?.add {[weak view] in
             guard let view = view else {return}
-            $0.new.use(view: view, $0.animationComplition)
+            $0.new.use(view: view, $0.animationCompletion)
         }.use(.noAnimate)
         return self
     }
@@ -1033,7 +1033,7 @@ public struct RZVBTemplate<View: UIView> {
         template(view, {complition = $0})
         complition()
     }
-    func use(view: View, _ ac: RZAnimationComplition){ template(view, { ac.complition = $0 }) }
+    func use(view: View, _ ac: RZAnimationCompletion){ template(view, { ac.completion = $0 }) }
     
     public init(_ template: @escaping (View)->()) { self.template = {view, _ in template(view)} }
     public init(_ template: @escaping (View, Complition)->()) { self.template = template }

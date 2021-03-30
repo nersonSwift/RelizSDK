@@ -1,6 +1,6 @@
 PODS:
   - RZDarkModeKit (2.0.6)
-  - RZObservableKit (1.0.2)
+  - RZObservableKit (1.0.3)
 
 DEPENDENCIES:
   - RZDarkModeKit
@@ -13,7 +13,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   RZDarkModeKit: 1a6f574e6d0ac4b67cfb1801754fad362235b771
-  RZObservableKit: 69ba2575ca9017e2317d5a89ce65e9359394723f
+  RZObservableKit: 00f7df9ba7a78bc5057670f8bab7cf990b681f76
 
 PODFILE CHECKSUM: 12911909ca7482e83f04952f0705f3c8253557b4
 
