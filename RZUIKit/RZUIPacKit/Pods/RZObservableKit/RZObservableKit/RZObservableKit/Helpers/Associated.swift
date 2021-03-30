@@ -16,9 +16,7 @@ public struct Associated{
     
     private weak var object: AnyObject?
     
-    public init(_ object: AnyObject){
-        self.object = object
-    }
+    public init(_ object: AnyObject){ self.object = object }
     
     @discardableResult
     public func set(_ value: Any?, _ key: SetKey, _ policy: objc_AssociationPolicy) -> SetKey? {

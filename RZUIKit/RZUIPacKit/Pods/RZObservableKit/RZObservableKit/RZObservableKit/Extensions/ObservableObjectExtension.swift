@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-extension ObservableObject{
+extension ObservableObject {
     public func rzObservable<T>(
         _ bindingKey: KeyPath<ObservedObject<Self>.Wrapper, Binding<T>>,
         _ publisherKey: KeyPath<Self, Published<T>.Publisher>
