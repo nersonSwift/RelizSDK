@@ -10,8 +10,8 @@ import UIKit
 extension UIColor{
     public func dark(_ color: UIColor) -> UIColor {
         let colorL = UIColor { sdf -> UIColor in
-            if RZDarkModeKit.last != sdf.userInterfaceStyle {
-                RZDarkModeKit.last = sdf.userInterfaceStyle
+            if RZDarkModeKit.last != UIScreen.main.traitCollection.userInterfaceStyle {
+                RZDarkModeKit.last = UIScreen.main.traitCollection.userInterfaceStyle
                 RZDarkModeKit.updateColorise()
             }
             if sdf.isDarkMode{

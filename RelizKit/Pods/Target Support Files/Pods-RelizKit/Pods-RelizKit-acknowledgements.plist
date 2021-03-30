@@ -101,7 +101,7 @@ SOFTWARE.
 			<key>License</key>
 			<string>MIT</string>
 			<key>Title</key>
-			<string>RZStoreKit</string>
+			<string>RZObservableKit</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>
@@ -132,7 +132,7 @@ SOFTWARE.
 			<key>License</key>
 			<string>MIT</string>
 			<key>Title</key>
-			<string>RZUIKit</string>
+			<string>RZStoreKit</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>

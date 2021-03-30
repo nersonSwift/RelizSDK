@@ -6,6 +6,17 @@
 //
 
 import UIKit
+import RZObservableKit
+
+protocol RZProtoValueProtocol {
+    func getValue(_ view: UIView) -> CGFloat
+}
+
+public enum ScreenOrientation {
+    case vertical
+    case horizontal
+    case auto
+}
 
 //MARK: - RZProtoValue
 /// `RU: -`
@@ -114,14 +125,34 @@ import UIKit
 ///
 ///     print(view2.frame.width)   // 130
 ///     print(view2.frame.height)  // 40
-public struct RZProtoValue{
-    private var value: CGFloat?
-    private var selfTag: RZProtoTag?
-    private var procent: CGFloat?
-    private var reverst: Bool = false
-    private weak var observView: UIView?
+public struct RZProtoValue: RZProtoValueProtocol{
+    @RZObservable var value: CGFloat?
+    private var observeFlag: Bool = false
+    private var isSelfTag: Bool = false
     
-    private var range: RZProtoValueGoup?
+    private var protoTag: RZProtoTag?
+    
+    var operation: RZProtoOperationProtocol?
+    
+    private func filter(_ old: CGRect, _ new: CGRect) -> Bool {
+        switch protoTag {
+            case .w: return old.width != new.width
+            case .h: return old.height != new.height
+            
+            case .x: return old.minX != new.minX
+            case .y: return old.minY != new.minY
+            
+            case .cX: return (old.width != new.width) || (old.minX != new.minX)
+            case .cY: return (old.height != new.height) || (old.minY != new.minY)
+                
+            case .scX: return old.width != new.width
+            case .scY: return old.height != new.height
+            
+            case .mX: return (old.width != new.width) || (old.minX != new.minX)
+            case .mY: return (old.height != new.height) || (old.minY != new.minY)
+        default: return true
+        }
+    }
     
     public enum RZProtoTag{
         case w
@@ -162,8 +193,18 @@ public struct RZProtoValue{
     ///
     /// - Parameter value
     /// Тег имеющий такую же симвализацию как и `RZProto`
-    public static func screenTag(_ value: RZProtoTag) -> RZProtoValue{
-        let proto = RZProto(UIScreen.main.bounds)
+    public static func screenTag(_ value: RZProtoTag, _ orientation: ScreenOrientation = .vertical) -> RZProtoValue{
+        var bounds = UIScreen.main.bounds
+        switch orientation {
+        case .vertical:
+            if bounds.width < bounds.height {break}
+            bounds.size = CGSize(width: bounds.height, height: bounds.width)
+        case .horizontal:
+            if bounds.width > bounds.height {break}
+            bounds.size = CGSize(width: bounds.height, height: bounds.width)
+        default: break
+        }
+        let proto = RZProto(bounds)
         switch value {
             case .w: return proto.w
             case .h: return proto.h
@@ -182,132 +223,130 @@ public struct RZProtoValue{
         }
     }
     
-    func getValue(_ frame: CGRect = .zero) -> CGFloat{
-        if let range = range { return range.getValue(frame) }
-        
-        let frame = observView?.frame ?? frame
-        
-        var value = self.value
-        switch selfTag {
-            case .h: value = frame.height
-            case .w: value = frame.width
-            
-            case .x: value = frame.minX
-            case .y: value = frame.minY
-            
-            case .cX: value = frame.midX
-            case .cY: value = frame.midY
-            
-            case .scX: value = frame.width / 2
-            case .scY: value = frame.height / 2
-            
-            case .mX: value = frame.maxX
-            case .mY: value = frame.maxY
-        default: break
-        }
-        
-        if let procent = procent, let value = value{
-            let valueL = value / 100 * procent
-            return reverst ? value - valueL : valueL
-        }
-        
+    public func getValue(_ view: UIView = UIView()) -> CGFloat{
+        if let operation = operation { return operation.getValue(view) }
+                
         if let value = value{
             return value
+        }else if let selfTag = protoTag{
+            return Self.getValueAt(selfTag, view.frame)
+        }else{
+            return 0
         }
-        
-        return 0
     }
     
-    func setValueIn(_ view: UIView, _ tag: Int, _ remove: Bool = true,  _ closure: @escaping ((UIView) -> ())){
-        if let key = UnsafeRawPointer(bitPattern: 1){
-            var observeController = objc_getAssociatedObject(view, key) as? RZObserveController
-            if observeController == nil{
-                observeController = RZObserveController()
-                objc_setAssociatedObject(view, key, observeController, .OBJC_ASSOCIATION_RETAIN)
-            }
-            if remove{
-                observeController?.remove(tag)
-            }
-            checkObserv(view, tag, self, observeController, closure)
+    static func getValueAt(_ tag: RZProtoTag, _ frame: CGRect) -> CGFloat{
+        switch tag {
+            case .h: return frame.height
+            case .w: return frame.width
+            
+            case .x: return frame.minX
+            case .y: return frame.minY
+            
+            case .cX: return frame.midX
+            case .cY: return frame.midY
+            
+            case .scX: return frame.width / 2
+            case .scY: return frame.height / 2
+            
+            case .mX: return frame.maxX
+            case .mY: return frame.maxY
         }
-        
+    }
+    
+    func setValueIn(_ view: UIView, _ tag: RZObserveController.Tag, _ remove: Bool = true,  _ closure: @escaping ((UIView) -> ())){
+        let observeController = view.observeController
+        if remove{
+            observeController.remove(tag)
+        }
+        checkObserv(tag, observeController, closure)
         closure(view)
     }
     
-    private func checkObserv(_ view: UIView,
-                             _ tag: Int,
-                             _ protoValue: RZProtoValue,
-                             _ observeController: RZObserveController?,
-                             _ closure: @escaping ((UIView) -> ())){
-        if let observView = observView{
-            observeController?.add(view, observView, tag, selfTag, closure)
+    func checkObserv(
+        _ tag: RZObserveController.Tag,
+        _ observeController: RZObserveController?,
+        _ closure: @escaping ((UIView) -> ())
+    ){
+        if observeFlag{
+            observeController?.add(tag, self, closure)
         }
-        if let range = range{
-            range.spaceFirst.checkObserv(view, tag, protoValue, observeController, closure)
-            range.spaceSecond.checkObserv(view, tag, protoValue, observeController, closure)
+        if let range = operation{
+            range.checkObserv(tag, observeController, closure)
         }
     }
     
     init(_ value: CGFloat){
         self.value = value
     }
+    init(_ value: RZObservable<CGFloat?>){
+        self._value = value
+        observeFlag = true
+    }
     init(_ selfTag: RZProtoTag, _ observ: UIView? = nil){
-        self.selfTag = selfTag
-        self.observView = observ
+        self.protoTag = selfTag
+        guard let observ = observ else {return}
+        observeFlag = true
+        
+        let rzValue = self.$value
+        let filter = self.filter
+        value = RZProtoValue.getValueAt(selfTag, observ.frame)
+        observ.rzFrame.add{[weak rzValue] in
+            if !filter($0.old, $0.new) {return}
+            rzValue?.wrappedValue = RZProtoValue.getValueAt(selfTag, $0.new)
+        }
     }
     init(){}
     
-    public static func %(left: CGFloat, right: RZProtoValue) -> RZProtoValue{
-        var right = right
-        right.procent = left
-        return right
-    }
-    
     public static func %(left: RZProtoValue, right: RZProtoValue) -> RZProtoValue{
-        var right = right
-        right.procent = left.value
-        return right
+        var value = RZProtoValue()
+        value.operation = RZProtoOperationGoup(left, right, .procent)
+        return value
     }
-    
+
+    public static func %(left: CGFloat, right: RZProtoValue) -> RZProtoValue{
+        return left* % right
+    }
+
     public static func +(left: RZProtoValue, right: RZProtoValue) -> RZProtoValue{
         var value = RZProtoValue()
-        value.range = RZProtoValueGoup(left, right, .p)
+        value.operation = RZProtoOperationGoup(left, right, .p)
         return value
     }
-    
+
     public static func -(left: RZProtoValue, right: RZProtoValue) -> RZProtoValue{
         var value = RZProtoValue()
-        value.range = RZProtoValueGoup(left, right, .m)
+        value.operation = RZProtoOperationGoup(left, right, .m)
         return value
     }
-    
+
     public static func /(left: RZProtoValue, right: RZProtoValue) -> RZProtoValue{
         var value = RZProtoValue()
-        value.range = RZProtoValueGoup(left, right, .d)
+        value.operation = RZProtoOperationGoup(left, right, .d)
         return value
     }
-    
+
     public static func *(left: RZProtoValue, right: RZProtoValue) -> RZProtoValue{
         var value = RZProtoValue()
-        value.range = RZProtoValueGoup(left, right, .u)
+        value.operation = RZProtoOperationGoup(left, right, .u)
         return value
     }
-    
-    
+
+
     public static func <>(left: RZProtoValue, right: RZProtoValue) -> RZProtoValue{
         var value = RZProtoValue()
-        value.range = RZProtoValueGoup(left, right, .rang)
+        value.operation = RZProtoOperationGoup(left, right, .rang)
         return value
     }
     public static func ><(left: RZProtoValue, right: RZProtoValue) -> RZProtoValue{
         var value = RZProtoValue()
-        value.range = RZProtoValueGoup(left, right, .center)
+        value.operation = RZProtoOperationGoup(left, right, .center)
         return value
     }
     public static prefix func -(right: RZProtoValue) -> RZProtoValue{
-        var right = right
-        right.reverst.toggle()
-        return right
+        var value = RZProtoValue()
+        value.operation = RZProtoOperation(right, .reverst)
+        return value
     }
     
     public static func value(_ value: CGFloat) -> RZProtoValue{
@@ -316,127 +355,123 @@ public struct RZProtoValue{
 }
 
 
+
 class RZObserveController{
-    var observes: [(Int, [RZObserve])] = []
-    
-    func add(_ view: UIView,
-             _ observeView: UIView,
-             _ tag: Int,
-             _ protoTag: RZProtoValue.RZProtoTag?,
-             _ closure: @escaping (UIView) -> ()){
-        observes.forEach{ $0.1.forEach{ $0.removeObserve()} }
+    enum Tag: String {
+        case cornerRadius
         
-        let observe = RZObserve()
-        observe.view = view
-        observe.observeView = observeView
-        observe.tag = tag
-        observe.protoTag = protoTag
-        //observe.observeTag = observeTag
-        observe.closure = closure
+        case width
+        case height
+        case x
+        case y
         
-        var setFlag = true
-        var observesL = [(Int, [RZObserve])]()
-        for (key, value) in observes{
-            if key == tag{
-                var value = value
-                value.append(observe)
-                observesL.append((key, value))
-                setFlag = false
-            }else{
-                observesL.append((key, value))
-            }
-        }
-        if setFlag{
-            observesL.append((tag, [observe]))
-        }
-        observes = observesL
+        case tx
+        case ty
         
-        observes.reversed().forEach{
-            $0.1.forEach{
-                
-                $0.setObserve()
-            }
-        }
+        case ta
+        case tb
+        case tc
+        case td
         
+        case contentWidth
+        case contentHeight
     }
     
-    func remove(_ tag: Int){
-        
-        observes = observes.filter{ $0.0 != tag }
-        
+    weak var view: UIView?
+    
+    init(_ view: UIView) {self.view = view}
+    
+    var observes: [Tag: [RZObserve]] = [:]
+    
+    func add(_ tag: Tag, _ protoValue: RZProtoValue, _ closure: @escaping (UIView) -> ()){
+        guard let view = view else { return }
+        if observes[tag] == nil{
+            observes[tag] = []
+        }
+        observes[tag]?.append(RZObserve(view, tag, protoValue, closure))
+    }
+    func add(_ tag: Tag, _ rzoProtoValue: RZObservable<RZProtoValue>, _ closure: @escaping (UIView) -> ()){
+        guard let view = view else { return }
+        if observes[tag] == nil{
+            observes[tag] = []
+        }
+        observes[tag]?.append(RZObserve(view, tag, rzoProtoValue, self, closure))
+    }
+    
+    func remove(_ tag: Tag){
+        observes[tag] = nil
+    }
+}
+
+class UIViewUppdateProcess{
+    static var processes: [Int: [RZObserveController.Tag]] = [:]
+    
+    static func startProcesses(_ view: UIView, _ tag: RZObserveController.Tag, _ process: ()->()){
+        if let tags = processes[view.hashValue]{
+            for tagL in tags{ if tag == tagL {return} }
+        }else{
+            processes[view.hashValue] = []
+        }
+        processes[view.hashValue]?.append(tag)
+        process()
+    }
+    
+    static func endProcesses(_ view: UIView, _ tag: RZObserveController.Tag){
+        for (i, tagL) in (processes[view.hashValue] ?? []).enumerated(){
+            if tagL == tag {processes[view.hashValue]?.remove(at: i); break}
+        }
     }
 }
 
 class RZObserve{
-    var keys: [NSKeyValueObservation?] = []
-    var closure: ((UIView) -> ())?
-    var tag: Int = 0
-    var protoTag: RZProtoValue.RZProtoTag?
-    weak var view: UIView?
-    weak var observeView: UIView?
+    private weak var view: UIView?
+    private var tag: RZObserveController.Tag = .cornerRadius
+    private var protoValue: RZProtoValue?
+    private var closure: ((UIView) -> ())?
     
-    func setObserve(){
-        let observeKey = observeView?.observe(\.frame, options: [.old]) {[weak self] (_, test) in
+    private var result: RZOResult<CGFloat?>?
+    
+    init(_ view: UIView, _ tag: RZObserveController.Tag, _ protoValue: RZProtoValue, _ closure: @escaping ((UIView) -> ())){
+        self.view = view
+        self.tag = tag
+        self.protoValue = protoValue
+        self.closure = closure
+        setObserve()
+    }
+    convenience init(
+        _ view: UIView,
+        _ tag: RZObserveController.Tag,
+        _ rzoProtoValue: RZObservable<RZProtoValue>,
+        _ observeController: RZObserveController?,
+        _ closure: @escaping ((UIView) -> ())
+    ){
+        self.init(view, tag, rzoProtoValue.wrappedValue, closure)
+        rzoProtoValue.add {[weak self, weak observeController] in
             guard let self = self else {return}
             guard let view = self.view else {return}
-            guard let observeView = self.observeView else {return}
-            guard let protoTag = self.protoTag else {return}
-            guard var old = test.oldValue else {return}
-                
-            old.size.width -= observeView.frame.width
-            old.size.height -= observeView.frame.height
-            old.origin.x -= observeView.frame.minX
-            old.origin.y -= observeView.frame.minY
-                
-            if protoTag == .w || protoTag == .scX, old.width == 0 {return}
-            if protoTag == .h || protoTag == .scY, old.height == 0 {return}
-                
-            if protoTag == .x, old.minX == 0 {return}
-            if protoTag == .y, old.minY == 0 {return}
-                
-            if protoTag == .cX || protoTag == .mX, old.width == 0 && old.minX == 0 {return}
-            if protoTag == .cY || protoTag == .mY, old.height == 0 && old.minY == 0 {return}
-                
-            if view != observeView ||
-                (self.tag == 2 && protoTag != .w && protoTag != .cX && protoTag != .mX) ||
-                (self.tag == 3 && protoTag != .h && protoTag != .cY && protoTag != .mY) ||
-                (self.tag == 4 && protoTag != .x && protoTag != .cX && protoTag != .mX) ||
-                (self.tag == 5 && protoTag != .y && protoTag != .cY && protoTag != .mY) ||
-                (self.tag == 1)
-            {
-                self.closure?(view)
-            }
+            guard let observeController = observeController else {return}
+            guard let closure = self.closure else {return}
+            $0.new.checkObserv(tag, observeController, closure)
+            closure(view)
         }
-        keys.append(observeKey)
-        
-        let observeKey1 = observeView?.observe(\.center, options: [.old]) {[weak self] (_, test) in
+    }
+    
+    private func setObserve(){
+        result = protoValue?.$value.add{[weak self] _ in
             guard let self = self else {return}
             guard let view = self.view else {return}
-            guard let observeView = self.observeView else {return}
-            guard let protoTag = self.protoTag else {return}
-            guard var old = test.oldValue else {return}
-                
-            old.x -= observeView.center.x
-            old.y -= observeView.center.y
-            
-            
-            if protoTag == .w || protoTag == .x || protoTag == .cX || protoTag == .mX, old.x == 0 {return}
-            if protoTag == .h || protoTag == .y || protoTag == .cY || protoTag == .mY, old.y == 0 {return}
-                
-            if view != observeView ||
-                (self.tag == 2 && protoTag != .w && protoTag != .cX && protoTag != .mX) ||
-                (self.tag == 3 && protoTag != .h && protoTag != .cY && protoTag != .mY) ||
-                (self.tag == 4 && protoTag != .x && protoTag != .cX && protoTag != .mX) ||
-                (self.tag == 5 && protoTag != .y && protoTag != .cY && protoTag != .mY) ||
-                (self.tag == 1)
-            {
+            UIViewUppdateProcess.startProcesses(view, self.tag) {
                 self.closure?(view)
+                UIViewUppdateProcess.endProcesses(view, self.tag)
             }
         }
-        keys.append(observeKey1)
     }
     
     func removeObserve(){
-        keys = []
+        result?.remove()
+    }
+    deinit {
+        result?.remove()
     }
 }
+

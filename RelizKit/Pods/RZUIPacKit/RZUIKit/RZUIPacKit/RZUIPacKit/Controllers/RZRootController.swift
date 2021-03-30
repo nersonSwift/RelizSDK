@@ -8,9 +8,7 @@
 
 import UIKit
 
-public class RZRootController: UIViewController {
-    //var lines: [RZLine] = []
-    
+open class RZRootController: UIViewController {
     var plase: UIView?
     weak var scene: UIScene?
     
@@ -22,7 +20,6 @@ public class RZRootController: UIViewController {
                 instances.append(rootController)
             }
         }
-        
         return instances
     }
     private static func addInstances(_ rootController: RZRootController){
@@ -31,7 +28,6 @@ public class RZRootController: UIViewController {
     
     public static func setupRootViewController(scene: UIScene?) -> UIWindow?{
         if let windowScene = scene as? UIWindowScene {
-            
             let window = UIWindow(windowScene: windowScene)
             let rVC = RZRootController()
             rVC.scene = scene
@@ -44,63 +40,53 @@ public class RZRootController: UIViewController {
     }
     
     @objc public func close(){
-        
         guard let scene = scene else { return }
         UIApplication.shared.requestSceneSessionDestruction(scene.session, options: nil, errorHandler: nil)
     }
     
     private func registring(){
         Self.addInstances(self)
-        let plase = UIView(frame: view.bounds)
-        view.addSubview(plase)
+        let place = UIView(frame: view.bounds)
+        view.addSubview(place)
         if let uiPacC = UIPacInstaller.needOpen{
-            RZTransition(.In, self).view(plase).uiPacC(uiPacC).transit()
+            RZTransition(.In, self).view(place).uiPacC(uiPacC).transit()
         }else{
-            RZTransition(.In, self).view(plase).line(RZLineController.rootLine).transit()
+            RZTransition(.In, self).view(place).line(RZLineController.rootLine).transit()
         }
-        self.plase = plase
-        
-        
+        self.plase = place
     }
     
-    func roatateCild(){
-        var orientation = UIApplication.shared.windows.first?.windowScene?.interfaceOrientation ?? .portrait
-        if orientation != .unknown{
-            RZRotater.lastOrintation = orientation
-        }else{
-            orientation = RZRotater.lastOrintation
-        }
+    func roatateCild(_ animate: Bool = true){
+        let orientation = UIApplication.orientation
+        if orientation == .unknown{ return }
+        
+        RZRotater.lastOrintation = orientation
         for child in children{
             if let child = child as? RZUIPacControllerNJProtocol{
-                RZRotater.resizeAllChild(parent: false,
-                                         child: child,
-                                         parentOrientation: orientation,
-                                         orientation)
+                RZRotater.resizeAllChild(
+                    parent: false,
+                    child: child,
+                    parentOrientation: orientation,
+                    orientation,
+                    animate: animate
+                )
             }
         }
-        
         RZRotater.oldOrintation = RZRotater.lastOrintation
         RZRotater.rotate()
     }
     
-    public override func viewDidLoad() {
-        DispatchQueue.main.async {
-            self.registring()
-        }
+    open override func viewDidLoad() {
+        DispatchQueue.main.async { self.registring() }
     }
     
-    public override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
 
-        if plase?.frame.width == size.height, plase?.frame.height == size.width{
-            DispatchQueue.main.async {
-                self.roatateCild()
-            }
+        if size.isHorizontal != view.frame.size.isHorizontal{
+            DispatchQueue.main.async {self.roatateCild()}
         }else{
             self.plase?.frame.size = size
         }
-
     }
-    
-    
 }

@@ -7,9 +7,7 @@
 //
 
 import UIKit
-#if canImport(RZViewBuilder)
-    import RZViewBuilder
-#endif
+import RZObservableKit
 
 //MARK: - ScreenControllerProtocol
 /// `ru`: - протокол который используется для создания и переходов контроллеров
@@ -42,10 +40,14 @@ public protocol RZUIPacControllerNJProtocol: UIViewController{
     
     
     //MARK: - funcs
+    func preparePac()
+    
+    func initActions()
     //MARK: - start
     /// `ru`: - метод который вызывается при первой устрановке экрана на представление
     func start()
     
+    func didCreated()
     //MARK: - open
     /// `ru`: - метод который вызывается при каждой установке экрана на представление
     func open()
@@ -80,7 +82,11 @@ class RZUIPacControllerInterfase{
 }
 
 extension RZUIPacControllerNJProtocol{
+    public func preparePac(){}
+    public func initActions(){}
     public func start(){}
+    public func didCreated(){}
+    
     public func open(){}
     public func close(){}
     public func completedOpen(){}
@@ -182,59 +188,42 @@ public protocol RZSetUIPacViewProtocol {
 //MARK: - ScreenController
 /// `ru`: - расширение для `ScreenControllerProtocol` позволяющее делигировать ликику представления в `Presenter`
 public protocol RZUIPacControllerViewingProtocol: RZUIPacControllerRouteredProtocol, RZSetUIPacViewProtocol{
-    associatedtype UIPA: RZUIPacViewNoJenericProtocol
-    
-    //MARK: - propertes
-    //MARK: - presenter
-    /// `ru`: - свойство которое инициализируется типом указанным в классе реализующем данный протокол
-    var rzUIView: UIPA? { get set }
-    
     //MARK: - iPhonePresenter
     /// `ru`: - свойство которое которое должно вернуть тип `Presenter` который будет инициализирован для версии `iPhone`
-    var iPhoneRZUIPacView: RZUIPacViewNoJenericProtocol.Type? { get }
+    var iPhoneViewType: RZUIPacAnyViewProtocol.Type? { get }
     
     //MARK: - iPadPresenter
     /// `ru`: - свойство которое которое должно вернуть тип `Presenter` который будет инициализирован для версии `iPad`
-    var iPadRZUIPacView: RZUIPacViewNoJenericProtocol.Type? { get }
+    var iPadViewType: RZUIPacAnyViewProtocol.Type? { get }
     
-    var macRZUIPacView: RZUIPacViewNoJenericProtocol.Type? { get }
+    var macViewType: RZUIPacAnyViewProtocol.Type? { get }
 }
 
-public class SomeUIPacView: UIView, RZUIPacViewNoJenericProtocol{ public func create() {} }
-
 extension RZUIPacControllerViewingProtocol{
-    public var rzUIView: SomeUIPacView?{
-        set{}
-        get{SomeUIPacView()}
-    }
-    public var iPhoneRZUIPacView: RZUIPacViewNoJenericProtocol.Type? { nil }
-    public var iPadRZUIPacView: RZUIPacViewNoJenericProtocol.Type? { nil }
-    public var macRZUIPacView: RZUIPacViewNoJenericProtocol.Type? { nil }
+    public var iPhoneViewType: RZUIPacAnyViewProtocol.Type? { nil }
+    public var iPadViewType: RZUIPacAnyViewProtocol.Type? { nil }
+    public var macViewType: RZUIPacAnyViewProtocol.Type? { nil }
     
     public func setView(){
+        router.setRZObservables()
+        if view is RZUIPacViewNoJenericProtocol {return}
+        var rzUIView: UIView?
         #if targetEnvironment(macCatalyst)
-            if let macRZUIPacView = macRZUIPacView{
-                rzUIView = macRZUIPacView.createSelf(router) as? Self.UIPA
+            if let macViewType = macViewType{
+                rzUIView = macViewType.createSelf(router)
             }
         #else
-            if UIDevice.current.userInterfaceIdiom == .pad, let iPadRZUIPacView = iPadRZUIPacView{
-                rzUIView = iPadRZUIPacView.createSelf(router) as? Self.UIPA
-            }else if UIDevice.current.userInterfaceIdiom == .phone, let iPhoneRZUIPacView = iPhoneRZUIPacView{
-                rzUIView = iPhoneRZUIPacView.createSelf(router) as? Self.UIPA
+            if UIDevice.current.userInterfaceIdiom == .pad, let iPadRZUIPacView = iPadViewType{
+                rzUIView = iPadRZUIPacView.createSelf(router)
+            }else if UIDevice.current.userInterfaceIdiom == .phone, let iPhoneRZUIPacView = iPhoneViewType{
+                rzUIView = iPhoneRZUIPacView.createSelf(router)
             }
         #endif
-        #if canImport(RZViewBuilder)
-            router.setRZObservables()
-        #endif
-        if let rzUIView = view as? UIPA{
-            self.rzUIView = rzUIView
-        }else{
-            view = rzUIView ?? view
-        }
+        view = rzUIView ?? view
     }
     
-    public func rotate(){ rzUIView?.rotate() }
-    public func resize(){ rzUIView?.resize() }
+    public func rotate(){ (view as? RZUIPacViewNoJenericProtocol)?.rotate() }
+    public func resize(){ (view as? RZUIPacViewNoJenericProtocol)?.resize() }
 }
 
 public class SomeUIPacRouter: RZUIPacRouter {}

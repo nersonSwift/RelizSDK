@@ -8,18 +8,22 @@
 
 import SwiftUI
 
-public protocol RZAnySUIPacView{
-    static func createSelf(_ rowRouter: RZUIPacRouterNJProtocol) -> AnyView?
+public protocol RZUIPacAnyViewProtocol{
+    static func createSelf(_ rowRouter: RZUIPacRouterNJProtocol) -> UIView?
 }
-extension RZAnySUIPacView{
-    public static func createSelf(_ rowRouter: RZUIPacRouterNJProtocol) -> AnyView? { nil }
+
+public protocol RZSUIPacViewProtocol: RZUIPacAnyViewProtocol{}
+
+extension RZSUIPacViewProtocol{
+    public static func createSelf(_ rowRouter: RZUIPacRouterNJProtocol) -> UIView? { nil }
 }
-extension RZAnySUIPacView where Self: RZSUIPacView{
-    public static func createSelf(_ rowRouter: RZUIPacRouterNJProtocol) -> AnyView? {
+
+extension RZUIPacAnyViewProtocol where Self: RZSUIPacView{
+    public static func createSelf(_ rowRouter: RZUIPacRouterNJProtocol) -> UIView? {
         guard let ro = rowRouter as? UIPacRouter else { return nil }
-        return AnyView(Self(router: ro))
+        return RZUIViewWraper(ro) { AnyView(Self(router: $0)) }
     }
 }
 
-public protocol RZSUIPacView: View, RZAnySUIPacView, RZSUIRouted{}
+public protocol RZSUIPacView: View, RZUIPacAnyViewProtocol, RZSUIRouted{}
 

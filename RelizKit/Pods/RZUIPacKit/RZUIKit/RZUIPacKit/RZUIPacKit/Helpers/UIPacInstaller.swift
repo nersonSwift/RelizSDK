@@ -121,11 +121,12 @@ class UIPacInstaller{
         uiPacC.didMove(toParent: viewController)
         
         uiPacC.rotater = RZRotater(viewController: uiPacC)
-        uiPacC.rootViewController?.roatateCild()
+        uiPacC.rootViewController?.roatateCild(false)
     }
     
     private static func setView(_ uiPacC: RZUIPacControllerNJProtocol){
         if !uiPacC.starting{
+            uiPacC.preparePac()
             if let delegating = uiPacC as? RZSetUIPacViewProtocol{
                 delegating.setView()
             }
@@ -141,7 +142,12 @@ class UIPacInstaller{
     
     private static func started(_ uiPacC: RZUIPacControllerNJProtocol){
         if !uiPacC.starting{
+            let uiPacV = uiPacC.view as? RZUIPacViewNoJenericProtocol
+            uiPacC.initActions()
+            uiPacV?.initActions()
             uiPacC.start()
+            uiPacV?.create()
+            if uiPacV != nil{ uiPacC.didCreated() }
             uiPacC.starting = true
         }
     }

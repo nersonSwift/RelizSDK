@@ -10,8 +10,8 @@
 #endif
 #endif
 
-#import "RZUIKit.h"
+#import "RZObservableKit.h"
 
-FOUNDATION_EXPORT double RZUIKitVersionNumber;
-FOUNDATION_EXPORT const unsigned char RZUIKitVersionString[];
+FOUNDATION_EXPORT double RZObservableKitVersionNumber;
+FOUNDATION_EXPORT const unsigned char RZObservableKitVersionString[];
 

@@ -4,8 +4,11 @@
 target 'RelizKit' do
   use_frameworks!
 
-  pod 'RZUIKit'
+  pod 'RZObservableKit'
   pod 'RZStoreKit'
-  pod 'RZEvent'
+  pod 'RZEvent'	
+  pod 'RZDarkModeKit'
+  pod 'RZViewBuilder'
+  pod 'RZUIPacKit'
 
 end
