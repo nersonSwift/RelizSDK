@@ -83,11 +83,10 @@ open class RZRootController: UIViewController {
     open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
 
-        if UIApplication.orientation != .unknown && UIApplication.orientation != RZRotater.oldOrintation{
-            DispatchQueue.main.async { self.roatateCild() }
+        if size.isHorizontal != view.frame.size.isHorizontal{
+            DispatchQueue.main.async {self.roatateCild()}
         }else{
             self.plase?.frame.size = size
         }
     }
 }
-

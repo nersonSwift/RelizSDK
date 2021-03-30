@@ -15,7 +15,7 @@
 		51053816260A3C590042D739 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51053815260A3C590042D739 /* UIViewExtension.swift */; };
 		5105381C260A3CC10042D739 /* RZTextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5105381B260A3CC10042D739 /* RZTextViewDelegate.swift */; };
 		51053822260A3CE70042D739 /* Associated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51053821260A3CE70042D739 /* Associated.swift */; };
-		51053827260A3D080042D739 /* RZSwith.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51053826260A3D080042D739 /* RZSwith.swift */; };
+		51053827260A3D080042D739 /* RZSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51053826260A3D080042D739 /* RZSwitch.swift */; };
 		5105382E260A3D770042D739 /* ObservableObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5105382D260A3D770042D739 /* ObservableObjectExtension.swift */; };
 		51053834260A3DD00042D739 /* RZUIAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51053833260A3DD00042D739 /* RZUIAnimation.swift */; };
 /* End PBXBuildFile section */
@@ -41,7 +41,7 @@
 		51053815260A3C590042D739 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		5105381B260A3CC10042D739 /* RZTextViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZTextViewDelegate.swift; sourceTree = "<group>"; };
 		51053821260A3CE70042D739 /* Associated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Associated.swift; sourceTree = "<group>"; };
-		51053826260A3D080042D739 /* RZSwith.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZSwith.swift; sourceTree = "<group>"; };
+		51053826260A3D080042D739 /* RZSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZSwitch.swift; sourceTree = "<group>"; };
 		5105382D260A3D770042D739 /* ObservableObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableObjectExtension.swift; sourceTree = "<group>"; };
 		51053833260A3DD00042D739 /* RZUIAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZUIAnimation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,7 +111,7 @@
 				51053833260A3DD00042D739 /* RZUIAnimation.swift */,
 				5105381B260A3CC10042D739 /* RZTextViewDelegate.swift */,
 				51053821260A3CE70042D739 /* Associated.swift */,
-				51053826260A3D080042D739 /* RZSwith.swift */,
+				51053826260A3D080042D739 /* RZSwitch.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -225,7 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51053827260A3D080042D739 /* RZSwith.swift in Sources */,
+				51053827260A3D080042D739 /* RZSwitch.swift in Sources */,
 				51053808260A3AC20042D739 /* RZObservable.swift in Sources */,
 				51053822260A3CE70042D739 /* Associated.swift in Sources */,
 				5105382E260A3D770042D739 /* ObservableObjectExtension.swift in Sources */,

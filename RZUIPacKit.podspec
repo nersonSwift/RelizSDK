@@ -2,7 +2,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "RZUIPacKit"
-  spec.version      = "1.1.1"
+  spec.version      = "1.1.2"
   spec.summary      = "Small example to test code sharing."
   spec.description  = "Small example to test code sharing via cocoapods."	
   
