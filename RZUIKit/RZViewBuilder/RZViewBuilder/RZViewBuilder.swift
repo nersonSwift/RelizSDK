@@ -76,6 +76,10 @@ public class RZViewBuilder<V: UIView>{
         switch view {
         case let label as UILabel:
             label <- { $0.textColor = value }
+        case let textView as UITextView:
+            textView <- { $0.textColor = value }
+        case let textField as UITextField:
+            textField <- { $0.textColor = value }
         case let button as UIButton:
             button <- { $0.setTitleColor(value, for: .normal) }
         default:break

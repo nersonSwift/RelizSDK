@@ -200,6 +200,10 @@ public class RZObservable<Value>: NSObject, RZObservableProtocol {
         observeResults.forEach{ use(useType, $0.key, old) }
     }
     
+    public func silentSet(_ value: Value){
+        self.value = value
+    }
+    
     @discardableResult
     public func animation(_ animation: RZUIAnimation) -> Self{
         prepareAnimation = animation
