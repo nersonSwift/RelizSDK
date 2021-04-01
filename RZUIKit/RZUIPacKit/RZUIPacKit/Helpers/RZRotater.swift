@@ -38,6 +38,7 @@ public class RZRotater: UIView{
     var mateGoodOrientation: [UIInterfaceOrientation] = []
     static var lastOrintation: UIInterfaceOrientation = .portrait
     static var oldOrintation: UIInterfaceOrientation = .portrait
+    static var isRotate: Bool = false
     
     func rotateMate(
         parent: Bool = true,
@@ -54,7 +55,7 @@ public class RZRotater: UIView{
         
         let (piMode, time) = getAnimationValues(rangeR, rangeG)
         
-        if isNeedAnimation(piMode){
+        if isNeedAnimation(piMode) || (rangeL % 2 != 0 && newO == deviceO) {
             let animation = {self.animationBody(self.frame, piMode, newO, parentOrientation, deviceO, rangeL, rangeG)}
             if animate {
                 UIView.animate(withDuration: time, animations: animation)
@@ -62,7 +63,6 @@ public class RZRotater: UIView{
                 animation()
             }
         }
-        
         
         mateController?.isHorizontal = newO.isHorizontal
         if let mateController = mateController{
@@ -226,17 +226,37 @@ public class RZRotater: UIView{
         let superV = view.superview
         superV?.addSubview(self)
         
-        key = superV?.observe(\.bounds, changeHandler: { [weak superV, weak self, weak view, weak viewController](_, _) in
+        superV?.rzFrame.add{[weak superV, weak self, weak view, weak viewController] in
             guard let superV = superV, let self = self, let view = view else {return}
+            if RZRotater.isRotate {return}
+            
             if self.frame.size == view.frame.size{
-                self.frame.size = superV.frame.size
+                if self.frame.size != $0.new.size{
+                    self.frame.size = $0.new.size
+                }
             }else{
-                self.frame.size = CGSize(width: superV.frame.height, height: superV.frame.width)
+                if self.frame.size != CGSize(width: superV.frame.height, height: superV.frame.width){
+                    self.frame.size = CGSize(width: superV.frame.height, height: superV.frame.width)
+                }
             }
-            view.frame.size = superV.frame.size
+            if view.frame.size != $0.new.size{
+                view.frame.size = $0.new.size
+            }
             (viewController as? RZUIPacControllerNJProtocol)?.resize()
-        })
+        }
         
+//        key = superV?.observe(\.bounds, changeHandler: { [weak superV, weak self, weak view, weak viewController](_, _) in
+//            guard let superV = superV, let self = self, let view = view else {return}
+//
+//            if self.frame.size == view.frame.size{
+//                self.frame.size = superV.frame.size
+//            }else{
+//                self.frame.size = CGSize(width: superV.frame.height, height: superV.frame.width)
+//            }
+//            view.frame.size = superV.frame.size
+//            (viewController as? RZUIPacControllerNJProtocol)?.resize()
+//        })
+
         view.frame.origin = CGPoint()
         self.addSubview(view)
         mate = view
