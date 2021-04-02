@@ -950,7 +950,33 @@ extension RZViewBuilder where V: UIButton{
         view.addAction(for: controlEvents, closure)
         return self
     }
+    
+    public enum ImageType: String{
+        case front
+        case background
+    }
+    
+    @discardableResult
+    public func image(_ value: UIImage?, _ imageType: ImageType = .front) -> Self{
+        if imageType == .background{
+            view.setBackgroundImage(value, for: .normal)
+        }else{
+            view.setImage(value, for: .normal)
+        }
+        return self
+    }
 
+    @discardableResult
+    public func image(_ value: RZObservable<UIImage>?, _ imageType: ImageType = .front) -> Self{
+        value?.add{[weak view] in view?+>.image($0.new, imageType)}.use(.noAnimate)
+        return self
+    }
+    
+    @discardableResult
+    public func image(_ value: RZObservable<UIImage?>?, _ imageType: ImageType = .front) -> Self{
+        value?.add{[weak view] in view?+>.image($0.new, imageType)}.use(.noAnimate)
+        return self
+    }
 }
 
 // MARK: - UIImageView
@@ -968,6 +994,11 @@ extension RZViewBuilder where V: UIImageView{
     }
     @discardableResult
     public func image(_ value: RZObservable<UIImage?>?) -> Self{
+        value?.add {[weak view] in view?+>.image($0.new)}.use(.noAnimate)
+        return self
+    }
+    @discardableResult
+    public func image(_ value: RZObservable<UIImage>?) -> Self{
         value?.add {[weak view] in view?+>.image($0.new)}.use(.noAnimate)
         return self
     }
