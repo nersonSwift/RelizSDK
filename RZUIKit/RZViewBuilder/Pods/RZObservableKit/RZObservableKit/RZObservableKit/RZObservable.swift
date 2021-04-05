@@ -200,6 +200,10 @@ public class RZObservable<Value>: NSObject, RZObservableProtocol {
         observeResults.forEach{ use(useType, $0.key, old) }
     }
     
+    public func silentSet(_ value: Value){
+        self.value = value
+    }
+    
     @discardableResult
     public func animation(_ animation: RZUIAnimation) -> Self{
         prepareAnimation = animation
@@ -267,6 +271,18 @@ extension RZObservable where Value == Bool{
         mapD[true]  = map[0]
         mapD[false] = map[1]
         return self ?> RZSwitch(mapD)
+    }
+}
+
+extension RZObservable{
+    public func handler<SValue>(_ value: @escaping (RZOActionData<Value>)->(SValue)) -> RZObservable<SValue>?{
+        let handler = RZObservable<SValue>(
+            wrappedValue: value(
+                RZOActionData(animation: nil, useType: .noAnimate, old: wrappedValue, new: wrappedValue)
+            )
+        )
+        add { (data) in handler.wrappedValue = value(data) }
+        return handler
     }
 }
 

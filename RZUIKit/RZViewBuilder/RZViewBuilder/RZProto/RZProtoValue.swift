@@ -377,9 +377,20 @@ class RZObserveController{
         case contentHeight
     }
     
+    @RZObservable var rzContentOffsetX: RZProtoValue = 0*
+    @RZObservable var rzContentOffsetY: RZProtoValue = 0*
+    
     weak var view: UIView?
     
-    init(_ view: UIView) {self.view = view}
+    init(_ view: UIView) {
+        self.view = view
+
+        guard let scroll = view as? UIScrollView else { return }
+        scroll.rzContentOffset.add {[weak self] value in
+            self?.rzContentOffsetX = value.new.x*
+            self?.rzContentOffsetY = value.new.y*
+        }
+    }
     
     var observes: [Tag: [RZObserve]] = [:]
     
