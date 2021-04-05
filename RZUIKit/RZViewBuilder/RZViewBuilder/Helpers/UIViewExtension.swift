@@ -23,6 +23,6 @@ extension UIView{
 }
 
 extension UIScrollView{
-    public var rzContentOffsetW: RZObservable<RZProtoValue>{ observeController.$rzContentOffsetW }
-    public var rzContentOffsetH: RZObservable<RZProtoValue>{ observeController.$rzContentOffsetH }
+    public var rzContentOffsetX: RZObservable<RZProtoValue>{ observeController.$rzContentOffsetX }
+    public var rzContentOffsetY: RZObservable<RZProtoValue>{ observeController.$rzContentOffsetY }
 }
