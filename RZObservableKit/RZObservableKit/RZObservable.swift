@@ -274,6 +274,18 @@ extension RZObservable where Value == Bool{
     }
 }
 
+extension RZObservable{
+    public func handler<SValue>(_ value: @escaping (RZOActionData<Value>)->(SValue)) -> RZObservable<SValue>?{
+        let handler = RZObservable<SValue>(
+            wrappedValue: value(
+                RZOActionData(animation: nil, useType: .noAnimate, old: wrappedValue, new: wrappedValue)
+            )
+        )
+        add { (data) in handler.wrappedValue = value(data) }
+        return handler
+    }
+}
+
 //MARK: - UITextField / UITextView
 extension RZObservable where Value == String{
     public func setTextObserve(_ textField: UITextField){
