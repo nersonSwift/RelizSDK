@@ -977,6 +977,22 @@ extension RZViewBuilder where V: UIButton{
         value?.add{[weak view] in view?+>.image($0.new, imageType)}.use(.noAnimate)
         return self
     }
+    
+    @discardableResult
+    public func titleView(_ value: UIView?) -> Self{
+        view.titleView = value
+        return self
+    }
+    @discardableResult
+    public func titleView(_ value: RZObservable<UIView?>?) -> Self{
+        value?.add{[weak view] in view?+>.titleView($0.new)}
+        return self
+    }
+    @discardableResult
+    public func titleView(_ value: (V) -> (UIView?)) -> Self{
+        view.titleView = value(view)
+        return self
+    }
 }
 
 // MARK: - UIImageView

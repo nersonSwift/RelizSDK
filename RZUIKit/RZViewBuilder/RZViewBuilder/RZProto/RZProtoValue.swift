@@ -377,14 +377,35 @@ class RZObserveController{
         case contentHeight
     }
     
+    //MARK: - UIScrollView
     @RZObservable var rzContentOffsetX: RZProtoValue = 0*
     @RZObservable var rzContentOffsetY: RZProtoValue = 0*
+    
+    //MARK: - UIButton
+    @RZObservable var controlState: UIControl.State = .normal
+    private var buttonKeys: [NSKeyValueObservation?] = []
     
     weak var view: UIView?
     
     init(_ view: UIView) {
         self.view = view
 
+        setScrollValues(view)
+    }
+    
+    private func setButtonValues(_ view: UIView){
+        guard let button = view as? UIButton else { return }
+        let closure: (UIButton)->() = {[weak self] in
+            if self?.controlState == $0.state {return}
+            self?.controlState = $0.state
+        }
+        buttonKeys.append(button.observe(\.isEnabled)     { button, _ in closure(button) })
+        buttonKeys.append(button.observe(\.isFocused)     { button, _ in closure(button) })
+        buttonKeys.append(button.observe(\.isHighlighted) { button, _ in closure(button) })
+        buttonKeys.append(button.observe(\.isSelected)    { button, _ in closure(button) })
+    }
+    
+    private func setScrollValues(_ view: UIView){
         guard let scroll = view as? UIScrollView else { return }
         scroll.rzContentOffset.add {[weak self] value in
             self?.rzContentOffsetX = value.new.x*

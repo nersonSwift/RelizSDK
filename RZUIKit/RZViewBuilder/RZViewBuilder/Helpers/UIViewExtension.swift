@@ -26,3 +26,21 @@ extension UIScrollView{
     public var rzContentOffsetX: RZObservable<RZProtoValue>{ observeController.$rzContentOffsetX }
     public var rzContentOffsetY: RZObservable<RZProtoValue>{ observeController.$rzContentOffsetY }
 }
+
+extension UIButton{
+    private var titleViewKey: String {"titleView"}
+    public var titleView: UIView? {
+        set(titleView){
+            if let titleViewOld = Associated(self).get(.hashable(titleViewKey)) as? UIView{
+                titleViewOld.removeFromSuperview()
+            }
+            guard let titleView = titleView else {return}
+            titleView.isUserInteractionEnabled = false
+            addSubview(titleView)
+            Associated(self).set(titleView, .hashable(titleViewKey), .OBJC_ASSOCIATION_ASSIGN)
+        }
+        get{
+            Associated(self).get(.hashable(titleViewKey)) as? UIView
+        }
+    }
+}
