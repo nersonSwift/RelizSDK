@@ -196,11 +196,12 @@ public class RZViewBuilder<V: UIView>{
         return self
     }
     @discardableResult
-    public func template(_ value: RZObservable<RZVBTemplate<V>>?) -> Self{
-        value?.add {[weak view] in
+    public func template(_ value: RZObservable<RZVBTemplate<V>>?, _ firstUse: Bool = true) -> Self{
+        let result = value?.add {[weak view] in
             guard let view = view else {return}
             $0.new.use(view: view, $0.animationCompletion)
-        }.use(.noAnimate)
+        }
+        if firstUse { result?.use(.noAnimate) }
         return self
     }
     @discardableResult
@@ -209,8 +210,9 @@ public class RZViewBuilder<V: UIView>{
         return self
     }
     @discardableResult
-    public func template(_ value: RZObservable<(V)->()>?) -> Self{
-        value?.add {[weak view] in view?+>.template($0.new)}.use(.noAnimate)
+    public func template(_ value: RZObservable<(V)->()>?, _ firstUse: Bool = true) -> Self{
+        let result = value?.add {[weak view] in view?+>.template($0.new)}
+        if firstUse{ result?.use(.noAnimate) }
         return self
     }
     @discardableResult

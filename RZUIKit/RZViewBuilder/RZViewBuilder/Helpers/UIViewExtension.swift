@@ -31,12 +31,11 @@ extension UIButton{
     private var titleViewKey: String {"titleView"}
     public var titleView: UIView? {
         set(titleView){
-            if let titleViewOld = Associated(self).get(.hashable(titleViewKey)) as? UIView{
-                titleViewOld.removeFromSuperview()
-            }
+            if let titleViewOld = Associated(self).get(.hashable(titleViewKey)) as? UIView{ titleViewOld.removeFromSuperview() }
             guard let titleView = titleView else {return}
             titleView.isUserInteractionEnabled = false
             addSubview(titleView)
+            self+>.width(titleView|*.w).height(titleView|*.h)
             Associated(self).set(titleView, .hashable(titleViewKey), .OBJC_ASSOCIATION_ASSIGN)
         }
         get{

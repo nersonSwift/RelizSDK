@@ -389,8 +389,8 @@ class RZObserveController{
     
     init(_ view: UIView) {
         self.view = view
-
         setScrollValues(view)
+        setButtonValues(view)
     }
     
     private func setButtonValues(_ view: UIView){
