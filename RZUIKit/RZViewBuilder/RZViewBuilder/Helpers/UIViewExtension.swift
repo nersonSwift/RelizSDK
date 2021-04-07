@@ -42,4 +42,8 @@ extension UIButton{
             Associated(self).get(.hashable(titleViewKey)) as? UIView
         }
     }
+    
+    public var rzState: RZObservable<UIControl.State> { observeController.$controlState }
 }
+
+extension UIControl.State: Hashable {}
