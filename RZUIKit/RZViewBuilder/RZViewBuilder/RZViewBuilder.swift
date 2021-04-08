@@ -43,6 +43,7 @@ public class RZViewBuilder<V: UIView>{
         case content
         case boder
         case shadow
+        case tint
     }
     
     //MARK: - color
@@ -63,6 +64,7 @@ public class RZViewBuilder<V: UIView>{
             case .content: self.setContentColor(value)
             case .boder: view <- { $0.layer.borderColor = value.cgColor }
             case .shadow: view <- { $0.layer.shadowColor = value.cgColor }
+            case .tint: view <- { $0.tintColor = value }
         }
         return self
     }
