@@ -712,7 +712,7 @@ extension RZViewBuilder{
     }
     @discardableResult
     func _tx(_ value: RZProtoValue) -> Self{
-        value.setValueIn(view, .tx) {[weak self] in self?._tx(value.getValue($0)) }
+        value.setValueIn(view, .tx) { $0+>._tx(value.getValue($0)) }
         return self
     }
     @discardableResult
@@ -752,7 +752,7 @@ extension RZViewBuilder{
     }
     @discardableResult
     func _ty(_ value: RZProtoValue) -> Self{
-        value.setValueIn(view, .ty) {[weak self] in self?._ty(value.getValue($0)) }
+        value.setValueIn(view, .ty) { $0+>._ty(value.getValue($0)) }
         return self
     }
     @discardableResult
@@ -793,7 +793,7 @@ extension RZViewBuilder{
     }
     @discardableResult
     func _ta(_ value: RZProtoValue) -> Self{
-        value.setValueIn(view, .ta) {[weak self] in self?._ta(value.getValue($0)) }
+        value.setValueIn(view, .ta) { $0+>._ta(value.getValue($0)) }
         return self
     }
     @discardableResult
@@ -834,7 +834,7 @@ extension RZViewBuilder{
     }
     @discardableResult
     func _tb(_ value: RZProtoValue) -> Self{
-        value.setValueIn(view, .tb) {[weak self] in self?._tb(value.getValue($0)) }
+        value.setValueIn(view, .tb) { $0+>._tb(value.getValue($0)) }
         return self
     }
     @discardableResult
@@ -875,7 +875,7 @@ extension RZViewBuilder{
     }
     @discardableResult
     func _tc(_ value: RZProtoValue) -> Self{
-        value.setValueIn(view, .tc) {[weak self] in self?._tc(value.getValue($0)) }
+        value.setValueIn(view, .tc) { $0+>._tc(value.getValue($0)) }
         return self
     }
     @discardableResult
@@ -916,7 +916,7 @@ extension RZViewBuilder{
     }
     @discardableResult
     func _td(_ value: RZProtoValue) -> Self{
-        value.setValueIn(view, .td) {[weak self] in self?._td(value.getValue($0)) }
+        value.setValueIn(view, .td) { $0+>._td(value.getValue($0)) }
         return self
     }
     @discardableResult
@@ -1382,7 +1382,7 @@ extension RZViewBuilder where V: UIScrollView{
     @discardableResult
     public func contentWidth(_ value: RZProtoValue) -> Self{
         view.observeController.remove(.contentWidth)
-        value.setValueIn(view, .contentWidth) {[weak self] in self?._contentWidth(value.getValue($0)) }
+        value.setValueIn(view, .contentWidth) { ($0 as? UIScrollView)?+>._contentWidth(value.getValue($0)) }
         return self
     }
     
@@ -1400,7 +1400,7 @@ extension RZViewBuilder where V: UIScrollView{
     @discardableResult
     public func contentHeight(_ value: RZProtoValue) -> Self{
         view.observeController.remove(.contentHeight)
-        value.setValueIn(view, .contentHeight) {[weak self] in self?._contentHeight(value.getValue($0)) }
+        value.setValueIn(view, .contentHeight) { ($0 as? UIScrollView)?+>._contentHeight(value.getValue($0)) }
         return self
     }
 }
