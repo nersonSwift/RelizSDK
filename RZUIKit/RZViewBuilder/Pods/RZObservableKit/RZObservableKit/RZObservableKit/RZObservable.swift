@@ -41,7 +41,6 @@ public class RZOResult<Value>: RZOResultProtocol{
             rzObservable?.wrappedValue
         }
     }
-    
     @discardableResult
     public func use(_ useType: RZOUseType = .animate) -> Self { rzObservable?.use(useType, key); return self }
     public func remove(){ rzObservable?.remove(key) }
@@ -75,13 +74,15 @@ public class RZOAction<Value>{
         let aCompletion = actionData.animationCompletion
         switch aUseType{
         case .animate:
-            if UIView.isAnimation{
-                let animation = self.animation ?? .duration(0)
-                animation.animate({ [weak self] in self?.closure?(actionData) }, {_ in aCompletion.completion()})
-            }else{
+            var animation = self.animation
+            if animation == nil, UIView.isAnimation{
+                animation = .duration(0)
+            }else if animation == nil, !UIView.isAnimation{
                 closure?(actionData)
                 aCompletion.completion()
+                return
             }
+            animation?.animate({ [weak self] in self?.closure?(actionData) }, {_ in aCompletion.completion()})
             
         case .noAnimate:
             closure?(actionData)
