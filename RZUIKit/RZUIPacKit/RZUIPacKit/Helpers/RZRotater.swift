@@ -226,18 +226,11 @@ public class RZRotater: UIView{
         let superV = view.superview
         superV?.addSubview(self)
         
-        superV?.rzFrame.add{[weak superV, weak self, weak view, weak viewController] in
-            guard let superV = superV, let self = self, let view = view else {return}
+        superV?.rzFrame.add{[weak self, weak view, weak viewController] in
+            guard let self = self, let view = view else {return}
             if RZRotater.isRotate {return}
-            
-            if self.frame.size == view.frame.size{
-                if self.frame.size != $0.new.size{
-                    self.frame.size = $0.new.size
-                }
-            }else{
-                if self.frame.size != CGSize(width: superV.frame.height, height: superV.frame.width){
-                    self.frame.size = CGSize(width: superV.frame.height, height: superV.frame.width)
-                }
+            if self.frame.size != $0.new.size{
+                self.frame.size = $0.new.size
             }
             if view.frame.size != $0.new.size{
                 view.frame.size = $0.new.size
