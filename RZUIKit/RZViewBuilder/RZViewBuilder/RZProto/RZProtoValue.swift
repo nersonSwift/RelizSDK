@@ -254,12 +254,8 @@ public struct RZProtoValue: RZProtoValueProtocol{
         }
     }
     
-    func setValueIn(_ view: UIView, _ tag: RZObserveController.Tag, _ remove: Bool = true,  _ closure: @escaping ((UIView) -> ())){
-        let observeController = view.observeController
-        if remove{
-            observeController.remove(tag)
-        }
-        checkObserv(tag, observeController, closure)
+    func setValueIn(_ view: UIView, _ tag: RZObserveController.Tag, _ closure: @escaping ((UIView) -> ())){
+        checkObserv(tag, view.observeController, closure)
         closure(view)
     }
     
@@ -360,11 +356,15 @@ class RZObserveController{
     enum Tag: String {
         case cornerRadius
         
+        case frame
+        case size
+        case point
         case width
         case height
         case x
         case y
         
+        case transform
         case tx
         case ty
         
@@ -375,6 +375,20 @@ class RZObserveController{
         
         case contentWidth
         case contentHeight
+        
+        case text
+        case image
+        case labelView
+        
+        //MARK: - Colors
+        case cBackground
+        case cContent
+        case cBorder
+        case sShadow
+        case cTint
+        
+        case alpha
+        case isHidden
     }
     
     //MARK: - UIScrollView
@@ -414,6 +428,7 @@ class RZObserveController{
     }
     
     var observes: [Tag: [RZObserve]] = [:]
+    var observesRP: [Tag: [RZOResultProtocol]] = [:]
     
     func add(_ tag: Tag, _ protoValue: RZProtoValue, _ closure: @escaping (UIView) -> ()){
         guard let view = view else { return }
@@ -429,9 +444,26 @@ class RZObserveController{
         }
         observes[tag]?.append(RZObserve(view, tag, rzoProtoValue, self, closure))
     }
+    func add(_ tag: Tag?, _ resultProtocol: RZOResultProtocol?){
+        guard let tag = tag, let resultProtocol = resultProtocol else {return}
+        observesRP[tag]?.append(resultProtocol)
+    }
     
-    func remove(_ tag: Tag){
-        observes[tag] = nil
+    enum RemoveObject {
+        case all
+        case rzProtoValue
+        case rzResult
+    }
+    
+    func remove(_ tag: Tag?, _ removeObject: RemoveObject = .all){
+        guard let tag = tag else {return}
+        if removeObject != .rzResult{
+            observes[tag] = nil
+        }
+        if removeObject != .rzProtoValue{
+            observesRP[tag]?.forEach{$0.remove()}
+            observesRP[tag] = nil
+        }
     }
 }
 
@@ -502,8 +534,9 @@ class RZObserve{
     func removeObserve(){
         result?.remove()
     }
+    
     deinit {
-        result?.remove()
+        removeObserve()
     }
 }
 

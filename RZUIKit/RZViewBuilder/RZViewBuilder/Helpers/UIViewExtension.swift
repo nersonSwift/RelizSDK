@@ -28,18 +28,18 @@ extension UIScrollView{
 }
 
 extension UIButton{
-    private var titleViewKey: String {"titleView"}
-    public var titleView: UIView? {
-        set(titleView){
-            if let titleViewOld = Associated(self).get(.hashable(titleViewKey)) as? UIView{ titleViewOld.removeFromSuperview() }
-            guard let titleView = titleView else {return}
-            titleView.isUserInteractionEnabled = false
-            addSubview(titleView)
-            self+>.width(titleView|*.w).height(titleView|*.h)
-            Associated(self).set(titleView, .hashable(titleViewKey), .OBJC_ASSOCIATION_ASSIGN)
+    private var labelViewKey: String {"labelView"}
+    public var labelView: UIView? {
+        set(labelView){
+            if let labelViewOld = Associated(self).get(.hashable(labelViewKey)) as? UIView{ labelViewOld.removeFromSuperview() }
+            guard let labelView = labelView else {return}
+            labelView.isUserInteractionEnabled = false
+            addSubview(labelView)
+            self+>.width(labelView|*.w).height(labelView|*.h)
+            Associated(self).set(labelView, .hashable(labelViewKey), .OBJC_ASSOCIATION_ASSIGN)
         }
         get{
-            Associated(self).get(.hashable(titleViewKey)) as? UIView
+            Associated(self).get(.hashable(labelViewKey)) as? UIView
         }
     }
     

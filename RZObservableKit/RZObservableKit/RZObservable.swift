@@ -22,8 +22,12 @@ public enum RZOUseType{
     case useDefaultAnimate
 }
 
+public protocol RZOResultProtocol {
+    var key: Int {get}
+    func remove()
+}
 //MARK: - Result
-public class RZOResult<Value>{
+public class RZOResult<Value>: RZOResultProtocol{
     private weak var rzObservable: RZObservable<Value>?
     public var key: Int
     public var action: RZOAction<Value>
@@ -38,7 +42,7 @@ public class RZOResult<Value>{
         }
     }
     
-    public func use(_ useType: RZOUseType = .animate){ rzObservable?.use(useType, key) }
+    public func use(_ useType: RZOUseType = .animate){ rzObservable?.use(useType, key); return self } -> Self
     public func remove(){ rzObservable?.remove(key) }
     
     init(_ rzObservable: RZObservable<Value>, _ key: Int, _ action: RZOAction<Value>){

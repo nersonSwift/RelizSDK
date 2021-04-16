@@ -38,43 +38,27 @@ public class RZViewBuilder<V: UIView>{
         self.init(V(frame: .zero))
     }
     
-    public enum ColorType {
-        case background
-        case content
-        case boder
-        case shadow
-        case tint
+    public enum ColorType: String {
+        case background = "cBackground"
+        case content    = "cContent"
+        case border     = "cBorder"
+        case shadow     = "cShadow"
+        case tint       = "cTint"
     }
     
     //MARK: - color
-    /// `RU: - `
-    /// Устанавливает цвет редактироемому view
-    ///
-    /// - Parameter value
-    /// Устанавливаемый цвет, при необоходимости конвертирует цвет в `CGColor`
-    ///
-    /// Поддерживает адаптивные цвета RZDarkModeKit
-    ///
-    /// - Parameter type
-    /// Тег мета установки цвета
     @discardableResult
-    public func color(_ value: UIColor, _ type: ColorType = .background) -> Self {
+    func _color(_ value: UIColor, _ type: ColorType = .background) -> Self {
         switch type {
             case .background: view <- { $0.backgroundColor = value }
-            case .content: self.setContentColor(value)
-            case .boder: view <- { $0.layer.borderColor = value.cgColor }
+            case .content: _setContentColor(value)
+            case .border: view <- { $0.layer.borderColor = value.cgColor }
             case .shadow: view <- { $0.layer.shadowColor = value.cgColor }
             case .tint: view <- { $0.tintColor = value }
         }
         return self
     }
-    @discardableResult
-    public func color(_ value: RZObservable<UIColor>?, _ type: ColorType = .background) -> Self{
-        value?.add {[weak view] in view?+>.color($0.new, type)}.use(.noAnimate)
-        return self
-    }
-    
-    func setContentColor(_ value: UIColor){
+    func _setContentColor(_ value: UIColor){
         switch view {
         case let label as UILabel:
             label <- { $0.textColor = value }
@@ -87,8 +71,43 @@ public class RZViewBuilder<V: UIView>{
         default:break
         }
     }
+    /// `RU: - `
+    /// Устанавливает цвет редактироемому view
+    ///
+    /// - Parameter value
+    /// Устанавливаемый цвет, при необоходимости конвертирует цвет в `CGColor`
+    ///
+    /// Поддерживает адаптивные цвета RZDarkModeKit
+    ///
+    /// - Parameter type
+    /// Тег мета установки цвета
+    @discardableResult
+    public func color(_ value: UIColor, _ type: ColorType = .background) -> Self {
+        if let tag = RZObserveController.Tag(rawValue: type.rawValue) { view.observeController.remove(tag) }
+        return _color(value, type)
+    }
+    @discardableResult
+    public func color(_ value: RZObservable<UIColor>?, _ type: ColorType = .background) -> Self{
+        let tag = RZObserveController.Tag(rawValue: type.rawValue)
+        view.observeController.remove(tag)
+        let result = value?.add(nil, {[weak view] in view?+>._color($0.new, type)}).use(.noAnimate)
+        view.observeController.add(tag, result)
+        return self
+    }
+    
     
     //MARK: - cornerRadius
+    @discardableResult
+    func _cornerRadius(_ value: CGFloat) -> Self{
+        view.layer.cornerRadius = value
+        return self
+    }
+    @discardableResult
+    func _cornerRadius(_ value: RZProtoValue) -> Self{
+        value.setValueIn(view, .cornerRadius) { $0.layer.cornerRadius = value.getValue($0) }
+        return self
+    }
+    
     /// `RU: - `
     /// Устанавливает радиус скругления редактироемому view
     ///
@@ -96,12 +115,14 @@ public class RZViewBuilder<V: UIView>{
     /// Радиус скругления
     @discardableResult
     public func cornerRadius(_ value: CGFloat) -> Self{
-        view.layer.cornerRadius = value
-        return self
+        view.observeController.remove(.cornerRadius)
+        return _cornerRadius(value)
     }
     @discardableResult
     public func cornerRadius(_ value: RZObservable<CGFloat>?) -> Self{
-        value?.add {[weak view] in view?+>.cornerRadius($0.new)}.use(.noAnimate)
+        view.observeController.remove(.cornerRadius)
+        let result = value?.add(nil, {[weak view] in view?+>._cornerRadius($0.new)}).use(.noAnimate)
+        view.observeController.add(.cornerRadius, result)
         return self
     }
     
@@ -113,12 +134,17 @@ public class RZViewBuilder<V: UIView>{
     /// Радиус скругления в ввиде вычесляемого `RZProtoValue`
     @discardableResult
     public func cornerRadius(_ value: RZProtoValue) -> Self{
-        value.setValueIn(view, .cornerRadius) { $0.layer.cornerRadius = value.getValue($0) }
-        return self
+        view.observeController.remove(.cornerRadius)
+        return _cornerRadius(value)
     }
     @discardableResult
     public func cornerRadius(_ value: RZObservable<RZProtoValue>?) -> Self{
-        value?.add {[weak view] in view?+>.cornerRadius($0.new)}.use(.noAnimate)
+        view.observeController.remove(.cornerRadius)
+        let result = value?.add {[weak view] in
+            view?.observeController.remove(.cornerRadius, .rzProtoValue)
+            view?+>._cornerRadius($0.new)
+        }.use(.noAnimate)
+        view.observeController.add(.cornerRadius, result)
         return self
     }
     
@@ -163,35 +189,52 @@ public class RZViewBuilder<V: UIView>{
     @discardableResult
     public func mask(_ value: UIView) -> Self{
         if value.frame.size == .zero{
-            value+>.size(RZProtoSize(width: view|*.w, height: view|*.h))
+            value+>.width(view|*.w).height(view|*.h)
         }
         value+>.x(view|*.scX, .center).y(view|*.scY, .center)
         view.mask = value
         return self
     }
     
+    //MARK: - alpha
     @discardableResult
-    public func alpha(_ value: CGFloat) -> Self{
+    func _alpha(_ value: CGFloat) -> Self{
         view.alpha = value
         return self
     }
     @discardableResult
+    public func alpha(_ value: CGFloat) -> Self{
+        view.observeController.remove(.alpha)
+        return _alpha(value)
+    }
+    @discardableResult
     public func alpha(_ value: RZObservable<CGFloat>?) -> Self{
-        value?.add {[weak view] in view?+>.alpha($0.new)}.use(.noAnimate)
+        view.observeController.remove(.alpha)
+        let result = value?.add {[weak view] in view?+>._alpha($0.new)}.use(.noAnimate)
+        view.observeController.add(.alpha, result)
         return self
     }
     
+    //MARK: - isHidden
     @discardableResult
-    public func isHidden(_ value: Bool) -> Self{
+    func _isHidden(_ value: Bool) -> Self{
         view.isHidden = value
         return self
     }
     @discardableResult
+    public func isHidden(_ value: Bool) -> Self{
+        view.observeController.remove(.isHidden)
+        return _isHidden(value)
+    }
+    @discardableResult
     public func isHidden(_ value: RZObservable<Bool>?) -> Self{
-        value?.add {[weak view] in view?+>.isHidden($0.new)}.use(.noAnimate)
+        view.observeController.remove(.isHidden)
+        let result = value?.add {[weak view] in view?+>._isHidden($0.new)}.use(.noAnimate)
+        view.observeController.add(.isHidden, result)
         return self
     }
     
+    //MARK: - template
     @discardableResult
     public func template(_ value: RZVBTemplate<V>) -> Self{
         value.use(view: view)
@@ -209,12 +252,6 @@ public class RZViewBuilder<V: UIView>{
     @discardableResult
     public func template(_ value: (V)->()) -> Self{
         value(view)
-        return self
-    }
-    @discardableResult
-    public func template(_ value: RZObservable<(V)->()>?, _ firstUse: Bool = true) -> Self{
-        let result = value?.add {[weak view] in view?+>.template($0.new)}
-        if firstUse{ result?.use(.noAnimate) }
         return self
     }
     @discardableResult
@@ -237,6 +274,10 @@ public class RZViewBuilder<V: UIView>{
 //MARK: - Frame only
 extension RZViewBuilder{
     //MARK: - frame
+    @discardableResult
+    func _frame(_ value: CGRect, _ type: PointType = .topLeft) -> Self {
+        return point(value.origin).size(value.size)
+    }
     /// `RU: - `
     /// Устанавливает frame view
     ///
@@ -247,11 +288,14 @@ extension RZViewBuilder{
     /// Точка крепления view
     @discardableResult
     public func frame(_ value: CGRect, _ type: PointType = .topLeft) -> Self {
-        return point(value.origin).size(value.size)
+        view.observeController.remove(.frame)
+        return _frame(value, type)
     }
     @discardableResult
     public func frame(_ value: RZObservable<CGRect>?, _ type: PointType = .topLeft) -> Self{
-        value?.add {[weak view] in view?+>.frame($0.new, type)}.use(.noAnimate)
+        view.observeController.remove(.frame)
+        let result = value?.add {[weak view] in view?+>._frame($0.new, type)}.use(.noAnimate)
+        view.observeController.add(.frame, result)
         return self
     }
     
@@ -263,17 +307,21 @@ extension RZViewBuilder{
     ///
     /// - Parameter type
     /// Точка крепления view по умолчанию `.topLeft`
-    @discardableResult
-    public func frame(_ value: RZProtoFrame, _ type: PointType = .topLeft) -> Self {
-        return point(value.origin).size(value.size)
-    }
-    @discardableResult
-    public func frame(_ value: RZObservable<RZProtoFrame>?, _ type: PointType = .topLeft) -> Self{
-        value?.add {[weak view] in view?+>.frame($0.new, type)}.use(.noAnimate)
-        return self
-    }
+//    @discardableResult
+//    public func frame(_ value: RZProtoFrame, _ type: PointType = .topLeft) -> Self {
+//        return point(value.origin).size(value.size)
+//    }
+//    @discardableResult
+//    public func frame(_ value: RZObservable<RZProtoFrame>?, _ type: PointType = .topLeft) -> Self{
+//        value?.add {[weak view] in view?+>.frame($0.new, type)}.use(.noAnimate)
+//        return self
+//    }
     
     //MARK: - size
+    @discardableResult
+    func _size(_ value: CGSize) -> Self{
+        return width(value.width).height(value.height)
+    }
     /// `RU: - `
     /// Устанавливает size view
     ///
@@ -281,11 +329,14 @@ extension RZViewBuilder{
     /// Устанавляиваемый size
     @discardableResult
     public func size(_ value: CGSize) -> Self{
-        return width(value.width).height(value.height)
+        view.observeController.remove(.size)
+        return _size(value)
     }
     @discardableResult
     public func size(_ value: RZObservable<CGSize>?) -> Self{
-        value?.add {[weak view] in view?+>.size($0.new)}.use(.noAnimate)
+        view.observeController.remove(.size)
+        let result = value?.add {[weak view] in view?+>._size($0.new)}.use(.noAnimate)
+        view.observeController.add(.size, result)
         return self
     }
     
@@ -294,15 +345,15 @@ extension RZViewBuilder{
     ///
     /// - Parameter value
     /// Устанавляиваемый size в ввиде вычесляемого `RZProtoSize`
-    @discardableResult
-    public func size(_ value: RZProtoSize) -> Self{
-        return width(value.width).height(value.height)
-    }
-    @discardableResult
-    public func size(_ value: RZObservable<RZProtoSize>?) -> Self{
-        value?.add {[weak view] in view?+>.size($0.new)}.use(.noAnimate)
-        return self
-    }
+//    @discardableResult
+//    public func size(_ value: RZProtoSize) -> Self{
+//        return width(value.width).height(value.height)
+//    }
+//    @discardableResult
+//    public func size(_ value: RZObservable<RZProtoSize>?) -> Self{
+//        value?.add {[weak view] in view?+>.size($0.new)}.use(.noAnimate)
+//        return self
+//    }
     
     public enum PointType: String{
         case center
@@ -313,6 +364,16 @@ extension RZViewBuilder{
     }
     
     //MARK: - point
+    @discardableResult
+    func _point(_ value: CGPoint, _ type: PointType = .topLeft) -> Self{
+        switch type {
+            case .topLeft:   return x(value.x)         .y(value.y)
+            case .topRight:  return x(value.x, .right) .y(value.y)
+            case .center:    return x(value.x, .center).y(value.y, .center)
+            case .downLeft:  return x(value.x)         .y(value.y, .down)
+            case .downRight: return x(value.x, .right) .y(value.y, .down)
+        }
+    }
     /// `RU: - `
     /// Устанавливает point view
     ///
@@ -323,17 +384,14 @@ extension RZViewBuilder{
     /// Точка крепления view по умолчанию `.topLeft`
     @discardableResult
     public func point(_ value: CGPoint, _ type: PointType = .topLeft) -> Self{
-        switch type {
-            case .topLeft:   return x(value.x)         .y(value.y)
-            case .topRight:  return x(value.x, .right) .y(value.y)
-            case .center:    return x(value.x, .center).y(value.y, .center)
-            case .downLeft:  return x(value.x)         .y(value.y, .down)
-            case .downRight: return x(value.x, .right) .y(value.y, .down)
-        }
+        view.observeController.remove(.point)
+        return _point(value, type)
     }
     @discardableResult
     public func point(_ value: RZObservable<CGPoint>?, _ type: PointType = .topLeft) -> Self{
-        value?.add {[weak view] in view?+>.point($0.new, type)}.use(.noAnimate)
+        view.observeController.remove(.point)
+        let result = value?.add {[weak view] in view?+>._point($0.new, type)}.use(.noAnimate)
+        view.observeController.add(.point, result)
         return self
     }
     
@@ -345,23 +403,34 @@ extension RZViewBuilder{
     ///
     /// - Parameter type
     /// Точка крепления view по умолчанию `.topLeft`
-    @discardableResult
-    public func point(_ value: RZProtoPoint, _ type: PointType = .topLeft) -> Self{
-        switch type {
-            case .topLeft:   return x(value.x)         .y(value.y)
-            case .topRight:  return x(value.x, .right) .y(value.y)
-            case .center:    return x(value.x, .center).y(value.y, .center)
-            case .downLeft:  return x(value.x)         .y(value.y, .down)
-            case .downRight: return x(value.x, .right) .y(value.y, .down)
-        }
-    }
-    @discardableResult
-    public func point(_ value: RZObservable<RZProtoPoint>?, _ type: PointType = .topLeft) -> Self{
-        value?.add {[weak view] in view?+>.point($0.new, type)}.use(.noAnimate)
-        return self
-    }
+//    @discardableResult
+//    public func point(_ value: RZProtoPoint, _ type: PointType = .topLeft) -> Self{
+//        switch type {
+//            case .topLeft:   return x(value.x)         .y(value.y)
+//            case .topRight:  return x(value.x, .right) .y(value.y)
+//            case .center:    return x(value.x, .center).y(value.y, .center)
+//            case .downLeft:  return x(value.x)         .y(value.y, .down)
+//            case .downRight: return x(value.x, .right) .y(value.y, .down)
+//        }
+//    }
+//    @discardableResult
+//    public func point(_ value: RZObservable<RZProtoPoint>?, _ type: PointType = .topLeft) -> Self{
+//        value?.add {[weak view] in view?+>.point($0.new, type)}.use(.noAnimate)
+//        return self
+//    }
     
     //MARK: - point
+    @discardableResult
+    func _width(_ value: CGFloat) -> Self{
+        view.frame.size.width = value
+        RZLabelSizeController.modUpdate(view, true)
+        return self
+    }
+    @discardableResult
+    func _width(_ value: RZProtoValue) -> Self{
+        value.setValueIn(view, .width) { $0.frame.size.width = value.getValue($0); RZLabelSizeController.modUpdate($0, true) }
+        return self
+    }
     /// `RU: - `
     /// Устанавливает ширену view
     ///
@@ -369,13 +438,14 @@ extension RZViewBuilder{
     /// Устанавляиваемая ширена
     @discardableResult
     public func width(_ value: CGFloat) -> Self{
-        view.frame.size.width = value
-        RZLabelSizeController.modUpdate(view, true)
-        return self
+        view.observeController.remove(.width)
+        return _width(value)
     }
     @discardableResult
     public func width(_ value: RZObservable<CGFloat>?) -> Self{
-        value?.add {[weak view] in view?+>.width($0.new)}.use(.noAnimate)
+        view.observeController.remove(.width)
+        let result = value?.add {[weak view] in view?+>._width($0.new)}.use(.noAnimate)
+        view.observeController.add(.width, result)
         return self
     }
     
@@ -387,16 +457,31 @@ extension RZViewBuilder{
     /// Устанавляиваемая ширена в виде вычесляемого `RZProtoValue`
     @discardableResult
     public func width(_ value: RZProtoValue) -> Self{
-        value.setValueIn(view, .width) { $0.frame.size.width = value.getValue($0); RZLabelSizeController.modUpdate($0, true) }
-        return self
+        view.observeController.remove(.width)
+        return _width(value)
     }
     @discardableResult
     public func width(_ value: RZObservable<RZProtoValue>?) -> Self{
-        value?.add {[weak view] in view?+>.width($0.new)}.use(.noAnimate)
+        view.observeController.remove(.width)
+        let result = value?.add {[weak view] in
+            view?.observeController.remove(.width, .rzProtoValue)
+            view?+>._width($0.new)
+        }.use(.noAnimate)
+        view.observeController.add(.width, result)
         return self
     }
     
     //MARK: - height
+    @discardableResult
+    func _height(_ value: CGFloat) -> Self{
+        view.frame.size.height = value
+        return self
+    }
+    @discardableResult
+    func _height(_ value: RZProtoValue) -> Self{
+        value.setValueIn(view, .height) { $0.frame.size.height = value.getValue($0) }
+        return self
+    }
     /// `RU: - `
     /// Устанавливает высоту view
     ///
@@ -404,12 +489,14 @@ extension RZViewBuilder{
     /// Устанавляиваемая высота
     @discardableResult
     public func height(_ value: CGFloat) -> Self{
-        view.frame.size.height = value
-        return self
+        view.observeController.remove(.height)
+        return _height(value)
     }
     @discardableResult
     public func height(_ value: RZObservable<CGFloat>?) -> Self{
-        value?.add {[weak view] in view?+>.height($0.new)}.use(.noAnimate)
+        view.observeController.remove(.height)
+        let result = value?.add {[weak view] in view?+>._height($0.new)}.use(.noAnimate)
+        view.observeController.add(.height, result)
         return self
     }
     
@@ -420,12 +507,17 @@ extension RZViewBuilder{
     /// Устанавляиваемая высота в виде вычесляемого `RZProtoValue`
     @discardableResult
     public func height(_ value: RZProtoValue) -> Self{
-        value.setValueIn(view, .height) { $0.frame.size.height = value.getValue($0) }
-        return self
+        view.observeController.remove(.height)
+        return _height(value)
     }
     @discardableResult
     public func height(_ value: RZObservable<RZProtoValue>?) -> Self{
-        value?.add {[weak view] in view?+>.height($0.new)}.use(.noAnimate)
+        view.observeController.remove(.height)
+        let result = value?.add {[weak view] in
+            view?.observeController.remove(.height, .rzProtoValue)
+            view?+>._height($0.new)
+        }.use(.noAnimate)
+        view.observeController.add(.height, result)
         return self
     }
     
@@ -436,6 +528,20 @@ extension RZViewBuilder{
     }
     
     //MARK: - х
+    @discardableResult
+    func _x(_ value: CGFloat,  _ type: XType = .left) -> Self{
+        switch type {
+            case .left:   view.frame.origin.x = value
+            case .right:  view.frame.origin.x = value - view.frame.width
+            case .center: view.center.x = value
+        }
+        return self
+    }
+    @discardableResult
+    func _x(_ value: RZProtoValue,  _ type: XType = .left) -> Self{
+        value.setValueIn(view, .x) {[weak view] in view?+>._x(value.getValue($0), type)}
+        return self
+    }
     /// `RU: - `
     /// Устанавливает х view
     ///
@@ -446,16 +552,24 @@ extension RZViewBuilder{
     /// Точка крепления view по умолчанию `.left`
     @discardableResult
     public func x(_ value: CGFloat,  _ type: XType = .left) -> Self{
-        switch type {
-            case .left:   view.frame.origin.x = value
-            case .right:  view.frame.origin.x = value - view.frame.width
-            case .center: view.center.x = value
+        view.observeController.remove(.x)
+        _x(value, type)
+        if type != .left {
+            view|*.w.setValueIn(view, .x) { ($0 as? V)?+>._x(value, type) }
         }
         return self
     }
     @discardableResult
     public func x(_ value: RZObservable<CGFloat>?,  _ type: XType = .left) -> Self{
-        value?.add {[weak view] in view?+>.x($0.new, type)}.use(.noAnimate)
+        view.observeController.remove(.x)
+        let result = value?.add {[weak view] in view?+>._x($0.new, type)}.use(.noAnimate)
+        view.observeController.add(.x, result)
+        if type != .left {
+            view|*.w.setValueIn(view, .x) {[weak value] in
+                guard let value = value else {return}
+                ($0 as? V)?+>._x(value.wrappedValue, type)
+            }
+        }
         return self
     }
     
@@ -469,20 +583,33 @@ extension RZViewBuilder{
     /// Точка крепления view по умолчанию `.left`
     @discardableResult
     public func x(_ value: RZProtoValue,  _ type: XType = .left) -> Self{
-        switch type {
-        case .left:   value.setValueIn(view, .x) { $0.frame.origin.x = value.getValue($0) }
-        case .right:
-            value.setValueIn(view, .x) { $0.frame.origin.x = value.getValue($0) - $0.frame.width }
-            view|*.w.setValueIn(view, .x, false) { $0.frame.origin.x = value.getValue($0) - $0.frame.width }
-        case .center:
-            value.setValueIn(view, .x) { $0.center.x = value.getValue($0) }
-            view|*.w.setValueIn(view, .x, false) { $0.center.x = value.getValue($0) }
+        view.observeController.remove(.x)
+        _x(value, type)
+        if type != .left {
+            view|*.w.setValueIn(view, .x) {[weak view] in
+                guard let view = view else {return}
+                ($0 as? V)?+>._x(value.getValue(view), type)
+            }
         }
         return self
     }
     @discardableResult
     public func x(_ value: RZObservable<RZProtoValue>?, _ type: XType = .left) -> Self{
-        value?.add {[weak view] in view?+>.x($0.new, type)}.use(.noAnimate)
+        view.observeController.remove(.x)
+        let result = value?.add {[weak view, weak value] in
+            guard let view = view else {return}
+            view.observeController.remove(.x, .rzProtoValue)
+            view+>._x($0.new, type)
+            
+            if type != .left {
+                view|*.w.setValueIn(view, .x) {[weak view, weak value] in
+                    guard let view = view else {return}
+                    guard let value = value else {return}
+                    ($0 as? V)?+>._x(value.wrappedValue.getValue(view), type)
+                }
+            }
+        }.use(.noAnimate)
+        view.observeController.add(.x, result)
         return self
     }
     
@@ -493,6 +620,20 @@ extension RZViewBuilder{
     }
     
     //MARK: - y
+    @discardableResult
+    func _y(_ value: CGFloat,  _ type: YType = .top) -> Self{
+        switch type {
+            case .top:    view.frame.origin.y = value
+            case .down:   view.frame.origin.y = value - view.frame.height
+            case .center: view.center.y = value
+        }
+        return self
+    }
+    @discardableResult
+    func _y(_ value: RZProtoValue,  _ type: YType = .top) -> Self{
+        value.setValueIn(view, .y) {[weak view] in view?+>._y(value.getValue($0), type)}
+        return self
+    }
     /// `RU: - `
     /// Устанавливает y view
     ///
@@ -503,16 +644,24 @@ extension RZViewBuilder{
     /// Точка крепления view по умолчанию `.top`
     @discardableResult
     public func y(_ value: CGFloat,  _ type: YType = .top) -> Self{
-        switch type {
-            case .top:    view.frame.origin.y = value
-            case .down:   view.frame.origin.y = value - view.frame.height
-            case .center: view.center.y = value
+        view.observeController.remove(.y)
+        _y(value, type)
+        if type != .top {
+            view|*.h.setValueIn(view, .y) { ($0 as? V)?+>._y(value, type) }
         }
         return self
     }
     @discardableResult
     public func y(_ value: RZObservable<CGFloat>?, _ type: YType = .top) -> Self{
-        value?.add {[weak view] in view?+>.y($0.new, type)}.use(.noAnimate)
+        view.observeController.remove(.y)
+        let result = value?.add {[weak view] in view?+>._y($0.new, type)}.use(.noAnimate)
+        view.observeController.add(.y, result)
+        if type != .top {
+            view|*.h.setValueIn(view, .y) {[weak value] in
+                guard let value = value else {return}
+                ($0 as? V)?+>._y(value.wrappedValue, type)
+            }
+        }
         return self
     }
     
@@ -526,166 +675,294 @@ extension RZViewBuilder{
     /// Точка крепления view по умолчанию `.top`
     @discardableResult
     public func y(_ value: RZProtoValue,  _ type: YType = .top) -> Self{
-        switch type {
-        case .top:    value.setValueIn(view, .y) { $0.frame.origin.y = value.getValue($0) }
-        case .down:
-            value.setValueIn(view, .y) { $0.frame.origin.y = value.getValue($0) - $0.frame.height }
-            view|*.h.setValueIn(view, .y, false) { $0.frame.origin.y = value.getValue($0) - $0.frame.height }
-        case .center:
-            value.setValueIn(view, .y) { $0.center.y = value.getValue($0) }
-            view|*.h.setValueIn(view, .y, false) { $0.center.y = value.getValue($0) }
+        view.observeController.remove(.y)
+        _y(value, type)
+        if type != .top {
+            view|*.h.setValueIn(view, .y) {[weak view] in
+                guard let view = view else {return}
+                ($0 as? V)?+>._y(value.getValue(view), type)
+            }
         }
-        
         return self
     }
     @discardableResult
     public func y(_ value: RZObservable<RZProtoValue>?, _ type: YType = .top) -> Self{
-        value?.add {[weak view] in view?+>.y($0.new, type)}.use(.noAnimate)
+        view.observeController.remove(.y)
+        let result = value?.add {[weak view, weak value] in
+            guard let view = view else {return}
+            view.observeController.remove(.y, .rzProtoValue)
+            view+>._y($0.new, type)
+            
+            if type != .top {
+                view|*.h.setValueIn(view, .y) {[weak view, weak value] in
+                    guard let view = view else {return}
+                    guard let value = value else {return}
+                    ($0 as? V)?+>._y(value.wrappedValue.getValue(view), type)
+                }
+            }
+        }.use(.noAnimate)
+        view.observeController.add(.y, result)
         return self
     }
     
     @discardableResult
-    public func tx(_ value: CGFloat) -> Self{
+    func _tx(_ value: CGFloat) -> Self{
         view.transform.tx = value
         return self
     }
     @discardableResult
+    func _tx(_ value: RZProtoValue) -> Self{
+        value.setValueIn(view, .tx) {[weak self] in self?._tx(value.getValue($0)) }
+        return self
+    }
+    @discardableResult
+    public func tx(_ value: CGFloat) -> Self{
+        view.observeController.remove(.tx)
+        return _tx(value)
+    }
+    @discardableResult
     public func tx(_ value: RZObservable<CGFloat>?) -> Self{
-        value?.add {[weak view] in view?+>.tx($0.new)}.use(.noAnimate)
+        view.observeController.remove(.tx)
+        let result = value?.add {[weak view] in view?+>._tx($0.new)}.use(.noAnimate)
+        view.observeController.add(.tx, result)
         return self
     }
     
     @discardableResult
     public func tx(_ value: RZProtoValue) -> Self{
-        value.setValueIn(view, .tx) { $0.transform.tx = value.getValue($0) }
-        return self
+        view.observeController.remove(.tx)
+        return _tx(value)
     }
     @discardableResult
     public func tx(_ value: RZObservable<RZProtoValue>?) -> Self{
-        value?.add {[weak view] in view?+>.tx($0.new)}.use(.noAnimate)
+        view.observeController.remove(.tx)
+        let result = value?.add {[weak view] in
+            view?.observeController.remove(.tx, .rzProtoValue)
+            view?+>._tx($0.new)
+        }.use(.noAnimate)
+        view.observeController.add(.tx, result)
         return self
     }
     
     
     @discardableResult
-    public func ty(_ value: CGFloat) -> Self{
+    func _ty(_ value: CGFloat) -> Self{
         view.transform.ty = value
         return self
     }
     @discardableResult
+    func _ty(_ value: RZProtoValue) -> Self{
+        value.setValueIn(view, .ty) {[weak self] in self?._ty(value.getValue($0)) }
+        return self
+    }
+    @discardableResult
+    public func ty(_ value: CGFloat) -> Self{
+        view.observeController.remove(.ty)
+        return _ty(value)
+    }
+    @discardableResult
     public func ty(_ value: RZObservable<CGFloat>?) -> Self{
-        value?.add {[weak view] in view?+>.ty($0.new)}.use(.noAnimate)
+        view.observeController.remove(.ty)
+        let result = value?.add {[weak view] in view?+>._ty($0.new)}.use(.noAnimate)
+        view.observeController.add(.ty, result)
         return self
     }
     
     @discardableResult
     public func ty(_ value: RZProtoValue) -> Self{
-        value.setValueIn(view, .ty) { $0.transform.ty = value.getValue($0) }
-        return self
+        view.observeController.remove(.ty)
+        return _ty(value)
     }
     @discardableResult
     public func ty(_ value: RZObservable<RZProtoValue>?) -> Self{
-        value?.add {[weak view] in view?+>.ty($0.new)}.use(.noAnimate)
+        view.observeController.remove(.ty)
+        let result = value?.add {[weak view] in
+            view?.observeController.remove(.ty, .rzProtoValue)
+            view?+>._ty($0.new)
+        }.use(.noAnimate)
+        view.observeController.add(.ty, result)
         return self
     }
     
+    ///
     
     @discardableResult
-    public func ta(_ value: CGFloat) -> Self{
+    func _ta(_ value: CGFloat) -> Self{
         view.transform.a = value
         return self
     }
     @discardableResult
+    func _ta(_ value: RZProtoValue) -> Self{
+        value.setValueIn(view, .ta) {[weak self] in self?._ta(value.getValue($0)) }
+        return self
+    }
+    @discardableResult
+    public func ta(_ value: CGFloat) -> Self{
+        view.observeController.remove(.ta)
+        return _ta(value)
+    }
+    @discardableResult
     public func ta(_ value: RZObservable<CGFloat>?) -> Self{
-        value?.add {[weak view] in view?+>.ta($0.new)}.use(.noAnimate)
+        view.observeController.remove(.ta)
+        let result = value?.add {[weak view] in view?+>._ta($0.new)}.use(.noAnimate)
+        view.observeController.add(.ta, result)
         return self
     }
     
     @discardableResult
     public func ta(_ value: RZProtoValue) -> Self{
-        value.setValueIn(view, .ta) { $0.transform.a = value.getValue($0) }
-        return self
+        view.observeController.remove(.ta)
+        return _ta(value)
     }
     @discardableResult
     public func ta(_ value: RZObservable<RZProtoValue>?) -> Self{
-        value?.add {[weak view] in view?+>.tb($0.new)}.use(.noAnimate)
+        view.observeController.remove(.ta)
+        let result = value?.add {[weak view] in
+            view?.observeController.remove(.ta, .rzProtoValue)
+            view?+>._ta($0.new)
+        }.use(.noAnimate)
+        view.observeController.add(.ta, result)
         return self
     }
     
+    ///
+    
     @discardableResult
-    public func tb(_ value: CGFloat) -> Self{
+    func _tb(_ value: CGFloat) -> Self{
         view.transform.b = value
         return self
     }
     @discardableResult
+    func _tb(_ value: RZProtoValue) -> Self{
+        value.setValueIn(view, .tb) {[weak self] in self?._tb(value.getValue($0)) }
+        return self
+    }
+    @discardableResult
+    public func tb(_ value: CGFloat) -> Self{
+        view.observeController.remove(.tb)
+        return _tb(value)
+    }
+    @discardableResult
     public func tb(_ value: RZObservable<CGFloat>?) -> Self{
-        value?.add {[weak view] in view?+>.tb($0.new)}.use(.noAnimate)
+        view.observeController.remove(.tb)
+        let result = value?.add {[weak view] in view?+>._tb($0.new)}.use(.noAnimate)
+        view.observeController.add(.tb, result)
         return self
     }
     
     @discardableResult
     public func tb(_ value: RZProtoValue) -> Self{
-        value.setValueIn(view, .tb) { $0.transform.b = value.getValue($0) }
-        return self
+        view.observeController.remove(.tb)
+        return _tb(value)
     }
     @discardableResult
     public func tb(_ value: RZObservable<RZProtoValue>?) -> Self{
-        value?.add {[weak view] in view?+>.tb($0.new)}.use(.noAnimate)
+        view.observeController.remove(.tb)
+        let result = value?.add {[weak view] in
+            view?.observeController.remove(.tb, .rzProtoValue)
+            view?+>._tb($0.new)
+        }.use(.noAnimate)
+        view.observeController.add(.tb, result)
         return self
     }
     
+    ///
+    
     @discardableResult
-    public func tc(_ value: CGFloat) -> Self{
+    func _tc(_ value: CGFloat) -> Self{
         view.transform.c = value
         return self
     }
     @discardableResult
+    func _tc(_ value: RZProtoValue) -> Self{
+        value.setValueIn(view, .tc) {[weak self] in self?._tc(value.getValue($0)) }
+        return self
+    }
+    @discardableResult
+    public func tc(_ value: CGFloat) -> Self{
+        view.observeController.remove(.tc)
+        return _tc(value)
+    }
+    @discardableResult
     public func tc(_ value: RZObservable<CGFloat>?) -> Self{
-        value?.add {[weak view] in view?+>.tc($0.new)}.use(.noAnimate)
+        view.observeController.remove(.tc)
+        let result = value?.add {[weak view] in view?+>._tc($0.new)}.use(.noAnimate)
+        view.observeController.add(.tc, result)
         return self
     }
     
     @discardableResult
     public func tc(_ value: RZProtoValue) -> Self{
-        value.setValueIn(view, .tc) { $0.transform.c = value.getValue($0) }
-        return self
+        view.observeController.remove(.tc)
+        return _tc(value)
     }
     @discardableResult
     public func tc(_ value: RZObservable<RZProtoValue>?) -> Self{
-        value?.add {[weak view] in view?+>.tc($0.new)}.use(.noAnimate)
+        view.observeController.remove(.tc)
+        let result = value?.add {[weak view] in
+            view?.observeController.remove(.tc, .rzProtoValue)
+            view?+>._tc($0.new)
+        }.use(.noAnimate)
+        view.observeController.add(.tc, result)
         return self
     }
     
+    ///
+    
     @discardableResult
-    public func td(_ value: CGFloat) -> Self{
+    func _td(_ value: CGFloat) -> Self{
         view.transform.d = value
         return self
     }
     @discardableResult
+    func _td(_ value: RZProtoValue) -> Self{
+        value.setValueIn(view, .td) {[weak self] in self?._td(value.getValue($0)) }
+        return self
+    }
+    @discardableResult
+    public func td(_ value: CGFloat) -> Self{
+        view.observeController.remove(.td)
+        return _td(value)
+    }
+    @discardableResult
     public func td(_ value: RZObservable<CGFloat>?) -> Self{
-        value?.add {[weak view] in view?+>.td($0.new)}.use(.noAnimate)
+        view.observeController.remove(.td)
+        let result = value?.add {[weak view] in view?+>._td($0.new)}.use(.noAnimate)
+        view.observeController.add(.td, result)
         return self
     }
     
     @discardableResult
     public func td(_ value: RZProtoValue) -> Self{
-        value.setValueIn(view, .td) { $0.transform.d = value.getValue($0) }
-        return self
+        view.observeController.remove(.td)
+        return _td(value)
     }
     @discardableResult
     public func td(_ value: RZObservable<RZProtoValue>?) -> Self{
-        value?.add {[weak view] in view?+>.td($0.new)}.use(.noAnimate)
+        view.observeController.remove(.td)
+        let result = value?.add {[weak view] in
+            view?.observeController.remove(.td, .rzProtoValue)
+            view?+>._td($0.new)
+        }.use(.noAnimate)
+        view.observeController.add(.td, result)
         return self
     }
     
     @discardableResult
-    public func transform(_ value: CGAffineTransform) -> Self{
-        view.transform = value
+    func _transform(_ value: CGAffineTransform) -> Self{
+        view+>.tx(value.tx).ty(value.ty).ta(value.a).tb(value.b).tc(value.c).td(value.d)
         return self
     }
     @discardableResult
+    public func transform(_ value: CGAffineTransform) -> Self{
+        view.observeController.remove(.transform)
+        return _transform(value)
+    }
+    @discardableResult
     public func transform(_ value: RZObservable<CGAffineTransform>?) -> Self{
-        value?.add {[weak view] in view?+>.transform($0.new)}.use(.noAnimate)
+        view.observeController.remove(.transform)
+        let result = value?.add {[weak view] in view?+>._transform($0.new)}.use(.noAnimate)
+        view.observeController.add(.transform, result)
         return self
     }
     
@@ -717,6 +994,12 @@ extension RZViewBuilder{
 extension RZViewBuilder where V: UILabel{
     
     //MARK: - text
+    @discardableResult
+    func _text(_ value: String?) -> Self{
+        view.text = value
+        RZLabelSizeController.modUpdate(view)
+        return self
+    }
     /// `RU: - `
     /// Устанавливает текст для UILabel
     ///
@@ -724,18 +1007,21 @@ extension RZViewBuilder where V: UILabel{
     /// Устанавливаемый текст
     @discardableResult
     public func text(_ value: String?) -> Self{
-        view.text = value
-        RZLabelSizeController.modUpdate(view)
-        return self
+        view.observeController.remove(.text)
+        return _text(value)
     }
     @discardableResult
     public func text(_ value: RZObservable<String?>?) -> Self{
-        value?.add {[weak view] in view?+>.text($0.new)}.use(.noAnimate)
+        view.observeController.remove(.text)
+        let result = value?.add {[weak view] in view?+>._text($0.new)}.use(.noAnimate)
+        view.observeController.add(.text, result)
         return self
     }
     @discardableResult
     public func text(_ value: RZObservable<String>?) -> Self{
-        value?.add {[weak view] in view?+>.text($0.new)}.use(.noAnimate)
+        view.observeController.remove(.text)
+        let result = value?.add {[weak view] in view?+>._text($0.new)}.use(.noAnimate)
+        view.observeController.add(.text, result)
         return self
     }
     
@@ -780,11 +1066,11 @@ extension RZViewBuilder where V: UILabel{
         return self
     }
     
-    @discardableResult
-    public func font(_ value: RZObservable<UIFont>?, _ attributes: [NSAttributedString.Key: Any] = [:]) -> Self{
-        value?.add {[weak view] in view?+>.font($0.new, attributes)}.use(.noAnimate)
-        return self
-    }
+//    @discardableResult
+//    public func font(_ value: RZObservable<UIFont>?, _ attributes: [NSAttributedString.Key: Any] = [:]) -> Self{
+//        value?.add {[weak view] in view?+>.font($0.new, attributes)}.use(.noAnimate)
+//        return self
+//    }
     
     //MARK: - sizes
     /// `RU: - `
@@ -813,7 +1099,12 @@ extension RZViewBuilder where V: UILabel{
 // MARK: - UILabel
 extension RZViewBuilder where V: UITextField{
     
-    //MARK: - text
+    @discardableResult
+    func _text(_ value: String?) -> Self{
+        view.text = value
+        RZLabelSizeController.modUpdate(view)
+        return self
+    }
     /// `RU: - `
     /// Устанавливает текст для UILabel
     ///
@@ -821,14 +1112,14 @@ extension RZViewBuilder where V: UITextField{
     /// Устанавливаемый текст
     @discardableResult
     public func text(_ value: String?) -> Self{
-        view.text = value
-        RZLabelSizeController.modUpdate(view)
-        return self
+        view.observeController.remove(.text)
+        return _text(value)
     }
-    
     @discardableResult
     public func text(_ value: RZObservable<String>?) -> Self{
-        value?.add {[weak view] in view?+>.text($0.new)}.use(.noAnimate)
+        view.observeController.remove(.text)
+        let result = value?.add {[weak view] in view?+>._text($0.new)}.use(.noAnimate)
+        view.observeController.add(.text, result)
         value?.setTextObserve(view)
         return self
     }
@@ -885,7 +1176,12 @@ extension RZViewBuilder where V: UITextField{
 // MARK: - UILabel
 extension RZViewBuilder where V: UITextView{
     
-    //MARK: - text
+    @discardableResult
+    func _text(_ value: String?) -> Self{
+        view.text = value
+        RZLabelSizeController.modUpdate(view)
+        return self
+    }
     /// `RU: - `
     /// Устанавливает текст для UILabel
     ///
@@ -893,14 +1189,14 @@ extension RZViewBuilder where V: UITextView{
     /// Устанавливаемый текст
     @discardableResult
     public func text(_ value: String?) -> Self{
-        view.text = value
-        RZLabelSizeController.modUpdate(view)
-        return self
+        view.observeController.remove(.text)
+        return _text(value)
     }
-    
     @discardableResult
     public func text(_ value: RZObservable<String>?) -> Self{
-        value?.add {[weak view] in view?+>.text($0.new)}.use(.noAnimate)
+        view.observeController.remove(.text)
+        let result = value?.add {[weak view] in view?+>._text($0.new)}.use(.noAnimate)
+        view.observeController.add(.text, result)
         value?.setTextObserve(view)
         return self
     }
@@ -908,20 +1204,35 @@ extension RZViewBuilder where V: UITextView{
 
 // MARK: - UIButton
 extension RZViewBuilder where V: UIButton{
+
     //MARK: - text
+    @discardableResult
+    func _text(_ value: String?) -> Self{
+        view.setTitle(value, for: .normal)
+        return self
+    }
     /// `RU: - `
-    /// Устанавливает текст для UIButton
+    /// Устанавливает текст для UILabel
     ///
     /// - Parameter value
     /// Устанавливаемый текст
     @discardableResult
-    public func text(_ value: String) -> Self{
-        view.setTitle(value, for: .normal)
+    public func text(_ value: String?) -> Self{
+        view.observeController.remove(.text)
+        return _text(value)
+    }
+    @discardableResult
+    public func text(_ value: RZObservable<String?>?) -> Self{
+        view.observeController.remove(.text)
+        let result = value?.add {[weak view] in view?+>._text($0.new)}.use(.noAnimate)
+        view.observeController.add(.text, result)
         return self
     }
     @discardableResult
     public func text(_ value: RZObservable<String>?) -> Self{
-        value?.add {[weak view] in view?+>.text($0.new)}.use(.noAnimate)
+        view.observeController.remove(.text)
+        let result = value?.add {[weak view] in view?+>._text($0.new)}.use(.noAnimate)
+        view.observeController.add(.text, result)
         return self
     }
     
@@ -961,7 +1272,7 @@ extension RZViewBuilder where V: UIButton{
     }
     
     @discardableResult
-    public func image(_ value: UIImage?, _ imageType: ImageType = .front) -> Self{
+    func _image(_ value: UIImage?, _ imageType: ImageType = .front) -> Self{
         if imageType == .background{
             view.setBackgroundImage(value, for: .normal)
         }else{
@@ -969,38 +1280,59 @@ extension RZViewBuilder where V: UIButton{
         }
         return self
     }
+    @discardableResult
+    public func image(_ value: UIImage?, _ imageType: ImageType = .front) -> Self{
+        view.observeController.remove(.image)
+        return _image(value, imageType)
+    }
 
     @discardableResult
     public func image(_ value: RZObservable<UIImage>?, _ imageType: ImageType = .front) -> Self{
-        value?.add{[weak view] in view?+>.image($0.new, imageType)}.use(.noAnimate)
+        view.observeController.remove(.image)
+        let result = value?.add{[weak view] in view?+>._image($0.new, imageType)}.use(.noAnimate)
+        view.observeController.add(.image, result)
         return self
     }
     
     @discardableResult
     public func image(_ value: RZObservable<UIImage?>?, _ imageType: ImageType = .front) -> Self{
-        value?.add{[weak view] in view?+>.image($0.new, imageType)}.use(.noAnimate)
+        view.observeController.remove(.image)
+        let result = value?.add{[weak view] in view?+>._image($0.new, imageType)}.use(.noAnimate)
+        view.observeController.add(.image, result)
         return self
     }
     
     @discardableResult
-    public func titleView(_ value: UIView?) -> Self{
-        view.titleView = value
+    func _labelView(_ value: UIView?) -> Self{
+        view.labelView = value
         return self
     }
     @discardableResult
-    public func titleView(_ value: RZObservable<UIView?>?) -> Self{
-        value?.add{[weak view] in view?+>.titleView($0.new)}
+    public func labelView(_ value: UIView?) -> Self{
+        view.observeController.remove(.labelView)
+        return _labelView(value)
+    }
+    @discardableResult
+    public func labelView(_ value: RZObservable<UIView?>?) -> Self{
+        view.observeController.remove(.labelView)
+        let result = value?.add{[weak view] in view?+>._labelView($0.new)}
+        view.observeController.add(.labelView, result)
         return self
     }
     @discardableResult
-    public func titleView(_ value: (V) -> (UIView?)) -> Self{
-        view.titleView = value(view)
-        return self
+    public func labelView(_ value: (V) -> (UIView?)) -> Self{
+        view.observeController.remove(.labelView)
+        return _labelView(value(view))
     }
 }
 
 // MARK: - UIImageView
 extension RZViewBuilder where V: UIImageView{
+    @discardableResult
+    func _image(_ value: UIImage?) -> Self {
+        view.image = value
+        return self
+    }
     //MARK: - image
     /// `RU: - `
     /// Устанавливает изображение для `UIImageView`
@@ -1009,33 +1341,21 @@ extension RZViewBuilder where V: UIImageView{
     /// Устанавливаемое изображение
     @discardableResult
     public func image(_ value: UIImage?) -> Self {
-        view.image = value
-        return self
+        view.observeController.remove(.image)
+        return _image(value)
     }
     @discardableResult
     public func image(_ value: RZObservable<UIImage?>?) -> Self{
-        value?.add {[weak view] in view?+>.image($0.new)}.use(.noAnimate)
+        view.observeController.remove(.image)
+        let result = value?.add {[weak view] in view?+>._image($0.new)}.use(.noAnimate)
+        view.observeController.add(.image, result)
         return self
     }
     @discardableResult
     public func image(_ value: RZObservable<UIImage>?) -> Self{
-        value?.add {[weak view] in view?+>.image($0.new)}.use(.noAnimate)
-        return self
-    }
-    
-    /// `RU: - `
-    /// Устанавливает изображение для `UIImageView`
-    ///
-    /// - Parameter value
-    /// Устанавливаемое изображение в виде динамического `RZImageSeter`
-    @discardableResult
-    public func image(_ value: RZImageSeter) -> Self{
-        value.setImageView(view)
-        return self
-    }
-    @discardableResult
-    public func image(_ value: RZObservable<RZImageSeter>?) -> Self{
-        value?.add {[weak view] in view?+>.image($0.new)}.use(.noAnimate)
+        view.observeController.remove(.image)
+        let result = value?.add {[weak view] in view?+>._image($0.new)}.use(.noAnimate)
+        view.observeController.add(.image, result)
         return self
     }
 }
@@ -1044,36 +1364,43 @@ extension RZViewBuilder where V: UIScrollView{
     //MARK: - contentSize
     @discardableResult
     public func contentSize(_ value: CGSize) -> Self{
-        view.contentSize = value
+        view+>.contentWidth(value.width).contentHeight(value.height)
         return self
     }
     
     @discardableResult
-    public func contentSize(_ value: RZProtoSize) -> Self{
-        return self.contentWidth(value.width).contentHeight(value.height)
-    }
-    
-    //MARK: - contentWidth
-    @discardableResult
-    public func contentWidth(_ value: CGFloat) -> Self{
+    func _contentWidth(_ value: CGFloat) -> Self{
         view.contentSize.width = value
         return self
     }
+    //MARK: - contentWidth
+    @discardableResult
+    public func contentWidth(_ value: CGFloat) -> Self{
+        view.observeController.remove(.contentWidth)
+        return _contentWidth(value)
+    }
     @discardableResult
     public func contentWidth(_ value: RZProtoValue) -> Self{
-        value.setValueIn(view, .contentWidth) { ($0 as? UIScrollView)?.contentSize.width = value.getValue($0) }
+        view.observeController.remove(.contentWidth)
+        value.setValueIn(view, .contentWidth) {[weak self] in self?._contentWidth(value.getValue($0)) }
         return self
     }
     
     @discardableResult
-    public func contentHeight(_ value: CGFloat) -> Self{
+    func _contentHeight(_ value: CGFloat) -> Self{
         view.contentSize.height = value
         return self
+    }
+    @discardableResult
+    public func contentHeight(_ value: CGFloat) -> Self{
+        view.observeController.remove(.contentHeight)
+        return _contentHeight(value)
     }
     
     @discardableResult
     public func contentHeight(_ value: RZProtoValue) -> Self{
-        value.setValueIn(view, .contentHeight) { ($0 as? UIScrollView)?.contentSize.height = value.getValue($0) }
+        view.observeController.remove(.contentHeight)
+        value.setValueIn(view, .contentHeight) {[weak self] in self?._contentHeight(value.getValue($0)) }
         return self
     }
 }
