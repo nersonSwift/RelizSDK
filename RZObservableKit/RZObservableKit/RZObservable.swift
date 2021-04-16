@@ -41,8 +41,8 @@ public class RZOResult<Value>: RZOResultProtocol{
             rzObservable?.wrappedValue
         }
     }
-    
-    public func use(_ useType: RZOUseType = .animate){ rzObservable?.use(useType, key); return self } -> Self
+    @discardableResult
+    public func use(_ useType: RZOUseType = .animate) -> Self { rzObservable?.use(useType, key); return self }
     public func remove(){ rzObservable?.remove(key) }
     
     init(_ rzObservable: RZObservable<Value>, _ key: Int, _ action: RZOAction<Value>){
