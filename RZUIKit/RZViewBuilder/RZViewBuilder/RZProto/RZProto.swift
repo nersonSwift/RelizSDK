@@ -320,4 +320,14 @@ public struct RZProto {
         guard let val = frame?.maxY else { return RZProtoValue(.mY, view) }
         return RZProtoValue(val)
     }
+    
+    public func getValue(_ value: RZProtoValue.RZProtoTag) -> RZProtoValue{
+        if let view = view {
+            return RZProtoValue(value, view)
+        }else if let frame = frame {
+            return RZProtoValue.getValueAt(value, frame)*
+        }else{
+            return 0*
+        }
+    }
 }

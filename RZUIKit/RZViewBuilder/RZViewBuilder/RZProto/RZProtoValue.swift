@@ -134,7 +134,7 @@ public struct RZProtoValue: RZProtoValueProtocol{
     
     var operation: RZProtoOperationProtocol?
     
-    private func filter(_ old: CGRect, _ new: CGRect) -> Bool {
+    static private func filter(_ old: CGRect, _ new: CGRect, _ protoTag: RZProtoTag?) -> Bool {
         switch protoTag {
             case .w: return old.width != new.width
             case .h: return old.height != new.height
@@ -285,11 +285,13 @@ public struct RZProtoValue: RZProtoValueProtocol{
         observeFlag = true
         
         let rzValue = self.$value
-        let filter = self.filter
         value = RZProtoValue.getValueAt(selfTag, observ.frame)
-        observ.rzFrame.add{[weak rzValue] in
-            if !filter($0.old, $0.new) {return}
+        let result = observ.rzFrame.add{[weak rzValue] in
+            if !Self.filter($0.old, $0.new, selfTag) {return}
             rzValue?.wrappedValue = RZProtoValue.getValueAt(selfTag, $0.new)
+        }
+        rzValue.deInitAction = {[weak result] in
+            result?.remove()
         }
     }
     init(){}
@@ -493,7 +495,9 @@ class RZObserve{
     private var protoValue: RZProtoValue?
     private var closure: ((UIView) -> ())?
     
-    private var result: RZOResult<CGFloat?>?
+//    private var result: RZOResult<CGFloat?>?
+//    private var result1: RZOResult<RZProtoValue>?
+    private var results = [RZOResultProtocol]()
     
     init(_ view: UIView, _ tag: RZObserveController.Tag, _ protoValue: RZProtoValue, _ closure: @escaping ((UIView) -> ())){
         self.view = view
@@ -510,18 +514,18 @@ class RZObserve{
         _ closure: @escaping ((UIView) -> ())
     ){
         self.init(view, tag, rzoProtoValue.wrappedValue, closure)
-        rzoProtoValue.add {[weak self, weak observeController] in
+        results.append(rzoProtoValue.add {[weak self, weak observeController] in
             guard let self = self else {return}
             guard let view = self.view else {return}
             guard let observeController = observeController else {return}
             guard let closure = self.closure else {return}
             $0.new.checkObserv(tag, observeController, closure)
             closure(view)
-        }
+        })
     }
     
     private func setObserve(){
-        result = protoValue?.$value.add{[weak self] _ in
+        let result = protoValue?.$value.add{[weak self] _ in
             guard let self = self else {return}
             guard let view = self.view else {return}
             UIViewUppdateProcess.startProcesses(view, self.tag) {
@@ -529,10 +533,11 @@ class RZObserve{
                 UIViewUppdateProcess.endProcesses(view, self.tag)
             }
         }
+        if let result = result {results.append(result)}
     }
     
     func removeObserve(){
-        result?.remove()
+        results.forEach{$0.remove()}
     }
     
     deinit {

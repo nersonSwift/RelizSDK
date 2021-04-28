@@ -135,7 +135,9 @@ public class RZObservable<Value>: NSObject, RZObservableProtocol {
     
     //MARK: - Public
     public var projectedValue: RZObservable<Value> {return self}
+    public var deInitAction = {}
     
+    deinit {deInitAction()}
     public var wrappedValue: Value{
         set(wrappedValue){
             setValue(.animate, value: wrappedValue)
