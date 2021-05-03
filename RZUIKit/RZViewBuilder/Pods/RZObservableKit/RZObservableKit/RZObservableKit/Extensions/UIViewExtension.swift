@@ -10,6 +10,12 @@ import UIKit
 class RZUIViewFrameObserve{
     private var keys: [NSKeyValueObservation?] = []
     @RZObservable var rzFrame: CGRect = .zero
+    
+    @RZObservable var rzX: CGFloat = .zero
+    @RZObservable var rzY: CGFloat = .zero
+    @RZObservable var rzWidth: CGFloat = .zero
+    @RZObservable var rzHeight: CGFloat = .zero
+    
     private weak var view: UIView?
     
     init(_ view: UIView) {
@@ -31,21 +37,33 @@ class RZUIViewFrameObserve{
             if value.oldValue == value.newValue {return}
             self?.rzFrame = view.frame
         })
+        $rzFrame.add {[weak self] value in
+            if value.new.minX != self?.rzX        {self?.rzX = value.new.minX}
+            if value.new.minY != self?.rzY        {self?.rzY = value.new.minY}
+            if value.new.width != self?.rzWidth   {self?.rzWidth = value.new.width}
+            if value.new.height != self?.rzHeight {self?.rzHeight = value.new.height}
+        }.use(.noAnimate)
     }
 }
 
 
 extension UIView{
     private var rzFrameKey: String {"frame"}
-    public var rzFrame: RZObservable<CGRect>{
+    private var rzFrameObserve: RZUIViewFrameObserve{
         if let rzFrameO = Associated(self).get(.hashable(rzFrameKey)) as? RZUIViewFrameObserve{
-            return rzFrameO.$rzFrame
+            return rzFrameO
         }else{
             let rzFrameO = RZUIViewFrameObserve(self)
             Associated(self).set(rzFrameO, .hashable(rzFrameKey), .OBJC_ASSOCIATION_RETAIN)
-            return rzFrameO.$rzFrame
+            return rzFrameO
         }
     }
+    
+    public var rzFrame: RZObservable<CGRect>{ return rzFrameObserve.$rzFrame }
+    public var rzX: RZObservable<CGFloat>{ return rzFrameObserve.$rzX }
+    public var rzY: RZObservable<CGFloat>{ return rzFrameObserve.$rzY }
+    public var rzWidth: RZObservable<CGFloat>{ return rzFrameObserve.$rzWidth }
+    public var rzHeight: RZObservable<CGFloat>{ return rzFrameObserve.$rzHeight }
     
     public static var isAnimation: Bool {
         let view = UIView()
