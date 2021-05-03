@@ -22,7 +22,13 @@ public enum RZOUseType{
     case useDefaultAnimate
 }
 
-public protocol RZOResultProtocol {
+public class RZObserveAnchorObject{
+    private weak var result: RZOResultProtocol?
+    deinit {result?.remove()}
+    init(_ result: RZOResultProtocol) { self.result = result }
+}
+
+public protocol RZOResultProtocol: class{
     var key: Int {get}
     func remove()
 }
@@ -30,6 +36,7 @@ public protocol RZOResultProtocol {
 public class RZOResult<Value>: RZOResultProtocol{
     private weak var rzObservable: RZObservable<Value>?
     public var key: Int
+    public var anchorObject: RZObserveAnchorObject {RZObserveAnchorObject(self)}
     public var action: RZOAction<Value>
     
     public var value: Value? {
