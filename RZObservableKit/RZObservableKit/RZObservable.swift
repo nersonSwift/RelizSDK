@@ -51,6 +51,11 @@ public class RZOResult<Value>: RZOResultProtocol{
     @discardableResult
     public func use(_ useType: RZOUseType = .animate) -> Self { rzObservable?.use(useType, key); return self }
     public func remove(){ rzObservable?.remove(key) }
+    @discardableResult
+    public func snapToObject(_ object: AnyObject) -> Self{
+        Associated(object).set(anchorObject, .random, .OBJC_ASSOCIATION_RETAIN)
+        return self
+    }
     
     init(_ rzObservable: RZObservable<Value>, _ key: Int, _ action: RZOAction<Value>){
         self.rzObservable = rzObservable

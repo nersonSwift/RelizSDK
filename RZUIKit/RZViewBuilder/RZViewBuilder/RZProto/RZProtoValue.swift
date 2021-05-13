@@ -521,7 +521,7 @@ class RZObserve{
             guard let closure = self.closure else {return}
             $0.new.checkObserv(tag, observeController, closure)
             closure(view)
-        })
+        }.use(.noAnimate))
     }
     
     private func setObserve(){

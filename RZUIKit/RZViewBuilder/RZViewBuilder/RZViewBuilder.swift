@@ -139,12 +139,7 @@ public class RZViewBuilder<V: UIView>{
     }
     @discardableResult
     public func cornerRadius(_ value: RZObservable<RZProtoValue>?) -> Self{
-        view.observeController.remove(.cornerRadius)
-        let result = value?.add {[weak view] in
-            view?.observeController.remove(.cornerRadius, .rzProtoValue)
-            view?+>._cornerRadius($0.new)
-        }.use(.noAnimate)
-        view.observeController.add(.cornerRadius, result)
+        if let value = value{ cornerRadius(value*) }
         return self
     }
     
@@ -462,12 +457,7 @@ extension RZViewBuilder{
     }
     @discardableResult
     public func width(_ value: RZObservable<RZProtoValue>?) -> Self{
-        view.observeController.remove(.width)
-        let result = value?.add {[weak view] in
-            view?.observeController.remove(.width, .rzProtoValue)
-            view?+>._width($0.new)
-        }.use(.noAnimate)
-        view.observeController.add(.width, result)
+        if let value = value{ width(value*) }
         return self
     }
     
@@ -512,12 +502,7 @@ extension RZViewBuilder{
     }
     @discardableResult
     public func height(_ value: RZObservable<RZProtoValue>?) -> Self{
-        view.observeController.remove(.height)
-        let result = value?.add {[weak view] in
-            view?.observeController.remove(.height, .rzProtoValue)
-            view?+>._height($0.new)
-        }.use(.noAnimate)
-        view.observeController.add(.height, result)
+        if let value = value{ height(value*) }
         return self
     }
     
@@ -595,21 +580,7 @@ extension RZViewBuilder{
     }
     @discardableResult
     public func x(_ value: RZObservable<RZProtoValue>?, _ type: XType = .left) -> Self{
-        view.observeController.remove(.x)
-        let result = value?.add {[weak view, weak value] in
-            guard let view = view else {return}
-            view.observeController.remove(.x, .rzProtoValue)
-            view+>._x($0.new, type)
-            
-            if type != .left {
-                view|*.w.setValueIn(view, .x) {[weak view, weak value] in
-                    guard let view = view else {return}
-                    guard let value = value else {return}
-                    ($0 as? V)?+>._x(value.wrappedValue.getValue(view), type)
-                }
-            }
-        }.use(.noAnimate)
-        view.observeController.add(.x, result)
+        if let value = value{ x(value*) }
         return self
     }
     
@@ -687,21 +658,7 @@ extension RZViewBuilder{
     }
     @discardableResult
     public func y(_ value: RZObservable<RZProtoValue>?, _ type: YType = .top) -> Self{
-        view.observeController.remove(.y)
-        let result = value?.add {[weak view, weak value] in
-            guard let view = view else {return}
-            view.observeController.remove(.y, .rzProtoValue)
-            view+>._y($0.new, type)
-            
-            if type != .top {
-                view|*.h.setValueIn(view, .y) {[weak view, weak value] in
-                    guard let view = view else {return}
-                    guard let value = value else {return}
-                    ($0 as? V)?+>._y(value.wrappedValue.getValue(view), type)
-                }
-            }
-        }.use(.noAnimate)
-        view.observeController.add(.y, result)
+        if let value = value{ y(value*) }
         return self
     }
     
@@ -735,12 +692,7 @@ extension RZViewBuilder{
     }
     @discardableResult
     public func tx(_ value: RZObservable<RZProtoValue>?) -> Self{
-        view.observeController.remove(.tx)
-        let result = value?.add {[weak view] in
-            view?.observeController.remove(.tx, .rzProtoValue)
-            view?+>._tx($0.new)
-        }.use(.noAnimate)
-        view.observeController.add(.tx, result)
+        if let value = value{ tx(value*) }
         return self
     }
     
@@ -775,12 +727,7 @@ extension RZViewBuilder{
     }
     @discardableResult
     public func ty(_ value: RZObservable<RZProtoValue>?) -> Self{
-        view.observeController.remove(.ty)
-        let result = value?.add {[weak view] in
-            view?.observeController.remove(.ty, .rzProtoValue)
-            view?+>._ty($0.new)
-        }.use(.noAnimate)
-        view.observeController.add(.ty, result)
+        if let value = value{ ty(value*) }
         return self
     }
     
@@ -816,12 +763,7 @@ extension RZViewBuilder{
     }
     @discardableResult
     public func ta(_ value: RZObservable<RZProtoValue>?) -> Self{
-        view.observeController.remove(.ta)
-        let result = value?.add {[weak view] in
-            view?.observeController.remove(.ta, .rzProtoValue)
-            view?+>._ta($0.new)
-        }.use(.noAnimate)
-        view.observeController.add(.ta, result)
+        if let value = value{ ta(value*) }
         return self
     }
     
@@ -857,12 +799,7 @@ extension RZViewBuilder{
     }
     @discardableResult
     public func tb(_ value: RZObservable<RZProtoValue>?) -> Self{
-        view.observeController.remove(.tb)
-        let result = value?.add {[weak view] in
-            view?.observeController.remove(.tb, .rzProtoValue)
-            view?+>._tb($0.new)
-        }.use(.noAnimate)
-        view.observeController.add(.tb, result)
+        if let value = value{ tb(value*) }
         return self
     }
     
@@ -898,12 +835,7 @@ extension RZViewBuilder{
     }
     @discardableResult
     public func tc(_ value: RZObservable<RZProtoValue>?) -> Self{
-        view.observeController.remove(.tc)
-        let result = value?.add {[weak view] in
-            view?.observeController.remove(.tc, .rzProtoValue)
-            view?+>._tc($0.new)
-        }.use(.noAnimate)
-        view.observeController.add(.tc, result)
+        if let value = value{ tc(value*) }
         return self
     }
     
@@ -939,12 +871,7 @@ extension RZViewBuilder{
     }
     @discardableResult
     public func td(_ value: RZObservable<RZProtoValue>?) -> Self{
-        view.observeController.remove(.td)
-        let result = value?.add {[weak view] in
-            view?.observeController.remove(.td, .rzProtoValue)
-            view?+>._td($0.new)
-        }.use(.noAnimate)
-        view.observeController.add(.td, result)
+        if let value = value{ td(value*) }
         return self
     }
     
