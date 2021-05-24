@@ -24,25 +24,25 @@ public class RZLineController{
     public static func getLine(_ id: RZUIPacLines) -> RZLine? { getLine(id.id) }
     public static func getLine(_ id: String) -> RZLine? { lins[id]?() }
     
-    public static func getControllerInLine(_ id: RZUIPacLines) -> RZUIPacControllerNJProtocol? { getLine(id)?.controller }
-    public static func getControllerInLine(_ id: String) -> RZUIPacControllerNJProtocol? { getLine(id)?.controller }
+    public static func getControllerInLine(_ id: RZUIPacLines) -> RZUIPacControllerNGProtocol? { getLine(id)?.controller }
+    public static func getControllerInLine(_ id: String) -> RZUIPacControllerNGProtocol? { getLine(id)?.controller }
     
-    public static func setControllerInLine(_ id: RZUIPacLines, _ controller: RZUIPacControllerNJProtocol?){
+    public static func setControllerInLine(_ id: RZUIPacLines, _ controller: RZUIPacControllerNGProtocol?){
         setControllerInLine(id.id, controller)
     }
-    public static func setControllerInLine(_ id: String, _ controller: RZUIPacControllerNJProtocol?){ getLine(id)?.controller = controller }
+    public static func setControllerInLine(_ id: String, _ controller: RZUIPacControllerNGProtocol?){ getLine(id)?.controller = controller }
     
     public static func addLines(_ lines: [RZLine]){ lines.forEach{ addLine($0) } }
     public static func addLine(_ line: RZLine){ lins[line.id] = { [weak line] in return line } }
     public static func addLine(id: RZUIPacLines,
-                               controller: RZUIPacControllerNJProtocol? = nil,
+                               controller: RZUIPacControllerNGProtocol? = nil,
                                anchor: AnyObject? = nil,
                                key: UnsafeRawPointer? = nil
     ){
         addLine(id: id.id, controller: controller, anchor: anchor, key: key)
     }
     public static func addLine(id: String,
-                               controller: RZUIPacControllerNJProtocol? = nil,
+                               controller: RZUIPacControllerNGProtocol? = nil,
                                anchor: AnyObject? = nil,
                                key: UnsafeRawPointer? = nil){
         addLine(RZLine(id: id, controller: controller, anchor: anchor, key: key))
@@ -71,7 +71,7 @@ public class RZLineController{
 
 public class RZLine{
     public var id: String = ""
-    public var controller: RZUIPacControllerNJProtocol?{
+    public var controller: RZUIPacControllerNGProtocol?{
         didSet(old){
             old?.uiPacLine = nil
             if let line = controller?.uiPacLine, id != line{
@@ -85,11 +85,11 @@ public class RZLine{
     private weak var anchor: AnyObject?
     private var key: UnsafeRawPointer?
     
-    public convenience init(id: RZUIPacLines, controller: RZUIPacControllerNJProtocol? = nil, anchor: AnyObject? = nil, key: UnsafeRawPointer? = nil){
+    public convenience init(id: RZUIPacLines, controller: RZUIPacControllerNGProtocol? = nil, anchor: AnyObject? = nil, key: UnsafeRawPointer? = nil){
         self.init(id: id.id, controller: controller, anchor: anchor, key: key)
     }
     
-    public init(id: String, controller: RZUIPacControllerNJProtocol? = nil, anchor: AnyObject? = nil, key: UnsafeRawPointer? = nil){
+    public init(id: String, controller: RZUIPacControllerNGProtocol? = nil, anchor: AnyObject? = nil, key: UnsafeRawPointer? = nil){
         self.id = id
         self.controller = controller
         self.controller?.uiPacLine = id

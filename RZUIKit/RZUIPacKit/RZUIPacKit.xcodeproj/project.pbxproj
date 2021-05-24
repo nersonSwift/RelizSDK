@@ -21,7 +21,6 @@
 		516DFC9225D696BA00E9E18B /* LinesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DFC8E25D696BA00E9E18B /* LinesController.swift */; };
 		516DFC9525D696C400E9E18B /* RZUIPacRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DFC9425D696C400E9E18B /* RZUIPacRouter.swift */; };
 		516DFC9A25D696CE00E9E18B /* RZUIPacView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DFC9725D696CE00E9E18B /* RZUIPacView.swift */; };
-		516DFC9B25D696CE00E9E18B /* RZControlledProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DFC9825D696CE00E9E18B /* RZControlledProtocol.swift */; };
 		516DFC9C25D696CE00E9E18B /* RZSUIPacView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DFC9925D696CE00E9E18B /* RZSUIPacView.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,7 +40,6 @@
 		516DFC8E25D696BA00E9E18B /* LinesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinesController.swift; sourceTree = "<group>"; };
 		516DFC9425D696C400E9E18B /* RZUIPacRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZUIPacRouter.swift; sourceTree = "<group>"; };
 		516DFC9725D696CE00E9E18B /* RZUIPacView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZUIPacView.swift; sourceTree = "<group>"; };
-		516DFC9825D696CE00E9E18B /* RZControlledProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZControlledProtocol.swift; sourceTree = "<group>"; };
 		516DFC9925D696CE00E9E18B /* RZSUIPacView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZSUIPacView.swift; sourceTree = "<group>"; };
 		663D7E2B79412A89F299F9BB /* Pods_RZUIPacKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RZUIPacKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77BA67D669F1C2455D1DD5A6 /* Pods-RZUIPacKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RZUIPacKit.debug.xcconfig"; path = "Target Support Files/Pods-RZUIPacKit/Pods-RZUIPacKit.debug.xcconfig"; sourceTree = "<group>"; };
@@ -133,7 +131,6 @@
 		516DFC8125D6968C00E9E18B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				516DFC9825D696CE00E9E18B /* RZControlledProtocol.swift */,
 				516DFC9925D696CE00E9E18B /* RZSUIPacView.swift */,
 				516DFC9725D696CE00E9E18B /* RZUIPacView.swift */,
 				51053844260A60820042D739 /* RZUIViewWraper.swift */,
@@ -266,7 +263,6 @@
 				510537D1260A11E60042D739 /* UIApplicationExtension.swift in Sources */,
 				51053845260A60820042D739 /* RZUIViewWraper.swift in Sources */,
 				5132DBD1260C7EDE00C29157 /* CGSizeExtension.swift in Sources */,
-				516DFC9B25D696CE00E9E18B /* RZControlledProtocol.swift in Sources */,
 				516DFC8F25D696BA00E9E18B /* RZTransitionAnimation.swift in Sources */,
 				516DFC9A25D696CE00E9E18B /* RZUIPacView.swift in Sources */,
 				516DFC8625D696AD00E9E18B /* RZUIPacController.swift in Sources */,

@@ -14,12 +14,12 @@ import UIKit
 
 class UIPacInstaller{
     static var inAnimation: Bool = false
-    static var needOpen: RZUIPacControllerNJProtocol?
+    static var needOpen: RZUIPacControllerNGProtocol?
     
     //MARK: - in
     static func installUIPacC(in viewController: UIViewController,
                               view: UIView? = nil,
-                              installingUIPacC: RZUIPacControllerNJProtocol,
+                              installingUIPacC: RZUIPacControllerNGProtocol,
                               animation: RZTransitionAnimation? = nil) -> Bool{
         if viewController == installingUIPacC{return false}
         setView(installingUIPacC)
@@ -42,10 +42,10 @@ class UIPacInstaller{
     }
     
     //MARK: - instead
-    static func installUIPacC(instead uiPacC: RZUIPacControllerNJProtocol,
-                              installingUIPacC: RZUIPacControllerNJProtocol? = nil,
+    static func installUIPacC(instead uiPacC: RZUIPacControllerNGProtocol,
+                              installingUIPacC: RZUIPacControllerNGProtocol? = nil,
                               archive: Bool = false,
-                              pastUIPacC: RZUIPacControllerNJProtocol? = nil,
+                              pastUIPacC: RZUIPacControllerNGProtocol? = nil,
                               saveTranslite: Bool = true,
                               setLine: Bool = true,
                               animation: RZTransitionAnimation? = nil) -> Bool{
@@ -111,7 +111,7 @@ class UIPacInstaller{
        }
     }
     
-    private static func setChild(_ viewController: UIViewController, _ view: UIView?, _ uiPacC: RZUIPacControllerNJProtocol){
+    private static func setChild(_ viewController: UIViewController, _ view: UIView?, _ uiPacC: RZUIPacControllerNGProtocol){
         let view: UIView = view ?? viewController.view
         uiPacC.view.frame = view.bounds
         view.addSubview(uiPacC.view)
@@ -124,7 +124,7 @@ class UIPacInstaller{
         uiPacC.rootViewController?.roatateCild(false)
     }
     
-    private static func setView(_ uiPacC: RZUIPacControllerNJProtocol){
+    private static func setView(_ uiPacC: RZUIPacControllerNGProtocol){
         if !uiPacC.starting{
             uiPacC.preparePac()
             if let delegating = uiPacC as? RZSetUIPacViewProtocol{
@@ -137,12 +137,12 @@ class UIPacInstaller{
         viewController.willMove(toParent: nil)
         viewController.removeFromParent()
         viewController.view.removeFromSuperview()
-        (viewController as? RZUIPacControllerNJProtocol)?.rotater?.removeFromSuperview()
+        (viewController as? RZUIPacControllerNGProtocol)?.rotater?.removeFromSuperview()
     }
     
-    private static func started(_ uiPacC: RZUIPacControllerNJProtocol){
+    private static func started(_ uiPacC: RZUIPacControllerNGProtocol){
         if !uiPacC.starting{
-            let uiPacV = uiPacC.view as? RZUIPacViewNoJenericProtocol
+            let uiPacV = uiPacC.view as? RZUIPacViewNGProtocol
             uiPacC.initActions()
             uiPacV?.initActions()
             uiPacC.start()
@@ -176,8 +176,8 @@ public class RZTransition{
     private weak var _uiPacC: UIViewController?
     private weak var _view: UIView?
     
-    private var _pastUIPacC: RZUIPacControllerNJProtocol?
-    private var _installingUIPacC: RZUIPacControllerNJProtocol?
+    private var _pastUIPacC: RZUIPacControllerNGProtocol?
+    private var _installingUIPacC: RZUIPacControllerNGProtocol?
     private var _archive: Bool = false
     private var _saveTranslite: Bool = true
     
@@ -210,11 +210,11 @@ public class RZTransition{
     
     @discardableResult
     public func back() -> RZTransition{
-        return uiPacC((_uiPacC as? RZUIPacControllerNJProtocol)?.pastUIPacC)
+        return uiPacC((_uiPacC as? RZUIPacControllerNGProtocol)?.pastUIPacC)
     }
     
     @discardableResult
-    public func uiPacC(_ uiPacC: RZUIPacControllerNJProtocol?) -> RZTransition {
+    public func uiPacC(_ uiPacC: RZUIPacControllerNGProtocol?) -> RZTransition {
         _installingUIPacC = uiPacC
         return self
     }
@@ -245,7 +245,7 @@ public class RZTransition{
     }
     
     @discardableResult
-    public func archive(_ pastUIPacC: RZUIPacControllerNJProtocol? = nil) -> RZTransition {
+    public func archive(_ pastUIPacC: RZUIPacControllerNGProtocol? = nil) -> RZTransition {
         _archive = true
         _pastUIPacC = pastUIPacC
         return self
@@ -281,7 +281,7 @@ public class RZTransition{
             guard let _installingUIPacC = _installingUIPacC else {return false}
             return UIPacInstaller.installUIPacC(in: _uiPacC, view: _view, installingUIPacC: _installingUIPacC, animation: _animationO)
         case .Instead:
-            guard let _uiPacC = _uiPacC as? RZUIPacControllerNJProtocol else {return false}
+            guard let _uiPacC = _uiPacC as? RZUIPacControllerNGProtocol else {return false}
             let test = UIPacInstaller.installUIPacC(instead: _uiPacC,
                                                     installingUIPacC: _installingUIPacC,
                                                     archive: _archive,

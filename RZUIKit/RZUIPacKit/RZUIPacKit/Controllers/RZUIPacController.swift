@@ -11,7 +11,7 @@ import RZObservableKit
 
 //MARK: - ScreenControllerProtocol
 /// `ru`: - протокол который используется для создания и переходов контроллеров
-public protocol RZUIPacControllerNJProtocol: UIViewController{
+public protocol RZUIPacControllerNGProtocol: UIViewController{
     
     //MARK: - propertes
     //MARK: - starting
@@ -36,18 +36,26 @@ public protocol RZUIPacControllerNJProtocol: UIViewController{
     
     //MARK: - pastScreen
      /// `ru`: - контроллер который архивируется для обратного перехода
-    var pastUIPacC: RZUIPacControllerNJProtocol? { get set }
+    var pastUIPacC: RZUIPacControllerNGProtocol? { get set }
     
     
     //MARK: - funcs
+    //MARK: - preparePac
+    /// `ru`: - метод который вызывается до инициализации `UIPacV`
     func preparePac()
     
+    //MARK: - initActions
+    /// `ru`: - метод вызывается перед `start()` используется для инициализации наблюдателей и замыканий `UIPacR`
     func initActions()
+    
     //MARK: - start
     /// `ru`: - метод который вызывается при первой устрановке экрана на представление
     func start()
     
+    //MARK: - didCreated
+    /// `ru`: - метод вызывается перед после метода `create()` в `UIPacV`
     func didCreated()
+    
     //MARK: - open
     /// `ru`: - метод который вызывается при каждой установке экрана на представление
     func open()
@@ -68,6 +76,8 @@ public protocol RZUIPacControllerNJProtocol: UIViewController{
     /// `ru`: - метод который вызывается при изменении ориентации
     func rotate()
     
+    //MARK: - rotate
+    /// `ru`: - метод который вызывается при изменении размера
     func resize()
 }
 
@@ -78,10 +88,10 @@ class RZUIPacControllerInterfase{
     var starting: Bool = false
     var inAnim = false
     var uiPacLine: String?
-    var pastUIPacC: RZUIPacControllerNJProtocol?
+    var pastUIPacC: RZUIPacControllerNGProtocol?
 }
 
-extension RZUIPacControllerNJProtocol{
+extension RZUIPacControllerNGProtocol{
     public func preparePac(){}
     public func initActions(){}
     public func start(){}
@@ -152,7 +162,7 @@ extension RZUIPacControllerNJProtocol{
             uiPacControllerInterfase.uiPacLine
         }
     }
-    public var pastUIPacC: RZUIPacControllerNJProtocol? {
+    public var pastUIPacC: RZUIPacControllerNGProtocol? {
         set(pastUIPacC){
             uiPacControllerInterfase.pastUIPacC = pastUIPacC
         }
@@ -189,13 +199,15 @@ public protocol RZSetUIPacViewProtocol {
 /// `ru`: - расширение для `ScreenControllerProtocol` позволяющее делигировать ликику представления в `Presenter`
 public protocol RZUIPacControllerViewingProtocol: RZUIPacControllerRouteredProtocol, RZSetUIPacViewProtocol{
     //MARK: - iPhonePresenter
-    /// `ru`: - свойство которое которое должно вернуть тип `Presenter` который будет инициализирован для версии `iPhone`
+    /// `ru`: - свойство которое которое должно вернуть тип `RZUIPacView` который будет инициализирован для версии `iPhone`
     var iPhoneViewType: RZUIPacAnyViewProtocol.Type? { get }
     
     //MARK: - iPadPresenter
-    /// `ru`: - свойство которое которое должно вернуть тип `Presenter` который будет инициализирован для версии `iPad`
+    /// `ru`: - свойство которое которое должно вернуть тип `RZUIPacView` который будет инициализирован для версии `iPad`
     var iPadViewType: RZUIPacAnyViewProtocol.Type? { get }
     
+    //MARK: - iPadPresenter
+    /// `ru`: - свойство которое которое должно вернуть тип `RZUIPacView` который будет инициализирован для версии `Mac`
     var macViewType: RZUIPacAnyViewProtocol.Type? { get }
 }
 
@@ -206,28 +218,28 @@ extension RZUIPacControllerViewingProtocol{
     
     public func setView(){
         router.setRZObservables()
-        if view is RZUIPacViewNoJenericProtocol {return}
+        if view is RZUIPacViewNGProtocol {return}
         var rzUIView: UIView?
         #if targetEnvironment(macCatalyst)
             if let macViewType = macViewType{
-                rzUIView = macViewType.createSelf(router)
+                rzUIView = macViewType.createUIPacView(router)
             }
         #else
             if UIDevice.current.userInterfaceIdiom == .pad, let iPadRZUIPacView = iPadViewType{
-                rzUIView = iPadRZUIPacView.createSelf(router)
+                rzUIView = iPadRZUIPacView.createUIPacView(router)
             }else if UIDevice.current.userInterfaceIdiom == .phone, let iPhoneRZUIPacView = iPhoneViewType{
-                rzUIView = iPhoneRZUIPacView.createSelf(router)
+                rzUIView = iPhoneRZUIPacView.createUIPacView(router)
             }
         #endif
         view = rzUIView ?? view
     }
     
-    public func rotate(){ (view as? RZUIPacViewNoJenericProtocol)?.rotate() }
-    public func resize(){ (view as? RZUIPacViewNoJenericProtocol)?.resize() }
+    public func rotate(){ (view as? RZUIPacViewNGProtocol)?.rotate() }
+    public func resize(){ (view as? RZUIPacViewNGProtocol)?.resize() }
 }
 
 public class SomeUIPacRouter: RZUIPacRouter {}
-public protocol RZUIPacControllerRouteredProtocol: RZUIPacControllerNJProtocol{
+public protocol RZUIPacControllerRouteredProtocol: RZUIPacControllerNGProtocol{
     associatedtype UIPacRouter: RZUIPacRouterProtocol
     var router: UIPacRouter {get set}
 }
@@ -241,7 +253,7 @@ extension RZUIPacControllerRouteredProtocol where Self: RZUIPacControllerProtoco
 
 
 
-public typealias RZUIPacControllerProtocol = RZUIPacControllerNJProtocol & RZUIPacControllerViewingProtocol
+public typealias RZUIPacControllerProtocol = RZUIPacControllerNGProtocol & RZUIPacControllerViewingProtocol
 
 public typealias RZUIPacController = UIViewController & RZUIPacControllerProtocol
 public typealias RZUIPacNavigationController = UINavigationController & RZUIPacControllerProtocol

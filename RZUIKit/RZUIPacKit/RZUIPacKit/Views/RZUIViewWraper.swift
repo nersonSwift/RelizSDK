@@ -9,8 +9,6 @@ import SwiftUI
 import RZObservableKit
 
 class RZUIViewWraper: UIView{
-    var observable: RZUIViewWraperObservable!
-    
     convenience init <V: View>(@ViewBuilder _ view: @escaping ()->V){
         self.init(RZUIViewWraperObservable()) {_, _ in view()}
     }

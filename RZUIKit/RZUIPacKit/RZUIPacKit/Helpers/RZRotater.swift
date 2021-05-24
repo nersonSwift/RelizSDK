@@ -32,7 +32,7 @@ extension UIInterfaceOrientation{
 
 
 public class RZRotater: UIView{
-    weak var mateController: RZUIPacControllerNJProtocol?
+    weak var mateController: RZUIPacControllerNGProtocol?
     weak var mate: UIView?
     var mateOrientation: UIInterfaceOrientation?
     var mateGoodOrientation: [UIInterfaceOrientation] = []
@@ -191,7 +191,7 @@ public class RZRotater: UIView{
     }
     
     static func resizeAllChild(parent: Bool = true,
-                               child: RZUIPacControllerNJProtocol,
+                               child: RZUIPacControllerNGProtocol,
                                parentOrientation: UIInterfaceOrientation,
                                _ deviceOrientation: UIInterfaceOrientation,
                                animate: Bool){
@@ -201,7 +201,7 @@ public class RZRotater: UIView{
                                   animate: animate)
         
         for childL in child.children{
-            if let childL = childL as? RZUIPacControllerNJProtocol{
+            if let childL = childL as? RZUIPacControllerNGProtocol{
                 resizeAllChild(child: childL,
                                parentOrientation: child.rotater?.mateOrientation ?? .portrait,
                                deviceOrientation,
@@ -211,7 +211,7 @@ public class RZRotater: UIView{
         }
     }
     
-    private static var rotatingUIPacC: [RZUIPacControllerNJProtocol] = []
+    private static var rotatingUIPacC: [RZUIPacControllerNGProtocol] = []
     static func rotate(){
         for uiPacC in rotatingUIPacC{
             uiPacC.rotate()
@@ -235,25 +235,13 @@ public class RZRotater: UIView{
             if view.frame.size != $0.new.size{
                 view.frame.size = $0.new.size
             }
-            (viewController as? RZUIPacControllerNJProtocol)?.resize()
+            (viewController as? RZUIPacControllerNGProtocol)?.resize()
         }
-        
-//        key = superV?.observe(\.bounds, changeHandler: { [weak superV, weak self, weak view, weak viewController](_, _) in
-//            guard let superV = superV, let self = self, let view = view else {return}
-//
-//            if self.frame.size == view.frame.size{
-//                self.frame.size = superV.frame.size
-//            }else{
-//                self.frame.size = CGSize(width: superV.frame.height, height: superV.frame.width)
-//            }
-//            view.frame.size = superV.frame.size
-//            (viewController as? RZUIPacControllerNJProtocol)?.resize()
-//        })
-
+    
         view.frame.origin = CGPoint()
         self.addSubview(view)
         mate = view
-        if let viewController = viewController as? RZUIPacControllerNJProtocol{
+        if let viewController = viewController as? RZUIPacControllerNGProtocol{
             mateController = viewController
         }
         setGoodOrintation(supportedInterfaceOrientations: viewController.supportedInterfaceOrientations)

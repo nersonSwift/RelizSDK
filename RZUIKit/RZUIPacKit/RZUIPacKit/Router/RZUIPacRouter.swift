@@ -10,6 +10,6 @@ import SwiftUI
 
 public typealias RZUIPacRouter = RZUIPacRouterProtocol & ObservableObject
 
-public protocol RZUIPacRouterNJProtocol{}
-public protocol RZUIPacRouterProtocol: ObservableObject, RZUIPacRouterNJProtocol{}
+public protocol RZUIPacRouterNGProtocol{}
+public protocol RZUIPacRouterProtocol: ObservableObject, RZUIPacRouterNGProtocol{}
 

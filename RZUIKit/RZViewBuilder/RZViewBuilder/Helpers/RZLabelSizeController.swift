@@ -14,13 +14,13 @@ class RZLabelSizeController{
         case sizeToFit
     }
     
-    static func setMod(_ view: UIView, _ mod: LabelSizeMod){
+    static func setMod(_ view: UIView, _ mod: LabelSizeMod, _ value: Bool = true){
         let labelSize = getLabelSize(view)
         
         switch mod{
         case .sizeToFit:
             labelSize.view = view
-            labelSize.sizeToFit = true
+            labelSize.sizeToFit = value
         default: break
         }
     }

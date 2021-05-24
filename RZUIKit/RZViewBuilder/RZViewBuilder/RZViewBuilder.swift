@@ -877,7 +877,7 @@ extension RZViewBuilder{
     
     @discardableResult
     func _transform(_ value: CGAffineTransform) -> Self{
-        view+>.tx(value.tx).ty(value.ty).ta(value.a).tb(value.b).tc(value.c).td(value.d)
+        view.transform = value
         return self
     }
     @discardableResult
@@ -899,8 +899,13 @@ extension RZViewBuilder{
     /// Ресайзит view по размеру контента
     @discardableResult
     public func sizeToFit(_ value: Bool = true) -> Self {
+        if value{ view.sizeToFit() }
+        RZLabelSizeController.setMod(view, .sizeToFit, value)
+        return self
+    }
+    @discardableResult
+    public func sizeToFitOnce() -> Self {
         view.sizeToFit()
-        RZLabelSizeController.setMod(view, .sizeToFit)
         return self
     }
     
