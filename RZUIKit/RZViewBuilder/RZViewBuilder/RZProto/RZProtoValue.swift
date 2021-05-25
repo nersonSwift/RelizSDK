@@ -434,17 +434,15 @@ class RZObserveController{
     
     func add(_ tag: Tag, _ protoValue: RZProtoValue, _ closure: @escaping (UIView) -> ()){
         guard let view = view else { return }
-        if observes[tag] == nil{
-            observes[tag] = []
-        }
-        observes[tag]?.append(RZObserve(view, tag, protoValue, closure))
+        if observes[tag] == nil{ observes[tag] = [] }
+        let observe = RZObserve(view, tag, protoValue, closure)
+        observes[tag]?.append(observe)
     }
     func add(_ tag: Tag, _ rzoProtoValue: RZObservable<RZProtoValue>, _ closure: @escaping (UIView) -> ()){
         guard let view = view else { return }
-        if observes[tag] == nil{
-            observes[tag] = []
-        }
-        observes[tag]?.append(RZObserve(view, tag, rzoProtoValue, self, closure))
+        if observes[tag] == nil{ observes[tag] = [] }
+        let observe = RZObserve(view, tag, rzoProtoValue, self, closure)
+        observes[tag]?.append(observe)
     }
     func add(_ tag: Tag?, _ resultProtocol: RZOResultProtocol?){
         guard let tag = tag, let resultProtocol = resultProtocol else {return}
