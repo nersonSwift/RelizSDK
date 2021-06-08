@@ -278,7 +278,7 @@ public struct RZProduct: Equatable{
                     setPrice(productId, price)
                     setPricesMans(productId, "\(plan.price)")
                     setCurrencyCods(productId, currencyCode)
-                    setCurrencySymbols(productId, currencyCode)
+                    setCurrencySymbols(productId, currencySymbol)
                 }
             }
             RZStoreKit.delegate?.productsReceived(skProducts: prodects)
