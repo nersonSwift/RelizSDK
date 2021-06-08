@@ -175,10 +175,15 @@ public struct RZProduct: Equatable{
     /// Замыкание принимающее локалезированный кода валюты
     public static func getCurrencyCods(productId: RZProduct, action: @escaping (String)->()){
         DispatchQueue.main.async {
-            getValue(productId, currencyCods, &currencyCodsClosure, action)
+            getValue(productId, currencySymbols, &currencyCodsClosure, action)
         }
     }
     
+    public static func getCurrencySymbol(productId: RZProduct, action: @escaping (String)->()){
+        DispatchQueue.main.async {
+            getValue(productId, currencySymbols, &currencySymbolClosure, action)
+        }
+    }
     /// `RU: - `
     /// Метод устанавливает замыкание ожидающее получение кода валюты подписки
     ///
@@ -188,6 +193,11 @@ public struct RZProduct: Equatable{
     /// Замыкание принимающее локалезированный кода валюты
     public func getCurrencyCods(action: @escaping (String)->()){
         Self.getCurrencyCods(productId: self, action: action)
+    }
+    public func getCurrencySymbol(action: @escaping (String)->()){
+        DispatchQueue.main.async {
+            Self.getCurrencySymbol(productId: self, action: action)
+        }
     }
     
     static var allProduct: [String: RZProduct] = [:]
@@ -205,10 +215,12 @@ public struct RZProduct: Equatable{
     private static var prices: [String: String] = [:]
     private static var pricesMans: [String: String] = [:]
     private static var currencyCods: [String: String] = [:]
+    private static var currencySymbols: [String: String] = [:]
     
     private static var pricesClosure: [String: (String)->()] = [:]
     private static var pricesMansClosure: [String: (String)->()] = [:]
     private static var currencyCodsClosure: [String: (String)->()] = [:]
+    private static var currencySymbolClosure: [String: (String)->()] = [:]
     
     static func setPrice(_ productId: RZProduct, _ price: String){
         DispatchQueue.main.async {
@@ -226,6 +238,12 @@ public struct RZProduct: Equatable{
         DispatchQueue.main.async {
             currencyCods[productId.id] = currencyCod
             currencyCodsClosure.removeValue(forKey: productId.id)?(currencyCod)
+        }
+    }
+    static func setCurrencySymbols(_ productId: RZProduct, _ currencySymbol: String){
+        DispatchQueue.main.async {
+            currencySymbols[productId.id] = currencySymbol
+            currencySymbolClosure.removeValue(forKey: productId.id)?(currencySymbol)
         }
     }
     
@@ -255,10 +273,12 @@ public struct RZProduct: Equatable{
             for plan in prodects{
                 if let productId = getProduct(plan.productIdentifier),
                    let price = plan.localizedPrice,
-                   let currencyCode = plan.priceLocale.currencyCode{
+                   let currencyCode = plan.priceLocale.currencyCode,
+                   let currencySymbol = plan.priceLocale.currencySymbol{
                     setPrice(productId, price)
                     setPricesMans(productId, "\(plan.price)")
                     setCurrencyCods(productId, currencyCode)
+                    setCurrencySymbols(productId, currencyCode)
                 }
             }
             RZStoreKit.delegate?.productsReceived(skProducts: prodects)

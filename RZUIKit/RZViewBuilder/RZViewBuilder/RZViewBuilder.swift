@@ -580,7 +580,7 @@ extension RZViewBuilder{
     }
     @discardableResult
     public func x(_ value: RZObservable<RZProtoValue>?, _ type: XType = .left) -> Self{
-        if let value = value{ x(value*) }
+        if let value = value{ x(value*, type) }
         return self
     }
     
@@ -658,7 +658,7 @@ extension RZViewBuilder{
     }
     @discardableResult
     public func y(_ value: RZObservable<RZProtoValue>?, _ type: YType = .top) -> Self{
-        if let value = value{ y(value*) }
+        if let value = value{ y(value*, type) }
         return self
     }
     

@@ -2,7 +2,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "RelizSDK"
-  spec.version      = "1.0.2"
+  spec.version      = "1.1"
   spec.summary      = "RelizSDK"
   spec.description  = "Small example to test code sharing via cocoapods."	
   
@@ -28,12 +28,7 @@ Pod::Spec.new do |spec|
   spec.default_subspec = 'Core'
   
   spec.subspec 'CoreOnly' do |ss|
-    ss.source_files = 'RelizSDK/RelizSDK.h'
-    ss.preserve_paths = 'RelizSDK/module.modulemap'
     ss.dependency "RelizKit"
-    ss.user_target_xcconfig = {
-        'HEADER_SEARCH_PATHS' => "$(inherited) ${PODS_ROOT}/RelizSDK/RelizSDK/"
-    }
   end
 
   spec.subspec 'Core' do |ss|
@@ -41,11 +36,14 @@ Pod::Spec.new do |spec|
     ss.dependency 'RelizSDK/RZUIKit'
     ss.dependency 'RelizSDK/RZStoreKit'
     ss.dependency 'RelizSDK/RZEvent'
+    ss.dependency 'RelizSDK/RZObservableKit'
   end
 
   spec.subspec 'RZUIKit' do |ss|
     ss.dependency 'RelizSDK/CoreOnly'
-    ss.dependency 'RZUIKit'
+    ss.dependency 'RelizSDK/RZViewBuilder'
+    ss.dependency 'RelizSDK/RZUIPacKit'
+    ss.dependency 'RelizSDK/RZDarkModeKit'
   end
 
   spec.subspec 'RZViewBuilder' do |ss|
@@ -53,9 +51,9 @@ Pod::Spec.new do |spec|
     ss.dependency "RZViewBuilder"
   end
 
-  spec.subspec 'RZScreensKit' do |ss|
+  spec.subspec 'RZUIPacKit' do |ss|
     ss.dependency 'RelizSDK/CoreOnly'
-    ss.dependency "RZScreensKit"
+    ss.dependency "RZUIPacKit"
   end
 
   spec.subspec 'RZDarkModeKit' do |ss|
@@ -71,6 +69,11 @@ Pod::Spec.new do |spec|
   spec.subspec 'RZEvent' do |ss|
     ss.dependency 'RelizSDK/CoreOnly'
     ss.dependency "RZEvent"
+  end
+  
+  spec.subspec 'RZObservableKit' do |ss|
+    ss.dependency 'RelizSDK/CoreOnly'
+    ss.dependency "RZObservableKit"
   end
 
 end

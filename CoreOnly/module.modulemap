@@ -1,4 +1,0 @@
-module RelizKit {
-  export *
-  header "RelizKit.h"
-}
