@@ -6,6 +6,7 @@
 //
 
 import RZObservableKit
+import UIKit
 
 extension RZObservable: RZProtoValueProtocol {
     public func getValue(_ view: UIView) -> CGFloat {

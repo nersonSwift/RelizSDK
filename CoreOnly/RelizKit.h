@@ -11,8 +11,8 @@
 #if !defined(__has_include)
     #error "RelizKit.h won't import anything if your compiler doesn't support __has_include. Please \ import the headers individually."
 #else
-    #if __has_include(<RZEvent/RZEvent.h>)
-      #import <RZEvent/RZEvent.h>
+    #if __has_include(<RZEventKit/RZEventKit.h>)
+      #import <RZEventKit/RZEventKit.h>
     #endif
     #if __has_include(<RZStoreKit/RZStoreKit.h>)
       #import <RZStoreKit/RZStoreKit.h>
