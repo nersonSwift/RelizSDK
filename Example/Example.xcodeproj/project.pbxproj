@@ -99,6 +99,7 @@
 		512ED7ED267369B100CDD342 /* RZViewBuilderKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED7EC267369B000CDD342 /* RZViewBuilderKitTests.swift */; };
 		512ED7F6267374E700CDD342 /* RZVBColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED7F5267374E700CDD342 /* RZVBColorTests.swift */; };
 		512ED80A2673761300CDD342 /* RZVBFrameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED8092673761300CDD342 /* RZVBFrameTests.swift */; };
+		512ED813267379FE00CDD342 /* TestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED812267379FE00CDD342 /* TestProtocol.swift */; };
 		A70C434CF93CB91C89B63D7F /* Pods_RZStoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54276254A91B934B93E2AF76 /* Pods_RZStoreKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -373,6 +374,7 @@
 		512ED7EC267369B000CDD342 /* RZViewBuilderKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZViewBuilderKitTests.swift; sourceTree = "<group>"; };
 		512ED7F5267374E700CDD342 /* RZVBColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZVBColorTests.swift; sourceTree = "<group>"; };
 		512ED8092673761300CDD342 /* RZVBFrameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZVBFrameTests.swift; sourceTree = "<group>"; };
+		512ED812267379FE00CDD342 /* TestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestProtocol.swift; sourceTree = "<group>"; };
 		54276254A91B934B93E2AF76 /* Pods_RZStoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RZStoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55998D5ED8568887B3C340F1 /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6182A7496AAB50FFF3DE937C /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -543,6 +545,7 @@
 				512ED7F4267374CD00CDD342 /* RZViewBuilderKitTests */,
 				512ED324267282C000CDD342 /* ExampleTests.swift */,
 				512ED326267282C000CDD342 /* Info.plist */,
+				512ED812267379FE00CDD342 /* TestProtocol.swift */,
 			);
 			path = ExampleTests;
 			sourceTree = "<group>";
@@ -1312,6 +1315,7 @@
 				512ED325267282C000CDD342 /* ExampleTests.swift in Sources */,
 				512ED80A2673761300CDD342 /* RZVBFrameTests.swift in Sources */,
 				512ED7F6267374E700CDD342 /* RZVBColorTests.swift in Sources */,
+				512ED813267379FE00CDD342 /* TestProtocol.swift in Sources */,
 				512ED7ED267369B100CDD342 /* RZViewBuilderKitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

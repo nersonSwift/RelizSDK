@@ -21,8 +21,7 @@ class RZViewBuilderKitTests: XCTestCase {
     }
 
     func testExample() throws {
-        RZVBColorTests.testUIColor()
-        RZVBColorTests.testRZOUIColor()
+        RZVBColorTests.test()
     }
 
     func testPerformanceExample() throws {
