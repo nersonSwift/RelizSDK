@@ -96,6 +96,9 @@
 		512ED7AC2672B55200CDD342 /* RZUIPacKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 512ED6DA2672B36800CDD342 /* RZUIPacKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		512ED7AF2672B55200CDD342 /* RZViewBuilderKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512ED6AB2672B34800CDD342 /* RZViewBuilderKit.framework */; };
 		512ED7B02672B55200CDD342 /* RZViewBuilderKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 512ED6AB2672B34800CDD342 /* RZViewBuilderKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		512ED7ED267369B100CDD342 /* RZViewBuilderKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED7EC267369B000CDD342 /* RZViewBuilderKitTests.swift */; };
+		512ED7F6267374E700CDD342 /* RZVBColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED7F5267374E700CDD342 /* RZVBColorTests.swift */; };
+		512ED80A2673761300CDD342 /* RZVBFrameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED8092673761300CDD342 /* RZVBFrameTests.swift */; };
 		A70C434CF93CB91C89B63D7F /* Pods_RZStoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54276254A91B934B93E2AF76 /* Pods_RZStoreKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -367,6 +370,9 @@
 		512ED7BF2672B72300CDD342 /* RZStoreKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = RZStoreKit.podspec; path = ../../RZStoreKit.podspec; sourceTree = "<group>"; };
 		512ED7C02672B72300CDD342 /* RZEvent.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = RZEvent.podspec; path = ../../RZEvent.podspec; sourceTree = "<group>"; };
 		512ED7C12672B72300CDD342 /* RZObservableKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = RZObservableKit.podspec; path = ../../RZObservableKit.podspec; sourceTree = "<group>"; };
+		512ED7EC267369B000CDD342 /* RZViewBuilderKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZViewBuilderKitTests.swift; sourceTree = "<group>"; };
+		512ED7F5267374E700CDD342 /* RZVBColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZVBColorTests.swift; sourceTree = "<group>"; };
+		512ED8092673761300CDD342 /* RZVBFrameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZVBFrameTests.swift; sourceTree = "<group>"; };
 		54276254A91B934B93E2AF76 /* Pods_RZStoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RZStoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55998D5ED8568887B3C340F1 /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6182A7496AAB50FFF3DE937C /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -534,6 +540,7 @@
 		512ED323267282C000CDD342 /* ExampleTests */ = {
 			isa = PBXGroup;
 			children = (
+				512ED7F4267374CD00CDD342 /* RZViewBuilderKitTests */,
 				512ED324267282C000CDD342 /* ExampleTests.swift */,
 				512ED326267282C000CDD342 /* Info.plist */,
 			);
@@ -793,6 +800,16 @@
 				512ED7BE2672B72300CDD342 /* RZViewBuilder.podspec */,
 			);
 			path = PodSpecs;
+			sourceTree = "<group>";
+		};
+		512ED7F4267374CD00CDD342 /* RZViewBuilderKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				512ED7EC267369B000CDD342 /* RZViewBuilderKitTests.swift */,
+				512ED8092673761300CDD342 /* RZVBFrameTests.swift */,
+				512ED7F5267374E700CDD342 /* RZVBColorTests.swift */,
+			);
+			path = RZViewBuilderKitTests;
 			sourceTree = "<group>";
 		};
 		88153E665B5ADC4CBCBDC0EB /* Frameworks */ = {
@@ -1293,6 +1310,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				512ED325267282C000CDD342 /* ExampleTests.swift in Sources */,
+				512ED80A2673761300CDD342 /* RZVBFrameTests.swift in Sources */,
+				512ED7F6267374E700CDD342 /* RZVBColorTests.swift in Sources */,
+				512ED7ED267369B100CDD342 /* RZViewBuilderKitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
