@@ -14,7 +14,12 @@ class RZVBFrameTests: TestProtocol{
         testHeight()
         testWidth()
         testMinX()
+        testMidX()
         testMinY()
+        testMaxX()
+        testMidY()
+        testMaxY()
+        testSize()
     }
     
     private static func testHeight(){
@@ -53,8 +58,32 @@ class RZVBFrameTests: TestProtocol{
         }
     }
     
+    private static func testMidX(){
+        testFrameElement(\.midX, "midX"){
+            switch $1{
+            case let value as CGFloat: $0+>.x(value, .center)
+            case let value as RZProtoValue: $0+>.x(value, .center)
+            case let value as RZObservable<RZProtoValue>: $0+>.x(value, .center)
+            default: XCTAssert(false, "No")
+            }
+            
+        }
+    }
+    
+    private static func testMaxX(){
+        testFrameElement(\.maxX, "maxX"){
+            switch $1{
+            case let value as CGFloat: $0+>.x(value, .right)
+            case let value as RZProtoValue: $0+>.x(value, .right)
+            case let value as RZObservable<RZProtoValue>: $0+>.x(value, .right)
+            default: XCTAssert(false, "No")
+            }
+            
+        }
+    }
+    
     private static func testMinY(){
-        testFrameElement(\.minX, "minY"){
+        testFrameElement(\.minY, "minY"){
             switch $1{
             case let value as CGFloat: $0+>.y(value)
             case let value as RZProtoValue: $0+>.y(value)
@@ -65,6 +94,42 @@ class RZVBFrameTests: TestProtocol{
         }
     }
     
+    private static func testMidY(){
+        testFrameElement(\.midY, "midY"){
+            switch $1{
+            case let value as CGFloat: $0+>.y(value, .center)
+            case let value as RZProtoValue: $0+>.y(value, .center)
+            case let value as RZObservable<RZProtoValue>: $0+>.y(value, .center)
+            default: XCTAssert(false, "No")
+            }
+            
+        }
+    }
+    
+    private static func testMaxY(){
+        testFrameElement(\.maxY, "maxY"){
+            switch $1{
+            case let value as CGFloat: $0+>.y(value, .down)
+            case let value as RZProtoValue: $0+>.y(value, .down)
+            case let value as RZObservable<RZProtoValue>: $0+>.y(value, .down)
+            default: XCTAssert(false, "No")
+            }
+            
+        }
+    }
+    
+    private static func testSize(){
+        testSizeElement(\.size, "size"){
+            guard let size = $1 as? CGSize else {
+                XCTAssert(false, "No")
+                return
+            }
+            
+            $0+>.size(size)
+        }
+
+    }
+    
     private static func testFrameElement(_ key: KeyPath<CGRect, CGFloat>, _ tag: String, _ setValue: (UIView, Any)->()){
         let frame = CGRect(origin: CGPoint(x: 10, y: 20), size: CGSize(width: 100, height: 200))
         let pView = UIView(frame: frame)
@@ -72,69 +137,20 @@ class RZVBFrameTests: TestProtocol{
         
         let value: CGFloat = 10
         testProtoValue(key, setValue(view, value), view, value, tag + " value")
+        testProtoValue(key, setValue(view, pView*.h), view, pView.frame.height, tag + " protoValueNOb")
+        testProtoValue(key, setValue(view, pView*.h + pView*.w), view, pView.frame.height + pView.frame.width, tag + " protoValueNOb h+w")
+        testProtoValue(key, setValue(view, pView*.h + 30*), view, pView.frame.height + 30, tag + " protoValueNOb h+protoValueNOb")
+        testProtoValue(key, setValue(view, pView*.h - pView*.w), view, pView.frame.height - pView.frame.width, tag + " protoValueNOb  h-w")
+        testProtoValue(key, setValue(view, pView*.h - 30*), view, pView.frame.height - 30, tag + " protoValueNOb h-protoValueNOb")
         
-        switch key {
-        case \.height:
-            testProtoValue(key, setValue(view, pView*.h), view, pView.frame.height, tag + " protoValueNOb")
-            testProtoValue(key, setValue(view, pView*.h + 30*), view, pView.frame.height + 30, tag + " protoValueNOb h+protoValueNOb")
-            testProtoValue(key, setValue(view, pView*.h - pView*.w), view, pView.frame.height - pView.frame.width, tag + " protoValueNOb  h-w")
-            testProtoValue(key, setValue(view, pView*.h - 30*), view, pView.frame.height - 30, tag + " protoValueNOb h-protoValueNOb")
-            testProtoValue(key, setValue(view, pView*.h * 30*), view, pView.frame.height * 30, tag + " protoValueNOb h*protoValueNOb")
-            testProtoValue(key, setValue(view, pView*.h / pView*.w), view, pView.frame.height / pView.frame.width, tag + " protoValueNOb h/w")
-            testProtoValue(key, setValue(view, pView*.h / 30*), view, pView.frame.height / 30, tag + " protoValueNOb h/protoValueNOb")
-            testProtoValue(key, setValue(view, 5 % pView*.h), view, pView.frame.height * 0.05, tag + " CGFloat % protoValueNOb")
-            testProtoValue(key, setValue(view, 5* % pView*.h), view, pView.frame.height * 0.05, tag + " protoValueNOb % protoValueNOb")
-        case \.width:
-            testProtoValue(key, setValue(view, pView*.w), view, pView.frame.width, tag + " protoValueNOb")
-            testProtoValue(key, setValue(view, pView*.w + 30*), view, pView.frame.width + 30, tag + " protoValueNOb h+protoValueNOb")
-            print(pView*.w - pView*.h)
-            print(pView.frame.width - pView.frame.height)
-            testProtoValue(key, setValue(view, pView*.w - pView*.h), view, pView.frame.width - pView.frame.height, tag + " protoValueNOb  w-h")
-            testProtoValue(key, setValue(view, pView*.w - 30*), view, pView.frame.width - 30, tag + " protoValueNOb w-protoValueNOb")
-            testProtoValue(key, setValue(view, pView*.w * 30*), view, pView.frame.width * 30, tag + " protoValueNOb w*protoValueNOb")
-            testProtoValue(key, setValue(view, pView*.w / pView*.h), view, pView.frame.width / pView.frame.height, tag + " protoValueNOb w/h")
-            testProtoValue(key, setValue(view, pView*.w / 30*), view, pView.frame.width / 30, tag + " protoValueNOb w/protoValueNOb")
-            testProtoValue(key, setValue(view, 5 % pView*.w), view, pView.frame.width * 0.05, tag + " CGFloat % protoValueNOb")
-            testProtoValue(key, setValue(view, 5* % pView*.w), view, pView.frame.width * 0.05, tag + " protoValueNOb % protoValueNOb")
-        case \.minX:
-            testProtoValue(key, setValue(view, pView*.x), view, pView.frame.minX, tag + " protoValueNOb")
-            testProtoValue(key, setValue(view, pView*.x + pView*.mY), view, pView.frame.minX + pView.frame.maxY, tag + " protoValueNOb x+mY")
-            testProtoValue(key, setValue(view, pView*.x + 30*), view, pView.frame.minX + 30, tag + " protoValueNOb+protoValueNOb")
-            testProtoValue(key, setValue(view, pView*.x - pView*.y), view, pView.frame.minX - pView.frame.minY, tag + " protoValueNOb  x-y")
-            testProtoValue(key, setValue(view, pView*.x - 30*), view, pView.frame.minX - 30, tag + " protoValueNOb x-protoValueNOb")
-            testProtoValue(key, setValue(view, pView*.x * pView*.mY), view, pView.frame.minX * pView.frame.maxY, tag + " protoValueNOb x*mY")
-            testProtoValue(key, setValue(view, pView*.x * 30*), view, pView.frame.minX * 30, tag + " protoValueNOb x*protoValueNOb")
-            testProtoValue(key, setValue(view, pView*.x / pView*.y), view, pView.frame.minX / pView.frame.minY, tag + " protoValueNOb x/y")
-            testProtoValue(key, setValue(view, pView*.x / pView*.mY), view, pView.frame.minX / pView.frame.maxY, tag + " protoValueNOb x/mY")
-            testProtoValue(key, setValue(view, pView*.x / 30*), view, pView.frame.minX / 30, tag + " protoValueNOb x/protoValueNOb")
-            testProtoValue(key, setValue(view, 5 % pView*.x), view, pView.frame.minX * 0.05, tag + " CGFloat % protoValueNOb")
-            testProtoValue(key, setValue(view, 5* % pView*.x), view, pView.frame.minX * 0.05, tag + " protoValueNOb % protoValueNOb")
-        case \.minY:
-            testProtoValue(key, setValue(view, pView*.y), view, pView.frame.minY, tag + " protoValueNOb")
-            testProtoValue(key, setValue(view, pView*.y + pView*.mX), view, pView.frame.minY + pView.frame.maxX, tag + " protoValueNOb y+mX")
-            testProtoValue(key, setValue(view, pView*.y + 30*), view, pView.frame.minY + 30, tag + " protoValueNOb+protoValueNOb")
-            testProtoValue(key, setValue(view, pView*.y - pView*.x), view, pView.frame.minY - pView.frame.minX, tag + " protoValueNOb  y-x")
-            testProtoValue(key, setValue(view, pView*.y - 30*), view, pView.frame.minY - 30, tag + " protoValueNOb y-protoValueNOb")
-            testProtoValue(key, setValue(view, pView*.y * pView*.mX), view, pView.frame.minY * pView.frame.maxX, tag + " protoValueNOb y*mX")
-            testProtoValue(key, setValue(view, pView*.y * 30*), view, pView.frame.minY * 30, tag + " protoValueNOb y*protoValueNOb")
-            testProtoValue(key, setValue(view, pView*.y / pView*.x), view, pView.frame.minY / pView.frame.minX, tag + " protoValueNOb y/x")
-            testProtoValue(key, setValue(view, pView*.y / pView*.mX), view, pView.frame.minY / pView.frame.maxX, tag + " protoValueNOb y/mX")
-            testProtoValue(key, setValue(view, pView*.y / 30*), view, pView.frame.minY / 30, tag + " protoValueNOb y/protoValueNOb")
-            testProtoValue(key, setValue(view, 5 % pView*.y), view, pView.frame.minY * 0.05, tag + " CGFloat % protoValueNOb")
-            testProtoValue(key, setValue(view, 5* % pView*.y), view, pView.frame.minY * 0.05, tag + " protoValueNOb % protoValueNOb")
-        default:
-            print("Default")
-        }
+        testProtoValue(key, setValue(view, pView*.h * pView*.w), view, pView.frame.height * pView.frame.width, tag + " protoValueNOb h*w")
+        testProtoValue(key, setValue(view, pView*.h * 30*), view, pView.frame.height * 30, tag + " protoValueNOb h*protoValueNOb")
+        testProtoValue(key, setValue(view, pView*.h / pView*.w), view, pView.frame.height / pView.frame.width, tag + " protoValueNOb h/w")
+        testProtoValue(key, setValue(view, pView*.h / 30*), view, pView.frame.height / 30, tag + " protoValueNOb h/protoValueNOb")
+        testProtoValue(key, setValue(view, 5 % pView*.h), view, pView.frame.height * 0.05, tag + " CGFloat % protoValueNOb")
+        testProtoValue(key, setValue(view, 5* % pView*.h), view, pView.frame.height * 0.05, tag + " protoValueNOb % protoValueNOb")
         
-        if key == \.minX || key == \.minY {
-            testProtoValue(key, setValue(view, pView*.x + pView*.y), view, pView.frame.minX + pView.frame.minY, tag + " protoValueNOb x+y")
-            testProtoValue(key, setValue(view, pView*.x * pView*.y), view, pView.frame.minX * pView.frame.minY, tag + " protoValueNOb x*y")
-        } else if key == \.height || key == \.width {
-            testProtoValue(key, setValue(view, pView*.h + pView*.w), view, pView.frame.height + pView.frame.width, tag + " protoValueNOb h+w")
-            testProtoValue(key, setValue(view, pView*.h * pView*.w), view, pView.frame.height * pView.frame.width, tag + " protoValueNOb h*w")
-        }
         
-
         testProtoValue(key, setValue(view, pView|*.h), view, pView.frame.height, tag + " protoValueOb"){
             pView.frame.size.height = 150
         }
@@ -188,6 +204,23 @@ class RZVBFrameTests: TestProtocol{
             pView.frame.size.height = 150
         }
         pView.frame = frame
+    }
+    
+    private static func testSizeElement(_ key: KeyPath<CGRect, CGSize>, _ tag: String, _ setValue: (UIView, Any)->()){
+        let view = UIView()
+        
+        let height: CGFloat = 20
+        let width: CGFloat = 10
+        setValue(view, CGSize(width: width, height: height))
+        XCTAssertEqual(view.frame.size, CGSize(width: width, height: height), tag + " value")
+        
+        @RZObservable var sizeOb = CGSize(width: width, height: height)
+        
+        setValue(view, $sizeOb)
+        
+        XCTAssertEqual(view.frame.size, CGSize(width: width, height: height), tag + " sizeOb")
+        sizeOb = CGSize(width: width + 20, height: height + 5)
+        XCTAssertEqual(view.frame.size, CGSize(width: width + 20, height: height + 5), tag + " sizeOb")
     }
     
     static private func testProtoValue(

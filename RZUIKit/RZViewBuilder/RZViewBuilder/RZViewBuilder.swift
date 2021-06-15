@@ -531,7 +531,7 @@ extension RZViewBuilder{
     /// Устанавливает х view
     ///
     /// - Parameter value
-    /// Устанавляиваемый х
+    /// Устанавливаемый х
     ///
     /// - Parameter type
     /// Точка крепления view по умолчанию `.left`
@@ -562,7 +562,7 @@ extension RZViewBuilder{
     /// Устанавливает х view
     ///
     /// - Parameter value
-    /// Устанавляиваемый х в виде вычесляемого `RZProtoValue`
+    /// Устанавливаемый х в виде вычесляемого `RZProtoValue`
     ///
     /// - Parameter type
     /// Точка крепления view по умолчанию `.left`
