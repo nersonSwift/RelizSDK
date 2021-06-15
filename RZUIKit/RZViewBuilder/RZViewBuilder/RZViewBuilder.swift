@@ -24,7 +24,7 @@ public class RZViewBuilder<V: UIView>{
     /// Инициализатор `RZViewBuilder`
     ///
     /// - Parameter view
-    /// Принемает view для редактирования
+    /// Принимает view для редактирования
     public init(_ view: V){
         self.view = view
     }
@@ -75,7 +75,7 @@ public class RZViewBuilder<V: UIView>{
     /// Устанавливает цвет редактироемому view
     ///
     /// - Parameter value
-    /// Устанавливаемый цвет, при необоходимости конвертирует цвет в `CGColor`
+    /// Устанавливаемый цвет при необходимости конвертирует цвет в `CGColor`
     ///
     /// Поддерживает адаптивные цвета RZDarkModeKit
     ///
@@ -131,7 +131,7 @@ public class RZViewBuilder<V: UIView>{
     /// Устанавливает радиус скругления редактироемому view
     ///
     /// - Parameter value
-    /// Радиус скругления в ввиде вычесляемого `RZProtoValue`
+    /// Радиус скругления в виде вычисляемого `RZProtoValue`
     @discardableResult
     public func cornerRadius(_ value: RZProtoValue) -> Self{
         view.observeController.remove(.cornerRadius)
@@ -147,7 +147,7 @@ public class RZViewBuilder<V: UIView>{
     /// `RU: - `
     /// Устанавливает толщину обводки
     ///
-    /// Цвет обводки устанавливается методом `color` с паремметром `.border`
+    /// Цвет обводки устанавливается методом `color` с параметром `.border`
     ///
     /// - Parameter value
     /// толщина обводки
@@ -161,7 +161,7 @@ public class RZViewBuilder<V: UIView>{
     /// `RU: - `
     /// Устанавливает толщину обводки.
     ///
-    /// Цвет обводки устанавливается методом `color` с паремметром `.border`
+    /// Цвет обводки устанавливается методом `color` с параметром `.border`
     ///
     /// - Parameter value
     /// толщина обводки
@@ -175,7 +175,7 @@ public class RZViewBuilder<V: UIView>{
     
     //MARK: - mask
     /// `RU: - `
-    /// Устанавливает устанавливает маску
+    /// Устанавливает маску
     ///
     /// Размер маски по умолчанию равен размеру view. Маска выравнивается по центру view.
     ///
@@ -277,7 +277,7 @@ extension RZViewBuilder{
     /// Устанавливает frame view
     ///
     /// - Parameter value
-    /// Устанавляиваемый frame
+    /// Устанавливаемый frame
     ///
     /// - Parameter type
     /// Точка крепления view
@@ -298,7 +298,7 @@ extension RZViewBuilder{
     /// Устанавливает frame view
     ///
     /// - Parameter value
-    /// Устанавляиваемый frame в ввиде вычесляемого `RZProtoFrame`
+    /// Устанавливаемый frame в виде вычесляемого `RZProtoFrame`
     ///
     /// - Parameter type
     /// Точка крепления view по умолчанию `.topLeft`
@@ -321,7 +321,7 @@ extension RZViewBuilder{
     /// Устанавливает size view
     ///
     /// - Parameter value
-    /// Устанавляиваемый size
+    /// Устанавливаемый size
     @discardableResult
     public func size(_ value: CGSize) -> Self{
         view.observeController.remove(.size)
@@ -373,7 +373,7 @@ extension RZViewBuilder{
     /// Устанавливает point view
     ///
     /// - Parameter value
-    /// Устанавляиваемый point
+    /// Устанавливаемый point
     ///
     /// - Parameter type
     /// Точка крепления view по умолчанию `.topLeft`
@@ -427,10 +427,10 @@ extension RZViewBuilder{
         return self
     }
     /// `RU: - `
-    /// Устанавливает ширену view
+    /// Устанавливает ширину view
     ///
     /// - Parameter value
-    /// Устанавляиваемая ширена
+    /// Устанавливаемая ширина
     @discardableResult
     public func width(_ value: CGFloat) -> Self{
         view.observeController.remove(.width)
@@ -446,10 +446,10 @@ extension RZViewBuilder{
     
     //MARK: - width
     /// `RU: - `
-    /// Устанавливает ширену view
+    /// Устанавливает ширину view
     ///
     /// - Parameter value
-    /// Устанавляиваемая ширена в виде вычесляемого `RZProtoValue`
+    /// Устанавливаемая ширина в виде вычисляемого `RZProtoValue`
     @discardableResult
     public func width(_ value: RZProtoValue) -> Self{
         view.observeController.remove(.width)
@@ -476,7 +476,7 @@ extension RZViewBuilder{
     /// Устанавливает высоту view
     ///
     /// - Parameter value
-    /// Устанавляиваемая высота
+    /// Устанавливаемая высота
     @discardableResult
     public func height(_ value: CGFloat) -> Self{
         view.observeController.remove(.height)
@@ -494,7 +494,7 @@ extension RZViewBuilder{
     /// Устанавливает высоту view
     ///
     /// - Parameter value
-    /// Устанавляиваемая высота в виде вычесляемого `RZProtoValue`
+    /// Устанавливаемая высота в виде вычисляемого `RZProtoValue`
     @discardableResult
     public func height(_ value: RZProtoValue) -> Self{
         view.observeController.remove(.height)
