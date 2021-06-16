@@ -10,6 +10,8 @@ import XCTest
 @testable import RZViewBuilderKit
 
 class RZVBFrameTests: TestProtocol{
+    
+    
     static func test() {
         testHeight()
         testWidth()
@@ -19,7 +21,6 @@ class RZVBFrameTests: TestProtocol{
         testMaxX()
         testMidY()
         testMaxY()
-        testSize()
     }
     
     private static func testHeight(){
@@ -118,18 +119,6 @@ class RZVBFrameTests: TestProtocol{
         }
     }
     
-    private static func testSize(){
-        testSizeElement(\.size, "size"){
-            guard let size = $1 as? CGSize else {
-                XCTAssert(false, "No")
-                return
-            }
-            
-            $0+>.size(size)
-        }
-
-    }
-    
     private static func testFrameElement(_ key: KeyPath<CGRect, CGFloat>, _ tag: String, _ setValue: (UIView, Any)->()){
         let frame = CGRect(origin: CGPoint(x: 10, y: 20), size: CGSize(width: 100, height: 200))
         let pView = UIView(frame: frame)
@@ -204,28 +193,40 @@ class RZVBFrameTests: TestProtocol{
             pView.frame.size.height = 150
         }
         pView.frame = frame
-    }
-    
-    private static func testSizeElement(_ key: KeyPath<CGRect, CGSize>, _ tag: String, _ setValue: (UIView, Any)->()){
-        let view = UIView()
         
-        let height: CGFloat = 20
-        let width: CGFloat = 10
-        setValue(view, CGSize(width: width, height: height))
-        XCTAssertEqual(view.frame.size, CGSize(width: width, height: height), tag + " value")
+        var valueOb = RZObservable<CGFloat>(wrappedValue: 50.0)
+        testProtoValue(key, setValue(view, valueOb.wrappedValue*), view, 50.0, tag + " protoValueOb"){
+            valueOb = RZObservable<CGFloat>(wrappedValue: 150.0)
+        }
         
-        @RZObservable var sizeOb = CGSize(width: width, height: height)
+        testProtoValue(key, setValue(view, valueOb.wrappedValue* + 30*), view, 150.0 + 30, tag + " protoValueOb h+protoValueNOb"){
+            valueOb = RZObservable<CGFloat>(wrappedValue: 120.0)
+        }
         
-        setValue(view, $sizeOb)
+        testProtoValue(key, setValue(view, valueOb.wrappedValue* - 30*), view, 120.0 - 30, tag + " protoValueOb h-protoValueNOb"){
+            valueOb = RZObservable<CGFloat>(wrappedValue: 130.0)
+        }
         
-        XCTAssertEqual(view.frame.size, CGSize(width: width, height: height), tag + " sizeOb")
-        sizeOb = CGSize(width: width + 20, height: height + 5)
-        XCTAssertEqual(view.frame.size, CGSize(width: width + 20, height: height + 5), tag + " sizeOb")
+        testProtoValue(key, setValue(view, valueOb.wrappedValue* * 30*), view, 130.0 * 30, tag + " protoValueOb h*protoValueNOb"){
+            valueOb = RZObservable<CGFloat>(wrappedValue: 80.0)
+        }
+        
+        testProtoValue(key, setValue(view, valueOb.wrappedValue* / 30*), view, 80.0 / 30, tag + " protoValueOb h/protoValueNOb"){
+            valueOb = RZObservable<CGFloat>(wrappedValue: 180.0)
+        }
+        
+        testProtoValue(key, setValue(view, 5 % valueOb.wrappedValue*), view, 180.0 * 0.05, tag + " CGFloat%protoValueOb"){
+            valueOb = RZObservable<CGFloat>(wrappedValue: 100.0)
+        }
+        
+        testProtoValue(key, setValue(view, 5* % valueOb.wrappedValue*), view, 100.0 * 0.05, tag + " protoValueNOb%protoValueOb"){
+            valueOb = RZObservable<CGFloat>(wrappedValue: 110.0)
+        }
     }
     
     static private func testProtoValue(
         _ key: KeyPath<CGRect, CGFloat>,
-        _ action: @autoclosure ()->(),
+        _ action: @autoclosure ()->()?,
         _ view: UIView,
         _ expectedValue: @autoclosure ()->(CGFloat),
         _ message: String,
