@@ -109,7 +109,7 @@ public class RZViewBuilder<V: UIView>{
     }
     
     /// `RU: - `
-    /// Устанавливает радиус скругления редактироемому view
+    /// Устанавливает радиус скругления редактируемому view
     ///
     /// - Parameter value
     /// Радиус скругления
@@ -128,7 +128,7 @@ public class RZViewBuilder<V: UIView>{
     
     
     /// `RU: - `
-    /// Устанавливает радиус скругления редактироемому view
+    /// Устанавливает радиус скругления редактируемому view
     ///
     /// - Parameter value
     /// Радиус скругления в виде вычисляемого `RZProtoValue`
@@ -298,7 +298,7 @@ extension RZViewBuilder{
     /// Устанавливает frame view
     ///
     /// - Parameter value
-    /// Устанавливаемый frame в виде вычесляемого `RZProtoFrame`
+    /// Устанавливаемый frame в виде вычисляемого `RZProtoFrame`
     ///
     /// - Parameter type
     /// Точка крепления view по умолчанию `.topLeft`
@@ -339,7 +339,7 @@ extension RZViewBuilder{
     /// Устанавливает size view
     ///
     /// - Parameter value
-    /// Устанавляиваемый size в ввиде вычесляемого `RZProtoSize`
+    /// Устанавливаемый size в виде вычисляемого `RZProtoSize`
 //    @discardableResult
 //    public func size(_ value: RZProtoSize) -> Self{
 //        return width(value.width).height(value.height)
@@ -394,7 +394,7 @@ extension RZViewBuilder{
     /// Устанавливает point view
     ///
     /// - Parameter value
-    /// Устанавляиваемый point в ввиде вычесляемого `RZProtoPoint`
+    /// Устанавливаемый point в виде вычисляемого `RZProtoPoint`
     ///
     /// - Parameter type
     /// Точка крепления view по умолчанию `.topLeft`
@@ -562,7 +562,7 @@ extension RZViewBuilder{
     /// Устанавливает х view
     ///
     /// - Parameter value
-    /// Устанавливаемый х в виде вычесляемого `RZProtoValue`
+    /// Устанавливаемый х в виде вычисляемого `RZProtoValue`
     ///
     /// - Parameter type
     /// Точка крепления view по умолчанию `.left`
@@ -609,7 +609,7 @@ extension RZViewBuilder{
     /// Устанавливает y view
     ///
     /// - Parameter value
-    /// Устанавляиваемый y
+    /// Устанавливаемый y
     ///
     /// - Parameter type
     /// Точка крепления view по умолчанию `.top`
@@ -640,7 +640,7 @@ extension RZViewBuilder{
     /// Устанавливает y view
     ///
     /// - Parameter value
-    /// Устанавляиваемый y виде вычесляемого `RZProtoValue`
+    /// Устанавливаемый в виде вычисляемого `RZProtoValue`
     ///
     /// - Parameter type
     /// Точка крепления view по умолчанию `.top`
@@ -1006,7 +1006,7 @@ extension RZViewBuilder where V: UILabel{
     
     //MARK: - sizes
     /// `RU: - `
-    /// Функция автоматического маштабирования текста по размеру UILabel
+    /// Функция автоматического масштабирования текста по размеру UILabel
     @discardableResult
     public func sizes(_ value: CGFloat = 0.1) -> Self{
         view.adjustsFontSizeToFitWidth = true
@@ -1019,7 +1019,7 @@ extension RZViewBuilder where V: UILabel{
     /// Устанавливает максимальное количество строк
     ///
     /// - Parameter value
-    /// Максимально количество строк, для снятивания ограничения установите значение 0
+    /// Максимальное количество строк, для снятия ограничения установите значение 0
     @discardableResult
     public func lines(_ value: Int) -> Self{
         view.numberOfLines = value
@@ -1028,7 +1028,7 @@ extension RZViewBuilder where V: UILabel{
     
 }
 
-// MARK: - UILabel
+// MARK: - UITextField
 extension RZViewBuilder where V: UITextField{
     
     @discardableResult
@@ -1038,7 +1038,7 @@ extension RZViewBuilder where V: UITextField{
         return self
     }
     /// `RU: - `
-    /// Устанавливает текст для UILabel
+    /// Устанавливает текст для UITextField
     ///
     /// - Parameter value
     /// Устанавливаемый текст
@@ -1058,7 +1058,7 @@ extension RZViewBuilder where V: UITextField{
     
     //MARK: - aligment
     /// `RU: - `
-    /// Устанавливает aligment для UILabel
+    /// Устанавливает aligment для UITextField
     ///
     /// - Parameter value
     /// Устанавливаемый aligment
@@ -1071,7 +1071,7 @@ extension RZViewBuilder where V: UITextField{
     
     //MARK: - font
     /// `RU: - `
-    /// Устанавливает font и добавляет атрибуты для UILabel
+    /// Устанавливает font и добавляет атрибуты для UITextField
     ///
     /// - Parameter value
     /// Устанавливаемый UIFont
@@ -1105,7 +1105,7 @@ extension RZViewBuilder where V: UITextField{
     
 }
 
-// MARK: - UILabel
+// MARK: - UITextView
 extension RZViewBuilder where V: UITextView{
     
     @discardableResult
@@ -1115,7 +1115,7 @@ extension RZViewBuilder where V: UITextView{
         return self
     }
     /// `RU: - `
-    /// Устанавливает текст для UILabel
+    /// Устанавливает текст для UITextView
     ///
     /// - Parameter value
     /// Устанавливаемый текст
@@ -1144,7 +1144,7 @@ extension RZViewBuilder where V: UIButton{
         return self
     }
     /// `RU: - `
-    /// Устанавливает текст для UILabel
+    /// Устанавливает текст для UIButton
     ///
     /// - Parameter value
     /// Устанавливаемый текст
@@ -1185,7 +1185,7 @@ extension RZViewBuilder where V: UIButton{
     
     //MARK: - addAction
     /// `RU: - `
-    /// Задает action который сработает при нажатии на кнопку
+    /// Задает action, который сработает при нажатии на кнопку
     ///
     /// - Parameter controlEvents
     /// Условие срабатывания action
@@ -1292,6 +1292,7 @@ extension RZViewBuilder where V: UIImageView{
     }
 }
 
+// MARK: - UIScrollView
 extension RZViewBuilder where V: UIScrollView{
     //MARK: - contentSize
     @discardableResult

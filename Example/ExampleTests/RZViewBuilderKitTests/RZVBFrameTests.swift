@@ -29,9 +29,9 @@ class RZVBFrameTests: TestProtocol{
             case let value as CGFloat: $0+>.height(value)
             case let value as RZProtoValue: $0+>.height(value)
             case let value as RZObservable<RZProtoValue>: $0+>.height(value)
+            case let value as RZObservable<CGFloat>: $0+>.height(value)
             default: XCTAssert(false, "No")
             }
-            
         }
     }
     
@@ -41,9 +41,9 @@ class RZVBFrameTests: TestProtocol{
             case let value as CGFloat: $0+>.width(value)
             case let value as RZProtoValue: $0+>.width(value)
             case let value as RZObservable<RZProtoValue>: $0+>.width(value)
+            case let value as RZObservable<CGFloat>: $0+>.width(value)
             default: XCTAssert(false, "No")
             }
-            
         }
     }
     
@@ -53,9 +53,9 @@ class RZVBFrameTests: TestProtocol{
             case let value as CGFloat: $0+>.x(value)
             case let value as RZProtoValue: $0+>.x(value)
             case let value as RZObservable<RZProtoValue>: $0+>.x(value)
+            case let value as RZObservable<CGFloat>: $0+>.x(value)
             default: XCTAssert(false, "No")
             }
-            
         }
     }
     
@@ -65,9 +65,9 @@ class RZVBFrameTests: TestProtocol{
             case let value as CGFloat: $0+>.x(value, .center)
             case let value as RZProtoValue: $0+>.x(value, .center)
             case let value as RZObservable<RZProtoValue>: $0+>.x(value, .center)
+            case let value as RZObservable<CGFloat>: $0+>.x(value, .center)
             default: XCTAssert(false, "No")
             }
-            
         }
     }
     
@@ -77,9 +77,9 @@ class RZVBFrameTests: TestProtocol{
             case let value as CGFloat: $0+>.x(value, .right)
             case let value as RZProtoValue: $0+>.x(value, .right)
             case let value as RZObservable<RZProtoValue>: $0+>.x(value, .right)
+            case let value as RZObservable<CGFloat>: $0+>.x(value, .right)
             default: XCTAssert(false, "No")
             }
-            
         }
     }
     
@@ -89,9 +89,9 @@ class RZVBFrameTests: TestProtocol{
             case let value as CGFloat: $0+>.y(value)
             case let value as RZProtoValue: $0+>.y(value)
             case let value as RZObservable<RZProtoValue>: $0+>.y(value)
+            case let value as RZObservable<CGFloat>: $0+>.y(value)
             default: XCTAssert(false, "No")
             }
-            
         }
     }
     
@@ -101,9 +101,9 @@ class RZVBFrameTests: TestProtocol{
             case let value as CGFloat: $0+>.y(value, .center)
             case let value as RZProtoValue: $0+>.y(value, .center)
             case let value as RZObservable<RZProtoValue>: $0+>.y(value, .center)
+            case let value as RZObservable<CGFloat>: $0+>.y(value, .center)
             default: XCTAssert(false, "No")
             }
-            
         }
     }
     
@@ -113,9 +113,9 @@ class RZVBFrameTests: TestProtocol{
             case let value as CGFloat: $0+>.y(value, .down)
             case let value as RZProtoValue: $0+>.y(value, .down)
             case let value as RZObservable<RZProtoValue>: $0+>.y(value, .down)
+            case let value as RZObservable<CGFloat>: $0+>.y(value, .down)
             default: XCTAssert(false, "No")
             }
-            
         }
     }
     
@@ -124,22 +124,36 @@ class RZVBFrameTests: TestProtocol{
         let pView = UIView(frame: frame)
         let view = UIView()
         
+        //MARK: - CGFloat
         let value: CGFloat = 10
         testProtoValue(key, setValue(view, value), view, value, tag + " value")
+        
+        //MARK: - ProtoValue
         testProtoValue(key, setValue(view, pView*.h), view, pView.frame.height, tag + " protoValueNOb")
+        
         testProtoValue(key, setValue(view, pView*.h + pView*.w), view, pView.frame.height + pView.frame.width, tag + " protoValueNOb h+w")
         testProtoValue(key, setValue(view, pView*.h + 30*), view, pView.frame.height + 30, tag + " protoValueNOb h+protoValueNOb")
+        
         testProtoValue(key, setValue(view, pView*.h - pView*.w), view, pView.frame.height - pView.frame.width, tag + " protoValueNOb  h-w")
         testProtoValue(key, setValue(view, pView*.h - 30*), view, pView.frame.height - 30, tag + " protoValueNOb h-protoValueNOb")
         
         testProtoValue(key, setValue(view, pView*.h * pView*.w), view, pView.frame.height * pView.frame.width, tag + " protoValueNOb h*w")
         testProtoValue(key, setValue(view, pView*.h * 30*), view, pView.frame.height * 30, tag + " protoValueNOb h*protoValueNOb")
+        
         testProtoValue(key, setValue(view, pView*.h / pView*.w), view, pView.frame.height / pView.frame.width, tag + " protoValueNOb h/w")
         testProtoValue(key, setValue(view, pView*.h / 30*), view, pView.frame.height / 30, tag + " protoValueNOb h/protoValueNOb")
+        
         testProtoValue(key, setValue(view, 5 % pView*.h), view, pView.frame.height * 0.05, tag + " CGFloat % protoValueNOb")
         testProtoValue(key, setValue(view, 5* % pView*.h), view, pView.frame.height * 0.05, tag + " protoValueNOb % protoValueNOb")
         
+        //MARK: - RZObservable<CGFloat>
+        let valueOb = RZObservable<CGFloat>(wrappedValue: 85.0)
+
+        testProtoValue(key, setValue(view, valueOb), view, valueOb.wrappedValue, tag + " CGFloatOb"){
+            valueOb.wrappedValue = 150
+        }
         
+        //MARK: - RZObservable<ProtoValue>
         testProtoValue(key, setValue(view, pView|*.h), view, pView.frame.height, tag + " protoValueOb"){
             pView.frame.size.height = 150
         }
@@ -194,33 +208,33 @@ class RZVBFrameTests: TestProtocol{
         }
         pView.frame = frame
         
-        var valueOb = RZObservable<CGFloat>(wrappedValue: 50.0)
-        testProtoValue(key, setValue(view, valueOb.wrappedValue*), view, 50.0, tag + " protoValueOb"){
-            valueOb = RZObservable<CGFloat>(wrappedValue: 150.0)
+        let valueProtoOb = RZObservable<RZProtoValue>(wrappedValue: 95.0*)
+        testProtoValue(key, setValue(view, valueProtoOb*), view, valueProtoOb.wrappedValue.getValue(), tag + " protoValueOb"){
+            valueProtoOb.wrappedValue = 150.0*
         }
         
-        testProtoValue(key, setValue(view, valueOb.wrappedValue* + 30*), view, 150.0 + 30, tag + " protoValueOb h+protoValueNOb"){
-            valueOb = RZObservable<CGFloat>(wrappedValue: 120.0)
+        testProtoValue(key, setValue(view, valueProtoOb* + 30*), view, valueProtoOb.wrappedValue.getValue() + 30, tag + " protoValueOb h+protoValueNOb"){
+            valueProtoOb.wrappedValue = 120.0*
         }
         
-        testProtoValue(key, setValue(view, valueOb.wrappedValue* - 30*), view, 120.0 - 30, tag + " protoValueOb h-protoValueNOb"){
-            valueOb = RZObservable<CGFloat>(wrappedValue: 130.0)
+        testProtoValue(key, setValue(view, valueProtoOb* - 30*), view, valueProtoOb.wrappedValue.getValue() - 30, tag + " protoValueOb h-protoValueNOb"){
+            valueProtoOb.wrappedValue = 130.0*
         }
         
-        testProtoValue(key, setValue(view, valueOb.wrappedValue* * 30*), view, 130.0 * 30, tag + " protoValueOb h*protoValueNOb"){
-            valueOb = RZObservable<CGFloat>(wrappedValue: 80.0)
+        testProtoValue(key, setValue(view, valueProtoOb* * 30*), view, valueProtoOb.wrappedValue.getValue() * 30, tag + " protoValueOb h*protoValueNOb"){
+            valueProtoOb.wrappedValue = 80.0*
         }
         
-        testProtoValue(key, setValue(view, valueOb.wrappedValue* / 30*), view, 80.0 / 30, tag + " protoValueOb h/protoValueNOb"){
-            valueOb = RZObservable<CGFloat>(wrappedValue: 180.0)
+        testProtoValue(key, setValue(view, valueProtoOb* / 30*), view, valueProtoOb.wrappedValue.getValue() / 30, tag + " protoValueOb h/protoValueNOb"){
+            valueProtoOb.wrappedValue = 180.0*
         }
         
-        testProtoValue(key, setValue(view, 5 % valueOb.wrappedValue*), view, 180.0 * 0.05, tag + " CGFloat%protoValueOb"){
-            valueOb = RZObservable<CGFloat>(wrappedValue: 100.0)
+        testProtoValue(key, setValue(view, 5 % valueProtoOb*), view, valueProtoOb.wrappedValue.getValue() * 0.05, tag + " CGFloat%protoValueOb"){
+            valueProtoOb.wrappedValue = 100.0*
         }
         
-        testProtoValue(key, setValue(view, 5* % valueOb.wrappedValue*), view, 100.0 * 0.05, tag + " protoValueNOb%protoValueOb"){
-            valueOb = RZObservable<CGFloat>(wrappedValue: 110.0)
+        testProtoValue(key, setValue(view, 5* % valueProtoOb*), view, valueProtoOb.wrappedValue.getValue() * 0.05, tag + " protoValueNOb%protoValueOb"){
+            valueProtoOb.wrappedValue = 110.0*
         }
     }
     
