@@ -175,7 +175,7 @@ public struct RZProduct: Equatable{
     /// Замыкание принимающее локалезированный кода валюты
     public static func getCurrencyCods(productId: RZProduct, action: @escaping (String)->()){
         DispatchQueue.main.async {
-            getValue(productId, currencySymbols, &currencyCodsClosure, action)
+            getValue(productId, currencyCods, &currencyCodsClosure, action)
         }
     }
     
