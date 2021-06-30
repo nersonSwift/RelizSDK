@@ -9,7 +9,7 @@ import UIKit
 
 //MARK: - RZProto
 /// `RU: -`
-/// Структура для облегчения вычеслений при адаптивной верстке
+/// Структура для облегчения вычислений при адаптивной верстке
 public struct RZProto {
     private var frame: CGRect?
     private weak var view: UIView?
@@ -26,7 +26,7 @@ public struct RZProto {
     ///     view|* //RZProto(view, true)
     ///
     /// - Parameter view
-    /// `UIView` по которой строится `RZProto`
+    /// `UIView`, по которой строится `RZProto`
     public init(_ view: UIView, _ observe: Bool = false){
         if observe{
             self.view = view
@@ -43,7 +43,7 @@ public struct RZProto {
     ///     frame*  //RZProto(frame)
     ///
     /// - Parameter frame
-    /// `CGRect` по которой строится `RZProto`
+    /// `CGRect`, по которой строится `RZProto`
     public init(_ frame: CGRect){
         self.frame = frame
     }
@@ -56,7 +56,7 @@ public struct RZProto {
     ///     size*  //RZProto(size)
     ///
     /// - Parameter size
-    /// `CGSize` по которой строится `RZProto`
+    /// `CGSize`, по которой строится `RZProto`
     public init(_ size: CGSize){
         frame = CGRect(origin: .zero, size: size)
     }
@@ -69,7 +69,7 @@ public struct RZProto {
     ///     point*  //RZProto(size)
     ///
     /// - Parameter point
-    /// `CGPoint` по которой строится `RZProto`
+    /// `CGPoint`, по которой строится `RZProto`
     public init(_ point: CGPoint){
         frame = CGRect(origin: point, size: .zero)
     }
@@ -125,7 +125,7 @@ public struct RZProto {
         return RZProtoValue(val)
     }
     
-    /// `RZProtoValue` эквиволентное карденате по x
+    /// `RZProtoValue` эквиволентное координате по x
     ///
     ///     let view = UIView()
     ///     view.frame.origin.x = 100
@@ -148,7 +148,7 @@ public struct RZProto {
         return RZProtoValue(val)
     }
     
-    /// `RZProtoValue` эквиволентное карденате по x
+    /// `RZProtoValue` эквиволентное координате по x
     ///
     ///     let view = UIView()
     ///     view.frame.origin.y = 100
@@ -171,7 +171,7 @@ public struct RZProto {
         return RZProtoValue(val)
     }
     
-    /// `RZProtoValue` эквиволентное карденате центра по x
+    /// `RZProtoValue` эквиволентное координате центра по x
     ///
     ///     let view = UIView()
     ///     view.frame.size.width = 100
@@ -196,7 +196,7 @@ public struct RZProto {
         return RZProtoValue(val)
     }
     
-    /// `RZProtoValue` эквиволентное карденате центра по y
+    /// `RZProtoValue` эквиволентное координате центра по y
     ///
     ///     let view = UIView()
     ///     view.frame.size.height = 100
@@ -221,7 +221,7 @@ public struct RZProto {
         return RZProtoValue(val)
     }
     
-    /// `RZProtoValue` эквиволентное собственной карденате центра по x
+    /// `RZProtoValue` эквиволентное собственной координате центра по x
     ///
     ///     let view = UIView()
     ///     view.frame.size.width = 100
@@ -246,7 +246,7 @@ public struct RZProto {
         return RZProtoValue(val / 2)
     }
     
-    /// `RZProtoValue` эквиволентное собственной карденате центра по y
+    /// `RZProtoValue` эквиволентное собственной координате центра по y
     ///
     ///     let view = UIView()
     ///     view.frame.size.height = 100
@@ -271,7 +271,7 @@ public struct RZProto {
         return RZProtoValue(val / 2)
     }
     
-    /// `RZProtoValue` эквиволентное карденате конца по x
+    /// `RZProtoValue` эквиволентное координате конца по x
     ///
     ///     let view = UIView()
     ///     view.frame.size.width = 100
@@ -296,7 +296,7 @@ public struct RZProto {
         return RZProtoValue(val)
     }
     
-    /// `RZProtoValue` эквиволентное карденате центра по y
+    /// `RZProtoValue` эквиволентное координате центра по y
     ///
     ///     let view = UIView()
     ///     view.frame.size.height = 100

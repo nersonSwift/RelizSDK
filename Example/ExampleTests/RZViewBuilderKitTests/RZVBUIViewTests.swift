@@ -16,6 +16,7 @@ class RZVBUIViewTests: TestProtocol{
         testAlpha()
         testMask()
         testIsHidden()
+        testTemplate()
     }
     
     private static func testCornerRadius(){
@@ -55,7 +56,7 @@ class RZVBUIViewTests: TestProtocol{
         XCTAssertEqual(view.layer.cornerRadius, valueOb.wrappedValue, "Corner Radius, CGFloatOb before")
         valueOb.wrappedValue = 7.0
         XCTAssertEqual(view.layer.cornerRadius, valueOb.wrappedValue, "Corner Radius, CGFloatOb after")
-
+        
         //MARK: - RZObservable<ProtoValue>
         let valueProtoOb = RZObservable<RZProtoValue>(wrappedValue: 5.0*)
         view+>.cornerRadius(valueProtoOb*)
@@ -137,5 +138,31 @@ class RZVBUIViewTests: TestProtocol{
         XCTAssertEqual(label.isHidden, boolOb.wrappedValue, "UILabel isHidden ob before")
         boolOb.wrappedValue = false
         XCTAssertEqual(label.isHidden, boolOb.wrappedValue, "UILabel isHidden ob after")
+    }
+    
+    private static func testTemplate(){
+        let button = UIButton()
+        
+        button+>.template(.backButton)
+        XCTAssertEqual(button.backgroundColor, UIColor.blue, "Template 1")
+        XCTAssertEqual(button.frame.width, 60, "Template 2")
+        XCTAssertEqual(button.frame.height, button.frame.width, "Template 3")
+    }
+ 
+}
+
+extension RZVBTemplate{
+    static func custom(_ template: @escaping (View)->()) -> Self {RZVBTemplate(template)}
+   // static func custom(_ template: @escaping (View, RZVBTemplate.Complition)->()) -> Self {RZVBTemplate(template)}
+}
+
+extension RZVBTemplate where View: UIButton{
+    
+    static var backButton: Self {
+        .custom{
+            $0+>
+                .color(.blue)
+                .width(60).height(.selfTag(.w))
+        }
     }
 }

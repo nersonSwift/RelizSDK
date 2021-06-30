@@ -13,6 +13,8 @@
 		3C49FB91267BA44800D26648 /* RZVBTextandFontTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C49FB90267BA44800D26648 /* RZVBTextandFontTests.swift */; };
 		3CDC66CE267CADD200653730 /* RZVBImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDC66CD267CADD200653730 /* RZVBImageTests.swift */; };
 		3CDC66D0267CB7D700653730 /* RZVBUIScrollViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDC66CF267CB7D700653730 /* RZVBUIScrollViewTests.swift */; };
+		3CFEB6AB268B1F22004DEC26 /* RZProtoValueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFEB6AA268B1F22004DEC26 /* RZProtoValueTests.swift */; };
+		3CFEB6AD268B392C004DEC26 /* RZProtoOperationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFEB6AC268B392C004DEC26 /* RZProtoOperationsTests.swift */; };
 		512ED30E267282BE00CDD342 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED30D267282BE00CDD342 /* AppDelegate.swift */; };
 		512ED310267282BE00CDD342 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED30F267282BE00CDD342 /* SceneDelegate.swift */; };
 		512ED312267282BE00CDD342 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED311267282BE00CDD342 /* ContentView.swift */; };
@@ -294,6 +296,8 @@
 		3C49FB90267BA44800D26648 /* RZVBTextandFontTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZVBTextandFontTests.swift; sourceTree = "<group>"; };
 		3CDC66CD267CADD200653730 /* RZVBImageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZVBImageTests.swift; sourceTree = "<group>"; };
 		3CDC66CF267CB7D700653730 /* RZVBUIScrollViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZVBUIScrollViewTests.swift; sourceTree = "<group>"; };
+		3CFEB6AA268B1F22004DEC26 /* RZProtoValueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZProtoValueTests.swift; sourceTree = "<group>"; };
+		3CFEB6AC268B392C004DEC26 /* RZProtoOperationsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZProtoOperationsTests.swift; sourceTree = "<group>"; };
 		512ED30A267282BE00CDD342 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		512ED30D267282BE00CDD342 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		512ED30F267282BE00CDD342 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -493,6 +497,15 @@
 				990FEE4607C934D1374C1E14 /* Pods-RZStoreKit.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		3CFEB6A9268B1EC7004DEC26 /* RZProto */ = {
+			isa = PBXGroup;
+			children = (
+				3CFEB6AA268B1F22004DEC26 /* RZProtoValueTests.swift */,
+				3CFEB6AC268B392C004DEC26 /* RZProtoOperationsTests.swift */,
+			);
+			path = RZProto;
 			sourceTree = "<group>";
 		};
 		512ED301267282BE00CDD342 = {
@@ -818,6 +831,7 @@
 		512ED7F4267374CD00CDD342 /* RZViewBuilderKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				3CFEB6A9268B1EC7004DEC26 /* RZProto */,
 				512ED7EC267369B000CDD342 /* RZViewBuilderKitTests.swift */,
 				512ED8092673761300CDD342 /* RZVBFrameTests.swift */,
 				512ED7F5267374E700CDD342 /* RZVBColorTests.swift */,
@@ -1333,8 +1347,10 @@
 				512ED7F6267374E700CDD342 /* RZVBColorTests.swift in Sources */,
 				512ED813267379FE00CDD342 /* TestProtocol.swift in Sources */,
 				3C49FB8D267B541900D26648 /* RZVBUIViewTests.swift in Sources */,
+				3CFEB6AD268B392C004DEC26 /* RZProtoOperationsTests.swift in Sources */,
 				3C49FB91267BA44800D26648 /* RZVBTextandFontTests.swift in Sources */,
 				3CDC66D0267CB7D700653730 /* RZVBUIScrollViewTests.swift in Sources */,
+				3CFEB6AB268B1F22004DEC26 /* RZProtoValueTests.swift in Sources */,
 				3CDC66CE267CADD200653730 /* RZVBImageTests.swift in Sources */,
 				512ED7ED267369B100CDD342 /* RZViewBuilderKitTests.swift in Sources */,
 			);
