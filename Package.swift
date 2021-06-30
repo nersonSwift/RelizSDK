@@ -97,6 +97,10 @@ let package = Package.init(
     platforms: [.iOS(.v13)],
     products: [
         .library(
+            name: "RelizKit",
+            targets: ["RelizKit"]
+        ),
+        .library(
             name: "RZEvent",
             targets: ["RZEvent"]
         ),
