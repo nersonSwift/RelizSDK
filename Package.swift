@@ -50,7 +50,14 @@ let package = Package.init(
             name: "RelizKit",
             dependencies: [],
             exclude: ["Info.plist"],
-            publicHeadersPath: "./"
+            linkerSettings: [
+                .linkedLibrary("RZEvent"),
+                .linkedLibrary("RZObservableKit"),
+                .linkedLibrary("RZStoreKit"),
+                .linkedLibrary("RZDarkModeKit"),
+                .linkedLibrary("RZUIPacKit"),
+                .linkedLibrary("RZViewBuilder")
+            ]
         ),
         .target(
             name: "RZEvent",
