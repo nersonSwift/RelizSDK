@@ -28,6 +28,8 @@ class RZViewBuilderKitTests: XCTestCase {
         RZVBTextandFontTests.test()
         RZVBImageTests.test()
         RZVBUIScrollViewTests.test()
+        RZProtoValueTests.test()
+        RZProtoOperationsTests.test()
     }
 
     func testPerformanceExample() throws {

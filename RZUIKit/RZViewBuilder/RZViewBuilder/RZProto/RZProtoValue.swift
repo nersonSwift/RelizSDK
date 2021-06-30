@@ -27,7 +27,7 @@ public enum ScreenOrientation {
 ///     let value: CGFloat = 5
 ///     let proto = value*           // == RZProtoValue(value)
 ///
-/// Поддерживает опирации (F: CGFloat, PV: RZProtoValue):
+/// Поддерживает операции (F: CGFloat, PV: RZProtoValue):
 ///
 /// `PV + PV, PV - PV, PV * PV, PV / PV, F % PV, PV <> PV, PV >< PV, -PV`
 ///
@@ -47,7 +47,7 @@ public enum ScreenOrientation {
 ///
 ///     let view2 = UIView()
 ///
-/// Опирации:
+/// Операции:
 ///
 ///     // PV + PV - складывает 2 RZProtoValue
 ///     // view.frame.width + 20 == 100 + 20 == 120.0
@@ -59,12 +59,12 @@ public enum ScreenOrientation {
 ///     view2+>.width(view*.w - 20*)
 ///     print(view2.frame.width)     // 80.0
 ///
-///     // PV * PV - умнажает 2 RZProtoValue
+///     // PV * PV - умножает 2 RZProtoValue
 ///     // view.frame.width * 3 == 100 * 3 == 300.0
 ///     view2+>.width(view*.w * 3*)
 ///     print(view2.frame.width)     // 300.0
 ///
-///     // PV / PV - делет первое на второе RZProtoValue
+///     // PV / PV - делит первое на второе RZProtoValue
 ///     // view.frame.width / 2 == 100 / 2 == 50.0
 ///     view2+>.width(view*.w / 2*)
 ///     print(view2.frame.width)     // 50.0
@@ -74,14 +74,14 @@ public enum ScreenOrientation {
 ///     view2+>.height(20 % view*.h)
 ///     print(view2.frame.height)    // 20.0
 ///
-///     // PV <> PV - вычисляет растояние между двумя RZProtoValue
-///     // порядок опирантов не имеет значения
+///     // PV <> PV - вычисляет расстояние между двумя RZProtoValue
+///     // порядок операндов не имеет значения
 ///     // view1.frame.minY - view.frame.maxY == 500 - 200 == 300.0
 ///     view2+>.height(view*.mY <> view1*.y)
 ///     print(view2.frame.height)    // 300.0
 ///
 ///     // PV >< PV - вычисляет центр между двумя RZProtoValue
-///     // порядок опирантов не имеет значения
+///     // порядок операндов не имеет значения
 ///     // view.frame.maxY + ((view1.frame.minY - view.frame.maxY) / 2) ==
 ///     // == 200 + ((500 - 200) / 2) == 350.0
 ///     view2+>.y(view1*.y >< view*.mY, .center)
@@ -94,7 +94,7 @@ public enum ScreenOrientation {
 ///     view2+>.y(5 % -view1*.y, .down)
 ///     print(view2.frame.maxY)      // 480.0
 ///
-/// Так-же поддерживается возможность сложных опираций:
+/// Также поддерживается возможность сложных операций:
 ///
 ///     // let distance = view1.frame.minY - view.frame.maxY
 ///     // distance == 500 - 200 == 300
@@ -105,13 +105,13 @@ public enum ScreenOrientation {
 ///     view2+>.y((view1*.y >< view*.mY) - (5 % view1*.w), .center)
 ///     print(view2.frame.midY)      // 345
 ///
-/// Все опирации поддверживают `.selfTag`
+/// Все операции поддерживают `.selfTag`
 ///
 ///     view2.frame.size.width = 200
 ///     view2+>.height(10 % .selfTag(.w))
 ///     print(view2.frame.height) // 20
 ///
-/// Все опирации поддверживают наблюдение
+/// Все операции поддерживают наблюдение
 ///
 ///     view2+>
 ///         .width((50 % view|*.w) + 30*)
@@ -134,22 +134,26 @@ public struct RZProtoValue: RZProtoValueProtocol{
     
     var operation: RZProtoOperationProtocol?
     
-    static private func filter(_ old: CGRect, _ new: CGRect, _ protoTag: RZProtoTag?) -> Bool {
+    static private func filter(
+        _ old: CGRect,
+        _ new: CGRect,
+        _ protoTag: RZProtoTag?
+    ) -> Bool {
         switch protoTag {
-            case .w: return old.width != new.width
-            case .h: return old.height != new.height
+        case .w: return old.width != new.width
+        case .h: return old.height != new.height
             
-            case .x: return old.minX != new.minX
-            case .y: return old.minY != new.minY
+        case .x: return old.minX != new.minX
+        case .y: return old.minY != new.minY
             
-            case .cX: return (old.width != new.width) || (old.minX != new.minX)
-            case .cY: return (old.height != new.height) || (old.minY != new.minY)
-                
-            case .scX: return old.width != new.width
-            case .scY: return old.height != new.height
+        case .cX: return (old.width != new.width) || (old.minX != new.minX)
+        case .cY: return (old.height != new.height) || (old.minY != new.minY)
             
-            case .mX: return (old.width != new.width) || (old.minX != new.minX)
-            case .mY: return (old.height != new.height) || (old.minY != new.minY)
+        case .scX: return old.width != new.width
+        case .scY: return old.height != new.height
+            
+        case .mX: return (old.width != new.width) || (old.minX != new.minX)
+        case .mY: return (old.height != new.height) || (old.minY != new.minY)
         default: return true
         }
     }
@@ -183,7 +187,7 @@ public struct RZProtoValue: RZProtoValueProtocol{
     ///     print(view.frame.height) // 100
     ///
     /// - Parameter value
-    /// Тег имеющий такую же симвализацию как и `RZProto`
+    /// Тег, имеющий такую же симвализацию как и `RZProto`
     public static func selfTag(_ value: RZProtoTag) -> RZProtoValue{
         return Self.init(value)
     }
@@ -192,8 +196,11 @@ public struct RZProtoValue: RZProtoValueProtocol{
     /// Создает `RZProtoValue`  относительно размеров экрана
     ///
     /// - Parameter value
-    /// Тег имеющий такую же симвализацию как и `RZProto`
-    public static func screenTag(_ value: RZProtoTag, _ orientation: ScreenOrientation = .vertical) -> RZProtoValue{
+    /// Тег, имеющий такую же симвализацию как и `RZProto`
+    public static func screenTag(
+        _ value: RZProtoTag,
+        _ orientation: ScreenOrientation = .vertical
+    ) -> RZProtoValue{
         var bounds = UIScreen.main.bounds
         switch orientation {
         case .vertical:
@@ -206,26 +213,26 @@ public struct RZProtoValue: RZProtoValueProtocol{
         }
         let proto = RZProto(bounds)
         switch value {
-            case .w: return proto.w
-            case .h: return proto.h
+        case .w: return proto.w
+        case .h: return proto.h
             
-            case .x: return proto.x
-            case .y: return proto.y
+        case .x: return proto.x
+        case .y: return proto.y
             
-            case .cX: return proto.cX
-            case .cY: return proto.cY
-                
-            case .scX: return proto.scX
-            case .scY: return proto.scY
+        case .cX: return proto.cX
+        case .cY: return proto.cY
             
-            case .mX: return proto.mX
-            case .mY: return proto.mY
+        case .scX: return proto.scX
+        case .scY: return proto.scY
+            
+        case .mX: return proto.mX
+        case .mY: return proto.mY
         }
     }
     
     public func getValue(_ view: UIView = UIView()) -> CGFloat{
         if let operation = operation { return operation.getValue(view) }
-                
+        
         if let value = value{
             return value
         }else if let selfTag = protoTag{
@@ -235,26 +242,33 @@ public struct RZProtoValue: RZProtoValueProtocol{
         }
     }
     
-    static func getValueAt(_ tag: RZProtoTag, _ frame: CGRect) -> CGFloat{
+    static func getValueAt(
+        _ tag: RZProtoTag,
+        _ frame: CGRect
+    ) -> CGFloat{
         switch tag {
-            case .h: return frame.height
-            case .w: return frame.width
+        case .h: return frame.height
+        case .w: return frame.width
             
-            case .x: return frame.minX
-            case .y: return frame.minY
+        case .x: return frame.minX
+        case .y: return frame.minY
             
-            case .cX: return frame.midX
-            case .cY: return frame.midY
+        case .cX: return frame.midX
+        case .cY: return frame.midY
             
-            case .scX: return frame.width / 2
-            case .scY: return frame.height / 2
+        case .scX: return frame.width / 2
+        case .scY: return frame.height / 2
             
-            case .mX: return frame.maxX
-            case .mY: return frame.maxY
+        case .mX: return frame.maxX
+        case .mY: return frame.maxY
         }
     }
     
-    func setValueIn(_ view: UIView, _ tag: RZObserveController.Tag, _ closure: @escaping ((UIView) -> ())){
+    func setValueIn(
+        _ view: UIView,
+        _ tag: RZObserveController.Tag,
+        _ closure: @escaping ((UIView) -> ())
+    ){
         checkObserv(tag, view.observeController, closure)
         closure(view)
     }
@@ -301,36 +315,36 @@ public struct RZProtoValue: RZProtoValueProtocol{
         value.operation = RZProtoOperationGoup(left, right, .procent)
         return value
     }
-
+    
     public static func %(left: CGFloat, right: RZProtoValue) -> RZProtoValue{
         return left* % right
     }
-
+    
     public static func +(left: RZProtoValue, right: RZProtoValue) -> RZProtoValue{
         var value = RZProtoValue()
         value.operation = RZProtoOperationGoup(left, right, .p)
         return value
     }
-
+    
     public static func -(left: RZProtoValue, right: RZProtoValue) -> RZProtoValue{
         var value = RZProtoValue()
         value.operation = RZProtoOperationGoup(left, right, .m)
         return value
     }
-
+    
     public static func /(left: RZProtoValue, right: RZProtoValue) -> RZProtoValue{
         var value = RZProtoValue()
         value.operation = RZProtoOperationGoup(left, right, .d)
         return value
     }
-
+    
     public static func *(left: RZProtoValue, right: RZProtoValue) -> RZProtoValue{
         var value = RZProtoValue()
         value.operation = RZProtoOperationGoup(left, right, .u)
         return value
     }
-
-
+    
+    
     public static func <>(left: RZProtoValue, right: RZProtoValue) -> RZProtoValue{
         var value = RZProtoValue()
         value.operation = RZProtoOperationGoup(left, right, .rang)
@@ -432,19 +446,30 @@ class RZObserveController{
     var observes: [Tag: [RZObserve]] = [:]
     var observesRP: [Tag: [RZOResultProtocol]] = [:]
     
-    func add(_ tag: Tag, _ protoValue: RZProtoValue, _ closure: @escaping (UIView) -> ()){
+    func add(
+        _ tag: Tag,
+        _ protoValue: RZProtoValue,
+        _ closure: @escaping (UIView) -> ()
+    ){
         guard let view = view else { return }
         if observes[tag] == nil{ observes[tag] = [] }
         let observe = RZObserve(view, tag, protoValue, closure)
         observes[tag]?.append(observe)
     }
-    func add(_ tag: Tag, _ rzoProtoValue: RZObservable<RZProtoValue>, _ closure: @escaping (UIView) -> ()){
+    func add(
+        _ tag: Tag,
+        _ rzoProtoValue: RZObservable<RZProtoValue>,
+        _ closure: @escaping (UIView) -> ()
+    ){
         guard let view = view else { return }
         if observes[tag] == nil{ observes[tag] = [] }
         let observe = RZObserve(view, tag, rzoProtoValue, self, closure)
         observes[tag]?.append(observe)
     }
-    func add(_ tag: Tag?, _ resultProtocol: RZOResultProtocol?){
+    func add(
+        _ tag: Tag?,
+        _ resultProtocol: RZOResultProtocol?
+    ){
         guard let tag = tag, let resultProtocol = resultProtocol else {return}
         observesRP[tag]?.append(resultProtocol)
     }
@@ -455,7 +480,10 @@ class RZObserveController{
         case rzResult
     }
     
-    func remove(_ tag: Tag?, _ removeObject: RemoveObject = .all){
+    func remove(
+        _ tag: Tag?,
+        _ removeObject: RemoveObject = .all
+    ){
         guard let tag = tag else {return}
         if removeObject != .rzResult{
             observes[tag] = nil
@@ -470,7 +498,11 @@ class RZObserveController{
 class UIViewUppdateProcess{
     static var processes: [Int: [RZObserveController.Tag]] = [:]
     
-    static func startProcesses(_ view: UIView, _ tag: RZObserveController.Tag, _ process: ()->()){
+    static func startProcesses(
+        _ view: UIView,
+        _ tag: RZObserveController.Tag,
+        _ process: ()->()
+    ){
         if let tags = processes[view.hashValue]{
             for tagL in tags{ if tag == tagL {return} }
         }else{
@@ -493,8 +525,8 @@ class RZObserve{
     private var protoValue: RZProtoValue?
     private var closure: ((UIView) -> ())?
     
-//    private var result: RZOResult<CGFloat?>?
-//    private var result1: RZOResult<RZProtoValue>?
+    //    private var result: RZOResult<CGFloat?>?
+    //    private var result1: RZOResult<RZProtoValue>?
     private var results = [RZOResultProtocol]()
     
     init(_ view: UIView, _ tag: RZObserveController.Tag, _ protoValue: RZProtoValue, _ closure: @escaping ((UIView) -> ())){
