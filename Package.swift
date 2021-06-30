@@ -140,7 +140,10 @@ let package = Package.init(
             name: "RelizKit",
             dependencies: [],
             path: "Sources/RelizKit",
-            exclude: ["Info.plist"]
+            exclude: ["Info.plist"],
+            cSettings: [
+                .headerSearchPath("Sources/RelizKit")
+            ]
         ),
         .target(
                     name: "RZEvent",
