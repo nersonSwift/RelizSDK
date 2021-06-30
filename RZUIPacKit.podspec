@@ -2,7 +2,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "RZUIPacKit"
-  spec.version      = "1.1.6"
+  spec.version      = "2.0"
   spec.summary      = "Small example to test code sharing."
   spec.description  = "Small example to test code sharing via cocoapods."	
   
@@ -23,8 +23,8 @@ Pod::Spec.new do |spec|
 	:tag => spec.name.to_s + "_v" + spec.version.to_s
   }
 
-  spec.source_files = "RZUIKit/RZUIPacKit/RZUIPacKit/**/*"
-  spec.exclude_files = "RZUIKit/RZUIPacKit/RZUIPacKit/**/*.plist"
+  spec.source_files = "Sources/RZUIKit/RZUIPacKit/**/*"
+  spec.exclude_files = "Sources/RZUIKit/RZUIPacKit/**/*.plist"
 
   spec.dependency 'RZObservableKit'
   spec.swift_version = '5.3'

@@ -1,6 +1,0 @@
-framework module RZEvent {
-  umbrella header "RZEvent-umbrella.h"
-
-  export *
-  module * { export * }
-}

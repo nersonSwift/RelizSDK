@@ -1,6 +1,0 @@
-framework module Pods_RZStoreKit {
-  umbrella header "Pods-RZStoreKit-umbrella.h"
-
-  export *
-  module * { export * }
-}

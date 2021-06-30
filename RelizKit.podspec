@@ -2,7 +2,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "RelizKit"
-  spec.version      = "5.1.3"
+  spec.version      = "6.0"
   spec.summary      = "RelizKit"
   spec.description  = "Small example to test code sharing via cocoapods."	
   
@@ -20,7 +20,7 @@ Pod::Spec.new do |spec|
 	:tag => spec.name.to_s + "_v" + spec.version.to_s
   }
 
-  spec.exclude_files = "RelizKit/**/*.plist"
+  
   spec.swift_version = '5.3'
   spec.ios.deployment_target  = '13.0'
 
@@ -29,7 +29,8 @@ Pod::Spec.new do |spec|
   spec.default_subspec = 'CoreOnly'
   
   spec.subspec 'CoreOnly' do |ss|
-    ss.source_files = 'CoreOnly/**/*'
+    ss.source_files = 'Sources/RelizKit/**/*'
+    spec.exclude_files = 'Sources/RelizKit/**/*.plist'
     
   end
 end

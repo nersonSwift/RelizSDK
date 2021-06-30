@@ -1,6 +1,0 @@
-framework module RZUIPacKit {
-  umbrella header "RZUIPacKit-umbrella.h"
-
-  export *
-  module * { export * }
-}
