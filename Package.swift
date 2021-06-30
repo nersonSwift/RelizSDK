@@ -144,34 +144,34 @@ let package = Package.init(
         ),
         .target(
                     name: "RZEvent",
-                    dependencies: [],
+                    dependencies: ["RelizKit"],
                     exclude: ["Info.plist"]
                 ),
                 .target(
                     name: "RZObservableKit",
-                    dependencies: [],
+                    dependencies: ["RelizKit"],
                     exclude: ["Info.plist"]
                 ),
                 .target(
                     name: "RZStoreKit",
-                    dependencies: ["SwiftyStoreKit"],
+                    dependencies: ["SwiftyStoreKit","RelizKit"],
                     exclude: ["Info.plist"]
                 ),
                 .target(
                     name: "RZDarkModeKit",
-                    dependencies: [],
+                    dependencies: ["RelizKit"],
                     path: "Sources/RZUIKit/RZDarkModeKit",
                     exclude: ["Info.plist"]
                 ),
                 .target(
                     name: "RZUIPacKit",
-                    dependencies: ["RZObservableKit"],
+                    dependencies: ["RZObservableKit","RelizKit"],
                     path: "Sources/RZUIKit/RZUIPacKit",
                     exclude: ["Info.plist"]
                 ),
                 .target(
                     name: "RZViewBuilder",
-                    dependencies: ["RZObservableKit"],
+                    dependencies: ["RZObservableKit","RelizKit"],
                     path: "Sources/RZUIKit/RZViewBuilder",
                     exclude: ["Info.plist"]
                 )
