@@ -51,13 +51,7 @@ let package = Package.init(
             dependencies: [],
             exclude: ["Info.plist"],
             linkerSettings: [
-                .linkedFramework("UIKit", .when(platforms: [.iOS])),
-                .linkedLibrary("RZEvent"),
-                .linkedLibrary("RZObservableKit"),
-                .linkedLibrary("RZStoreKit"),
-                .linkedLibrary("RZDarkModeKit"),
-                .linkedLibrary("RZUIPacKit"),
-                .linkedLibrary("RZViewBuilder")
+                .linkedFramework("UIKit", .when(platforms: [.iOS]))
             ]
         ),
         .target(
