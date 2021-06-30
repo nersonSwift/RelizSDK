@@ -30,7 +30,7 @@ Pod::Spec.new do |spec|
   
   spec.subspec 'CoreOnly' do |ss|
     ss.source_files = 'Sources/RelizKit/**/*'
-    spec.exclude_files = 'Sources/RelizKit/**/*.plist'
+    ss.exclude_files = 'Sources/RelizKit/**/*.plist'
     
   end
 end
