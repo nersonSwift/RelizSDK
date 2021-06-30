@@ -8,10 +8,6 @@ let package = Package.init(
     platforms: [.iOS(.v13)],
     products: [
         .library(
-            name: "RelizKit",
-            targets: ["RelizKit"]
-        ),
-        .library(
             name: "RZEvent",
             targets: ["RZEvent"]
         ),
@@ -49,10 +45,9 @@ let package = Package.init(
         .target(
             name: "RelizKit",
             dependencies: [],
+            path: "Sources/RelizKit",
             exclude: ["Info.plist"],
-            linkerSettings: [
-                .linkedFramework("UIKit", .when(platforms: [.iOS]))
-            ]
+            publicHeadersPath: "/."
         ),
         .target(
             name: "RZEvent",
@@ -61,7 +56,7 @@ let package = Package.init(
         ),
         .target(
             name: "RZObservableKit",
-            dependencies: [],
+            dependencies: ["RelizKit"],
             exclude: ["Info.plist"]
         ),
         .target(
