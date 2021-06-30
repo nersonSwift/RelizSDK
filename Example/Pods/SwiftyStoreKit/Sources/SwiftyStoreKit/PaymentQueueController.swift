@@ -40,7 +40,7 @@ public enum TransactionResult {
     case failed(error: SKError)
 }
 
-public protocol PaymentQueue: class {
+public protocol PaymentQueue: AnyObject {
     
     func add(_ observer: SKPaymentTransactionObserver)
     func remove(_ observer: SKPaymentTransactionObserver)

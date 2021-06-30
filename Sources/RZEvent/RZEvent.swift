@@ -148,7 +148,7 @@ open class EventSendDelegate {
     public init(){}
 }
 
-@_functionBuilder public struct EventBuilder{
+@resultBuilder public struct EventBuilder{
     public static func buildBlock(_ atrs: RZEvent...) -> [RZEvent] {
         return atrs
     }

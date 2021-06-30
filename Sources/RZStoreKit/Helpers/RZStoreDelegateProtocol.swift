@@ -9,7 +9,7 @@
 import StoreKit
 
 
-public protocol RZStoreDelegateProtocol: class{
+public protocol RZStoreDelegateProtocol: AnyObject{
     func update()
     
     func buySuccess(product: RZProduct, customData: Any?)

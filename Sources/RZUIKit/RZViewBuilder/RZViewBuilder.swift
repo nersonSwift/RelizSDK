@@ -99,8 +99,6 @@ public class RZViewBuilder<V: UIView>{
     //MARK: - cornerRadius
     @discardableResult
     func _cornerRadius(_ value: CGFloat) -> Self{
-        view.layer.cornerCurve
-      
         view.layer.cornerRadius = value
         return self
     }
@@ -1426,7 +1424,7 @@ public struct RZVBTemplate<View: UIView> {
 //
 //}
 
-@_functionBuilder public struct RZVBTemplateBuilder{
+@resultBuilder public struct RZVBTemplateBuilder{
     public static func buildBlock<View: UIView>(_ atrs: RZVBTemplate<View>...) -> [RZVBTemplate<View>] {
         return atrs
     }

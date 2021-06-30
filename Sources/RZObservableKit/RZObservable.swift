@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-protocol RZObservableProtocol: class {
+protocol RZObservableProtocol: AnyObject{
     var objectWillChange: ObservableObjectPublisher? {get set}
 }
 
@@ -28,7 +28,7 @@ public class RZObserveAnchorObject{
     init(_ result: RZOResultProtocol) { self.result = result }
 }
 
-public protocol RZOResultProtocol: class{
+public protocol RZOResultProtocol: AnyObject{
     var key: Int {get}
     func remove()
 }
