@@ -50,7 +50,7 @@ let package = Package.init(
             name: "RelizKit",
             dependencies: [],
             exclude: ["Info.plist"],
-            publicHeadersPath: "."
+            publicHeadersPath: "./"
         ),
         .target(
             name: "RZEvent",
