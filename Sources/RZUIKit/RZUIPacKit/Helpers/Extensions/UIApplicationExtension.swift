@@ -5,7 +5,7 @@
 //  Created by Александр Сенин on 23.03.2021.
 //
 
-import Foundation
+import UIKit
 
 extension UIApplication{
     public static var orientation: UIInterfaceOrientation{
