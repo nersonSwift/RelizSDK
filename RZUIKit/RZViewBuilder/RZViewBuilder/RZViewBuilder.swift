@@ -99,6 +99,8 @@ public class RZViewBuilder<V: UIView>{
     //MARK: - cornerRadius
     @discardableResult
     func _cornerRadius(_ value: CGFloat) -> Self{
+        view.layer.cornerCurve
+      
         view.layer.cornerRadius = value
         return self
     }
@@ -139,6 +141,37 @@ public class RZViewBuilder<V: UIView>{
     }
     @discardableResult
     public func cornerRadius(_ value: RZObservable<RZProtoValue>?) -> Self{
+        if let value = value{ cornerRadius(value*) }
+        return self
+    }
+    
+    
+    @discardableResult
+    public func _cornerRadius(_ value: CGFloat, _ corners: UIRectCorner) -> Self{
+        view.layer.cornerRadius = 0
+        view.roundCorners(corners, radius: value)
+        return self
+    }
+    @discardableResult
+    func _cornerRadius(_ value: RZProtoValue, _ corners: UIRectCorner) -> Self{
+        value.setValueIn(view, .cornerRadius) {[weak self] in self?._cornerRadius(value.getValue($0), corners) }
+        return self
+    }
+    
+    @discardableResult
+    public func cornerRadius(_ value: CGFloat, _ corners: UIRectCorner) -> Self{
+        view.observeController.remove(.cornerRadius)
+        return _cornerRadius(value, corners)
+    }
+    
+    @discardableResult
+    public func cornerRadius(_ value: RZProtoValue, _ corners: UIRectCorner) -> Self{
+        view.observeController.remove(.cornerRadius)
+        return _cornerRadius(value, corners)
+    }
+    
+    @discardableResult
+    public func cornerRadius(_ value: RZObservable<RZProtoValue>?, _ corners: UIRectCorner) -> Self{
         if let value = value{ cornerRadius(value*) }
         return self
     }
