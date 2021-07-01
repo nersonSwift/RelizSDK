@@ -139,40 +139,40 @@ let package = Package.init(
             name: "RelizKit",
             dependencies: [],
             path: "Sources/RelizKit",
-            exclude: ["Info.plist"]
+            exclude: ["Sources/RelizKit/Info.plist"]
         ),
         .target(
             name: "RZEvent",
-            dependencies: ["RelizKit"],
-            exclude: ["Info.plist"]
+            dependencies: [.target(name: "RelizKit")],
+            exclude: ["Sources/RZEvent/Info.plist"]
         ),
         .target(
             name: "RZObservableKit",
             dependencies: ["RelizKit"],
-            exclude: ["Info.plist"]
+            exclude: ["Sources/RZObservableKit/Info.plist"]
         ),
         .target(
             name: "RZStoreKit",
-            dependencies: ["SwiftyStoreKit","RelizKit"],
-            exclude: ["Info.plist"]
+            dependencies: ["SwiftyStoreKit", .target(name: "RelizKit")],
+            exclude: ["Sources/RZStoreKit/Info.plist"]
         ),
         .target(
             name: "RZDarkModeKit",
-            dependencies: ["RelizKit"],
+            dependencies: [.target(name: "RelizKit")],
             path: "Sources/RZUIKit/RZDarkModeKit",
-            exclude: ["Info.plist"]
+            exclude: ["Sources/RZUIKit/RZDarkModeKit/Info.plist"]
         ),
         .target(
             name: "RZUIPacKit",
-            dependencies: ["RZObservableKit","RelizKit"],
+            dependencies: ["RZObservableKit", .target(name: "RelizKit")],
             path: "Sources/RZUIKit/RZUIPacKit",
-            exclude: ["Info.plist"]
+            exclude: ["Sources/RZUIKit/RZUIPacKit/Info.plist"]
         ),
         .target(
             name: "RZViewBuilder",
-            dependencies: ["RZObservableKit","RelizKit"],
+            dependencies: ["RZObservableKit", .target(name: "RelizKit")],
             path: "Sources/RZUIKit/RZViewBuilder",
-            exclude: ["Info.plist"]
+            exclude: ["Sources/RZUIKit/RZViewBuilder/Info.plist"]
         )
 //        .target(
 //            name: "RZEvent",
@@ -209,3 +209,4 @@ let package = Package.init(
 //        )
     ]
 )
+
