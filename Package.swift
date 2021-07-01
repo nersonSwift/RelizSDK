@@ -97,9 +97,9 @@ let package = Package.init(
     platforms: [.iOS(.v13)],
     products: [
         .library(
-            name: "RelizKit",
+            name: "RelizKit1",
             type: .dynamic,
-            targets: ["RelizKit"]
+            targets: ["RelizKit1"]
         ),
         .library(
             name: "RZEvent",
@@ -137,44 +137,41 @@ let package = Package.init(
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
-            name: "RelizKit",
+            name: "RelizKit1",
             dependencies: [],
             path: "Sources/RelizKit",
-            exclude: ["Info.plist"],
-            cSettings: [
-                .headerSearchPath("Sources/RelizKit")
-            ]
+            exclude: ["Info.plist"]
         ),
         .target(
                     name: "RZEvent",
-                    dependencies: ["RelizKit"],
+                    dependencies: ["RelizKit1"],
                     exclude: ["Info.plist"]
                 ),
                 .target(
                     name: "RZObservableKit",
-                    dependencies: ["RelizKit"],
+                    dependencies: ["RelizKit1"],
                     exclude: ["Info.plist"]
                 ),
                 .target(
                     name: "RZStoreKit",
-                    dependencies: ["SwiftyStoreKit","RelizKit"],
+                    dependencies: ["SwiftyStoreKit","RelizKit1"],
                     exclude: ["Info.plist"]
                 ),
                 .target(
                     name: "RZDarkModeKit",
-                    dependencies: ["RelizKit"],
+                    dependencies: ["RelizKit1"],
                     path: "Sources/RZUIKit/RZDarkModeKit",
                     exclude: ["Info.plist"]
                 ),
                 .target(
                     name: "RZUIPacKit",
-                    dependencies: ["RZObservableKit","RelizKit"],
+                    dependencies: ["RZObservableKit","RelizKit1"],
                     path: "Sources/RZUIKit/RZUIPacKit",
                     exclude: ["Info.plist"]
                 ),
                 .target(
                     name: "RZViewBuilder",
-                    dependencies: ["RZObservableKit","RelizKit"],
+                    dependencies: ["RZObservableKit","RelizKit1"],
                     path: "Sources/RZUIKit/RZViewBuilder",
                     exclude: ["Info.plist"]
                 )
