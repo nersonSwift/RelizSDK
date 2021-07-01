@@ -12,7 +12,9 @@ extension UIColor{
         let colorL = UIColor { sdf -> UIColor in
             if RZDarkModeKit.last != UIScreen.main.traitCollection.userInterfaceStyle {
                 RZDarkModeKit.last = UIScreen.main.traitCollection.userInterfaceStyle
-                RZDarkModeKit.updateColorise()
+                if case .auto = RZDarkModeKit.mode{
+                    RZDarkModeKit.updateColorise()
+                }
             }
             if sdf.isDarkMode{
                 return color
@@ -30,10 +32,10 @@ extension UIColor{
 
 public extension UITraitCollection {
     var isDarkMode: Bool {
-        if case .auto = RZDarkModeKit.mod{
+        if case .auto = RZDarkModeKit.mode{
             return self.userInterfaceStyle == .dark
         }
-        if case .mod(let state) = RZDarkModeKit.mod{
+        if case .mode(let state) = RZDarkModeKit.mode{
             return state == .dark
         }
         return false
@@ -49,15 +51,15 @@ public class RZDarkModeKit {
             case light
         }
         case auto
-        case mod(_ modState: ModState? = nil)
+        case mode(_ modState: ModState? = nil)
     }
     
-    public static var mod: ColorMod{
+    public static var mode: ColorMod{
         set(mod){
             if case .auto = mod{
                 autoMod = true
             }
-            if case .mod(let state) = RZDarkModeKit.mod{
+            if case .mode(let state) = RZDarkModeKit.mode{
                 autoMod = false
                 if state == .dark{
                     darkMod = true
@@ -69,11 +71,11 @@ public class RZDarkModeKit {
             RZDarkModeKit.updateColorise()
         }
         get{
-            return autoMod ? .auto : .mod(darkMod ? .dark : .light)
+            return autoMod ? .auto : .mode(darkMod ? .dark : .light)
         }
     }
     
-    private static var autoModKey = "autoMod"
+    private static var autoModKey = "RZDarkModeKit - autoMod"
     private static var autoMod: Bool{
         set(autoMod){
             UserDefaults.standard.set(autoMod, forKey: autoModKey)
@@ -83,7 +85,7 @@ public class RZDarkModeKit {
         }
     }
     
-    private static var darkModKey = "darkMod"
+    private static var darkModKey = "RZDarkModeKit - darkMod"
     private static var darkMod: Bool{
         set(darkMod){
             UserDefaults.standard.set(darkMod, forKey: darkModKey)

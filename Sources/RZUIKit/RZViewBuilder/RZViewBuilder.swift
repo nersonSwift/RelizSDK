@@ -50,24 +50,24 @@ public class RZViewBuilder<V: UIView>{
     @discardableResult
     func _color(_ value: UIColor, _ type: ColorType = .background) -> Self {
         switch type {
-            case .background: view <- { $0.backgroundColor = value }
+            case .background: view <- { $0.backgroundColor = UIColor(cgColor: value.cgColor) }
             case .content: _setContentColor(value)
             case .border: view <- { $0.layer.borderColor = value.cgColor }
             case .shadow: view <- { $0.layer.shadowColor = value.cgColor }
-            case .tint: view <- { $0.tintColor = value }
+            case .tint: view <- { $0.tintColor = UIColor(cgColor: value.cgColor) }
         }
         return self
     }
     func _setContentColor(_ value: UIColor){
         switch view {
         case let label as UILabel:
-            label <- { $0.textColor = value }
+            label <- { $0.textColor = UIColor(cgColor: value.cgColor) }
         case let textView as UITextView:
-            textView <- { $0.textColor = value }
+            textView <- { $0.textColor = UIColor(cgColor: value.cgColor) }
         case let textField as UITextField:
-            textField <- { $0.textColor = value }
+            textField <- { $0.textColor = UIColor(cgColor: value.cgColor) }
         case let button as UIButton:
-            button <- { $0.setTitleColor(value, for: .normal) }
+            button <- { $0.setTitleColor(UIColor(cgColor: value.cgColor), for: .normal) }
         default:break
         }
     }
@@ -145,7 +145,7 @@ public class RZViewBuilder<V: UIView>{
     
     
     @discardableResult
-    public func _cornerRadius(_ value: CGFloat, _ corners: UIRectCorner) -> Self{
+    func _cornerRadius(_ value: CGFloat, _ corners: UIRectCorner) -> Self{
         view.layer.cornerRadius = 0
         view.roundCorners(corners, radius: value)
         return self
