@@ -59,7 +59,7 @@ public class RZDarkModeKit {
             if case .auto = mod{
                 autoMod = true
             }
-            if case .mode(let state) = RZDarkModeKit.mode{
+            if case .mode(let state) = mod{
                 autoMod = false
                 if state == .dark{
                     darkMod = true

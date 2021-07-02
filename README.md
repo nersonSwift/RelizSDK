@@ -1,4 +1,4 @@
-# RelizKit
+# RelizSDK
 
 ## Installation
 

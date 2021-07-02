@@ -1,12 +1,14 @@
 # RelizSDK
 
 RelizSDK - это покет фреимворков, который включает в себя 6 модулей:
-1. [RZEventKit](RZEventKit/README.md)
-2. [RZObservableKit](RZObservableKit/README.md)
-3. [RZStoreKit](RZStoreKit/README.md)
-4. [RZUIPacKit](RZUIPacKit/README.md)
-5. [RZViewBuilderKit](RZViewBuilderKit/README.md)
-6. [RZDarkModeKit](RZDarkModeKit/README.md)
+1. [RZEventKit](RZEventKit/README.md) - Модуль облегчающий работу с ивент мапингом, 
+можно настроить отправку в любые трекинговые системы.
+2. [RZObservableKit](RZObservableKit/README.md) - Модуль облегчающий работу с наблюдателями.
+3. [RZStoreKit](RZStoreKit/README.md) - Модуль облегчающий работу с StoreKit.
+4. [RZUIPacKit](RZUIKit/RZUIPacKit/README.md) - Модуль облекчающий работу с экранами, 
+переходы между экранами, встраивание экранов, разделение логик.
+5. [RZViewBuilderKit](RZUIKit/RZViewBuilderKit/README.md) - Модуль облегчающий верстку кастомных UIView
+6. [RZDarkModeKit](RZUIKit/RZDarkModeKit/README.md) - Модуль облегчающий работу с DarkMode
 
 
 # Установка модулей
@@ -94,7 +96,7 @@ $ arch -x86_64 pod update
 ### Swift Package Manager (available Xcode 11.2 and forward)
 1. In Xcode, select File > Swift Packages > Add Package Dependency.
 2. Следуйте инструкциям, используя https://github.com/nersonSwift/RelizKit.git
-3. Выберите [RZUIPacKit](RZUIPacKit/README.md)
+3. Выберите [RZUIPacKit](RZUIKit/RZUIPacKit/README.md)
 3. Proffit!
 
 ### CocoaPods
@@ -120,7 +122,7 @@ $ arch -x86_64 pod update
 ### Swift Package Manager (available Xcode 11.2 and forward)
 1. In Xcode, select File > Swift Packages > Add Package Dependency.
 2. Следуйте инструкциям, используя https://github.com/nersonSwift/RelizKit.git
-3. Выберите [RZViewBuilderKit](RZViewBuilderKit/README.md)
+3. Выберите [RZViewBuilderKit](RZUIKit/RZViewBuilderKit/README.md)
 3. Proffit!
 
 ### CocoaPods
@@ -146,7 +148,7 @@ $ arch -x86_64 pod update
 ### Swift Package Manager (available Xcode 11.2 and forward)
 1. In Xcode, select File > Swift Packages > Add Package Dependency.
 2. Следуйте инструкциям, используя https://github.com/nersonSwift/RelizKit.git
-3. Выберите [RZDarkModeKit](RZDarkModeKit/README.md)
+3. Выберите [RZDarkModeKit](RZUIKit/RZDarkModeKit/README.md)
 3. Proffit!
 
 ### CocoaPods
