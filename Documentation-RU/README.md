@@ -25,5 +25,5 @@ $ arch -x86_64 pod update
 
 ## Documentation
 
-1. [ru documentation](Documentation-RU/README.md)
-2. [en documentation](Documentation-EN/README.md)
+1. [ru documentation](Documentation-RU/firebase_in_libraries.md)
+2. [en documentation](Documentation-EN/firebase_in_libraries.md)
