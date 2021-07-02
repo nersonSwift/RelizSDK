@@ -13,10 +13,12 @@
 pod 'RelizSDK'
 ```
 2. Write in the terminal:
+
 `Intel`:
 ```
 $ pod update
 ```
+
 `M1`:
 ```
 $ arch -x86_64 pod update
