@@ -17,7 +17,7 @@ RelizSDK - это покет фреимворков, который включа
 
 ### Swift Package Manager (available Xcode 11.2 and forward)
 1. In Xcode, select File > Swift Packages > Add Package Dependency.
-2. Следуйте инструкциям, используя https://github.com/nersonSwift/RelizKit.git
+2. Следуйте инструкциям, используя https://github.com/nersonSwift/RelizSDK.git
 3. Выберите [RZEventKit](RZEventKit/README.md)
 3. Proffit!
 
@@ -43,7 +43,7 @@ $ arch -x86_64 pod update
 
 ### Swift Package Manager (available Xcode 11.2 and forward)
 1. In Xcode, select File > Swift Packages > Add Package Dependency.
-2. Следуйте инструкциям, используя https://github.com/nersonSwift/RelizKit.git
+2. Следуйте инструкциям, используя https://github.com/nersonSwift/RelizSDK.git
 3. Выберите [RZObservableKit](RZObservableKit/README.md)
 3. Proffit!
 
@@ -69,7 +69,7 @@ $ arch -x86_64 pod update
 
 ### Swift Package Manager (available Xcode 11.2 and forward)
 1. In Xcode, select File > Swift Packages > Add Package Dependency.
-2. Следуйте инструкциям, используя https://github.com/nersonSwift/RelizKit.git
+2. Следуйте инструкциям, используя https://github.com/nersonSwift/RelizSDK.git
 3. Выберите [RZStoreKit](RZEventKit/README.md)
 3. Proffit!
 
@@ -95,7 +95,7 @@ $ arch -x86_64 pod update
 
 ### Swift Package Manager (available Xcode 11.2 and forward)
 1. In Xcode, select File > Swift Packages > Add Package Dependency.
-2. Следуйте инструкциям, используя https://github.com/nersonSwift/RelizKit.git
+2. Следуйте инструкциям, используя https://github.com/nersonSwift/RelizSDK.git
 3. Выберите [RZUIPacKit](RZUIKit/RZUIPacKit/README.md)
 3. Proffit!
 
@@ -121,7 +121,7 @@ $ arch -x86_64 pod update
 
 ### Swift Package Manager (available Xcode 11.2 and forward)
 1. In Xcode, select File > Swift Packages > Add Package Dependency.
-2. Следуйте инструкциям, используя https://github.com/nersonSwift/RelizKit.git
+2. Следуйте инструкциям, используя https://github.com/nersonSwift/RelizSDK.git
 3. Выберите [RZViewBuilderKit](RZUIKit/RZViewBuilderKit/README.md)
 3. Proffit!
 
@@ -147,7 +147,7 @@ $ arch -x86_64 pod update
 
 ### Swift Package Manager (available Xcode 11.2 and forward)
 1. In Xcode, select File > Swift Packages > Add Package Dependency.
-2. Следуйте инструкциям, используя https://github.com/nersonSwift/RelizKit.git
+2. Следуйте инструкциям, используя https://github.com/nersonSwift/RelizSDK.git
 3. Выберите [RZDarkModeKit](RZUIKit/RZDarkModeKit/README.md)
 3. Proffit!
 
