@@ -3,8 +3,8 @@
 @_exported import UIKit
 @_exported import SwiftUI
 
-#if canImport(RZEvent)
-@_exported import RZEvent
+#if canImport(RZEventKit)
+@_exported import RZEventKit
 #endif
 
 #if canImport(RZStoreKit)
@@ -21,12 +21,12 @@
 @_exported import RZDarkModeKit
 #endif
 
-#if canImport(RZUIPacKit)
+#if canImport(RZUIPacKitKit)
 @_exported import RZUIPacKit
 #endif
 
 #if canImport(RZViewBuilder)
-@_exported import RZViewBuilder
+@_exported import RZViewBuilderKit
 #endif
 
 

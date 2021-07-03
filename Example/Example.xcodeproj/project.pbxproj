@@ -77,7 +77,7 @@
 		51575182268C9931006D45BA /* ReceiptItemExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5157517B268C9930006D45BA /* ReceiptItemExtention.swift */; };
 		51575183268C9931006D45BA /* RZStoreDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5157517C268C9930006D45BA /* RZStoreDelegateProtocol.swift */; };
 		51575189268C994F006D45BA /* RZEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51575186268C994E006D45BA /* RZEvent.swift */; };
-		5157518A268C994F006D45BA /* RZEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 51575187268C994E006D45BA /* RZEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5157518A268C994F006D45BA /* RZEventKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 51575187268C994E006D45BA /* RZEventKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		51575190268C999E006D45BA /* RZDarkModeKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5157518D268C999E006D45BA /* RZDarkModeKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		51575191268C999E006D45BA /* RZDarkModeKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5157518E268C999E006D45BA /* RZDarkModeKit.swift */; };
 		515751C9268C99DC006D45BA /* RZViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751B8268C99DC006D45BA /* RZViewBuilder.swift */; };
@@ -86,7 +86,7 @@
 		515751CC268C99DC006D45BA /* RZProtoValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751BC268C99DC006D45BA /* RZProtoValue.swift */; };
 		515751CD268C99DC006D45BA /* RZProto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751BD268C99DC006D45BA /* RZProto.swift */; };
 		515751CE268C99DC006D45BA /* RZProtoOperationGoup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751BE268C99DC006D45BA /* RZProtoOperationGoup.swift */; };
-		515751CF268C99DC006D45BA /* RZViewBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 515751BF268C99DC006D45BA /* RZViewBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		515751CF268C99DC006D45BA /* RZViewBuilderKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 515751BF268C99DC006D45BA /* RZViewBuilderKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		515751D0268C99DC006D45BA /* RZImageSeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751C1268C99DC006D45BA /* RZImageSeter.swift */; };
 		515751D1268C99DC006D45BA /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751C2268C99DC006D45BA /* UIViewExtension.swift */; };
 		515751D2268C99DC006D45BA /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751C3268C99DC006D45BA /* Operators.swift */; };
@@ -356,7 +356,7 @@
 		5157517C268C9930006D45BA /* RZStoreDelegateProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZStoreDelegateProtocol.swift; sourceTree = "<group>"; };
 		5157517D268C9930006D45BA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51575186268C994E006D45BA /* RZEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZEvent.swift; sourceTree = "<group>"; };
-		51575187268C994E006D45BA /* RZEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZEvent.h; sourceTree = "<group>"; };
+		51575187268C994E006D45BA /* RZEventKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZEventKit.h; sourceTree = "<group>"; };
 		51575188268C994E006D45BA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5157518D268C999E006D45BA /* RZDarkModeKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZDarkModeKit.h; sourceTree = "<group>"; };
 		5157518E268C999E006D45BA /* RZDarkModeKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZDarkModeKit.swift; sourceTree = "<group>"; };
@@ -367,7 +367,7 @@
 		515751BC268C99DC006D45BA /* RZProtoValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZProtoValue.swift; sourceTree = "<group>"; };
 		515751BD268C99DC006D45BA /* RZProto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZProto.swift; sourceTree = "<group>"; };
 		515751BE268C99DC006D45BA /* RZProtoOperationGoup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZProtoOperationGoup.swift; sourceTree = "<group>"; };
-		515751BF268C99DC006D45BA /* RZViewBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZViewBuilder.h; sourceTree = "<group>"; };
+		515751BF268C99DC006D45BA /* RZViewBuilderKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZViewBuilderKit.h; sourceTree = "<group>"; };
 		515751C1268C99DC006D45BA /* RZImageSeter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZImageSeter.swift; sourceTree = "<group>"; };
 		515751C2268C99DC006D45BA /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		515751C3268C99DC006D45BA /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
@@ -588,7 +588,7 @@
 			isa = PBXGroup;
 			children = (
 				51575152268C98F7006D45BA /* RelizKit */,
-				51575185268C994E006D45BA /* RZEvent */,
+				51575185268C994E006D45BA /* RZEventKit */,
 				51575174268C9930006D45BA /* RZStoreKit */,
 				5157515B268C991D006D45BA /* RZObservableKit */,
 				512ED4712672ACAD00CDD342 /* UI */,
@@ -601,7 +601,7 @@
 			children = (
 				5157518C268C999E006D45BA /* RZDarkModeKit */,
 				515751D8268C9A57006D45BA /* RZUIPacKit */,
-				515751B7268C99DC006D45BA /* RZViewBuilder */,
+				515751B7268C99DC006D45BA /* RZViewBuilderKit */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -715,15 +715,15 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		51575185268C994E006D45BA /* RZEvent */ = {
+		51575185268C994E006D45BA /* RZEventKit */ = {
 			isa = PBXGroup;
 			children = (
 				51575186268C994E006D45BA /* RZEvent.swift */,
-				51575187268C994E006D45BA /* RZEvent.h */,
+				51575187268C994E006D45BA /* RZEventKit.h */,
 				51575188268C994E006D45BA /* Info.plist */,
 			);
-			name = RZEvent;
-			path = ../../Sources/RZEvent;
+			name = RZEventKit;
+			path = ../../Sources/RZEventKit;
 			sourceTree = "<group>";
 		};
 		5157518C268C999E006D45BA /* RZDarkModeKit */ = {
@@ -737,18 +737,18 @@
 			path = ../../../Sources/RZUIKit/RZDarkModeKit;
 			sourceTree = "<group>";
 		};
-		515751B7268C99DC006D45BA /* RZViewBuilder */ = {
+		515751B7268C99DC006D45BA /* RZViewBuilderKit */ = {
 			isa = PBXGroup;
 			children = (
 				515751B8268C99DC006D45BA /* RZViewBuilder.swift */,
 				515751B9268C99DC006D45BA /* RZProto */,
-				515751BF268C99DC006D45BA /* RZViewBuilder.h */,
+				515751BF268C99DC006D45BA /* RZViewBuilderKit.h */,
 				515751C0268C99DC006D45BA /* Helpers */,
 				515751C7268C99DC006D45BA /* Info.plist */,
 				515751C8268C99DC006D45BA /* RZObservable.swift */,
 			);
-			name = RZViewBuilder;
-			path = ../../../Sources/RZUIKit/RZViewBuilder;
+			name = RZViewBuilderKit;
+			path = ../../../Sources/RZUIKit/RZViewBuilderKit;
 			sourceTree = "<group>";
 		};
 		515751B9268C99DC006D45BA /* RZProto */ = {
@@ -863,7 +863,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5157518A268C994F006D45BA /* RZEvent.h in Headers */,
+				5157518A268C994F006D45BA /* RZEventKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -887,7 +887,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				515751CF268C99DC006D45BA /* RZViewBuilder.h in Headers */,
+				515751CF268C99DC006D45BA /* RZViewBuilderKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,7 +2,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "RZEventKit"
-  spec.version      = "3.0.1"
+  spec.version      = "3.0.2"
   spec.summary      = "Small example to test code sharing."
   spec.description  = "Small example to test code sharing via cocoapods."	
   
@@ -23,8 +23,8 @@ Pod::Spec.new do |spec|
 	:tag => spec.name.to_s + "_v" + spec.version.to_s
   }
 
-  spec.source_files = "Sources/RZEvent/**/*"
-  spec.exclude_files = "Sources/RZEvent/**/*.plist"
+  spec.source_files = "Sources/RZEventKit/**/*"
+  spec.exclude_files = "Sources/RZEventKit/**/*.plist"
   spec.swift_version = '5.3'
   spec.ios.deployment_target  = '13.0'
 

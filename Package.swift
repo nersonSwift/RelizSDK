@@ -12,8 +12,8 @@ let package = Package.init(
   platforms: [.iOS(.v13)],
   products: [
     .library(
-      name: "RZEvent",
-      targets: ["RZEvent"]
+      name: "RZEventKit",
+      targets: ["RZEventKit"]
     ),
     .library(
       name: "RZObservableKit",
@@ -32,8 +32,8 @@ let package = Package.init(
       targets: ["RZUIPacKit"]
     ),
     .library(
-      name: "RZViewBuilder",
-      targets: ["RZViewBuilder"]
+      name: "RZViewBuilderKit",
+      targets: ["RZViewBuilderKit"]
     )
   ],
   dependencies: [
@@ -52,7 +52,7 @@ let package = Package.init(
       exclude: ["Info.plist"]
     ),
     .target(
-      name: "RZEvent",
+      name: "RZEventKit",
       dependencies: [.target(name: "RelizKit")],
       exclude: ["Info.plist"]
     ),
@@ -79,9 +79,9 @@ let package = Package.init(
       exclude: ["Info.plist"]
     ),
     .target(
-      name: "RZViewBuilder",
+      name: "RZViewBuilderKit",
       dependencies: ["RZObservableKit", .target(name: "RelizKit")],
-      path: "Sources/RZUIKit/RZViewBuilder",
+      path: "Sources/RZUIKit/RZViewBuilderKit",
       exclude: ["Info.plist"]
     )
   ]
