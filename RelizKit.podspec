@@ -2,7 +2,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "RelizKit"
-  spec.version      = "6.0"
+  spec.version      = "6.0.1"
   spec.summary      = "RelizKit"
   spec.description  = "Small example to test code sharing via cocoapods."	
   
@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   }
  
   spec.source       = { 
-	:git => "https://github.com/nersonSwift/RelizKit.git", 
+	:git => "https://github.com/nersonSwift/RelizSDK.git", 
 	:tag => spec.name.to_s + "_v" + spec.version.to_s
   }
 

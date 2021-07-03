@@ -325,9 +325,9 @@
 		512ED7BB2672B72300CDD342 /* RZDarkModeKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = RZDarkModeKit.podspec; path = ../../RZDarkModeKit.podspec; sourceTree = "<group>"; };
 		512ED7BC2672B72300CDD342 /* RelizSDK.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = RelizSDK.podspec; path = ../../RelizSDK.podspec; sourceTree = "<group>"; };
 		512ED7BD2672B72300CDD342 /* RelizKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = RelizKit.podspec; path = ../../RelizKit.podspec; sourceTree = "<group>"; };
-		512ED7BE2672B72300CDD342 /* RZViewBuilder.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = RZViewBuilder.podspec; path = ../../RZViewBuilder.podspec; sourceTree = "<group>"; };
+		512ED7BE2672B72300CDD342 /* RZViewBuilderKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = RZViewBuilderKit.podspec; path = ../../RZViewBuilderKit.podspec; sourceTree = "<group>"; };
 		512ED7BF2672B72300CDD342 /* RZStoreKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = RZStoreKit.podspec; path = ../../RZStoreKit.podspec; sourceTree = "<group>"; };
-		512ED7C02672B72300CDD342 /* RZEvent.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = RZEvent.podspec; path = ../../RZEvent.podspec; sourceTree = "<group>"; };
+		512ED7C02672B72300CDD342 /* RZEventKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = RZEventKit.podspec; path = ../../RZEventKit.podspec; sourceTree = "<group>"; };
 		512ED7C12672B72300CDD342 /* RZObservableKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = RZObservableKit.podspec; path = ../../RZObservableKit.podspec; sourceTree = "<group>"; };
 		512ED7EC267369B000CDD342 /* RZViewBuilderKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZViewBuilderKitTests.swift; sourceTree = "<group>"; };
 		512ED7F5267374E700CDD342 /* RZVBColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZVBColorTests.swift; sourceTree = "<group>"; };
@@ -611,12 +611,12 @@
 			children = (
 				512ED7BC2672B72300CDD342 /* RelizSDK.podspec */,
 				512ED7BD2672B72300CDD342 /* RelizKit.podspec */,
-				512ED7C02672B72300CDD342 /* RZEvent.podspec */,
+				512ED7C02672B72300CDD342 /* RZEventKit.podspec */,
 				512ED7BF2672B72300CDD342 /* RZStoreKit.podspec */,
 				512ED7C12672B72300CDD342 /* RZObservableKit.podspec */,
 				512ED7BB2672B72300CDD342 /* RZDarkModeKit.podspec */,
 				512ED7BA2672B72300CDD342 /* RZUIPacKit.podspec */,
-				512ED7BE2672B72300CDD342 /* RZViewBuilder.podspec */,
+				512ED7BE2672B72300CDD342 /* RZViewBuilderKit.podspec */,
 			);
 			path = PodSpecs;
 			sourceTree = "<group>";
