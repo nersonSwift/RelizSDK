@@ -2,7 +2,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "RelizSDK"
-  spec.version      = "2.1.4"
+  spec.version      = "2.1.5"
   spec.summary      = "RelizSDK"
   spec.description  = "Small example to test code sharing via cocoapods."	
   
@@ -35,20 +35,20 @@ Pod::Spec.new do |spec|
     ss.dependency 'RelizSDK/CoreOnly'
     ss.dependency 'RelizSDK/RZUIKit'
     ss.dependency 'RelizSDK/RZStoreKit'
-    ss.dependency 'RelizSDK/RZEvent'
+    ss.dependency 'RelizSDK/RZEventKit'
     ss.dependency 'RelizSDK/RZObservableKit'
   end
 
   spec.subspec 'RZUIKit' do |ss|
     ss.dependency 'RelizSDK/CoreOnly'
-    ss.dependency 'RelizSDK/RZViewBuilder'
+    ss.dependency 'RelizSDK/RZViewBuilderKit'
     ss.dependency 'RelizSDK/RZUIPacKit'
     ss.dependency 'RelizSDK/RZDarkModeKit'
   end
 
   spec.subspec 'RZViewBuilderKit' do |ss|
     ss.dependency 'RelizSDK/CoreOnly'
-    ss.dependency "RZViewBuilder"
+    ss.dependency "RZViewBuilderKit"
   end
 
   spec.subspec 'RZUIPacKit' do |ss|
@@ -68,7 +68,7 @@ Pod::Spec.new do |spec|
 
   spec.subspec 'RZEventKit' do |ss|
     ss.dependency 'RelizSDK/CoreOnly'
-    ss.dependency "RZEvent"
+    ss.dependency "RZEventKit"
   end
   
   spec.subspec 'RZObservableKit' do |ss|
