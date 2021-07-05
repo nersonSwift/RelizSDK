@@ -82,7 +82,7 @@ let package = Package.init(
     ),
     .target(
       name: "RZViewBuilderKit",
-      dependencies: ["RZObservableKit", .target(name: "RelizKit")],
+      dependencies: ["RZObservableKit", .target(name: "RelizKit"), .target(name: "RZDarkModeKit")],
       path: "Sources/RZUIKit/RZViewBuilderKit",
       exclude: ["Info.plist"]
     )
