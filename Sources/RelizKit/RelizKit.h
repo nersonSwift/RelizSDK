@@ -12,7 +12,7 @@
     #error "RelizKit.h won't import anything if your compiler doesn't support __has_include. Please \ import the headers individually."
 #else
     #if __has_include(<RZEventKit/RZEventKit.h>)
-      #import <RZEvent/RZEventKit.h>
+      #import <RZEventKit/RZEventKit.h>
     #endif
     #if __has_include(<RZStoreKit/RZStoreKit.h>)
       #import <RZStoreKit/RZStoreKit.h>
@@ -24,7 +24,7 @@
       #import <RZUIPacKit/RZUIPacKit.h>
     #endif
     #if __has_include(<RZViewBuilderKit/RZViewBuilderKit.h>)
-      #import <RZViewBuilder/RZViewBuilder.h>
+      #import <RZViewBuilderKit/RZViewBuilderKit.h>
     #endif
     #if __has_include(<RZDarkModeKit/RZDarkModeKit.h>)
       #import <RZDarkModeKit/RZDarkModeKit.h>
