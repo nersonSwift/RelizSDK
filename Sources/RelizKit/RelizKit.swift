@@ -30,4 +30,32 @@
 #endif
 
 
+class RelizKit{
+    static func testimport(){
+        #if canImport(RZEventKit)
+            print("RZEventKit")
+        #endif
 
+        #if canImport(RZStoreKit)
+            print("RZStoreKit")
+        #endif
+
+        #if canImport(RZObservableKit)
+            print("RZObservableKit")
+        #endif
+
+
+        //MARK: - RZUIKit
+        #if canImport(RZDarkModeKit)
+            print("RZDarkModeKit")
+        #endif
+
+        #if canImport(RZUIPacKitKit)
+            print("RZUIPacKitKit")
+        #endif
+
+        #if canImport(RZViewBuilder)
+            print("RZViewBuilder")
+        #endif
+    }
+}
