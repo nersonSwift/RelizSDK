@@ -8,10 +8,6 @@ let package = Package(
     platforms: [.iOS(.v13)],
     products: [
         .library(
-            name: "All",
-            targets: ["RZEventKit","RZObservableKit","RZStoreKit","RZViewBuilderKit","RZDarkModeKit","RZUIPacKit"]
-        ),
-        .library(
             name: "RZEventKit",
             targets: ["RZEventKit"]
         ),
@@ -22,10 +18,6 @@ let package = Package(
         .library(
             name: "RZStoreKit",
             targets: ["RZStoreKit"]
-        ),
-        .library(
-            name: "RZUIKit",
-            targets: ["RZViewBuilderKit","RZDarkModeKit","RZUIPacKit"]
         ),
         .library(
             name: "RZDarkModeKit",
