@@ -8,6 +8,10 @@ let package = Package(
     platforms: [.iOS(.v13)],
     products: [
         .library(
+            name: "RelizKit",
+            targets: ["RelizKit"]
+        ),
+        .library(
             name: "RZEventKit",
             targets: ["RZEventKit"]
         ),
