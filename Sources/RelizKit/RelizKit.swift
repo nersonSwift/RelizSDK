@@ -30,8 +30,8 @@
 #endif
 
 
-class RelizKit1{
-    static func testimport(){
+public class RelizKit{
+    public static func testimport(){
         #if canImport(RZEventKit)
             print("RZEventKit")
         #endif

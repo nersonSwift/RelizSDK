@@ -9,26 +9,32 @@ let package = Package(
     products: [
         .library(
             name: "RZEventKit",
+            type: .dynamic,
             targets: ["RZEventKit"]
         ),
         .library(
             name: "RZObservableKit",
+            type: .dynamic,
             targets: ["RZObservableKit"]
         ),
         .library(
             name: "RZStoreKit",
+            type: .dynamic,
             targets: ["RZStoreKit"]
         ),
         .library(
             name: "RZDarkModeKit",
+            type: .dynamic,
             targets: ["RZDarkModeKit"]
         ),
         .library(
             name: "RZUIPacKit",
+            type: .dynamic,
             targets: ["RZUIPacKit"]
         ),
         .library(
             name: "RZViewBuilderKit",
+            type: .dynamic,
             targets: ["RZViewBuilderKit"]
         )
     ],
