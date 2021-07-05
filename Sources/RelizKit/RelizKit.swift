@@ -25,7 +25,7 @@
 @_exported import RZUIPacKit
 #endif
 
-#if canImport(RZViewBuilder)
+#if canImport(RZViewBuilderKit)
 @_exported import RZViewBuilderKit
 #endif
 
@@ -54,8 +54,8 @@ public class RelizKit{
             print("RZUIPacKitKit")
         #endif
 
-        #if canImport(RZViewBuilder)
-            print("RZViewBuilder")
+        #if canImport(RZViewBuilderKit)
+            print("RZViewBuilderKit")
         #endif
     }
 }
