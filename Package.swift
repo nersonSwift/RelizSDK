@@ -51,6 +51,7 @@ let package = Package(
         .target(
             name: "RelizKit",
             dependencies: [],
+            path: "Sources/RelizKit",
             exclude: ["Info.plist"]
         ),
         .target(
