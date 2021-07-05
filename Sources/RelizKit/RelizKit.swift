@@ -16,7 +16,6 @@
 #endif
 
 
-//MARK: - RZUIKit
 #if canImport(RZDarkModeKit)
 @_exported import RZDarkModeKit
 #endif
@@ -28,34 +27,3 @@
 #if canImport(RZViewBuilderKit)
 @_exported import RZViewBuilderKit
 #endif
-
-
-public class RelizKit{
-    public static func testimport(){
-        #if canImport(RZEventKit)
-            print("RZEventKit")
-        #endif
-
-        #if canImport(RZStoreKit)
-            print("RZStoreKit")
-        #endif
-
-        #if canImport(RZObservableKit)
-            print("RZObservableKit")
-        #endif
-
-
-        //MARK: - RZUIKit
-        #if canImport(RZDarkModeKit)
-            print("RZDarkModeKit")
-        #endif
-
-        #if canImport(RZUIPacKitKit)
-            print("RZUIPacKitKit")
-        #endif
-
-        #if canImport(RZViewBuilderKit)
-            print("RZViewBuilderKit")
-        #endif
-    }
-}
