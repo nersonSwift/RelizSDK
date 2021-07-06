@@ -32,7 +32,6 @@ let package = Package(
         ),
         .library(
             name: "RelizKit",
-            type: .dynamic,
             targets: ["RelizKit"]
         ),
     ],
@@ -54,40 +53,40 @@ let package = Package(
             name: "RZEventKit",
             //dependencies: [.target(name: "RelizKit")],
             exclude: ["Info.plist"],
-            linkerSettings: [.linkedFramework("RelizKit")]
+            linkerSettings: [.linkedLibrary("RelizKit")]
         ),
         .target(
             name: "RZObservableKit",
             //dependencies: [.target(name: "RelizKit")],
             exclude: ["Info.plist"],
-            linkerSettings: [.linkedFramework("RelizKit")]
+            linkerSettings: [.linkedLibrary("RelizKit")]
         ),
         .target(
             name: "RZStoreKit",
             dependencies: ["SwiftyStoreKit"],//, .target(name: "RelizKit")],
             exclude: ["Info.plist"],
-            linkerSettings: [.linkedFramework("RelizKit")]
+            linkerSettings: [.linkedLibrary("RelizKit")]
         ),
         .target(
             name: "RZDarkModeKit",
             //dependencies: [.target(name: "RelizKit")],
             path: "Sources/RZUIKit/RZDarkModeKit",
             exclude: ["Info.plist"],
-            linkerSettings: [.linkedFramework("RelizKit")]
+            linkerSettings: [.linkedLibrary("RelizKit")]
         ),
         .target(
             name: "RZUIPacKit",
             dependencies: [.target(name: "RZObservableKit")],//, .target(name: "RelizKit")],
             path: "Sources/RZUIKit/RZUIPacKit",
             exclude: ["Info.plist"],
-            linkerSettings: [.linkedFramework("RelizKit")]
+            linkerSettings: [.linkedLibrary("RelizKit")]
         ),
         .target(
             name: "RZViewBuilderKit",
             dependencies: [.target(name: "RZObservableKit"), .target(name: "RZDarkModeKit")],//, .target(name: "RelizKit")],
             path: "Sources/RZUIKit/RZViewBuilderKit",
             exclude: ["Info.plist"],
-            linkerSettings: [.linkedFramework("RelizKit")]
+            linkerSettings: [.linkedLibrary("RelizKit")]
         )
     ]
 )
