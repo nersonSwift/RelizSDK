@@ -58,35 +58,30 @@ let package = Package(
         .target(
             name: "RZObservableKit",
             dependencies: [.target(name: "RelizKit")],
-            exclude: ["Info.plist"],
-            linkerSettings: [.linkedLibrary("RelizKit")]
+            exclude: ["Info.plist"]
         ),
         .target(
             name: "RZStoreKit",
             dependencies: ["SwiftyStoreKit", .target(name: "RelizKit")],
-            exclude: ["Info.plist"],
-            linkerSettings: [.linkedLibrary("RelizKit")]
+            exclude: ["Info.plist"]
         ),
         .target(
             name: "RZDarkModeKit",
             dependencies: [.target(name: "RelizKit")],
             path: "Sources/RZUIKit/RZDarkModeKit",
-            exclude: ["Info.plist"],
-            linkerSettings: [.linkedLibrary("RelizKit")]
+            exclude: ["Info.plist"]
         ),
         .target(
             name: "RZUIPacKit",
             dependencies: [.target(name: "RZObservableKit"), .target(name: "RelizKit")],
             path: "Sources/RZUIKit/RZUIPacKit",
-            exclude: ["Info.plist"],
-            linkerSettings: [.linkedLibrary("RelizKit")]
+            exclude: ["Info.plist"]
         ),
         .target(
             name: "RZViewBuilderKit",
             dependencies: [.target(name: "RZObservableKit"), .target(name: "RZDarkModeKit"), .target(name: "RelizKit")],
             path: "Sources/RZUIKit/RZViewBuilderKit",
-            exclude: ["Info.plist"],
-            linkerSettings: [.linkedLibrary("RelizKit")]
+            exclude: ["Info.plist"]
         )
     ]
 )
