@@ -10,27 +10,27 @@ let package = Package(
         .library(
             name: "RZEventKit",
             type: .dynamic,
-            targets: ["RZEventKit", "RelizKit"]
+            targets: ["RZEventKit"]
         ),
         .library(
             name: "RZObservableKit",
-            targets: ["RZObservableKit", "RelizKit"]
+            targets: ["RZObservableKit"]
         ),
         .library(
             name: "RZStoreKit",
-            targets: ["RZStoreKit", "RelizKit"]
+            targets: ["RZStoreKit"]
         ),
         .library(
             name: "RZDarkModeKit",
-            targets: ["RZDarkModeKit", "RelizKit"]
+            targets: ["RZDarkModeKit"]
         ),
         .library(
             name: "RZUIPacKit",
-            targets: ["RZUIPacKit", "RelizKit"]
+            targets: ["RZUIPacKit"]
         ),
         .library(
             name: "RZViewBuilderKit",
-            targets: ["RZViewBuilderKit", "RelizKit"]
+            targets: ["RZViewBuilderKit"]
         )
     ],
     dependencies: [
