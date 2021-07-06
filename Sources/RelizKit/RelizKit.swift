@@ -20,7 +20,7 @@
 @_exported import RZDarkModeKit
 #endif
 
-#if canImport(RZUIPacKitKit)
+#if canImport(RZUIPacKit)
 @_exported import RZUIPacKit
 #endif
 
