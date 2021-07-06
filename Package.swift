@@ -9,7 +9,6 @@ let package = Package(
     products: [
         .library(
             name: "RZEventKit",
-            type: .dynamic,
             targets: ["RZEventKit"]
         ),
         .library(
@@ -46,40 +45,46 @@ let package = Package(
             dependencies: [],
             path: "Sources/RelizKit",
             exclude: ["Info.plist"],
-            publicHeadersPath: "./"
+            publicHeadersPath: "Sources/RelizKit"
         ),
         .target(
             name: "RZEventKit",
             dependencies: [.target(name: "RelizKit")],
-            exclude: ["Info.plist"]
+            exclude: ["Info.plist"],
+            publicHeadersPath: "Sources/RZEventKit"
         ),
         .target(
             name: "RZObservableKit",
             dependencies: [.target(name: "RelizKit")],
-            exclude: ["Info.plist"]
+            exclude: ["Info.plist"],
+            publicHeadersPath: "Sources/RZObservableKit"
         ),
         .target(
             name: "RZStoreKit",
             dependencies: ["SwiftyStoreKit", .target(name: "RelizKit")],
-            exclude: ["Info.plist"]
+            exclude: ["Info.plist"],
+            publicHeadersPath: "Sources/RZStoreKit"
         ),
         .target(
             name: "RZDarkModeKit",
             dependencies: [.target(name: "RelizKit")],
             path: "Sources/RZUIKit/RZDarkModeKit",
-            exclude: ["Info.plist"]
+            exclude: ["Info.plist"],
+            publicHeadersPath: "Sources/RZUIKit/RZDarkModeKit"
         ),
         .target(
             name: "RZUIPacKit",
             dependencies: [.target(name: "RZObservableKit"), .target(name: "RelizKit")],
             path: "Sources/RZUIKit/RZUIPacKit",
-            exclude: ["Info.plist"]
+            exclude: ["Info.plist"],
+            publicHeadersPath: "Sources/RZUIKit/RZUIPacKit"
         ),
         .target(
             name: "RZViewBuilderKit",
             dependencies: [.target(name: "RZObservableKit"), .target(name: "RZDarkModeKit"), .target(name: "RelizKit")],
             path: "Sources/RZUIKit/RZViewBuilderKit",
-            exclude: ["Info.plist"]
+            exclude: ["Info.plist"],
+            publicHeadersPath: "Sources/RZUIKit/RZViewBuilderKit"
         )
     ]
 )
