@@ -9,27 +9,27 @@ let package = Package(
     products: [
         .library(
             name: "RZEventKit",
-            targets: ["RZEventKit"]
+            targets: ["RZEventKit", "RelizKit"]
         ),
         .library(
             name: "RZObservableKit",
-            targets: ["RZObservableKit"]
+            targets: ["RZObservableKit", "RelizKit"]
         ),
         .library(
             name: "RZStoreKit",
-            targets: ["RZStoreKit"]
+            targets: ["RZStoreKit", "RelizKit"]
         ),
         .library(
             name: "RZDarkModeKit",
-            targets: ["RZDarkModeKit"]
+            targets: ["RZDarkModeKit", "RelizKit"]
         ),
         .library(
             name: "RZUIPacKit",
-            targets: ["RZUIPacKit"]
+            targets: ["RZUIPacKit", "RelizKit"]
         ),
         .library(
             name: "RZViewBuilderKit",
-            targets: ["RZViewBuilderKit"]
+            targets: ["RZViewBuilderKit", "RelizKit"]
         )
     ],
     dependencies: [
@@ -48,36 +48,79 @@ let package = Package(
         ),
         .target(
             name: "RZEventKit",
-            dependencies: [.target(name: "RelizKit")],
+            dependencies: [],
             exclude: ["Info.plist"]
         ),
         .target(
             name: "RZObservableKit",
-            dependencies: [.target(name: "RelizKit")],
+            dependencies: [],
             exclude: ["Info.plist"]
         ),
         .target(
             name: "RZStoreKit",
-            dependencies: ["SwiftyStoreKit", .target(name: "RelizKit")],
+            dependencies: ["SwiftyStoreKit"],
             exclude: ["Info.plist"]
         ),
         .target(
             name: "RZDarkModeKit",
-            dependencies: [.target(name: "RelizKit")],
+            dependencies: [],
             path: "Sources/RZUIKit/RZDarkModeKit",
             exclude: ["Info.plist"]
         ),
         .target(
             name: "RZUIPacKit",
-            dependencies: [.target(name: "RZObservableKit"), .target(name: "RelizKit")],
+            dependencies: [.target(name: "RZObservableKit")],
             path: "Sources/RZUIKit/RZUIPacKit",
             exclude: ["Info.plist"]
         ),
         .target(
             name: "RZViewBuilderKit",
-            dependencies: [.target(name: "RZObservableKit"), .target(name: "RZDarkModeKit"), .target(name: "RelizKit")],
+            dependencies: [.target(name: "RZObservableKit"), .target(name: "RZDarkModeKit")],
             path: "Sources/RZUIKit/RZViewBuilderKit",
             exclude: ["Info.plist"]
         )
     ]
 )
+
+
+//targets: [
+//    .target(
+//        name: "RelizKit",
+//        dependencies: [],
+//        path: "Sources/RelizKit",
+//        exclude: ["Info.plist"]
+//    ),
+//    .target(
+//        name: "RZEventKit",
+//        dependencies: [.target(name: "RelizKit")],
+//        exclude: ["Info.plist"]
+//    ),
+//    .target(
+//        name: "RZObservableKit",
+//        dependencies: [.target(name: "RelizKit")],
+//        exclude: ["Info.plist"]
+//    ),
+//    .target(
+//        name: "RZStoreKit",
+//        dependencies: ["SwiftyStoreKit", .target(name: "RelizKit")],
+//        exclude: ["Info.plist"]
+//    ),
+//    .target(
+//        name: "RZDarkModeKit",
+//        dependencies: [.target(name: "RelizKit")],
+//        path: "Sources/RZUIKit/RZDarkModeKit",
+//        exclude: ["Info.plist"]
+//    ),
+//    .target(
+//        name: "RZUIPacKit",
+//        dependencies: [.target(name: "RZObservableKit"), .target(name: "RelizKit")],
+//        path: "Sources/RZUIKit/RZUIPacKit",
+//        exclude: ["Info.plist"]
+//    ),
+//    .target(
+//        name: "RZViewBuilderKit",
+//        dependencies: [.target(name: "RZObservableKit"), .target(name: "RZDarkModeKit"), .target(name: "RelizKit")],
+//        path: "Sources/RZUIKit/RZViewBuilderKit",
+//        exclude: ["Info.plist"]
+//    )
+//]
