@@ -42,10 +42,8 @@ let package = Package(
     targets: [
         .target(
             name: "RelizKit",
-            dependencies: [],
             path: "Sources/RelizKit",
-            exclude: ["Info.plist"],
-            publicHeadersPath: "Sources/RelizKit"
+            publicHeadersPath: "./"
         ),
         .target(
             name: "RZEventKit",
