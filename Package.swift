@@ -30,11 +30,11 @@ let package = Package(
             name: "RZViewBuilderKit",
             targets: ["RZViewBuilderKit"]
         ),
-//        .library(
-//            name: "RelizKit",
-//            type: .dynamic,
-//            targets: ["RelizKit", "RZObservableKit", "RZStoreKit", "RZDarkModeKit", "RZUIPacKit", "RZViewBuilderKit"]
-//        ),
+        .library(
+            name: "RelizKit",
+            type: .dynamic,
+            targets: ["RelizKit"]
+        ),
     ],
     dependencies: [
         .package(
