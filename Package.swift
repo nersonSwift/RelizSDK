@@ -2,7 +2,6 @@
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 import PackageDescription
 
-
 let package = Package(
     name: "RelizSDK",
     platforms: [.iOS(.v13)],
@@ -10,11 +9,6 @@ let package = Package(
         .library(
             name: "RZEventKit",
             targets: ["RZEventKit"]
-        ),
-        .library(
-            name: "RelizKit",
-            type: .dynamic,
-            targets: ["RelizKit", "RZObservableKit", "RZStoreKit", "RZDarkModeKit", "RZUIPacKit", "RZViewBuilderKit"]
         ),
         .library(
             name: "RZObservableKit",
@@ -35,7 +29,12 @@ let package = Package(
         .library(
             name: "RZViewBuilderKit",
             targets: ["RZViewBuilderKit"]
-        )
+        ),
+//        .library(
+//            name: "RelizKit",
+//            type: .dynamic,
+//            targets: ["RelizKit", "RZObservableKit", "RZStoreKit", "RZDarkModeKit", "RZUIPacKit", "RZViewBuilderKit"]
+//        ),
     ],
     dependencies: [
         .package(
@@ -53,36 +52,42 @@ let package = Package(
         ),
         .target(
             name: "RZEventKit",
-            dependencies: [.target(name: "RelizKit")],
-            exclude: ["Info.plist"]
+            //dependencies: [.target(name: "RelizKit")],
+            exclude: ["Info.plist"],
+            linkerSettings: [.linkedFramework("RelizKit")]
         ),
         .target(
             name: "RZObservableKit",
-            dependencies: [.target(name: "RelizKit")],
-            exclude: ["Info.plist"]
+            //dependencies: [.target(name: "RelizKit")],
+            exclude: ["Info.plist"],
+            linkerSettings: [.linkedFramework("RelizKit")]
         ),
         .target(
             name: "RZStoreKit",
-            dependencies: ["SwiftyStoreKit", .target(name: "RelizKit")],
-            exclude: ["Info.plist"]
+            dependencies: ["SwiftyStoreKit"],//, .target(name: "RelizKit")],
+            exclude: ["Info.plist"],
+            linkerSettings: [.linkedFramework("RelizKit")]
         ),
         .target(
             name: "RZDarkModeKit",
-            dependencies: [.target(name: "RelizKit")],
+            //dependencies: [.target(name: "RelizKit")],
             path: "Sources/RZUIKit/RZDarkModeKit",
-            exclude: ["Info.plist"]
+            exclude: ["Info.plist"],
+            linkerSettings: [.linkedFramework("RelizKit")]
         ),
         .target(
             name: "RZUIPacKit",
-            dependencies: [.target(name: "RZObservableKit"), .target(name: "RelizKit")],
+            dependencies: [.target(name: "RZObservableKit")],//, .target(name: "RelizKit")],
             path: "Sources/RZUIKit/RZUIPacKit",
-            exclude: ["Info.plist"]
+            exclude: ["Info.plist"],
+            linkerSettings: [.linkedFramework("RelizKit")]
         ),
         .target(
             name: "RZViewBuilderKit",
-            dependencies: [.target(name: "RZObservableKit"), .target(name: "RZDarkModeKit"), .target(name: "RelizKit")],
+            dependencies: [.target(name: "RZObservableKit"), .target(name: "RZDarkModeKit")],//, .target(name: "RelizKit")],
             path: "Sources/RZUIKit/RZViewBuilderKit",
-            exclude: ["Info.plist"]
+            exclude: ["Info.plist"],
+            linkerSettings: [.linkedFramework("RelizKit")]
         )
     ]
 )
