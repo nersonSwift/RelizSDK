@@ -42,47 +42,49 @@ let package = Package(
     targets: [
         .target(
             name: "RelizKit",
+            dependencies: [],
             path: "Sources/RelizKit",
+            exclude: ["Info.plist"],
             publicHeadersPath: "./"
         ),
         .target(
             name: "RZEventKit",
             dependencies: [.target(name: "RelizKit")],
             exclude: ["Info.plist"],
-            publicHeadersPath: "Sources/RZEventKit"
+            publicHeadersPath: "./"
         ),
         .target(
             name: "RZObservableKit",
             dependencies: [.target(name: "RelizKit")],
             exclude: ["Info.plist"],
-            publicHeadersPath: "Sources/RZObservableKit"
+            publicHeadersPath: "./"
         ),
         .target(
             name: "RZStoreKit",
             dependencies: ["SwiftyStoreKit", .target(name: "RelizKit")],
             exclude: ["Info.plist"],
-            publicHeadersPath: "Sources/RZStoreKit"
+            publicHeadersPath: "./"
         ),
         .target(
             name: "RZDarkModeKit",
             dependencies: [.target(name: "RelizKit")],
             path: "Sources/RZUIKit/RZDarkModeKit",
             exclude: ["Info.plist"],
-            publicHeadersPath: "Sources/RZUIKit/RZDarkModeKit"
+            publicHeadersPath: "./"
         ),
         .target(
             name: "RZUIPacKit",
             dependencies: [.target(name: "RZObservableKit"), .target(name: "RelizKit")],
             path: "Sources/RZUIKit/RZUIPacKit",
             exclude: ["Info.plist"],
-            publicHeadersPath: "Sources/RZUIKit/RZUIPacKit"
+            publicHeadersPath: "./"
         ),
         .target(
             name: "RZViewBuilderKit",
             dependencies: [.target(name: "RZObservableKit"), .target(name: "RZDarkModeKit"), .target(name: "RelizKit")],
             path: "Sources/RZUIKit/RZViewBuilderKit",
             exclude: ["Info.plist"],
-            publicHeadersPath: "Sources/RZUIKit/RZViewBuilderKit"
+            publicHeadersPath: "./"
         )
     ]
 )
