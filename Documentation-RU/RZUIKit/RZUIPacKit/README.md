@@ -26,7 +26,7 @@
 
 Для примера создадим экран с надписью "Hello World" в центре.
 
-Первое, что нужно сделать, создать `Controller` UIPac, он является ключивой сущностью, отвечает за бизнес логику и хранит ссылки на `Router` и `View`. Создаем класс c использованием typealias `RZUIPacController`. `RZUIPacController` включает в себя: UIViewController & `RZUIPacControllerProtocol`. 
+Первое, что нужно сделать, создать `Controller` UIPac, он является ключивой сущность. Отвечает за бизнес логику и хранит ссылки на `Router` и `View`. Создаем класс c использованием typealias `RZUIPacController`. `RZUIPacController` включает в себя: UIViewController & `RZUIPacControllerProtocol`. 
 
 ```Swift
 class ExampleC: RZUIPacController{
