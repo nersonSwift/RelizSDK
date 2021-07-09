@@ -1,6 +1,6 @@
 # RelizSDK
 
-RelizSDK - это пакет фреимворков, который включает в себя 6 модулей:
+RelizSDK - это пакет фреймворков, который включает в себя 6 модулей:
 1. [RZEventKit](RZEventKit/README.md) - Модуль облегчающий работу с ивент мапингом, 
 можно настроить отправку в любые трекинговые системы.
 2. [RZObservableKit](RZObservableKit/README.md) - Модуль облегчающий работу с наблюдателями.
@@ -19,10 +19,10 @@ RelizSDK - это пакет фреимворков, который включа
 1. In Xcode, select File > Swift Packages > Add Package Dependency.
 2. Следуйте инструкциям, используя https://github.com/nersonSwift/RelizSDK.git
 3. Выберите [RZEventKit](RZEventKit/README.md)
-3. Proffit!
+3. Profit!
 
 ### CocoaPods
-1. Добавте в ваш `Podfile`:
+1. Добавьте в ваш `Podfile`:
 ```ruby
 pod 'RelizSDK/RZEventKit'
 ```
@@ -37,7 +37,7 @@ $ pod update
 ```
 $ arch -x86_64 pod update
 ```
-3. Proffit!
+3. Profit!
 
 ## RZObservableKit
 
@@ -45,10 +45,10 @@ $ arch -x86_64 pod update
 1. In Xcode, select File > Swift Packages > Add Package Dependency.
 2. Следуйте инструкциям, используя https://github.com/nersonSwift/RelizSDK.git
 3. Выберите [RZObservableKit](RZObservableKit/README.md)
-3. Proffit!
+3. Profit!
 
 ### CocoaPods
-1. Добавте в ваш `Podfile`:
+1. Добавьте в ваш `Podfile`:
 ```ruby
 pod 'RelizSDK/RZObservableKit'
 ```
@@ -63,7 +63,7 @@ $ pod update
 ```
 $ arch -x86_64 pod update
 ```
-3. Proffit!
+3. Profit!
 
 ## RZStoreKit
 
@@ -71,10 +71,10 @@ $ arch -x86_64 pod update
 1. In Xcode, select File > Swift Packages > Add Package Dependency.
 2. Следуйте инструкциям, используя https://github.com/nersonSwift/RelizSDK.git
 3. Выберите [RZStoreKit](RZEventKit/README.md)
-3. Proffit!
+3. Profit!
 
 ### CocoaPods
-1. Добавте в ваш `Podfile`:
+1. Добавьте в ваш `Podfile`:
 ```ruby
 pod 'RelizSDK/RZStoreKit'
 ```
@@ -89,7 +89,7 @@ $ pod update
 ```
 $ arch -x86_64 pod update
 ```
-3. Proffit!
+3. Profit!
 
 ## RZUIPacKit
 
@@ -97,10 +97,10 @@ $ arch -x86_64 pod update
 1. In Xcode, select File > Swift Packages > Add Package Dependency.
 2. Следуйте инструкциям, используя https://github.com/nersonSwift/RelizSDK.git
 3. Выберите [RZUIPacKit](RZUIKit/RZUIPacKit/README.md)
-3. Proffit!
+3. Profit!
 
 ### CocoaPods
-1. Добавте в ваш `Podfile`:
+1. Добавьте в ваш `Podfile`:
 ```ruby
 pod 'RelizSDK/RZUIPacKit'
 ```
@@ -115,7 +115,7 @@ $ pod update
 ```
 $ arch -x86_64 pod update
 ```
-3. Proffit!
+3. Profit!
 
 ## RZViewBuilderKit
 
@@ -123,10 +123,10 @@ $ arch -x86_64 pod update
 1. In Xcode, select File > Swift Packages > Add Package Dependency.
 2. Следуйте инструкциям, используя https://github.com/nersonSwift/RelizSDK.git
 3. Выберите [RZViewBuilderKit](RZUIKit/RZViewBuilderKit/README.md)
-3. Proffit!
+3. Profit!
 
 ### CocoaPods
-1. Добавте в ваш `Podfile`:
+1. Добавьте в ваш `Podfile`:
 ```ruby
 pod 'RelizSDK/RZViewBuilderKit'
 ```
@@ -141,7 +141,7 @@ $ pod update
 ```
 $ arch -x86_64 pod update
 ```
-3. Proffit!
+3. Profit!
 
 ## RZDarkModeKit
 
@@ -149,7 +149,7 @@ $ arch -x86_64 pod update
 1. In Xcode, select File > Swift Packages > Add Package Dependency.
 2. Следуйте инструкциям, используя https://github.com/nersonSwift/RelizSDK.git
 3. Выберите [RZDarkModeKit](RZUIKit/RZDarkModeKit/README.md)
-3. Proffit!
+3. Profit!
 
 ### CocoaPods
 1. Добавте в ваш `RZDarkModeKit`:
@@ -167,4 +167,4 @@ $ pod update
 ```
 $ arch -x86_64 pod update
 ```
-3. Proffit!
+3. Profit!

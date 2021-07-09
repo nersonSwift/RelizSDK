@@ -5,7 +5,7 @@
 ### Swift Package Manager (available Xcode 11.2 and forward)
 1. In Xcode, select File > Swift Packages > Add Package Dependency.
 2. Follow the prompts using the https://github.com/nersonSwift/RelizSDK.git
-3. Proffit!
+3. Profit!
 
 ### CocoaPods
 1. Add the following to your `Podfile`:
@@ -23,7 +23,7 @@ $ pod update
 ```
 $ arch -x86_64 pod update
 ```
-3. Proffit!
+3. Profit!
 
 ## Documentation
 
