@@ -1,7 +1,0 @@
-
-target 'RZUIPacKit' do
-  use_frameworks!
-
-  pod 'RZObservableKit'
-
-end

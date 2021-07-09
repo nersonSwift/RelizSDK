@@ -25,32 +25,12 @@
 		512ED330267282C000CDD342 /* ExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED32F267282C000CDD342 /* ExampleUITests.swift */; };
 		512ED3AA2672A87900CDD342 /* RZObservableKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512ED3A32672A87900CDD342 /* RZObservableKit.framework */; };
 		512ED3AB2672A87900CDD342 /* RZObservableKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 512ED3A32672A87900CDD342 /* RZObservableKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		512ED45A2672AC5200CDD342 /* RZObservableKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 512ED44D2672AC5100CDD342 /* RZObservableKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		512ED45B2672AC5200CDD342 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED44F2672AC5100CDD342 /* UIViewExtension.swift */; };
-		512ED45C2672AC5200CDD342 /* ObservableObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED4502672AC5100CDD342 /* ObservableObjectExtension.swift */; };
-		512ED45D2672AC5200CDD342 /* UIControlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED4512672AC5200CDD342 /* UIControlExtension.swift */; };
-		512ED45E2672AC5200CDD342 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED4522672AC5200CDD342 /* Operators.swift */; };
-		512ED45F2672AC5200CDD342 /* RZTextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED4542672AC5200CDD342 /* RZTextViewDelegate.swift */; };
-		512ED4602672AC5200CDD342 /* Associated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED4552672AC5200CDD342 /* Associated.swift */; };
-		512ED4612672AC5200CDD342 /* RZUIAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED4562672AC5200CDD342 /* RZUIAnimation.swift */; };
-		512ED4622672AC5200CDD342 /* RZSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED4572672AC5200CDD342 /* RZSwitch.swift */; };
-		512ED4642672AC5200CDD342 /* RZObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED4592672AC5200CDD342 /* RZObservable.swift */; };
 		512ED47E2672AD2200CDD342 /* RZEventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512ED4772672AD2200CDD342 /* RZEventKit.framework */; };
 		512ED47F2672AD2200CDD342 /* RZEventKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 512ED4772672AD2200CDD342 /* RZEventKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		512ED4972672AD4B00CDD342 /* RZStoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512ED4902672AD4B00CDD342 /* RZStoreKit.framework */; };
 		512ED4982672AD4B00CDD342 /* RZStoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 512ED4902672AD4B00CDD342 /* RZStoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		512ED4B22672AD6F00CDD342 /* RelizKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512ED4AB2672AD6F00CDD342 /* RelizKit.framework */; };
 		512ED4B32672AD6F00CDD342 /* RelizKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 512ED4AB2672AD6F00CDD342 /* RelizKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		512ED4C72672ADC300CDD342 /* RZOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED4C52672ADC300CDD342 /* RZOperators.swift */; };
-		512ED4C82672ADC300CDD342 /* RelizKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 512ED4C62672ADC300CDD342 /* RelizKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		512ED5F92672AF5900CDD342 /* RZStoreKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 512ED5F02672AF5900CDD342 /* RZStoreKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		512ED5FA2672AF5900CDD342 /* RZStoreKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED5F22672AF5900CDD342 /* RZStoreKit.swift */; };
-		512ED5FB2672AF5900CDD342 /* RZProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED5F32672AF5900CDD342 /* RZProduct.swift */; };
-		512ED5FC2672AF5900CDD342 /* RZStoreRefrasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED5F42672AF5900CDD342 /* RZStoreRefrasher.swift */; };
-		512ED5FD2672AF5900CDD342 /* ReceiptItemExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED5F62672AF5900CDD342 /* ReceiptItemExtention.swift */; };
-		512ED5FE2672AF5900CDD342 /* RZStoreDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED5F72672AF5900CDD342 /* RZStoreDelegateProtocol.swift */; };
-		512ED60A2672AF6900CDD342 /* RZEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED6072672AF6900CDD342 /* RZEvent.swift */; };
-		512ED60B2672AF6900CDD342 /* RZEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 512ED6082672AF6900CDD342 /* RZEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		512ED68C2672B28A00CDD342 /* RZEventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512ED4772672AD2200CDD342 /* RZEventKit.framework */; };
 		512ED68D2672B28A00CDD342 /* RZEventKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 512ED4772672AD2200CDD342 /* RZEventKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		512ED6902672B28A00CDD342 /* RZObservableKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512ED3A32672A87900CDD342 /* RZObservableKit.framework */; };
@@ -63,36 +43,6 @@
 		512ED6CA2672B35700CDD342 /* RZDarkModeKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 512ED6C22672B35700CDD342 /* RZDarkModeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		512ED6E12672B36800CDD342 /* RZUIPacKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512ED6DA2672B36800CDD342 /* RZUIPacKit.framework */; };
 		512ED6E22672B36800CDD342 /* RZUIPacKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 512ED6DA2672B36800CDD342 /* RZUIPacKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		512ED6FA2672B38D00CDD342 /* RZDarkModeKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 512ED6F72672B38D00CDD342 /* RZDarkModeKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		512ED6FB2672B38D00CDD342 /* RZDarkModeKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED6F82672B38D00CDD342 /* RZDarkModeKit.swift */; };
-		512ED7172672B39D00CDD342 /* RZViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED7062672B39D00CDD342 /* RZViewBuilder.swift */; };
-		512ED7182672B39D00CDD342 /* RZProtoFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED7082672B39D00CDD342 /* RZProtoFrame.swift */; };
-		512ED7192672B39D00CDD342 /* RZProtoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED7092672B39D00CDD342 /* RZProtoTest.swift */; };
-		512ED71A2672B39D00CDD342 /* RZProtoValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED70A2672B39D00CDD342 /* RZProtoValue.swift */; };
-		512ED71B2672B39D00CDD342 /* RZProto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED70B2672B39D00CDD342 /* RZProto.swift */; };
-		512ED71C2672B39D00CDD342 /* RZProtoOperationGoup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED70C2672B39D00CDD342 /* RZProtoOperationGoup.swift */; };
-		512ED71D2672B39D00CDD342 /* RZViewBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 512ED70D2672B39D00CDD342 /* RZViewBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		512ED71E2672B39D00CDD342 /* RZImageSeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED70F2672B39D00CDD342 /* RZImageSeter.swift */; };
-		512ED71F2672B39D00CDD342 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED7102672B39D00CDD342 /* UIViewExtension.swift */; };
-		512ED7202672B39D00CDD342 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED7112672B39D00CDD342 /* Operators.swift */; };
-		512ED7212672B39D00CDD342 /* RZLabelSizeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED7122672B39D00CDD342 /* RZLabelSizeController.swift */; };
-		512ED7222672B39D00CDD342 /* UIControlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED7132672B39D00CDD342 /* UIControlExtension.swift */; };
-		512ED7232672B39D00CDD342 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED7142672B39D00CDD342 /* DictionaryExtension.swift */; };
-		512ED7252672B39D00CDD342 /* RZObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED7162672B39D00CDD342 /* RZObservable.swift */; };
-		512ED7432672B3C500CDD342 /* RZUIPacKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 512ED72F2672B3C500CDD342 /* RZUIPacKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		512ED7442672B3C500CDD342 /* RZPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED7312672B3C500CDD342 /* RZPopUpView.swift */; };
-		512ED7452672B3C500CDD342 /* RZRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED7322672B3C500CDD342 /* RZRootController.swift */; };
-		512ED7462672B3C500CDD342 /* RZUIPacController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED7332672B3C500CDD342 /* RZUIPacController.swift */; };
-		512ED7472672B3C500CDD342 /* RZUIViewWraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED7352672B3C500CDD342 /* RZUIViewWraper.swift */; };
-		512ED7482672B3C500CDD342 /* RZUIPacView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED7362672B3C500CDD342 /* RZUIPacView.swift */; };
-		512ED7492672B3C500CDD342 /* RZSUIPacView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED7372672B3C500CDD342 /* RZSUIPacView.swift */; };
-		512ED74A2672B3C500CDD342 /* RZTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED7392672B3C500CDD342 /* RZTransitionAnimation.swift */; };
-		512ED74B2672B3C500CDD342 /* LinesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED73A2672B3C500CDD342 /* LinesController.swift */; };
-		512ED74C2672B3C500CDD342 /* RZRotater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED73B2672B3C500CDD342 /* RZRotater.swift */; };
-		512ED74D2672B3C500CDD342 /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED73D2672B3C500CDD342 /* UIApplicationExtension.swift */; };
-		512ED74E2672B3C500CDD342 /* CGSizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED73E2672B3C500CDD342 /* CGSizeExtension.swift */; };
-		512ED74F2672B3C500CDD342 /* UIPacInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED73F2672B3C500CDD342 /* UIPacInstaller.swift */; };
-		512ED7512672B3C500CDD342 /* RZUIPacRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED7422672B3C500CDD342 /* RZUIPacRouter.swift */; };
 		512ED75A2672B3D000CDD342 /* RZObservableKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512ED3A32672A87900CDD342 /* RZObservableKit.framework */; };
 		512ED75B2672B3D000CDD342 /* RZObservableKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 512ED3A32672A87900CDD342 /* RZObservableKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		512ED7932672B53000CDD342 /* RZObservableKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512ED3A32672A87900CDD342 /* RZObservableKit.framework */; };
@@ -107,6 +57,57 @@
 		512ED7F6267374E700CDD342 /* RZVBColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED7F5267374E700CDD342 /* RZVBColorTests.swift */; };
 		512ED80A2673761300CDD342 /* RZVBFrameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED8092673761300CDD342 /* RZVBFrameTests.swift */; };
 		512ED813267379FE00CDD342 /* TestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED812267379FE00CDD342 /* TestProtocol.swift */; };
+		51575157268C98F7006D45BA /* RelizKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51575153268C98F7006D45BA /* RelizKit.swift */; };
+		51575158268C98F7006D45BA /* RZOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51575154268C98F7006D45BA /* RZOperators.swift */; };
+		51575159268C98F7006D45BA /* RelizKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 51575155268C98F7006D45BA /* RelizKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		51575169268C991E006D45BA /* RZObservableKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5157515C268C991D006D45BA /* RZObservableKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5157516A268C991E006D45BA /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5157515E268C991D006D45BA /* UIViewExtension.swift */; };
+		5157516B268C991E006D45BA /* ObservableObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5157515F268C991D006D45BA /* ObservableObjectExtension.swift */; };
+		5157516C268C991E006D45BA /* UIControlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51575160268C991D006D45BA /* UIControlExtension.swift */; };
+		5157516D268C991E006D45BA /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51575161268C991D006D45BA /* Operators.swift */; };
+		5157516E268C991E006D45BA /* RZTextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51575163268C991D006D45BA /* RZTextViewDelegate.swift */; };
+		5157516F268C991E006D45BA /* Associated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51575164268C991D006D45BA /* Associated.swift */; };
+		51575170268C991E006D45BA /* RZUIAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51575165268C991D006D45BA /* RZUIAnimation.swift */; };
+		51575171268C991E006D45BA /* RZSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51575166268C991D006D45BA /* RZSwitch.swift */; };
+		51575173268C991E006D45BA /* RZObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51575168268C991D006D45BA /* RZObservable.swift */; };
+		5157517E268C9930006D45BA /* RZStoreKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 51575175268C9930006D45BA /* RZStoreKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5157517F268C9930006D45BA /* RZStoreKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51575177268C9930006D45BA /* RZStoreKit.swift */; };
+		51575180268C9930006D45BA /* RZProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51575178268C9930006D45BA /* RZProduct.swift */; };
+		51575181268C9931006D45BA /* RZStoreRefrasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51575179268C9930006D45BA /* RZStoreRefrasher.swift */; };
+		51575182268C9931006D45BA /* ReceiptItemExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5157517B268C9930006D45BA /* ReceiptItemExtention.swift */; };
+		51575183268C9931006D45BA /* RZStoreDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5157517C268C9930006D45BA /* RZStoreDelegateProtocol.swift */; };
+		51575189268C994F006D45BA /* RZEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51575186268C994E006D45BA /* RZEvent.swift */; };
+		5157518A268C994F006D45BA /* RZEventKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 51575187268C994E006D45BA /* RZEventKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		51575190268C999E006D45BA /* RZDarkModeKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5157518D268C999E006D45BA /* RZDarkModeKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		51575191268C999E006D45BA /* RZDarkModeKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5157518E268C999E006D45BA /* RZDarkModeKit.swift */; };
+		515751C9268C99DC006D45BA /* RZViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751B8268C99DC006D45BA /* RZViewBuilder.swift */; };
+		515751CA268C99DC006D45BA /* RZProtoFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751BA268C99DC006D45BA /* RZProtoFrame.swift */; };
+		515751CB268C99DC006D45BA /* RZProtoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751BB268C99DC006D45BA /* RZProtoTest.swift */; };
+		515751CC268C99DC006D45BA /* RZProtoValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751BC268C99DC006D45BA /* RZProtoValue.swift */; };
+		515751CD268C99DC006D45BA /* RZProto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751BD268C99DC006D45BA /* RZProto.swift */; };
+		515751CE268C99DC006D45BA /* RZProtoOperationGoup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751BE268C99DC006D45BA /* RZProtoOperationGoup.swift */; };
+		515751CF268C99DC006D45BA /* RZViewBuilderKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 515751BF268C99DC006D45BA /* RZViewBuilderKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		515751D0268C99DC006D45BA /* RZImageSeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751C1268C99DC006D45BA /* RZImageSeter.swift */; };
+		515751D1268C99DC006D45BA /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751C2268C99DC006D45BA /* UIViewExtension.swift */; };
+		515751D2268C99DC006D45BA /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751C3268C99DC006D45BA /* Operators.swift */; };
+		515751D3268C99DC006D45BA /* RZLabelSizeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751C4268C99DC006D45BA /* RZLabelSizeController.swift */; };
+		515751D4268C99DC006D45BA /* UIControlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751C5268C99DC006D45BA /* UIControlExtension.swift */; };
+		515751D5268C99DC006D45BA /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751C6268C99DC006D45BA /* DictionaryExtension.swift */; };
+		515751D7268C99DC006D45BA /* RZObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751C8268C99DC006D45BA /* RZObservable.swift */; };
+		515751ED268C9A57006D45BA /* RZUIPacKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 515751D9268C9A57006D45BA /* RZUIPacKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		515751EE268C9A57006D45BA /* RZPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751DB268C9A57006D45BA /* RZPopUpView.swift */; };
+		515751EF268C9A57006D45BA /* RZRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751DC268C9A57006D45BA /* RZRootController.swift */; };
+		515751F0268C9A57006D45BA /* RZUIPacController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751DD268C9A57006D45BA /* RZUIPacController.swift */; };
+		515751F1268C9A57006D45BA /* RZUIViewWraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751DF268C9A57006D45BA /* RZUIViewWraper.swift */; };
+		515751F2268C9A57006D45BA /* RZUIPacView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751E0268C9A57006D45BA /* RZUIPacView.swift */; };
+		515751F3268C9A57006D45BA /* RZSUIPacView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751E1268C9A57006D45BA /* RZSUIPacView.swift */; };
+		515751F4268C9A57006D45BA /* RZTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751E3268C9A57006D45BA /* RZTransitionAnimation.swift */; };
+		515751F5268C9A57006D45BA /* LinesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751E4268C9A57006D45BA /* LinesController.swift */; };
+		515751F6268C9A57006D45BA /* RZRotater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751E5268C9A57006D45BA /* RZRotater.swift */; };
+		515751F7268C9A57006D45BA /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751E7268C9A57006D45BA /* UIApplicationExtension.swift */; };
+		515751F8268C9A57006D45BA /* CGSizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751E8268C9A57006D45BA /* CGSizeExtension.swift */; };
+		515751F9268C9A57006D45BA /* UIPacInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751E9268C9A57006D45BA /* UIPacInstaller.swift */; };
+		515751FB268C9A57006D45BA /* RZUIPacRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751EC268C9A57006D45BA /* RZUIPacRouter.swift */; };
 		A70C434CF93CB91C89B63D7F /* Pods_RZStoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54276254A91B934B93E2AF76 /* Pods_RZStoreKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -314,81 +315,82 @@
 		512ED331267282C000CDD342 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		512ED343267282CE00CDD342 /* Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Example.entitlements; sourceTree = "<group>"; };
 		512ED3A32672A87900CDD342 /* RZObservableKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RZObservableKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		512ED44D2672AC5100CDD342 /* RZObservableKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZObservableKit.h; sourceTree = "<group>"; };
-		512ED44F2672AC5100CDD342 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
-		512ED4502672AC5100CDD342 /* ObservableObjectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableObjectExtension.swift; sourceTree = "<group>"; };
-		512ED4512672AC5200CDD342 /* UIControlExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIControlExtension.swift; sourceTree = "<group>"; };
-		512ED4522672AC5200CDD342 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
-		512ED4542672AC5200CDD342 /* RZTextViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZTextViewDelegate.swift; sourceTree = "<group>"; };
-		512ED4552672AC5200CDD342 /* Associated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Associated.swift; sourceTree = "<group>"; };
-		512ED4562672AC5200CDD342 /* RZUIAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZUIAnimation.swift; sourceTree = "<group>"; };
-		512ED4572672AC5200CDD342 /* RZSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZSwitch.swift; sourceTree = "<group>"; };
-		512ED4582672AC5200CDD342 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		512ED4592672AC5200CDD342 /* RZObservable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZObservable.swift; sourceTree = "<group>"; };
 		512ED4772672AD2200CDD342 /* RZEventKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RZEventKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		512ED4902672AD4B00CDD342 /* RZStoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RZStoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		512ED4AB2672AD6F00CDD342 /* RelizKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RelizKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		512ED4C52672ADC300CDD342 /* RZOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZOperators.swift; sourceTree = "<group>"; };
-		512ED4C62672ADC300CDD342 /* RelizKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelizKit.h; sourceTree = "<group>"; };
-		512ED4CF2672ADF500CDD342 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../../RelizKit/RelizKit/Info.plist; sourceTree = "<group>"; };
-		512ED5F02672AF5900CDD342 /* RZStoreKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZStoreKit.h; sourceTree = "<group>"; };
-		512ED5F22672AF5900CDD342 /* RZStoreKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZStoreKit.swift; sourceTree = "<group>"; };
-		512ED5F32672AF5900CDD342 /* RZProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZProduct.swift; sourceTree = "<group>"; };
-		512ED5F42672AF5900CDD342 /* RZStoreRefrasher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZStoreRefrasher.swift; sourceTree = "<group>"; };
-		512ED5F62672AF5900CDD342 /* ReceiptItemExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptItemExtention.swift; sourceTree = "<group>"; };
-		512ED5F72672AF5900CDD342 /* RZStoreDelegateProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZStoreDelegateProtocol.swift; sourceTree = "<group>"; };
-		512ED5F82672AF5900CDD342 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		512ED6072672AF6900CDD342 /* RZEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZEvent.swift; sourceTree = "<group>"; };
-		512ED6082672AF6900CDD342 /* RZEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZEvent.h; sourceTree = "<group>"; };
-		512ED6092672AF6900CDD342 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		512ED6AB2672B34800CDD342 /* RZViewBuilderKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RZViewBuilderKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		512ED6C22672B35700CDD342 /* RZDarkModeKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RZDarkModeKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		512ED6DA2672B36800CDD342 /* RZUIPacKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RZUIPacKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		512ED6F72672B38D00CDD342 /* RZDarkModeKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZDarkModeKit.h; sourceTree = "<group>"; };
-		512ED6F82672B38D00CDD342 /* RZDarkModeKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZDarkModeKit.swift; sourceTree = "<group>"; };
-		512ED6F92672B38D00CDD342 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		512ED7062672B39D00CDD342 /* RZViewBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZViewBuilder.swift; sourceTree = "<group>"; };
-		512ED7082672B39D00CDD342 /* RZProtoFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZProtoFrame.swift; sourceTree = "<group>"; };
-		512ED7092672B39D00CDD342 /* RZProtoTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZProtoTest.swift; sourceTree = "<group>"; };
-		512ED70A2672B39D00CDD342 /* RZProtoValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZProtoValue.swift; sourceTree = "<group>"; };
-		512ED70B2672B39D00CDD342 /* RZProto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZProto.swift; sourceTree = "<group>"; };
-		512ED70C2672B39D00CDD342 /* RZProtoOperationGoup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZProtoOperationGoup.swift; sourceTree = "<group>"; };
-		512ED70D2672B39D00CDD342 /* RZViewBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZViewBuilder.h; sourceTree = "<group>"; };
-		512ED70F2672B39D00CDD342 /* RZImageSeter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZImageSeter.swift; sourceTree = "<group>"; };
-		512ED7102672B39D00CDD342 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
-		512ED7112672B39D00CDD342 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
-		512ED7122672B39D00CDD342 /* RZLabelSizeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZLabelSizeController.swift; sourceTree = "<group>"; };
-		512ED7132672B39D00CDD342 /* UIControlExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIControlExtension.swift; sourceTree = "<group>"; };
-		512ED7142672B39D00CDD342 /* DictionaryExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
-		512ED7152672B39D00CDD342 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		512ED7162672B39D00CDD342 /* RZObservable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZObservable.swift; sourceTree = "<group>"; };
-		512ED72F2672B3C500CDD342 /* RZUIPacKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZUIPacKit.h; sourceTree = "<group>"; };
-		512ED7312672B3C500CDD342 /* RZPopUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZPopUpView.swift; sourceTree = "<group>"; };
-		512ED7322672B3C500CDD342 /* RZRootController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZRootController.swift; sourceTree = "<group>"; };
-		512ED7332672B3C500CDD342 /* RZUIPacController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZUIPacController.swift; sourceTree = "<group>"; };
-		512ED7352672B3C500CDD342 /* RZUIViewWraper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZUIViewWraper.swift; sourceTree = "<group>"; };
-		512ED7362672B3C500CDD342 /* RZUIPacView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZUIPacView.swift; sourceTree = "<group>"; };
-		512ED7372672B3C500CDD342 /* RZSUIPacView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZSUIPacView.swift; sourceTree = "<group>"; };
-		512ED7392672B3C500CDD342 /* RZTransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZTransitionAnimation.swift; sourceTree = "<group>"; };
-		512ED73A2672B3C500CDD342 /* LinesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinesController.swift; sourceTree = "<group>"; };
-		512ED73B2672B3C500CDD342 /* RZRotater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZRotater.swift; sourceTree = "<group>"; };
-		512ED73D2672B3C500CDD342 /* UIApplicationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
-		512ED73E2672B3C500CDD342 /* CGSizeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGSizeExtension.swift; sourceTree = "<group>"; };
-		512ED73F2672B3C500CDD342 /* UIPacInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPacInstaller.swift; sourceTree = "<group>"; };
-		512ED7402672B3C500CDD342 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		512ED7422672B3C500CDD342 /* RZUIPacRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZUIPacRouter.swift; sourceTree = "<group>"; };
 		512ED7BA2672B72300CDD342 /* RZUIPacKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = RZUIPacKit.podspec; path = ../../RZUIPacKit.podspec; sourceTree = "<group>"; };
 		512ED7BB2672B72300CDD342 /* RZDarkModeKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = RZDarkModeKit.podspec; path = ../../RZDarkModeKit.podspec; sourceTree = "<group>"; };
 		512ED7BC2672B72300CDD342 /* RelizSDK.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = RelizSDK.podspec; path = ../../RelizSDK.podspec; sourceTree = "<group>"; };
 		512ED7BD2672B72300CDD342 /* RelizKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = RelizKit.podspec; path = ../../RelizKit.podspec; sourceTree = "<group>"; };
-		512ED7BE2672B72300CDD342 /* RZViewBuilder.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = RZViewBuilder.podspec; path = ../../RZViewBuilder.podspec; sourceTree = "<group>"; };
+		512ED7BE2672B72300CDD342 /* RZViewBuilderKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = RZViewBuilderKit.podspec; path = ../../RZViewBuilderKit.podspec; sourceTree = "<group>"; };
 		512ED7BF2672B72300CDD342 /* RZStoreKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = RZStoreKit.podspec; path = ../../RZStoreKit.podspec; sourceTree = "<group>"; };
-		512ED7C02672B72300CDD342 /* RZEvent.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = RZEvent.podspec; path = ../../RZEvent.podspec; sourceTree = "<group>"; };
+		512ED7C02672B72300CDD342 /* RZEventKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = RZEventKit.podspec; path = ../../RZEventKit.podspec; sourceTree = "<group>"; };
 		512ED7C12672B72300CDD342 /* RZObservableKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = RZObservableKit.podspec; path = ../../RZObservableKit.podspec; sourceTree = "<group>"; };
 		512ED7EC267369B000CDD342 /* RZViewBuilderKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZViewBuilderKitTests.swift; sourceTree = "<group>"; };
 		512ED7F5267374E700CDD342 /* RZVBColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZVBColorTests.swift; sourceTree = "<group>"; };
 		512ED8092673761300CDD342 /* RZVBFrameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZVBFrameTests.swift; sourceTree = "<group>"; };
 		512ED812267379FE00CDD342 /* TestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestProtocol.swift; sourceTree = "<group>"; };
+		51575153268C98F7006D45BA /* RelizKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelizKit.swift; sourceTree = "<group>"; };
+		51575154268C98F7006D45BA /* RZOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZOperators.swift; sourceTree = "<group>"; };
+		51575155268C98F7006D45BA /* RelizKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelizKit.h; sourceTree = "<group>"; };
+		51575156268C98F7006D45BA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5157515C268C991D006D45BA /* RZObservableKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZObservableKit.h; sourceTree = "<group>"; };
+		5157515E268C991D006D45BA /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		5157515F268C991D006D45BA /* ObservableObjectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableObjectExtension.swift; sourceTree = "<group>"; };
+		51575160268C991D006D45BA /* UIControlExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIControlExtension.swift; sourceTree = "<group>"; };
+		51575161268C991D006D45BA /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
+		51575163268C991D006D45BA /* RZTextViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZTextViewDelegate.swift; sourceTree = "<group>"; };
+		51575164268C991D006D45BA /* Associated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Associated.swift; sourceTree = "<group>"; };
+		51575165268C991D006D45BA /* RZUIAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZUIAnimation.swift; sourceTree = "<group>"; };
+		51575166268C991D006D45BA /* RZSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZSwitch.swift; sourceTree = "<group>"; };
+		51575167268C991D006D45BA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		51575168268C991D006D45BA /* RZObservable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZObservable.swift; sourceTree = "<group>"; };
+		51575175268C9930006D45BA /* RZStoreKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZStoreKit.h; sourceTree = "<group>"; };
+		51575177268C9930006D45BA /* RZStoreKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZStoreKit.swift; sourceTree = "<group>"; };
+		51575178268C9930006D45BA /* RZProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZProduct.swift; sourceTree = "<group>"; };
+		51575179268C9930006D45BA /* RZStoreRefrasher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZStoreRefrasher.swift; sourceTree = "<group>"; };
+		5157517B268C9930006D45BA /* ReceiptItemExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptItemExtention.swift; sourceTree = "<group>"; };
+		5157517C268C9930006D45BA /* RZStoreDelegateProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZStoreDelegateProtocol.swift; sourceTree = "<group>"; };
+		5157517D268C9930006D45BA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		51575186268C994E006D45BA /* RZEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZEvent.swift; sourceTree = "<group>"; };
+		51575187268C994E006D45BA /* RZEventKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZEventKit.h; sourceTree = "<group>"; };
+		51575188268C994E006D45BA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5157518D268C999E006D45BA /* RZDarkModeKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZDarkModeKit.h; sourceTree = "<group>"; };
+		5157518E268C999E006D45BA /* RZDarkModeKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZDarkModeKit.swift; sourceTree = "<group>"; };
+		5157518F268C999E006D45BA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		515751B8268C99DC006D45BA /* RZViewBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZViewBuilder.swift; sourceTree = "<group>"; };
+		515751BA268C99DC006D45BA /* RZProtoFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZProtoFrame.swift; sourceTree = "<group>"; };
+		515751BB268C99DC006D45BA /* RZProtoTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZProtoTest.swift; sourceTree = "<group>"; };
+		515751BC268C99DC006D45BA /* RZProtoValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZProtoValue.swift; sourceTree = "<group>"; };
+		515751BD268C99DC006D45BA /* RZProto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZProto.swift; sourceTree = "<group>"; };
+		515751BE268C99DC006D45BA /* RZProtoOperationGoup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZProtoOperationGoup.swift; sourceTree = "<group>"; };
+		515751BF268C99DC006D45BA /* RZViewBuilderKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZViewBuilderKit.h; sourceTree = "<group>"; };
+		515751C1268C99DC006D45BA /* RZImageSeter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZImageSeter.swift; sourceTree = "<group>"; };
+		515751C2268C99DC006D45BA /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		515751C3268C99DC006D45BA /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
+		515751C4268C99DC006D45BA /* RZLabelSizeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZLabelSizeController.swift; sourceTree = "<group>"; };
+		515751C5268C99DC006D45BA /* UIControlExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIControlExtension.swift; sourceTree = "<group>"; };
+		515751C6268C99DC006D45BA /* DictionaryExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
+		515751C7268C99DC006D45BA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		515751C8268C99DC006D45BA /* RZObservable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZObservable.swift; sourceTree = "<group>"; };
+		515751D9268C9A57006D45BA /* RZUIPacKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZUIPacKit.h; sourceTree = "<group>"; };
+		515751DB268C9A57006D45BA /* RZPopUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZPopUpView.swift; sourceTree = "<group>"; };
+		515751DC268C9A57006D45BA /* RZRootController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZRootController.swift; sourceTree = "<group>"; };
+		515751DD268C9A57006D45BA /* RZUIPacController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZUIPacController.swift; sourceTree = "<group>"; };
+		515751DF268C9A57006D45BA /* RZUIViewWraper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZUIViewWraper.swift; sourceTree = "<group>"; };
+		515751E0268C9A57006D45BA /* RZUIPacView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZUIPacView.swift; sourceTree = "<group>"; };
+		515751E1268C9A57006D45BA /* RZSUIPacView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZSUIPacView.swift; sourceTree = "<group>"; };
+		515751E3268C9A57006D45BA /* RZTransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZTransitionAnimation.swift; sourceTree = "<group>"; };
+		515751E4268C9A57006D45BA /* LinesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinesController.swift; sourceTree = "<group>"; };
+		515751E5268C9A57006D45BA /* RZRotater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZRotater.swift; sourceTree = "<group>"; };
+		515751E7268C9A57006D45BA /* UIApplicationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
+		515751E8268C9A57006D45BA /* CGSizeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGSizeExtension.swift; sourceTree = "<group>"; };
+		515751E9268C9A57006D45BA /* UIPacInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPacInstaller.swift; sourceTree = "<group>"; };
+		515751EA268C9A57006D45BA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		515751EC268C9A57006D45BA /* RZUIPacRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZUIPacRouter.swift; sourceTree = "<group>"; };
 		54276254A91B934B93E2AF76 /* Pods_RZStoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RZStoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55998D5ED8568887B3C340F1 /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6182A7496AAB50FFF3DE937C /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -585,232 +587,23 @@
 		512ED4482672ABD900CDD342 /* KITs */ = {
 			isa = PBXGroup;
 			children = (
-				512ED4C32672AD8F00CDD342 /* RelizKit */,
-				512ED6062672AF6900CDD342 /* RZEvent */,
-				512ED5EF2672AF5900CDD342 /* RZStoreKit */,
-				512ED44C2672AC5100CDD342 /* RZObservableKit */,
+				51575152268C98F7006D45BA /* RelizKit */,
+				51575185268C994E006D45BA /* RZEventKit */,
+				51575174268C9930006D45BA /* RZStoreKit */,
+				5157515B268C991D006D45BA /* RZObservableKit */,
 				512ED4712672ACAD00CDD342 /* UI */,
 			);
 			path = KITs;
 			sourceTree = "<group>";
 		};
-		512ED44C2672AC5100CDD342 /* RZObservableKit */ = {
-			isa = PBXGroup;
-			children = (
-				512ED44D2672AC5100CDD342 /* RZObservableKit.h */,
-				512ED44E2672AC5100CDD342 /* Extensions */,
-				512ED4522672AC5200CDD342 /* Operators.swift */,
-				512ED4532672AC5200CDD342 /* Helpers */,
-				512ED4582672AC5200CDD342 /* Info.plist */,
-				512ED4592672AC5200CDD342 /* RZObservable.swift */,
-			);
-			name = RZObservableKit;
-			path = ../../RZObservableKit/RZObservableKit;
-			sourceTree = "<group>";
-		};
-		512ED44E2672AC5100CDD342 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				512ED44F2672AC5100CDD342 /* UIViewExtension.swift */,
-				512ED4502672AC5100CDD342 /* ObservableObjectExtension.swift */,
-				512ED4512672AC5200CDD342 /* UIControlExtension.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		512ED4532672AC5200CDD342 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				512ED4542672AC5200CDD342 /* RZTextViewDelegate.swift */,
-				512ED4552672AC5200CDD342 /* Associated.swift */,
-				512ED4562672AC5200CDD342 /* RZUIAnimation.swift */,
-				512ED4572672AC5200CDD342 /* RZSwitch.swift */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		512ED4712672ACAD00CDD342 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				512ED6F62672B38D00CDD342 /* RZDarkModeKit */,
-				512ED72E2672B3C500CDD342 /* RZUIPacKit */,
-				512ED7052672B39D00CDD342 /* RZViewBuilder */,
+				5157518C268C999E006D45BA /* RZDarkModeKit */,
+				515751D8268C9A57006D45BA /* RZUIPacKit */,
+				515751B7268C99DC006D45BA /* RZViewBuilderKit */,
 			);
 			path = UI;
-			sourceTree = "<group>";
-		};
-		512ED4C32672AD8F00CDD342 /* RelizKit */ = {
-			isa = PBXGroup;
-			children = (
-				512ED4CF2672ADF500CDD342 /* Info.plist */,
-				512ED4C42672ADC300CDD342 /* CoreOnly */,
-			);
-			path = RelizKit;
-			sourceTree = "<group>";
-		};
-		512ED4C42672ADC300CDD342 /* CoreOnly */ = {
-			isa = PBXGroup;
-			children = (
-				512ED4C52672ADC300CDD342 /* RZOperators.swift */,
-				512ED4C62672ADC300CDD342 /* RelizKit.h */,
-			);
-			name = CoreOnly;
-			path = ../../../CoreOnly;
-			sourceTree = "<group>";
-		};
-		512ED5EF2672AF5900CDD342 /* RZStoreKit */ = {
-			isa = PBXGroup;
-			children = (
-				512ED5F02672AF5900CDD342 /* RZStoreKit.h */,
-				512ED5F12672AF5900CDD342 /* Core */,
-				512ED5F52672AF5900CDD342 /* Helpers */,
-				512ED5F82672AF5900CDD342 /* Info.plist */,
-			);
-			name = RZStoreKit;
-			path = ../../RZStoreKit/RZStoreKit;
-			sourceTree = "<group>";
-		};
-		512ED5F12672AF5900CDD342 /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				512ED5F22672AF5900CDD342 /* RZStoreKit.swift */,
-				512ED5F32672AF5900CDD342 /* RZProduct.swift */,
-				512ED5F42672AF5900CDD342 /* RZStoreRefrasher.swift */,
-			);
-			path = Core;
-			sourceTree = "<group>";
-		};
-		512ED5F52672AF5900CDD342 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				512ED5F62672AF5900CDD342 /* ReceiptItemExtention.swift */,
-				512ED5F72672AF5900CDD342 /* RZStoreDelegateProtocol.swift */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
-		512ED6062672AF6900CDD342 /* RZEvent */ = {
-			isa = PBXGroup;
-			children = (
-				512ED6072672AF6900CDD342 /* RZEvent.swift */,
-				512ED6082672AF6900CDD342 /* RZEvent.h */,
-				512ED6092672AF6900CDD342 /* Info.plist */,
-			);
-			name = RZEvent;
-			path = ../../RZEvent/RZEvent;
-			sourceTree = "<group>";
-		};
-		512ED6F62672B38D00CDD342 /* RZDarkModeKit */ = {
-			isa = PBXGroup;
-			children = (
-				512ED6F72672B38D00CDD342 /* RZDarkModeKit.h */,
-				512ED6F92672B38D00CDD342 /* Info.plist */,
-				512ED6F82672B38D00CDD342 /* RZDarkModeKit.swift */,
-			);
-			name = RZDarkModeKit;
-			path = ../../../RZUIKit/RZDarkModeKit/RZDarkModeKit;
-			sourceTree = "<group>";
-		};
-		512ED7052672B39D00CDD342 /* RZViewBuilder */ = {
-			isa = PBXGroup;
-			children = (
-				512ED70D2672B39D00CDD342 /* RZViewBuilder.h */,
-				512ED7152672B39D00CDD342 /* Info.plist */,
-				512ED7062672B39D00CDD342 /* RZViewBuilder.swift */,
-				512ED7072672B39D00CDD342 /* RZProto */,
-				512ED70E2672B39D00CDD342 /* Helpers */,
-				512ED7162672B39D00CDD342 /* RZObservable.swift */,
-			);
-			name = RZViewBuilder;
-			path = ../../../RZUIKit/RZViewBuilder/RZViewBuilder;
-			sourceTree = "<group>";
-		};
-		512ED7072672B39D00CDD342 /* RZProto */ = {
-			isa = PBXGroup;
-			children = (
-				512ED7082672B39D00CDD342 /* RZProtoFrame.swift */,
-				512ED7092672B39D00CDD342 /* RZProtoTest.swift */,
-				512ED70A2672B39D00CDD342 /* RZProtoValue.swift */,
-				512ED70B2672B39D00CDD342 /* RZProto.swift */,
-				512ED70C2672B39D00CDD342 /* RZProtoOperationGoup.swift */,
-			);
-			path = RZProto;
-			sourceTree = "<group>";
-		};
-		512ED70E2672B39D00CDD342 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				512ED70F2672B39D00CDD342 /* RZImageSeter.swift */,
-				512ED7102672B39D00CDD342 /* UIViewExtension.swift */,
-				512ED7112672B39D00CDD342 /* Operators.swift */,
-				512ED7122672B39D00CDD342 /* RZLabelSizeController.swift */,
-				512ED7132672B39D00CDD342 /* UIControlExtension.swift */,
-				512ED7142672B39D00CDD342 /* DictionaryExtension.swift */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
-		512ED72E2672B3C500CDD342 /* RZUIPacKit */ = {
-			isa = PBXGroup;
-			children = (
-				512ED72F2672B3C500CDD342 /* RZUIPacKit.h */,
-				512ED7402672B3C500CDD342 /* Info.plist */,
-				512ED7302672B3C500CDD342 /* Controllers */,
-				512ED7342672B3C500CDD342 /* Views */,
-				512ED7382672B3C500CDD342 /* Helpers */,
-				512ED7412672B3C500CDD342 /* Router */,
-			);
-			name = RZUIPacKit;
-			path = ../../../RZUIKit/RZUIPacKit/RZUIPacKit;
-			sourceTree = "<group>";
-		};
-		512ED7302672B3C500CDD342 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				512ED7312672B3C500CDD342 /* RZPopUpView.swift */,
-				512ED7322672B3C500CDD342 /* RZRootController.swift */,
-				512ED7332672B3C500CDD342 /* RZUIPacController.swift */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		512ED7342672B3C500CDD342 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				512ED7352672B3C500CDD342 /* RZUIViewWraper.swift */,
-				512ED7362672B3C500CDD342 /* RZUIPacView.swift */,
-				512ED7372672B3C500CDD342 /* RZSUIPacView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		512ED7382672B3C500CDD342 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				512ED7392672B3C500CDD342 /* RZTransitionAnimation.swift */,
-				512ED73A2672B3C500CDD342 /* LinesController.swift */,
-				512ED73B2672B3C500CDD342 /* RZRotater.swift */,
-				512ED73C2672B3C500CDD342 /* Extensions */,
-				512ED73F2672B3C500CDD342 /* UIPacInstaller.swift */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
-		512ED73C2672B3C500CDD342 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				512ED73D2672B3C500CDD342 /* UIApplicationExtension.swift */,
-				512ED73E2672B3C500CDD342 /* CGSizeExtension.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		512ED7412672B3C500CDD342 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				512ED7422672B3C500CDD342 /* RZUIPacRouter.swift */,
-			);
-			path = Router;
 			sourceTree = "<group>";
 		};
 		512ED7B92672B6EF00CDD342 /* PodSpecs */ = {
@@ -818,12 +611,12 @@
 			children = (
 				512ED7BC2672B72300CDD342 /* RelizSDK.podspec */,
 				512ED7BD2672B72300CDD342 /* RelizKit.podspec */,
-				512ED7C02672B72300CDD342 /* RZEvent.podspec */,
+				512ED7C02672B72300CDD342 /* RZEventKit.podspec */,
 				512ED7BF2672B72300CDD342 /* RZStoreKit.podspec */,
 				512ED7C12672B72300CDD342 /* RZObservableKit.podspec */,
 				512ED7BB2672B72300CDD342 /* RZDarkModeKit.podspec */,
 				512ED7BA2672B72300CDD342 /* RZUIPacKit.podspec */,
-				512ED7BE2672B72300CDD342 /* RZViewBuilder.podspec */,
+				512ED7BE2672B72300CDD342 /* RZViewBuilderKit.podspec */,
 			);
 			path = PodSpecs;
 			sourceTree = "<group>";
@@ -844,6 +637,208 @@
 			path = RZViewBuilderKitTests;
 			sourceTree = "<group>";
 		};
+		51575152268C98F7006D45BA /* RelizKit */ = {
+			isa = PBXGroup;
+			children = (
+				51575153268C98F7006D45BA /* RelizKit.swift */,
+				51575154268C98F7006D45BA /* RZOperators.swift */,
+				51575155268C98F7006D45BA /* RelizKit.h */,
+				51575156268C98F7006D45BA /* Info.plist */,
+			);
+			name = RelizKit;
+			path = ../../Sources/RelizKit;
+			sourceTree = "<group>";
+		};
+		5157515B268C991D006D45BA /* RZObservableKit */ = {
+			isa = PBXGroup;
+			children = (
+				5157515C268C991D006D45BA /* RZObservableKit.h */,
+				5157515D268C991D006D45BA /* Extensions */,
+				51575161268C991D006D45BA /* Operators.swift */,
+				51575162268C991D006D45BA /* Helpers */,
+				51575167268C991D006D45BA /* Info.plist */,
+				51575168268C991D006D45BA /* RZObservable.swift */,
+			);
+			name = RZObservableKit;
+			path = ../../Sources/RZObservableKit;
+			sourceTree = "<group>";
+		};
+		5157515D268C991D006D45BA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5157515E268C991D006D45BA /* UIViewExtension.swift */,
+				5157515F268C991D006D45BA /* ObservableObjectExtension.swift */,
+				51575160268C991D006D45BA /* UIControlExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		51575162268C991D006D45BA /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				51575163268C991D006D45BA /* RZTextViewDelegate.swift */,
+				51575164268C991D006D45BA /* Associated.swift */,
+				51575165268C991D006D45BA /* RZUIAnimation.swift */,
+				51575166268C991D006D45BA /* RZSwitch.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		51575174268C9930006D45BA /* RZStoreKit */ = {
+			isa = PBXGroup;
+			children = (
+				51575175268C9930006D45BA /* RZStoreKit.h */,
+				51575176268C9930006D45BA /* Core */,
+				5157517A268C9930006D45BA /* Helpers */,
+				5157517D268C9930006D45BA /* Info.plist */,
+			);
+			name = RZStoreKit;
+			path = ../../Sources/RZStoreKit;
+			sourceTree = "<group>";
+		};
+		51575176268C9930006D45BA /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				51575177268C9930006D45BA /* RZStoreKit.swift */,
+				51575178268C9930006D45BA /* RZProduct.swift */,
+				51575179268C9930006D45BA /* RZStoreRefrasher.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		5157517A268C9930006D45BA /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5157517B268C9930006D45BA /* ReceiptItemExtention.swift */,
+				5157517C268C9930006D45BA /* RZStoreDelegateProtocol.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		51575185268C994E006D45BA /* RZEventKit */ = {
+			isa = PBXGroup;
+			children = (
+				51575186268C994E006D45BA /* RZEvent.swift */,
+				51575187268C994E006D45BA /* RZEventKit.h */,
+				51575188268C994E006D45BA /* Info.plist */,
+			);
+			name = RZEventKit;
+			path = ../../Sources/RZEventKit;
+			sourceTree = "<group>";
+		};
+		5157518C268C999E006D45BA /* RZDarkModeKit */ = {
+			isa = PBXGroup;
+			children = (
+				5157518D268C999E006D45BA /* RZDarkModeKit.h */,
+				5157518E268C999E006D45BA /* RZDarkModeKit.swift */,
+				5157518F268C999E006D45BA /* Info.plist */,
+			);
+			name = RZDarkModeKit;
+			path = ../../../Sources/RZUIKit/RZDarkModeKit;
+			sourceTree = "<group>";
+		};
+		515751B7268C99DC006D45BA /* RZViewBuilderKit */ = {
+			isa = PBXGroup;
+			children = (
+				515751B8268C99DC006D45BA /* RZViewBuilder.swift */,
+				515751B9268C99DC006D45BA /* RZProto */,
+				515751BF268C99DC006D45BA /* RZViewBuilderKit.h */,
+				515751C0268C99DC006D45BA /* Helpers */,
+				515751C7268C99DC006D45BA /* Info.plist */,
+				515751C8268C99DC006D45BA /* RZObservable.swift */,
+			);
+			name = RZViewBuilderKit;
+			path = ../../../Sources/RZUIKit/RZViewBuilderKit;
+			sourceTree = "<group>";
+		};
+		515751B9268C99DC006D45BA /* RZProto */ = {
+			isa = PBXGroup;
+			children = (
+				515751BA268C99DC006D45BA /* RZProtoFrame.swift */,
+				515751BB268C99DC006D45BA /* RZProtoTest.swift */,
+				515751BC268C99DC006D45BA /* RZProtoValue.swift */,
+				515751BD268C99DC006D45BA /* RZProto.swift */,
+				515751BE268C99DC006D45BA /* RZProtoOperationGoup.swift */,
+			);
+			path = RZProto;
+			sourceTree = "<group>";
+		};
+		515751C0268C99DC006D45BA /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				515751C1268C99DC006D45BA /* RZImageSeter.swift */,
+				515751C2268C99DC006D45BA /* UIViewExtension.swift */,
+				515751C3268C99DC006D45BA /* Operators.swift */,
+				515751C4268C99DC006D45BA /* RZLabelSizeController.swift */,
+				515751C5268C99DC006D45BA /* UIControlExtension.swift */,
+				515751C6268C99DC006D45BA /* DictionaryExtension.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		515751D8268C9A57006D45BA /* RZUIPacKit */ = {
+			isa = PBXGroup;
+			children = (
+				515751D9268C9A57006D45BA /* RZUIPacKit.h */,
+				515751DA268C9A57006D45BA /* Controllers */,
+				515751DE268C9A57006D45BA /* Views */,
+				515751E2268C9A57006D45BA /* Helpers */,
+				515751EA268C9A57006D45BA /* Info.plist */,
+				515751EB268C9A57006D45BA /* Router */,
+			);
+			name = RZUIPacKit;
+			path = ../../../Sources/RZUIKit/RZUIPacKit;
+			sourceTree = "<group>";
+		};
+		515751DA268C9A57006D45BA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				515751DB268C9A57006D45BA /* RZPopUpView.swift */,
+				515751DC268C9A57006D45BA /* RZRootController.swift */,
+				515751DD268C9A57006D45BA /* RZUIPacController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		515751DE268C9A57006D45BA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				515751DF268C9A57006D45BA /* RZUIViewWraper.swift */,
+				515751E0268C9A57006D45BA /* RZUIPacView.swift */,
+				515751E1268C9A57006D45BA /* RZSUIPacView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		515751E2268C9A57006D45BA /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				515751E3268C9A57006D45BA /* RZTransitionAnimation.swift */,
+				515751E4268C9A57006D45BA /* LinesController.swift */,
+				515751E5268C9A57006D45BA /* RZRotater.swift */,
+				515751E6268C9A57006D45BA /* Extensions */,
+				515751E9268C9A57006D45BA /* UIPacInstaller.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		515751E6268C9A57006D45BA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				515751E7268C9A57006D45BA /* UIApplicationExtension.swift */,
+				515751E8268C9A57006D45BA /* CGSizeExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		515751EB268C9A57006D45BA /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				515751EC268C9A57006D45BA /* RZUIPacRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		88153E665B5ADC4CBCBDC0EB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -860,7 +855,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				512ED45A2672AC5200CDD342 /* RZObservableKit.h in Headers */,
+				51575169268C991E006D45BA /* RZObservableKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -868,7 +863,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				512ED60B2672AF6900CDD342 /* RZEvent.h in Headers */,
+				5157518A268C994F006D45BA /* RZEventKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -876,7 +871,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				512ED5F92672AF5900CDD342 /* RZStoreKit.h in Headers */,
+				5157517E268C9930006D45BA /* RZStoreKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -884,7 +879,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				512ED4C82672ADC300CDD342 /* RelizKit.h in Headers */,
+				51575159268C98F7006D45BA /* RelizKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -892,7 +887,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				512ED71D2672B39D00CDD342 /* RZViewBuilder.h in Headers */,
+				515751CF268C99DC006D45BA /* RZViewBuilderKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -900,7 +895,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				512ED6FA2672B38D00CDD342 /* RZDarkModeKit.h in Headers */,
+				51575190268C999E006D45BA /* RZDarkModeKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -908,7 +903,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				512ED7432672B3C500CDD342 /* RZUIPacKit.h in Headers */,
+				515751ED268C9A57006D45BA /* RZUIPacKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1368,15 +1363,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				512ED45B2672AC5200CDD342 /* UIViewExtension.swift in Sources */,
-				512ED4602672AC5200CDD342 /* Associated.swift in Sources */,
-				512ED45F2672AC5200CDD342 /* RZTextViewDelegate.swift in Sources */,
-				512ED4642672AC5200CDD342 /* RZObservable.swift in Sources */,
-				512ED45E2672AC5200CDD342 /* Operators.swift in Sources */,
-				512ED45D2672AC5200CDD342 /* UIControlExtension.swift in Sources */,
-				512ED4612672AC5200CDD342 /* RZUIAnimation.swift in Sources */,
-				512ED45C2672AC5200CDD342 /* ObservableObjectExtension.swift in Sources */,
-				512ED4622672AC5200CDD342 /* RZSwitch.swift in Sources */,
+				5157516A268C991E006D45BA /* UIViewExtension.swift in Sources */,
+				5157516F268C991E006D45BA /* Associated.swift in Sources */,
+				5157516E268C991E006D45BA /* RZTextViewDelegate.swift in Sources */,
+				51575173268C991E006D45BA /* RZObservable.swift in Sources */,
+				5157516D268C991E006D45BA /* Operators.swift in Sources */,
+				5157516C268C991E006D45BA /* UIControlExtension.swift in Sources */,
+				51575170268C991E006D45BA /* RZUIAnimation.swift in Sources */,
+				5157516B268C991E006D45BA /* ObservableObjectExtension.swift in Sources */,
+				51575171268C991E006D45BA /* RZSwitch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1384,7 +1379,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				512ED60A2672AF6900CDD342 /* RZEvent.swift in Sources */,
+				51575189268C994F006D45BA /* RZEvent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1392,11 +1387,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				512ED5FC2672AF5900CDD342 /* RZStoreRefrasher.swift in Sources */,
-				512ED5FA2672AF5900CDD342 /* RZStoreKit.swift in Sources */,
-				512ED5FE2672AF5900CDD342 /* RZStoreDelegateProtocol.swift in Sources */,
-				512ED5FD2672AF5900CDD342 /* ReceiptItemExtention.swift in Sources */,
-				512ED5FB2672AF5900CDD342 /* RZProduct.swift in Sources */,
+				51575181268C9931006D45BA /* RZStoreRefrasher.swift in Sources */,
+				5157517F268C9930006D45BA /* RZStoreKit.swift in Sources */,
+				51575183268C9931006D45BA /* RZStoreDelegateProtocol.swift in Sources */,
+				51575182268C9931006D45BA /* ReceiptItemExtention.swift in Sources */,
+				51575180268C9930006D45BA /* RZProduct.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1404,7 +1399,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				512ED4C72672ADC300CDD342 /* RZOperators.swift in Sources */,
+				51575157268C98F7006D45BA /* RelizKit.swift in Sources */,
+				51575158268C98F7006D45BA /* RZOperators.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1412,19 +1408,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				512ED7192672B39D00CDD342 /* RZProtoTest.swift in Sources */,
-				512ED7182672B39D00CDD342 /* RZProtoFrame.swift in Sources */,
-				512ED71E2672B39D00CDD342 /* RZImageSeter.swift in Sources */,
-				512ED7232672B39D00CDD342 /* DictionaryExtension.swift in Sources */,
-				512ED71B2672B39D00CDD342 /* RZProto.swift in Sources */,
-				512ED7252672B39D00CDD342 /* RZObservable.swift in Sources */,
-				512ED71A2672B39D00CDD342 /* RZProtoValue.swift in Sources */,
-				512ED7222672B39D00CDD342 /* UIControlExtension.swift in Sources */,
-				512ED7172672B39D00CDD342 /* RZViewBuilder.swift in Sources */,
-				512ED71F2672B39D00CDD342 /* UIViewExtension.swift in Sources */,
-				512ED71C2672B39D00CDD342 /* RZProtoOperationGoup.swift in Sources */,
-				512ED7202672B39D00CDD342 /* Operators.swift in Sources */,
-				512ED7212672B39D00CDD342 /* RZLabelSizeController.swift in Sources */,
+				515751CB268C99DC006D45BA /* RZProtoTest.swift in Sources */,
+				515751CA268C99DC006D45BA /* RZProtoFrame.swift in Sources */,
+				515751D0268C99DC006D45BA /* RZImageSeter.swift in Sources */,
+				515751D5268C99DC006D45BA /* DictionaryExtension.swift in Sources */,
+				515751CD268C99DC006D45BA /* RZProto.swift in Sources */,
+				515751D7268C99DC006D45BA /* RZObservable.swift in Sources */,
+				515751CC268C99DC006D45BA /* RZProtoValue.swift in Sources */,
+				515751D4268C99DC006D45BA /* UIControlExtension.swift in Sources */,
+				515751C9268C99DC006D45BA /* RZViewBuilder.swift in Sources */,
+				515751D1268C99DC006D45BA /* UIViewExtension.swift in Sources */,
+				515751CE268C99DC006D45BA /* RZProtoOperationGoup.swift in Sources */,
+				515751D2268C99DC006D45BA /* Operators.swift in Sources */,
+				515751D3268C99DC006D45BA /* RZLabelSizeController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1432,7 +1428,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				512ED6FB2672B38D00CDD342 /* RZDarkModeKit.swift in Sources */,
+				51575191268C999E006D45BA /* RZDarkModeKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1440,19 +1436,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				512ED74C2672B3C500CDD342 /* RZRotater.swift in Sources */,
-				512ED7442672B3C500CDD342 /* RZPopUpView.swift in Sources */,
-				512ED74D2672B3C500CDD342 /* UIApplicationExtension.swift in Sources */,
-				512ED74F2672B3C500CDD342 /* UIPacInstaller.swift in Sources */,
-				512ED74A2672B3C500CDD342 /* RZTransitionAnimation.swift in Sources */,
-				512ED7512672B3C500CDD342 /* RZUIPacRouter.swift in Sources */,
-				512ED7482672B3C500CDD342 /* RZUIPacView.swift in Sources */,
-				512ED7472672B3C500CDD342 /* RZUIViewWraper.swift in Sources */,
-				512ED74E2672B3C500CDD342 /* CGSizeExtension.swift in Sources */,
-				512ED7462672B3C500CDD342 /* RZUIPacController.swift in Sources */,
-				512ED7452672B3C500CDD342 /* RZRootController.swift in Sources */,
-				512ED7492672B3C500CDD342 /* RZSUIPacView.swift in Sources */,
-				512ED74B2672B3C500CDD342 /* LinesController.swift in Sources */,
+				515751F6268C9A57006D45BA /* RZRotater.swift in Sources */,
+				515751EE268C9A57006D45BA /* RZPopUpView.swift in Sources */,
+				515751F7268C9A57006D45BA /* UIApplicationExtension.swift in Sources */,
+				515751F9268C9A57006D45BA /* UIPacInstaller.swift in Sources */,
+				515751F4268C9A57006D45BA /* RZTransitionAnimation.swift in Sources */,
+				515751FB268C9A57006D45BA /* RZUIPacRouter.swift in Sources */,
+				515751F2268C9A57006D45BA /* RZUIPacView.swift in Sources */,
+				515751F1268C9A57006D45BA /* RZUIViewWraper.swift in Sources */,
+				515751F8268C9A57006D45BA /* CGSizeExtension.swift in Sources */,
+				515751F0268C9A57006D45BA /* RZUIPacController.swift in Sources */,
+				515751EF268C9A57006D45BA /* RZRootController.swift in Sources */,
+				515751F3268C9A57006D45BA /* RZSUIPacView.swift in Sources */,
+				515751F5268C9A57006D45BA /* LinesController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1822,7 +1818,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ../RZObservableKit/RZObservableKit/Info.plist;
+				INFOPLIST_FILE = ../Sources/RZObservableKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1850,7 +1846,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ../RZObservableKit/RZObservableKit/Info.plist;
+				INFOPLIST_FILE = ../Sources/RZObservableKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1878,7 +1874,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ../RZEvent/RZEvent/Info.plist;
+				INFOPLIST_FILE = ../Sources/RZEvent/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1906,7 +1902,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ../RZEvent/RZEvent/Info.plist;
+				INFOPLIST_FILE = ../Sources/RZEvent/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1935,7 +1931,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ../RZStoreKit/RZStoreKit/Info.plist;
+				INFOPLIST_FILE = ../Sources/RZStoreKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1964,7 +1960,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ../RZStoreKit/RZStoreKit/Info.plist;
+				INFOPLIST_FILE = ../Sources/RZStoreKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1992,7 +1988,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ../RelizKit/RelizKit/Info.plist;
+				INFOPLIST_FILE = ../Sources/RelizKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2020,7 +2016,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ../RelizKit/RelizKit/Info.plist;
+				INFOPLIST_FILE = ../Sources/RelizKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2048,7 +2044,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ../RZUIKit/RZViewBuilder/RZViewBuilder/Info.plist;
+				INFOPLIST_FILE = ../Sources/RZUIKit/RZViewBuilder/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2076,7 +2072,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ../RZUIKit/RZViewBuilder/RZViewBuilder/Info.plist;
+				INFOPLIST_FILE = ../Sources/RZUIKit/RZViewBuilder/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2104,7 +2100,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ../RZUIKit/RZDarkModeKit/RZDarkModeKit/Info.plist;
+				INFOPLIST_FILE = ../Sources/RZUIKit/RZDarkModeKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2132,7 +2128,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ../RZUIKit/RZDarkModeKit/RZDarkModeKit/Info.plist;
+				INFOPLIST_FILE = ../Sources/RZUIKit/RZDarkModeKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2160,7 +2156,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ../RZUIKit/RZUIPacKit/RZUIPacKit/Info.plist;
+				INFOPLIST_FILE = ../Sources/RZUIKit/RZUIPacKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2188,7 +2184,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ../RZUIKit/RZUIPacKit/RZUIPacKit/Info.plist;
+				INFOPLIST_FILE = ../Sources/RZUIKit/RZUIPacKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -2,7 +2,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "RZStoreKit"
-  spec.version      = "1.0.3"
+  spec.version      = "2.0.1"
   spec.summary      = "Small example to test code sharing."
   spec.description  = "Small example to test code sharing via cocoapods."	
   
@@ -19,12 +19,12 @@ Pod::Spec.new do |spec|
   }
  
   spec.source       = { 
-	:git => "https://github.com/nersonSwift/RelizKit.git", 
+	:git => "https://github.com/nersonSwift/RelizSDK.git", 
 	:tag => spec.name.to_s + "_v" + spec.version.to_s
   }
 
-  spec.source_files = "RZStoreKit/RZStoreKit/**/*"
-  spec.exclude_files = "RZStoreKit/RZStoreKit/**/*.plist"
+  spec.source_files = "Sources/RZStoreKit/**/*"
+  spec.exclude_files = "Sources/RZStoreKit/**/*.plist"
   spec.dependency "SwiftyStoreKit"
   spec.swift_version = '5.3'
   spec.ios.deployment_target  = '13.0'

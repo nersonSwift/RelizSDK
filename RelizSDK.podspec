@@ -2,7 +2,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "RelizSDK"
-  spec.version      = "1.1"
+  spec.version      = "2.2"
   spec.summary      = "RelizSDK"
   spec.description  = "Small example to test code sharing via cocoapods."	
   
@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   }
  
   spec.source       = { 
-	:git => "https://github.com/nersonSwift/RelizKit.git", 
+	:git => "https://github.com/nersonSwift/RelizSDK.git", 
 	:tag => spec.name.to_s + "_v" + spec.version.to_s
   }
 
@@ -35,20 +35,20 @@ Pod::Spec.new do |spec|
     ss.dependency 'RelizSDK/CoreOnly'
     ss.dependency 'RelizSDK/RZUIKit'
     ss.dependency 'RelizSDK/RZStoreKit'
-    ss.dependency 'RelizSDK/RZEvent'
+    ss.dependency 'RelizSDK/RZEventKit'
     ss.dependency 'RelizSDK/RZObservableKit'
   end
 
   spec.subspec 'RZUIKit' do |ss|
     ss.dependency 'RelizSDK/CoreOnly'
-    ss.dependency 'RelizSDK/RZViewBuilder'
+    ss.dependency 'RelizSDK/RZViewBuilderKit'
     ss.dependency 'RelizSDK/RZUIPacKit'
     ss.dependency 'RelizSDK/RZDarkModeKit'
   end
 
-  spec.subspec 'RZViewBuilder' do |ss|
+  spec.subspec 'RZViewBuilderKit' do |ss|
     ss.dependency 'RelizSDK/CoreOnly'
-    ss.dependency "RZViewBuilder"
+    ss.dependency "RZViewBuilderKit"
   end
 
   spec.subspec 'RZUIPacKit' do |ss|
@@ -66,9 +66,9 @@ Pod::Spec.new do |spec|
     ss.dependency "RZStoreKit"
   end
 
-  spec.subspec 'RZEvent' do |ss|
+  spec.subspec 'RZEventKit' do |ss|
     ss.dependency 'RelizSDK/CoreOnly'
-    ss.dependency "RZEvent"
+    ss.dependency "RZEventKit"
   end
   
   spec.subspec 'RZObservableKit' do |ss|
