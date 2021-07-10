@@ -103,7 +103,7 @@ rootView.addSubview(downView)
 
 let view = UIView()+>
     .width(30 % rootView|*.w).height(30 % rootView|*.w)
-    .x(rootView|*.scX, .center).y((topView|*.mY >< downView|*.y) + 5 % rootView|*.h)
+    .x(rootView|*.scX, .center).y((topView|*.mY >< downView|*.y) + 5 % rootView|*.h, .center)
     .view
 rootView.addSubview(view)
 ```
