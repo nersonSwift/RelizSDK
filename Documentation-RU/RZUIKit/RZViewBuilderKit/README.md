@@ -103,7 +103,7 @@ rootView.addSubview(downView)
 
 let view = UIView()+>
     .width(30 % rootView|*.w).height(30 % rootView|*.w)
-    .x(rootView|*.scX, .center).y((topView|*.mY >< downView|*.y) + 5 % rootView|*.h)
+    .x(rootView|*.scX, .center).y((topView|*.mY >< downView|*.y) + 5 % rootView|*.h, .center)
     .view
 rootView.addSubview(view)
 ```
@@ -116,7 +116,7 @@ Profit!
 
 ### Задать параметры UIView
 
-`RZViewBuilder` не ограничивается только изменением `frame`, так же можно изменять большее количество параметров (цвет, текст, тени, скругления углов,..)
+`RZViewBuilder` не ограничивается только изменением `frame`, так же можно изменять большое количество параметров (цвет, текст, тени, скругления углов,..)
 
 Пример создания  `UILabel`:
 
