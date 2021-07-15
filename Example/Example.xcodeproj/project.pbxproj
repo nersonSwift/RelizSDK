@@ -17,7 +17,6 @@
 		3CFEB6AD268B392C004DEC26 /* RZProtoOperationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFEB6AC268B392C004DEC26 /* RZProtoOperationsTests.swift */; };
 		512ED30E267282BE00CDD342 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED30D267282BE00CDD342 /* AppDelegate.swift */; };
 		512ED310267282BE00CDD342 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED30F267282BE00CDD342 /* SceneDelegate.swift */; };
-		512ED312267282BE00CDD342 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED311267282BE00CDD342 /* ContentView.swift */; };
 		512ED314267282C000CDD342 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 512ED313267282C000CDD342 /* Assets.xcassets */; };
 		512ED317267282C000CDD342 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 512ED316267282C000CDD342 /* Preview Assets.xcassets */; };
 		512ED31A267282C000CDD342 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 512ED318267282C000CDD342 /* LaunchScreen.storyboard */; };
@@ -109,6 +108,8 @@
 		515751F9268C9A57006D45BA /* UIPacInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751E9268C9A57006D45BA /* UIPacInstaller.swift */; };
 		515751FB268C9A57006D45BA /* RZUIPacRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751EC268C9A57006D45BA /* RZUIPacRouter.swift */; };
 		A70C434CF93CB91C89B63D7F /* Pods_RZStoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54276254A91B934B93E2AF76 /* Pods_RZStoreKit.framework */; };
+		E448A0B326A04FE90009FE36 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E448A0AF26A04FE90009FE36 /* Colors.swift */; };
+		E448A0B426A04FE90009FE36 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E448A0B226A04FE90009FE36 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -302,7 +303,6 @@
 		512ED30A267282BE00CDD342 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		512ED30D267282BE00CDD342 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		512ED30F267282BE00CDD342 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		512ED311267282BE00CDD342 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		512ED313267282C000CDD342 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		512ED316267282C000CDD342 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		512ED319267282C000CDD342 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -397,6 +397,8 @@
 		653C5983C1DCE348872A734D /* Pods-RZStoreKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RZStoreKit.debug.xcconfig"; path = "Target Support Files/Pods-RZStoreKit/Pods-RZStoreKit.debug.xcconfig"; sourceTree = "<group>"; };
 		87A0AC6533C1476094636E73 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		990FEE4607C934D1374C1E14 /* Pods-RZStoreKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RZStoreKit.release.xcconfig"; path = "Target Support Files/Pods-RZStoreKit/Pods-RZStoreKit.release.xcconfig"; sourceTree = "<group>"; };
+		E448A0AF26A04FE90009FE36 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		E448A0B226A04FE90009FE36 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -547,7 +549,7 @@
 				512ED343267282CE00CDD342 /* Example.entitlements */,
 				512ED30D267282BE00CDD342 /* AppDelegate.swift */,
 				512ED30F267282BE00CDD342 /* SceneDelegate.swift */,
-				512ED311267282BE00CDD342 /* ContentView.swift */,
+				E448A0AD26A04FE90009FE36 /* UI */,
 				512ED313267282C000CDD342 /* Assets.xcassets */,
 				512ED318267282C000CDD342 /* LaunchScreen.storyboard */,
 				512ED31B267282C000CDD342 /* Info.plist */,
@@ -846,6 +848,39 @@
 				54276254A91B934B93E2AF76 /* Pods_RZStoreKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E448A0AD26A04FE90009FE36 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				E448A0AE26A04FE90009FE36 /* UISystem */,
+				E448A0B026A04FE90009FE36 /* UIPacks */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		E448A0AE26A04FE90009FE36 /* UISystem */ = {
+			isa = PBXGroup;
+			children = (
+				E448A0AF26A04FE90009FE36 /* Colors.swift */,
+			);
+			path = UISystem;
+			sourceTree = "<group>";
+		};
+		E448A0B026A04FE90009FE36 /* UIPacks */ = {
+			isa = PBXGroup;
+			children = (
+				E448A0B126A04FE90009FE36 /* Content */,
+			);
+			path = UIPacks;
+			sourceTree = "<group>";
+		};
+		E448A0B126A04FE90009FE36 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				E448A0B226A04FE90009FE36 /* ContentView.swift */,
+			);
+			path = Content;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1327,8 +1362,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				512ED30E267282BE00CDD342 /* AppDelegate.swift in Sources */,
+				E448A0B326A04FE90009FE36 /* Colors.swift in Sources */,
+				E448A0B426A04FE90009FE36 /* ContentView.swift in Sources */,
 				512ED310267282BE00CDD342 /* SceneDelegate.swift in Sources */,
-				512ED312267282BE00CDD342 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1874,7 +1910,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ../Sources/RZEvent/Info.plist;
+				INFOPLIST_FILE = ../Sources/RZEventKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1902,7 +1938,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ../Sources/RZEvent/Info.plist;
+				INFOPLIST_FILE = ../Sources/RZEventKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2044,7 +2080,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ../Sources/RZUIKit/RZViewBuilder/Info.plist;
+				INFOPLIST_FILE = ../Sources/RZUIKit/RZViewBuilderKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2072,7 +2108,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ../Sources/RZUIKit/RZViewBuilder/Info.plist;
+				INFOPLIST_FILE = ../Sources/RZUIKit/RZViewBuilderKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -1134,6 +1134,45 @@ extension RZViewBuilder where V: UITextField{
         return self
     }
     
+    @discardableResult
+    public func subview(_ position: TextFieldViewPos, _ subview: UIView? = nil,
+                        _ viewMode: UITextField.ViewMode = .always, _ value: CGFloat = 15) -> Self {
+        var paddingView = subview
+        if paddingView == nil {
+            paddingView = UIView(frame: CGRect(x: 0, y: 0, width: value, height: view.frame.height))
+        }
+        switch position {
+        case .left:
+            view.leftView = paddingView
+            view.leftViewMode = viewMode
+        case .right:
+            view.rightView = paddingView
+            view.rightViewMode = viewMode
+        }
+        return self
+    }
+    
+    public enum TextFieldViewPos {
+        case left, right
+    }
+    
+    @discardableResult
+    public func secured(_ secured: Bool) -> Self {
+        view.isSecureTextEntry = secured
+        return self
+    }
+    
+    @discardableResult
+    public func keyboard(_ keyboard: UIKeyboardType) -> Self {
+        view.keyboardType = keyboard
+        return self
+    }
+    
+    @discardableResult
+    public func capitalization(_ type: UITextAutocapitalizationType) -> Self {
+        view.autocapitalizationType = type
+        return self
+    }
 }
 
 // MARK: - UITextView

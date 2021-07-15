@@ -5,7 +5,6 @@
 //  Created by Александр Сенин on 10.06.2021.
 //
 
-import UIKit
 import RelizKit
 
 @main
@@ -14,7 +13,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        RZLineController.addLines([
+            .init(id: "Main", controller: ContentC())
+        ])
+        RZLineController.setRootLine(id: "Main")
+        RZDarkModeKit.mode = .auto
         return true
     }
 
