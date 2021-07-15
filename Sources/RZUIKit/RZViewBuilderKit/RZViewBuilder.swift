@@ -1173,6 +1173,12 @@ extension RZViewBuilder where V: UITextField{
         view.autocapitalizationType = type
         return self
     }
+    
+    @discardableResult
+    public func placeholder(_ text: String) -> Self {
+        view.placeholder = text
+        return self
+    }
 }
 
 // MARK: - UITextView

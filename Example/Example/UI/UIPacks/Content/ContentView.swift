@@ -36,7 +36,7 @@ class ContentV: RZUIPacView {
                 .cornerRadius(.selfTag(.h) / 4*).border(2)
                 .color(.c1P, .border).color(.c1P, .tint).color(.a1_6P_8M, .content)
                 .secured(true).capitalization(.none).keyboard(.emailAddress)
-                .subview(.left)
+                .subview(.left, nil, .always, 30)
                 .view
         )
     }
