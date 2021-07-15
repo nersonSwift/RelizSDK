@@ -82,6 +82,16 @@ public class RZViewBuilder<V: UIView>{
     /// - Parameter type
     /// Тег мета установки цвета
     @discardableResult
+    public func color(_ value: UIColor, _ type: ColorType...) -> Self {
+        return color(value, type)
+    }
+    @discardableResult
+    public func color(_ value: UIColor, _ type: [ColorType]) -> Self {
+        type.forEach{ color(value, $0) }
+        return self
+    }
+    
+    @discardableResult
     public func color(_ value: UIColor, _ type: ColorType = .background) -> Self {
         if let tag = RZObserveController.Tag(rawValue: type.rawValue) { view.observeController.remove(tag) }
         return _color(value, type)
@@ -1134,26 +1144,54 @@ extension RZViewBuilder where V: UITextField{
         return self
     }
     
+    public enum TextFieldViewPos {
+        case left, right
+    }
+    
     @discardableResult
-    public func subview(_ position: TextFieldViewPos, _ subview: UIView? = nil,
-                        _ viewMode: UITextField.ViewMode = .always, _ value: CGFloat = 15) -> Self {
-        var paddingView = subview
-        if paddingView == nil {
-            paddingView = UIView(frame: CGRect(x: 0, y: 0, width: value, height: view.frame.height))
-        }
+    public func sideView(_ value: UIView?, _ position: TextFieldViewPos = .left) -> Self {
         switch position {
-        case .left:
-            view.leftView = paddingView
-            view.leftViewMode = viewMode
-        case .right:
-            view.rightView = paddingView
-            view.rightViewMode = viewMode
+            case .left: view.leftView = value
+            case .right: view.rightView = value
         }
         return self
     }
     
-    public enum TextFieldViewPos {
-        case left, right
+    @discardableResult
+    public func sideSpace(_ value: CGFloat, _ position: TextFieldViewPos = .left) -> Self {
+        let spaceView = UIView()+>.height(view|*.h).width(value).view
+        sideView(spaceView, position)
+        return self
+    }
+    
+    @discardableResult
+    public func sideSpace(_ value: RZProtoValue, _ position: TextFieldViewPos = .left) -> Self {
+        let spaceView = UIView()+>.height(view|*.h).width(value).view
+        sideView(spaceView, position)
+        return self
+    }
+    
+    @discardableResult
+    public func sideSpace(_ value: RZObservable<CGFloat>, _ position: TextFieldViewPos = .left) -> Self {
+        let spaceView = UIView()+>.height(view|*.h).width(value).view
+        sideView(spaceView, position)
+        return self
+    }
+    
+    @discardableResult
+    public func sideSpace(_ value: RZObservable<RZProtoValue>, _ position: TextFieldViewPos = .left) -> Self {
+        let spaceView = UIView()+>.height(view|*.h).width(value).view
+        sideView(spaceView, position)
+        return self
+    }
+    
+    @discardableResult
+    public func sideMode(_ value: UITextField.ViewMode, _ position: TextFieldViewPos = .left) -> Self {
+        switch position {
+            case .left: view.leftViewMode = value
+            case .right: view.rightViewMode = value
+        }
+        return self
     }
     
     @discardableResult
@@ -1175,8 +1213,22 @@ extension RZViewBuilder where V: UITextField{
     }
     
     @discardableResult
-    public func placeholder(_ text: String) -> Self {
+    func _placeholder(_ text: String) -> Self {
         view.placeholder = text
+        return self
+    }
+    
+    @discardableResult
+    public func placeholder(_ text: String) -> Self {
+        view.observeController.remove(.placeholder)
+        return _placeholder(text)
+    }
+    
+    @discardableResult
+    public func placeholder(_ text: RZObservable<String>) -> Self {
+        view.observeController.remove(.placeholder)
+        let result = text.add {[weak self] in self?._placeholder($0.new) }.use(.noAnimate)
+        view.observeController.add(.placeholder, result)
         return self
     }
 }

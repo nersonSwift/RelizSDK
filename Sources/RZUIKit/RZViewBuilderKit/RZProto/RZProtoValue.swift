@@ -405,6 +405,9 @@ class RZObserveController{
         
         case alpha
         case isHidden
+        
+        //MARK: - TextField
+        case placeholder
     }
     
     //MARK: - UIScrollView

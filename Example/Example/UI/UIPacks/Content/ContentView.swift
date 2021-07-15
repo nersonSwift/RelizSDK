@@ -34,9 +34,9 @@ class ContentV: RZUIPacView {
                 .width(86 % self*.w).height(10 % self*.w)
                 .x(self*.cX, .center).y(self*.cY, .center)
                 .cornerRadius(.selfTag(.h) / 4*).border(2)
-                .color(.c1P, .border).color(.c1P, .tint).color(.a1_6P_8M, .content)
+                .color(.c1P, [.border, .tint])
                 .secured(true).capitalization(.none).keyboard(.emailAddress)
-                .subview(.left, nil, .always, 30)
+                .sideSpace(5 % self*.w).sideMode(.always)
                 .view
         )
     }
