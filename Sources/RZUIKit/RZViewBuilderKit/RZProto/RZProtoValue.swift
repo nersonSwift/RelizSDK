@@ -158,7 +158,7 @@ public struct RZProtoValue: RZProtoValueProtocol{
         }
     }
     
-    public enum RZProtoTag{
+    public enum RZProtoTag: String{
         case w
         case h
         
