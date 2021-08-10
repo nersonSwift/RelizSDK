@@ -120,6 +120,7 @@ class UIPacInstaller{
         viewController.addChild(uiPacC)
         uiPacC.didMove(toParent: viewController)
         
+        uiPacC.place = view
         uiPacC.rotater = RZRotater(viewController: uiPacC)
         uiPacC.rootViewController?.roatateCild(false)
     }
