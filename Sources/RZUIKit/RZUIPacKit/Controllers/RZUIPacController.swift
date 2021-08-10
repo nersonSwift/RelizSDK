@@ -10,20 +10,20 @@ import UIKit
 import RZObservableKit
 
 //MARK: - ScreenControllerProtocol
-/// `ru`: - протокол, который используется для создания и переходов контроллеров
+/// `ru`: - протокол который используется для создания и переходов контроллеров
 public protocol RZUIPacControllerNGProtocol: UIViewController{
     
     //MARK: - propertes
     //MARK: - starting
-    /// `ru`: - данное свойство становится `true`, когда устанавливается контроллер
+    /// `ru`: - данное свойство устанавливается на `true` когда контроллер был установлен
     var starting: Bool { get set }
     
     //MARK: - inAnim
-    /// `ru`: - данное свойство устанавливается на `true`, когда контроллер находится в анимации
+    /// `ru`: - данное свойство устанавливается на `true` когда контроллер находится в анимации
     var inAnim: Bool { get set }
     
     //MARK: - screenLine
-    /// `ru`: - данное свойство отображает идетификатор линии, в которой находится
+    /// `ru`: - данное свойство отображает идетификатор линии в которой находится
     var uiPacLine: String? { get set }
     
     //MARK: - isHorizontal
@@ -31,53 +31,57 @@ public protocol RZUIPacControllerNGProtocol: UIViewController{
     var isHorizontal: Bool { get set }
     
     //MARK: - rotater
-    /// `ru`: - класс, отвечающий за орентацию котроллера в представлении
+    /// `ru`: - класс отвечающий за орентацию котроллера в представлении
     var rotater: RZRotater? { get set }
     
+    //MARK: - place
+    /// `ru`: - UIView на которую установлен экран
+    var place: UIView? { get set }
+    
     //MARK: - pastScreen
-     /// `ru`: - контроллер, который архивируется для обратного перехода
+     /// `ru`: - контроллер который архивируется для обратного перехода
     var pastUIPacC: RZUIPacControllerNGProtocol? { get set }
     
     
     //MARK: - funcs
     //MARK: - preparePac
-    /// `ru`: - метод, который вызывается до инициализации `UIPacV`
+    /// `ru`: - метод который вызывается до инициализации `UIPacV`
     func preparePac()
     
     //MARK: - initActions
-    /// `ru`: - метод вызывается перед `start()`, используется для инициализации наблюдателей и замыканий `UIPacR`
+    /// `ru`: - метод вызывается перед `start()` используется для инициализации наблюдателей и замыканий `UIPacR`
     func initActions()
     
     //MARK: - start
-    /// `ru`: - метод, который вызывается при первой устрановке экрана на представление
+    /// `ru`: - метод который вызывается при первой устрановке экрана на представление
     func start()
     
     //MARK: - didCreated
-    /// `ru`: - метод вызывается после метода `create()` в `UIPacV`
+    /// `ru`: - метод вызывается перед после метода `create()` в `UIPacV`
     func didCreated()
     
     //MARK: - open
-    /// `ru`: - метод, который вызывается при каждой установке экрана на представление
+    /// `ru`: - метод который вызывается при каждой установке экрана на представление
     func open()
     
     //MARK: - close
-    /// `ru`: - метод, который вызывается при каждом закрытии экрана
+    /// `ru`: - метод который вызывается при каждом закрытии экрана
     func close()
     
     //MARK: - completedOpen
-    /// `ru`: -  метод, который вызывается при каждой установке экрана на представление после анимации
+    /// `ru`: -  метод который вызывается при каждой установке экрана на представление после анимации
     func completedOpen()
     
     //MARK: - completedClose
-    /// `ru`: - метод, который вызывается при каждом закрытии экрана после анимации
+    /// `ru`: - метод который вызывается при каждом закрытии экрана после анимации
     func completedClose()
     
     //MARK: - rotate
-    /// `ru`: - метод, который вызывается при изменении ориентации
+    /// `ru`: - метод который вызывается при изменении ориентации
     func rotate()
     
     //MARK: - rotate
-    /// `ru`: - метод, который вызывается при изменении размера
+    /// `ru`: - метод который вызывается при изменении размера
     func resize()
 }
 
@@ -89,6 +93,7 @@ class RZUIPacControllerInterfase{
     var inAnim = false
     var uiPacLine: String?
     var pastUIPacC: RZUIPacControllerNGProtocol?
+    weak var place: UIView?
 }
 
 extension RZUIPacControllerNGProtocol{
@@ -183,6 +188,15 @@ extension RZUIPacControllerNGProtocol{
             }else{
                 return nil
             }
+        }
+    }
+    
+    public var place: UIView?{
+        set(place){
+            uiPacControllerInterfase.place = place
+        }
+        get{
+            uiPacControllerInterfase.place
         }
     }
     
