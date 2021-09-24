@@ -66,6 +66,7 @@ extension UIView{
     public var rzHeight: RZObservable<CGFloat>{ return rzFrameObserve.$rzHeight }
     
     public static var isAnimation: Bool {
+        if !Thread.isMainThread {return false}
         let view = UIView()
         view.alpha = 0
         return view.layer.animationKeys() != nil
