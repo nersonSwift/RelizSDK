@@ -43,16 +43,13 @@ let package = Package(
         )
     ],
     targets: [
+        
         .target(
             name: "RelizKit",
             dependencies: [
-                ._targetItem(name: "RZEventKit", condition: .when()),
-                ._targetItem(name: "RZObservableKit", condition: .when()),
-                ._targetItem(name: "RZStoreKit", condition: .when())
-                //"RZEventKit","RZObservableKit","RZStoreKit"
-//                .product(name: "RelizSDK", package: "RZEventKit"),
-//                .product(name: "RelizSDK", package: "RZObservableKit"),
-//                .product(name: "RelizSDK", package: "RZStoreKit")
+//                .target(name: "RZEventKit"),
+//                .target(name: "RZObservableKit"),
+//                .target(name: "RZStoreKit")
 //                .target(name: "RZDarkModeKit"),
 //                .target(name: "RZUIPacKit"),
 //                .target(name: "RZViewBuilderKit")
