@@ -55,14 +55,14 @@ let package = Package(
                 .target(name: "RZViewBuilderKit")
             ],
             path: "Sources/RelizKit",
-            exclude: ["Info.plist"],
-            linkerSettings: [.linkedFramework("RZEventKit")]
+            exclude: ["Info.plist"]
             //linkerSettings: [.linkedLibrary("RZEventKit"), .linkedLibrary("RZObservableKit"), .linkedLibrary("RZStoreKit"), .linkedLibrary("RZDarkModeKit"), .linkedLibrary("RZUIPacKit"), .linkedLibrary("RZViewBuilderKit")]
         ),
         .target(
             name: "RZEventKit",
-            //dependencies: ["RelizKit"],
-            exclude: ["Info.plist"]
+            dependencies: ["RelizKit"],
+            exclude: ["Info.plist"],
+            linkerSettings: [.linkedLibrary("RelizKit")]
         ),
         .target(
             name: "RZObservableKit",
