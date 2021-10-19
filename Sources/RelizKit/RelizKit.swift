@@ -3,17 +3,17 @@
 @_exported import UIKit
 @_exported import SwiftUI
 
-
+#if canImport(RZEventKit)
 @_exported import RZEventKit
+#endif
 
-
-
+#if canImport(RZStoreKit)
 @_exported import RZStoreKit
+#endif
 
-
-
+#if canImport(RZObservableKit)
 @_exported import RZObservableKit
-
+#endif
 
 
 #if canImport(RZDarkModeKit)
