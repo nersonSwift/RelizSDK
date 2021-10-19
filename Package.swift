@@ -8,7 +8,6 @@ let package = Package(
     products: [
         .library(
             name: "RZEventKit",
-            type: .dynamic,
             targets: ["RZEventKit"]
         ),
 //        .library(
