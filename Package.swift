@@ -46,9 +46,10 @@ let package = Package(
         .target(
             name: "RelizKit",
             dependencies: [
-                .product(name: "RelizSDK", package: "RZEventKit"),
-                .product(name: "RelizSDK", package: "RZObservableKit"),
-                .product(name: "RelizSDK", package: "RZStoreKit")
+                "RZEventKit","RZObservableKit","RZStoreKit"
+//                .product(name: "RelizSDK", package: "RZEventKit"),
+//                .product(name: "RelizSDK", package: "RZObservableKit"),
+//                .product(name: "RelizSDK", package: "RZStoreKit")
 //                .target(name: "RZDarkModeKit"),
 //                .target(name: "RZUIPacKit"),
 //                .target(name: "RZViewBuilderKit")
