@@ -30,10 +30,10 @@ let package = Package(
 //            name: "RZViewBuilderKit",
 //            targets: ["RZViewBuilderKit"]
 //        ),
-//        .library(
-//            name: "RelizKit",
-//            targets: ["RelizKit"]
-//        )
+        .library(
+            name: "RelizKit",
+            targets: ["RelizKit"]
+        )
     ],
     dependencies: [
         .package(
@@ -59,17 +59,17 @@ let package = Package(
         ),
         .target(
             name: "RZEventKit",
-            dependencies: [.target(name: "RelizKit")],
+            //dependencies: [.target(name: "RelizKit")],
             exclude: ["Info.plist"]
         ),
         .target(
             name: "RZObservableKit",
-            dependencies: [.target(name: "RelizKit")],
+            //dependencies: [.target(name: "RelizKit")],
             exclude: ["Info.plist"]
         ),
         .target(
             name: "RZStoreKit",
-            dependencies: ["SwiftyStoreKit", .target(name: "RelizKit")],
+            dependencies: ["SwiftyStoreKit"],// .target(name: "RelizKit")],
             exclude: ["Info.plist"]
         ),
         .target(
