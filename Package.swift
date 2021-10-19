@@ -59,9 +59,8 @@ let package = Package(
         ),
         .target(
             name: "RZEventKit",
-            dependencies: ["RelizKit"],
-            exclude: ["Info.plist"],
-            linkerSettings: [.linkedLibrary("RelizKit")]
+            dependencies: [.target(name: "RelizKit")],
+            exclude: ["Info.plist"]
         ),
         .target(
             name: "RZObservableKit",
