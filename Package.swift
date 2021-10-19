@@ -17,7 +17,7 @@ let package = Package(
         .library(
             name: "RZStoreKit",
             targets: ["RZStoreKit"]
-        )
+        ),
 //        .library(
 //            name: "RZDarkModeKit",
 //            targets: ["RZDarkModeKit"]
