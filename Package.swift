@@ -30,7 +30,7 @@ let package = Package(
 //            name: "RZViewBuilderKit",
 //            targets: ["RZViewBuilderKit"]
 //        ),
-        .library(
+        .executable(
             name: "RelizKit",
             targets: ["RelizKit"]
         )
@@ -43,7 +43,6 @@ let package = Package(
         )
     ],
     targets: [
-        
         .target(
             name: "RelizKit",
             dependencies: [
