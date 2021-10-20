@@ -6,18 +6,18 @@ let package = Package(
     name: "RelizSDK",
     platforms: [.iOS(.v13)],
     products: [
-        .library(
-            name: "RZEventKit",
-            targets: ["RZEventKit"]
-        ),
-        .library(
-            name: "RZObservableKit",
-            targets: ["RZObservableKit"]
-        ),
-        .library(
-            name: "RZStoreKit",
-            targets: ["RZStoreKit"]
-        ),
+//        .library(
+//            name: "RZEventKit",
+//            targets: ["RZEventKit"]
+//        ),
+//        .library(
+//            name: "RZObservableKit",
+//            targets: ["RZObservableKit"]
+//        ),
+//        .library(
+//            name: "RZStoreKit",
+//            targets: ["RZStoreKit"]
+//        ),
 //        .library(
 //            name: "RZDarkModeKit",
 //            targets: ["RZDarkModeKit"]
@@ -33,7 +33,7 @@ let package = Package(
         .library(
             name: "RelizKit",
             targets: ["RelizKit"]
-        )
+        ),
     ],
     dependencies: [
         .package(
@@ -46,12 +46,12 @@ let package = Package(
         .target(
             name: "RelizKit",
             dependencies: [
-//                .target(name: "RZEventKit"),
-//                .target(name: "RZObservableKit"),
-//                .target(name: "RZStoreKit")
-//                .target(name: "RZDarkModeKit"),
-//                .target(name: "RZUIPacKit"),
-//                .target(name: "RZViewBuilderKit")
+                .target(name: "RZEventKit"),
+                .target(name: "RZObservableKit"),
+                .target(name: "RZStoreKit"),
+                .target(name: "RZDarkModeKit"),
+                .target(name: "RZUIPacKit"),
+                .target(name: "RZViewBuilderKit")
             ],
             path: "Sources/RelizKit",
             exclude: ["Info.plist"]
