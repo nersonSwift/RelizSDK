@@ -11,10 +11,6 @@
 @_exported import RZStoreKit
 #endif
 
-#if canImport(SwiftyStoreKit)
-@_exported import SwiftyStoreKit
-#endif
-
 #if canImport(RZObservableKit)
 @_exported import RZObservableKit
 #endif
