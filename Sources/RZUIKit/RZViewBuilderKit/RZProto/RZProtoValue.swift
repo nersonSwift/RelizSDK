@@ -562,12 +562,11 @@ class RZObserve{
             guard let self = self else {return}
             guard let view = self.view else {return}
             UIViewUppdateProcess.startProcesses(view, self.tag) {
-                RZUIProcess.inst.addTask(priorety: .H, key: [self.tag.hashValue, view.hashValue]) {[weak self] in
-                    guard let self = self else {return}
-                    guard let view = self.view else {return}
-                    self.closure?(view)
-                    UIViewUppdateProcess.endProcesses(view, self.tag)
-                }
+                self.closure?(view)
+                UIViewUppdateProcess.endProcesses(view, self.tag)
+                //RZUIProcess.inst.addTask(priorety: .H, key: [self.tag.hashValue, view.hashValue]) {[weak self] in
+                    
+                //}
             }
         }
         if let result = result {results.append(result)}
