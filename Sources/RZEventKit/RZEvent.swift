@@ -7,32 +7,33 @@
 
 import Foundation
 
-public class RZEvent{
-    private var events = [RZEvent]()
-    private var _sendKey: String = ""
+
+public class RZAnyEvent{
+    fileprivate var events = [RZAnyEvent]()
+    fileprivate var _sendKey: String = ""
     
-    private var _name: String?
-    private var _value: Any?
+    fileprivate var _name: String?
+    fileprivate var _value: Any?
     
-    private var _sendDelegate: EventSendDelegate?
+    fileprivate var _sendDelegate: EventSendDelegate?
     
     public init(){}
     
-    public init(_ sendDelegate: EventSendDelegate? = nil, _ events: [RZEvent] = []){
+    init(_ sendDelegate: EventSendDelegate? = nil, _ events: [RZAnyEvent] = []){
         self._sendDelegate = sendDelegate
         self.events = events
     }
     
-    public convenience init(_ sendDelegate: EventSendDelegate? = nil, @EventBuilder _ events: ()->[RZEvent]){
+    convenience init(_ sendDelegate: EventSendDelegate? = nil, @EventBuilder _ events: ()->[RZAnyEvent]){
         self.init(sendDelegate, events())
     }
     
-    public init(_ key: String = "", _ sendDelegate: EventSendDelegate? = nil){
+    init(_ key: String = "", _ sendDelegate: EventSendDelegate? = nil){
         self._sendDelegate = sendDelegate
         _sendKey = key
     }
     
-    public convenience init(_ key: Bool, _ sendDelegate: EventSendDelegate? = nil){
+    convenience init(_ key: Bool, _ sendDelegate: EventSendDelegate? = nil){
         self.init("\(key)", sendDelegate)
     }
     
@@ -67,49 +68,49 @@ public class RZEvent{
     }
     
     @discardableResult
-    public func add(_ value: RZEvent) -> Self{
+    public func add(_ value: RZAnyEvent) -> Self{
         events.append(value)
         return self
     }
     
     @discardableResult
-    public func add(_ value: [RZEvent]) -> Self{
+    public func add(_ value: [RZAnyEvent]) -> Self{
         events += value
         return self
     }
     
     @discardableResult
-    public func add(@EventBuilder _ value: ()->[RZEvent]) -> Self{
+    public func add(@EventBuilder _ value: ()->[RZAnyEvent]) -> Self{
         add(value())
         return self
     }
     
     @discardableResult
-    public func set(_ value: [RZEvent]) -> Self {
+    public func set(_ value: [RZAnyEvent]) -> Self {
         events = value
         return self
     }
     
     @discardableResult
-    public func set(@EventBuilder _ value: ()->[RZEvent]) -> Self{
+    public func set(@EventBuilder _ value: ()->[RZAnyEvent]) -> Self{
         set(value())
         return self
     }
     
-    public subscript(index: Int) -> RZEvent?{
+    public subscript(index: Int) -> RZAnyEvent?{
         if index <= events.count { return nil }
         return events[index]
     }
     
-    public subscript(index: String) -> [RZEvent]{
-        var events = [RZEvent]()
+    public subscript(index: String) -> [RZAnyEvent]{
+        var events = [RZAnyEvent]()
         self.events.forEach{
             if $0._sendKey == index { events.append($0) }
         }
         return events
     }
     
-    public subscript(index: Bool) -> [RZEvent]{
+    public subscript(index: Bool) -> [RZAnyEvent]{
         return self["\(index)"]
     }
     
@@ -138,8 +139,8 @@ public class RZEvent{
         _sendDelegate?.send(_name, _value)
     }
     
-    public func copy() -> RZEvent{
-        RZEvent(_sendDelegate, events.map{$0.copy()}).sendKey(_sendKey).name(_name).value(_value)
+    public func copy() -> RZAnyEvent{
+        RZAnyEvent(_sendDelegate, events.map{$0.copy()}).sendKey(_sendKey).name(_name).value(_value)
     }
 }
 
@@ -149,8 +150,26 @@ open class EventSendDelegate {
 }
 
 @resultBuilder public struct EventBuilder{
-    public static func buildBlock(_ atrs: RZEvent...) -> [RZEvent] {
+    public static func buildBlock(_ atrs: RZAnyEvent...) -> [RZAnyEvent] {
         return atrs
     }
 }
 
+
+public class RZEvent<SD: EventSendDelegate>: RZAnyEvent{
+    public init(_ sendDelegate: SD? = nil, _ events: [RZAnyEvent] = []){
+        super.init(sendDelegate, events)
+    }
+    
+    public convenience init(_ sendDelegate: SD? = nil, @EventBuilder _ events: ()->[RZAnyEvent]){
+        self.init(sendDelegate, events())
+    }
+    
+    public init(_ key: String = "", _ sendDelegate: SD? = nil){
+        super.init(key, sendDelegate)
+    }
+    
+    public convenience init(_ key: Bool, _ sendDelegate: SD? = nil){
+        self.init("\(key)", sendDelegate)
+    }
+}

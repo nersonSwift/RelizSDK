@@ -16,6 +16,7 @@
 		3CFEB6AB268B1F22004DEC26 /* RZProtoValueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFEB6AA268B1F22004DEC26 /* RZProtoValueTests.swift */; };
 		3CFEB6AD268B392C004DEC26 /* RZProtoOperationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFEB6AC268B392C004DEC26 /* RZProtoOperationsTests.swift */; };
 		51057A0D270F158700ECD274 /* RZVBTemplateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51057A0C270F158700ECD274 /* RZVBTemplateExtension.swift */; };
+		5105D3F62729BA5B00393E0C /* RZUIProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5105D3F52729BA5B00393E0C /* RZUIProcess.swift */; };
 		512ED30E267282BE00CDD342 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED30D267282BE00CDD342 /* AppDelegate.swift */; };
 		512ED310267282BE00CDD342 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED30F267282BE00CDD342 /* SceneDelegate.swift */; };
 		512ED314267282C000CDD342 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 512ED313267282C000CDD342 /* Assets.xcassets */; };
@@ -364,6 +365,7 @@
 		3CFEB6AA268B1F22004DEC26 /* RZProtoValueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZProtoValueTests.swift; sourceTree = "<group>"; };
 		3CFEB6AC268B392C004DEC26 /* RZProtoOperationsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZProtoOperationsTests.swift; sourceTree = "<group>"; };
 		51057A0C270F158700ECD274 /* RZVBTemplateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZVBTemplateExtension.swift; sourceTree = "<group>"; };
+		5105D3F52729BA5B00393E0C /* RZUIProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZUIProcess.swift; sourceTree = "<group>"; };
 		512ED30A267282BE00CDD342 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		512ED30D267282BE00CDD342 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		512ED30F267282BE00CDD342 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -851,6 +853,7 @@
 			isa = PBXGroup;
 			children = (
 				515751C1268C99DC006D45BA /* RZImageSeter.swift */,
+				5105D3F52729BA5B00393E0C /* RZUIProcess.swift */,
 				515751C2268C99DC006D45BA /* UIViewExtension.swift */,
 				515751C3268C99DC006D45BA /* Operators.swift */,
 				515751C4268C99DC006D45BA /* RZLabelSizeController.swift */,
@@ -1608,6 +1611,7 @@
 				515751CC268C99DC006D45BA /* RZProtoValue.swift in Sources */,
 				515751D4268C99DC006D45BA /* UIControlExtension.swift in Sources */,
 				515751C9268C99DC006D45BA /* RZViewBuilder.swift in Sources */,
+				5105D3F62729BA5B00393E0C /* RZUIProcess.swift in Sources */,
 				515751D1268C99DC006D45BA /* UIViewExtension.swift in Sources */,
 				515751CE268C99DC006D45BA /* RZProtoOperationGoup.swift in Sources */,
 				515751D2268C99DC006D45BA /* Operators.swift in Sources */,
