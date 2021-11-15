@@ -9,7 +9,7 @@
 import UIKit
 
 open class RZRootController: UIViewController {
-    var plase: UIView?
+    open var plaсe: UIView?
     weak var scene: UIScene?
     
     private static var instancesClosures: [()->(RZRootController?)] = []
@@ -53,7 +53,7 @@ open class RZRootController: UIViewController {
         }else{
             RZTransition(.In, self).view(place).line(RZLineController.rootLine).transit()
         }
-        self.plase = place
+        self.plaсe = place
     }
     
     func roatateCild(_ animate: Bool = true){
@@ -91,7 +91,7 @@ open class RZRootController: UIViewController {
                 }
             }
         }else{
-            self.plase?.frame.size = size
+            self.plaсe?.frame.size = size
         }
     }
 }

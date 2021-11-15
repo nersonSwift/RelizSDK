@@ -17,7 +17,7 @@ public class RZAnyEvent{
     
     fileprivate var _sendDelegate: EventSendDelegate?
     
-    public init(){}
+    init(){}
     
     init(_ sendDelegate: EventSendDelegate? = nil, _ events: [RZAnyEvent] = []){
         self._sendDelegate = sendDelegate
@@ -157,6 +157,10 @@ open class EventSendDelegate {
 
 
 public class RZEvent<SD: EventSendDelegate>: RZAnyEvent{
+    public override init() where SD == EventSendDelegate{
+        super.init()
+    }
+    
     public init(_ sendDelegate: SD? = nil, _ events: [RZAnyEvent] = []){
         super.init(sendDelegate, events)
     }
