@@ -408,6 +408,14 @@ class RZObserveController{
         
         //MARK: - TextField
         case placeholder
+        
+        var priorety: Int {
+            switch self{
+            case .frame, .size, .width, .height: return 0
+            case .point, .x, .y:                 return 1
+            default:                             return 2
+            }
+        }
     }
     
     //MARK: - UIScrollView
@@ -561,12 +569,13 @@ class RZObserve{
         let result = protoValue?.$value.add{[weak self] _ in
             guard let self = self else {return}
             guard let view = self.view else {return}
-            UIViewUppdateProcess.startProcesses(view, self.tag) {
+            RZUIProcess.inst.addTask(
+                priorety: .init(rawValue: self.tag.priorety) ?? .L,
+                key: [self.tag.hashValue, view.hashValue]
+            ) {[weak self] in
+                guard let self = self else {return}
+                guard let view = self.view else {return}
                 self.closure?(view)
-                UIViewUppdateProcess.endProcesses(view, self.tag)
-                //RZUIProcess.inst.addTask(priorety: .H, key: [self.tag.hashValue, view.hashValue]) {[weak self] in
-                    
-                //}
             }
         }
         if let result = result {results.append(result)}
