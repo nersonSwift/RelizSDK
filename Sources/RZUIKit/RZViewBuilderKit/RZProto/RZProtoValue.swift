@@ -308,6 +308,15 @@ public struct RZProtoValue: RZProtoValueProtocol{
             result?.remove()
         }
     }
+    private func setupProcessSetuper(){
+        let key = "ProcessSetuper"
+        if Associated($value).get(.hashable(key)) != nil {return}
+        Associated($value).set(
+            $value.didUpdate.add{_ in RZUIProcess.inst.start(0)},
+            .hashable(key),
+            .OBJC_ASSOCIATION_RETAIN
+        )
+    }
     init(){}
     
     public static func %(left: RZProtoValue, right: RZProtoValue) -> RZProtoValue{

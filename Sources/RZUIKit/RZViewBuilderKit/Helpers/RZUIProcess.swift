@@ -33,7 +33,8 @@ class RZUIProcess{
         }
     }
     
-    private func start(_ pKey: Int){
+    func start(_ pKey: Int){
+        if c == [0,0,0] {return}
         isStarted = true
         useTask(pKey, [0,0,0])
     }
