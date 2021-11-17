@@ -76,7 +76,7 @@ struct KeysDic<Key, Key1, Value> where Key: Hashable, Key1: Hashable{
     
     @discardableResult
     mutating func safeAdd(key: Key, key1: Key1, value: Value) -> Bool {
-        guard dic[key] != nil || dic1[key1] != nil else {return false}
+        if dic[key] != nil || dic1[key1] != nil {return false}
         let wValue = RZValueWrapper(value: value)
         dic[key]   = (wValue, key1)
         dic1[key1] = (wValue, key)
