@@ -144,9 +144,17 @@ public class RZObservable<Value>: NSObject, RZObservableProtocol {
     var counter: Int = 1
     
     var value: Value {didSet{ objectWillChange?.send() }}
+    private var _didUpdate: RZObservable<Void>?
     
     //MARK: - Public
-    public lazy var didUpdate = RZObservable<Void>(wrappedValue: ())
+    public var didUpdate: RZObservable<Void> {
+        if let didUpdate = _didUpdate{
+            return didUpdate
+        }else{
+            _didUpdate = RZObservable<Void>(wrappedValue: ())
+            return _didUpdate!
+        }
+    }
     public var projectedValue: RZObservable<Value> { self }
     public var deInitAction = {}
     
@@ -219,7 +227,7 @@ public class RZObservable<Value>: NSObject, RZObservableProtocol {
         let old = self.value
         self.value = value
         observeResults.forEach{ use(useType, $0.key, old) }
-        didUpdate.setValue(value: ())
+        _didUpdate?.setValue(value: ())
     }
     
     public func silentSet(_ value: Value){
