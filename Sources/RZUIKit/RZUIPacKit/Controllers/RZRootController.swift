@@ -29,11 +29,18 @@ open class RZRootController: UIViewController {
     public static func setupRootViewController(scene: UIScene?) -> UIWindow?{
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            let rVC = RZRootController()
+            let rVC = Self.init()
             rVC.scene = scene
             window.rootViewController = rVC
             window.makeKeyAndVisible()
-            NotificationCenter().addObserver(self, selector: #selector(close), name: UIApplication.willTerminateNotification, object: nil)
+            
+            NotificationCenter().addObserver(
+                self,
+                selector: #selector(close),
+                name: UIApplication.willTerminateNotification,
+                object: nil
+            )
+            
             return window
         }
         return nil
