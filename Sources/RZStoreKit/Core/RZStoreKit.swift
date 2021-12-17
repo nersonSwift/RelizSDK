@@ -99,7 +99,7 @@ public class RZStoreKit{
                 delegate?.buySuccess(product: product, customData: customData)
                 RZStoreRefrasher.refrash()
                 completion?()
-            case .error:
+            default:
                 delegate?.buyFaild(product: product, customData: customData)
                 RZStoreRefrasher.refrash()
                 completion?()
