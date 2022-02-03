@@ -6,10 +6,10 @@ let package = Package(
     name: "RelizSDK",
     platforms: [.iOS(.v13)],
     products: [
-//        .library(
-//            name: "RZEventKit",
-//            targets: ["RZEventKit"]
-//        ),
+        .library(
+            name: "RZEventKit",
+            targets: ["RZEventKit"]
+        ),
 //        .library(
 //            name: "RZObservableKit",
 //            targets: ["RZObservableKit"]
@@ -33,7 +33,7 @@ let package = Package(
         .library(
             name: "RelizKit",
             targets: ["RelizKit"]
-        ),
+        )
     ],
     dependencies: [
         .package(
@@ -46,7 +46,7 @@ let package = Package(
         .target(
             name: "RelizKit",
             dependencies: [
-                .target(name: "RZEventKit"),
+//                .target(name: "RZEventKit"),
                 .target(name: "RZObservableKit"),
                 .target(name: "RZStoreKit"),
                 .target(name: "RZDarkModeKit"),
@@ -54,7 +54,10 @@ let package = Package(
                 .target(name: "RZViewBuilderKit")
             ],
             path: "Sources/RelizKit",
-            exclude: ["Info.plist"]
+            exclude: ["Info.plist"],
+            linkerSettings: [
+                .linkedFramework("RZEventKit")
+            ]
             //linkerSettings: [.linkedLibrary("RZEventKit"), .linkedLibrary("RZObservableKit"), .linkedLibrary("RZStoreKit"), .linkedLibrary("RZDarkModeKit"), .linkedLibrary("RZUIPacKit"), .linkedLibrary("RZViewBuilderKit")]
         ),
         .target(
