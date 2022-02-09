@@ -8,5 +8,5 @@
 import UIKit
 
 extension CGSize{
-    var isHorizontal: Bool {width > height}
+    var isHorizontal: Bool { width > height }
 }

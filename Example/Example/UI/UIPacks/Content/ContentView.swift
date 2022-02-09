@@ -8,11 +8,14 @@
 import RelizKit
 
 class ContentC: RZUIPacController {
+    typealias Dependency = ContentR
+    
+    var router = ContentR.setup()
+    
     var iPhoneViewType: RZUIPacAnyViewProtocol.Type? { ContentV.self }
-    var router = ContentR()
 }
 
-class ContentR: RZUIPacRouter { }
+class ContentR: RZUIPacRouter { required init(){} }
 
 class ContentV: RZUIPacView {
     var router: ContentR!

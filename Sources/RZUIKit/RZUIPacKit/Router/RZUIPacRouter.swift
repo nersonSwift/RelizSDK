@@ -7,9 +7,9 @@
 //
 
 import SwiftUI
+import RZDependencyKit
 
 public typealias RZUIPacRouter = RZUIPacRouterProtocol & ObservableObject
 
-public protocol RZUIPacRouterNGProtocol{}
-public protocol RZUIPacRouterProtocol: ObservableObject, RZUIPacRouterNGProtocol{}
-
+public protocol RZUIPacRouterNGProtocol {}
+public protocol RZUIPacRouterProtocol: ObservableObject, RZDependencyProtocol, RZUIPacRouterNGProtocol{}

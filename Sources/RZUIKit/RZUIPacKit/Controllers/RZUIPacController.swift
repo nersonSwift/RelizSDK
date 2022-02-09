@@ -8,6 +8,7 @@
 
 import UIKit
 import RZObservableKit
+import RZDependencyKit
 
 //MARK: - ScreenControllerProtocol
 /// `ru`: - протокол который используется для создания и переходов контроллеров
@@ -211,7 +212,7 @@ public protocol RZSetUIPacViewProtocol {
 
 //MARK: - ScreenController
 /// `ru`: - расширение для `ScreenControllerProtocol` позволяющее делигировать ликику представления в `Presenter`
-public protocol RZUIPacControllerViewingProtocol: RZUIPacControllerRouteredProtocol, RZSetUIPacViewProtocol{
+public protocol RZUIPacControllerViewingProtocol: RZUIPacControllerNGProtocol, RZUIPacControllerRouteredProtocol, RZSetUIPacViewProtocol{
     //MARK: - iPhonePresenter
     /// `ru`: - свойство которое которое должно вернуть тип `RZUIPacView` который будет инициализирован для версии `iPhone`
     var iPhoneViewType: RZUIPacAnyViewProtocol.Type? { get }
@@ -252,8 +253,8 @@ extension RZUIPacControllerViewingProtocol{
     public func resize(){ (view as? RZUIPacViewNGProtocol)?.resize() }
 }
 
-public class SomeUIPacRouter: RZUIPacRouter {}
-public protocol RZUIPacControllerRouteredProtocol: RZUIPacControllerNGProtocol{
+public class SomeUIPacRouter: RZUIPacRouter { required public init(){} }
+public protocol RZUIPacControllerRouteredProtocol: RZAnyDependentProtocol{
     associatedtype UIPacRouter: RZUIPacRouterProtocol
     var router: UIPacRouter {get set}
 }
@@ -263,8 +264,11 @@ extension RZUIPacControllerRouteredProtocol where Self: RZUIPacControllerProtoco
         set{}
         get{SomeUIPacRouter()}
     }
+    
+    public init(_ router: UIPacRouter, _ init: @autoclosure ()->(Self)){
+        self.init(anyDependency: router, init: `init`)
+    }
 }
-
 
 
 public typealias RZUIPacControllerProtocol = RZUIPacControllerNGProtocol & RZUIPacControllerViewingProtocol
