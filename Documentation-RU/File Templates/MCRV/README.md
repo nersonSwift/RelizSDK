@@ -1,7 +1,7 @@
 # MCRV File Templates
 
-Шаблон создает сущьности [UIPacKit](Documentation-RU/RZUIKit/RZUIPacKit/README.md): 
-Сontroller, Router, View (Для выбранных платформ)
+Шаблон создает сущности [UIPacKit](Documentation-RU/RZUIKit/RZUIPacKit/README.md): 
+Controller, Router, View (Для выбранных платформ)
 
 
 ## Использование шаблона

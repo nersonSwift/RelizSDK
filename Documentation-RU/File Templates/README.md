@@ -1,10 +1,10 @@
 # File Templates
 
-[MCRV File Templates](MCRV/README.md) - Создает структуру файлов MCRV ([UIPacKit](Documentation-RU/RZUIKit/RZUIPacKit/README.md))
+[MCRV File Templates](MCRV/README.md) - Создает структуру файлов MCRV ([UIPacKit](./Documentation-RU/RZUIKit/RZUIPacKit/README.md))
 
 ## Установка File Templates
 
-1. Скопируйте все файлы из папки [File Templates](File Templates)
+1. Скопируйте все файлы из папки [File Templates](./File%20Templates)
 2. Вставте их в папку /Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates
 3. Profit!
 

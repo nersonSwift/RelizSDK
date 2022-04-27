@@ -11,7 +11,7 @@ RelizSDK - это пакет фреймворков, который включа
 6. [RZDarkModeKit](RZUIKit/RZDarkModeKit/README.md) - Модуль облегчающий работу с DarkMode
 
 # File Templates
-[File Templates](File Templates/README.md) - Позволяет быстро создавать файлы с сущностями SDK
+[File Templates](File%20Templates/README.md) - Позволяет быстро создавать файлы с сущностями SDK
 
 # Установка модулей
 
