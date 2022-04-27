@@ -10,6 +10,8 @@ RelizSDK - это пакет фреймворков, который включа
 5. [RZViewBuilderKit](RZUIKit/RZViewBuilderKit/README.md) - Модуль облегчающий верстку кастомных UIView
 6. [RZDarkModeKit](RZUIKit/RZDarkModeKit/README.md) - Модуль облегчающий работу с DarkMode
 
+# File Templates
+[File Templates](File Templates/README.md) - Позволяет быстро создавать файлы с сущностями SDK
 
 # Установка модулей
 
@@ -163,3 +165,4 @@ $ pod update
 $ arch -x86_64 pod update
 ```
 3. Profit!
+
