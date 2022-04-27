@@ -15,6 +15,12 @@
 @_exported import RZObservableKit
 #endif
 
+#if canImport(RZDependencyKit)
+@_exported import RZObservableKit
+#endif
+
+
+
 
 #if canImport(RZDarkModeKit)
 @_exported import RZDarkModeKit
@@ -27,3 +33,8 @@
 #if canImport(RZViewBuilderKit)
 @_exported import RZViewBuilderKit
 #endif
+
+#if canImport(RZAnimationKit)
+@_exported import RZAnimationKit
+#endif
+

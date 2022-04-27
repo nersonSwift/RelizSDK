@@ -21,8 +21,8 @@ Pod::Spec.new do |spec|
 	:tag => spec.name.to_s + "_v" + spec.version.to_s
   }
 
-  spec.source_files = "Sources/RZUIKit/RZViewBuilderKit/**/*"
-  spec.exclude_files = "Sources/RZUIKit/RZViewBuilderKit/**/*.plist"
+  spec.source_files = "Sources/RZUIKit/RZUIEntitysLib/**/*"
+  spec.exclude_files = "Sources/RZUIKit/RZUIEntitysLib/**/*.plist"
     
   spec.dependency 'RZDarkModeKit'
   spec.dependency 'RZObservableKit'

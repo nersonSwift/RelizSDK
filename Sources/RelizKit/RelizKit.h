@@ -29,4 +29,10 @@
     #if __has_include(<RZDarkModeKit/RZDarkModeKit.h>)
       #import <RZDarkModeKit/RZDarkModeKit.h>
     #endif
+    #if __has_include(<RZAnimationKit/RZAnimationKit.h>)
+      #import <RZAnimationKit/RZAnimationKit.h>
+    #endif
+    #if __has_include(<RZDependencyKit/RZDependencyKit.h>)
+      #import <RZDependencyKit/RZDependencyKit.h>
+    #endif
 #endif
