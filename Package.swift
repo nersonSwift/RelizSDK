@@ -94,7 +94,7 @@ let package = Package(
         ),
         .target(
             name: "RZUIPacKit",
-            dependencies: [.target(name: "RZObservableKit")],//, .target(name: "RelizKit")],
+            dependencies: [.target(name: "RZObservableKit"), .target(name: "RZDependencyKit")],//, .target(name: "RelizKit")],
             path: "Sources/RZUIKit/RZUIPacKit",
             exclude: ["Info.plist"]
         ),
