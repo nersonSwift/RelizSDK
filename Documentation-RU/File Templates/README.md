@@ -1,6 +1,6 @@
 # File Templates
 
-[MCRV File Templates](MCRV/README.md) - Создает структуру файлов MCRV ([UIPacKit](/Documentation-RU/RZUIKit/RZUIPacKit/README.md))
+[MCRV File Templates](MCRV/README.md) - Создает структуру файлов MCRV ([UIPacKit](/Documentation-RU/RZUIKit/RZUIPacKit/v2.0.7+/README.md))
 
 ## Установка File Templates
 

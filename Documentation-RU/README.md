@@ -5,7 +5,7 @@ RelizSDK - это пакет фреймворков, который включа
 можно настроить отправку в любые трекинговые системы.
 2. [RZObservableKit](RZObservableKit/README.md) - Модуль облегчающий работу с наблюдателями.
 3. [RZStoreKit](RZStoreKit/README.md) - Модуль облегчающий работу с StoreKit.
-4. [RZUIPacKit](RZUIKit/RZUIPacKit/README.md) - Модуль облегчающий работу с экранами, 
+4. [RZUIPacKit](RZUIKit/RZUIPacKit/v2.0.7+/v2.0.7+/README.md) - Модуль облегчающий работу с экранами, 
 переходы между экранами, встраивание экранов, разделение логик.
 5. [RZViewBuilderKit](RZUIKit/RZViewBuilderKit/README.md) - Модуль облегчающий верстку кастомных UIView
 6. [RZDarkModeKit](RZUIKit/RZDarkModeKit/README.md) - Модуль облегчающий работу с DarkMode
