@@ -170,7 +170,7 @@ AppDelegate:
 func application(
     _ application: UIApplication, 
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
-    ) -> Bool {
+) -> Bool {
     
     RZLineController.addLines([
         .init(id: "Example", controller: ExampleC())
