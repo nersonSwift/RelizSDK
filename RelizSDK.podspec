@@ -37,7 +37,7 @@ Pod::Spec.new do |spec|
     ss.dependency 'RelizSDK/RZStoreKit'
     ss.dependency 'RelizSDK/RZEventKit'
     ss.dependency 'RelizSDK/RZObservableKit'
-    ss.dependency 'RZDependencyKit'
+    ss.dependency 'RelizSDK/RZDependencyKit'
   end
 
   spec.subspec 'RZUIKit' do |ss|

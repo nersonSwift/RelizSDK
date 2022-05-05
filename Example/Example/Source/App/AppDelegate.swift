@@ -10,13 +10,11 @@ import RelizKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         RZLineController.addLines([
-            .init(id: "Main", controller: ContentC())
+            .init(id: .main, controller: ContentC())
         ])
-        RZLineController.setRootLine(id: "Main")
+        RZLineController.setRootLine(id: .main)
         RZDarkModeKit.mode = .auto
         return true
     }

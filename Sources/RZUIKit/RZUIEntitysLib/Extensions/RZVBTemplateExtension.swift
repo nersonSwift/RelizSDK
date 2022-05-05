@@ -7,11 +7,6 @@
 
 import RZViewBuilderKit
 
-//MARK: - Custom
-extension RZVBTemplate{
-    static func custom(_ template: @escaping (View)->()) -> Self {RZVBTemplate(template)}
-    static func custom(_ template: @escaping (View, RZVBTemplate.Complition)->()) -> Self {RZVBTemplate(template)}
-}
 
 //MARK: - TapMode
 extension RZVBTemplate where View: UIButton{

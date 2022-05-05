@@ -1503,6 +1503,9 @@ public struct RZVBTemplate<View: UIView> {
     
     public init(_ template: @escaping (View)->()) { self.template = {view, _ in template(view)} }
     public init(_ template: @escaping (View, Complition)->()) { self.template = template }
+    
+    public static func custom(_ template: @escaping (View)->()) -> Self {RZVBTemplate(template)}
+    public static func custom(_ template: @escaping (View, RZVBTemplate.Complition)->()) -> Self {RZVBTemplate(template)}
 }
 
 //public enum RZVBTemplatePosition{

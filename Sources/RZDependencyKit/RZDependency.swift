@@ -35,8 +35,8 @@ public protocol RZDependencyProtocol{ init() }
 extension RZDependencyProtocol{
     private static var dependencyKey: String {"RZDependencyKey"}
     fileprivate static var dependency: Self? {
-        set(value){ Thread.current.threadDictionary["dependencyKey"] = value }
-        get{ Thread.current.threadDictionary["dependencyKey"] as? Self }
+        set(value){ Thread.current.threadDictionary[dependencyKey] = value }
+        get{ Thread.current.threadDictionary[dependencyKey] as? Self }
     }
     
     public static func setup(_ init: @autoclosure ()->(Self) = .init()) -> Self{

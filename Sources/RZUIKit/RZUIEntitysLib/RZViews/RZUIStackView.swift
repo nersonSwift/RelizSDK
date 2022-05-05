@@ -1,30 +1,29 @@
 //
 //  RZUIStackView.swift
-//  Yoga
+//  Example
 //
-//  Created by Александр Сенин on 30.04.2021.
-//  Copyright © 2021 Александр Сенин. All rights reserved.
+//  Created by Александр Сенин on 07.10.2021.
 //
 
 import RZObservableKit
 import RZViewBuilderKit
 
-class RZUIStackView: UIView{
-    enum PositingType {
+open class RZUIStackView: UIView{
+    public enum PositingType {
         case vertical
         case horizontal
     }
-    enum AlignmentH {
+    public enum AlignmentH {
         case top
         case bottom
         case center
     }
-    enum AlignmentV {
+    public enum AlignmentV {
         case left
         case right
         case center
     }
-    struct ViewStorage {
+    public struct ViewStorage {
         var view: UIView
         var resilt: RZOResult<CGRect>?
     }
@@ -40,7 +39,7 @@ class RZUIStackView: UIView{
     private var viewStorages = [ViewStorage]()
     var views: [UIView] { viewStorages.map { $0.view } }
     
-    required init(){
+    public required init(){
         super.init(frame: .zero)
         $positingType.add {[weak self] _ in
             var lastView: UIView?
@@ -66,78 +65,78 @@ class RZUIStackView: UIView{
             }
         }
     }
-    convenience init(vertical alignment: AlignmentV, @UIViewBuilder _ views: ()->([UIView])){
+    public convenience init(vertical alignment: AlignmentV, @UIViewBuilder _ views: ()->([UIView])){
         self.init()
         positingType = .vertical
         alignmentV = alignment
         addViews(views)
     }
-    convenience init(horizontal alignment: AlignmentH, @UIViewBuilder _ views: ()->([UIView])){
+    public convenience init(horizontal alignment: AlignmentH, @UIViewBuilder _ views: ()->([UIView])){
         self.init()
         positingType = .horizontal
         alignmentH = alignment
         addViews(views)
     }
-    convenience init(@UIViewBuilder _ views: ()->([UIView])){
+    public convenience init(@UIViewBuilder _ views: ()->([UIView])){
         self.init()
         addViews(views)
     }
     
-    convenience init(vertical alignment: AlignmentV, _ views: UIView...){
+    public convenience init(vertical alignment: AlignmentV, _ views: UIView...){
         self.init()
         positingType = .vertical
         alignmentV = alignment
         addViews(views)
     }
-    convenience init(horizontal alignment: AlignmentH, _ views: UIView...){
+    public convenience init(horizontal alignment: AlignmentH, _ views: UIView...){
         self.init()
         positingType = .horizontal
         alignmentH = alignment
         addViews(views)
     }
-    convenience init(_ views: UIView...){
+    public convenience init(_ views: UIView...){
         self.init()
         addViews(views)
     }
     
-    convenience init(vertical alignment: AlignmentV, _ views: [UIView] = []){
+    public convenience init(vertical alignment: AlignmentV, _ views: [UIView] = []){
         self.init()
         positingType = .vertical
         alignmentV = alignment
         addViews(views)
     }
-    convenience init(horizontal alignment: AlignmentH, _ views: [UIView] = []){
+    public convenience init(horizontal alignment: AlignmentH, _ views: [UIView] = []){
         self.init()
         positingType = .horizontal
         alignmentH = alignment
         addViews(views)
     }
-    convenience init(_ views: [UIView]){
+    public convenience init(_ views: [UIView]){
         self.init()
         addViews(views)
     }
     
-    convenience init(vertical alignment: AlignmentV, _ view: UIView){
+    public convenience init(vertical alignment: AlignmentV, _ view: UIView){
         self.init()
         positingType = .vertical
         alignmentV = alignment
         addView(view)
     }
-    convenience init(horizontal alignment: AlignmentH, _ view: UIView){
+    public convenience init(horizontal alignment: AlignmentH, _ view: UIView){
         self.init()
         positingType = .horizontal
         alignmentH = alignment
         addViews(views)
     }
-    convenience init(_ view: UIView){
+    public convenience init(_ view: UIView){
         self.init()
         addView(view)
     }
         
-    func addViews(@UIViewBuilder _ views: ()->([UIView])){ views().forEach{ self.addView($0) } }
-    func addViews(_ views: UIView...){ views.forEach{ self.addView($0) } }
-    func addViews(_ views: [UIView]){ views.forEach{ self.addView($0) } }
-    func addView(_ view: UIView){
+    public func addViews(@UIViewBuilder _ views: ()->([UIView])){ views().forEach{ self.addView($0) } }
+    public func addViews(_ views: UIView...){ views.forEach{ self.addView($0) } }
+    public func addViews(_ views: [UIView]){ views.forEach{ self.addView($0) } }
+    public func addView(_ view: UIView){
         var viewStorage = ViewStorage(view: view)
         setViewPosition(view, viewStorages.last?.view)
         setViewAlignment(view, viewStorages.last?.view)
@@ -148,11 +147,11 @@ class RZUIStackView: UIView{
         updateMaxValue()
     }
     
-    func removeView(_ view: UIView){
+    public func removeView(_ view: UIView){
         guard let viewNumber = getViewNumber(view) else {return}
         removeView(viewNumber)
     }
-    func removeView(_ viewNumber: Int){
+    public func removeView(_ viewNumber: Int){
         viewStorages[viewNumber].resilt?.remove()
         viewStorages[viewNumber].view.removeFromSuperview()
         viewStorages.remove(at: viewNumber)
@@ -161,13 +160,13 @@ class RZUIStackView: UIView{
         updateMaxValue()
     }
     
-    func swapViews(_ viewF: UIView, _ viewS: UIView){
+    public func swapViews(_ viewF: UIView, _ viewS: UIView){
         guard let viewNumberF = getViewNumber(viewF) else {return}
         guard let viewNumberS = getViewNumber(viewS) else {return}
         swapViews(viewNumberF, viewNumberS)
     }
     
-    func swapViews(_ viewNumberF: Int, _ viewNumberS: Int){
+    public func swapViews(_ viewNumberF: Int, _ viewNumberS: Int){
         viewStorages.swapAt(viewNumberF, viewNumberS)
         
         updateViewPosition(viewNumberF)
@@ -262,13 +261,13 @@ class RZUIStackView: UIView{
         return nil
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
 extension UIView{
-    func removeFromRZStackView(){ (superview as? RZUIStackView)?.removeView(self) }
+    public func removeFromRZStackView(){ (superview as? RZUIStackView)?.removeView(self) }
 }
 
 @resultBuilder public struct UIViewBuilder{
@@ -277,34 +276,34 @@ extension UIView{
 
 extension RZViewBuilder where V: RZUIStackView{
     @discardableResult
-    func addViews(@UIViewBuilder _ views: ()->([UIView])) -> Self { view.addViews(views); return self }
+    public func addViews(@UIViewBuilder _ views: ()->([UIView])) -> Self { view.addViews(views); return self }
     @discardableResult
-    func addViews(_ views: UIView...) -> Self { view.addViews(views); return self }
+    public func addViews(_ views: UIView...) -> Self { view.addViews(views); return self }
     @discardableResult
-    func addViews(_ views: [UIView]) -> Self { view.addViews(views); return self }
+    public func addViews(_ views: [UIView]) -> Self { view.addViews(views); return self }
     @discardableResult
-    func addView(_ view: UIView) -> Self { self.view.addView(view); return self }
+    public func addView(_ view: UIView) -> Self { self.view.addView(view); return self }
     
     @discardableResult
-    func alignmentV(_ value: RZUIStackView.AlignmentV) -> Self { view.alignmentV = value; return self }
+    public func alignmentV(_ value: RZUIStackView.AlignmentV) -> Self { view.alignmentV = value; return self }
     @discardableResult
-    func alignmentH(_ value: RZUIStackView.AlignmentH) -> Self { view.alignmentH = value; return self }
+    public func alignmentH(_ value: RZUIStackView.AlignmentH) -> Self { view.alignmentH = value; return self }
     
     @discardableResult
-    func positingType(_ value: RZUIStackView.PositingType) -> Self { view.positingType = value; return self }
+    public func positingType(_ value: RZUIStackView.PositingType) -> Self { view.positingType = value; return self }
     
     @discardableResult
-    func space(_ value: RZProtoValue) -> Self { view.space = value; return self }
+    public func space(_ value: RZProtoValue) -> Self { view.space = value; return self }
     @discardableResult
-    func space(_ value: CGFloat) -> Self { view.space = value*; return self }
+    public func space(_ value: CGFloat) -> Self { view.space = value*; return self }
     
     @discardableResult
-    func removeView(_ value: UIView) -> Self { self.view.removeView(value); return self }
+    public func removeView(_ value: UIView) -> Self { self.view.removeView(value); return self }
     @discardableResult
-    func removeView(_ value: Int) -> Self { self.view.removeView(value); return self }
+    public func removeView(_ value: Int) -> Self { self.view.removeView(value); return self }
     
     @discardableResult
-    func swapViews(_ valueF: UIView, _ valueS: UIView) -> Self { view.swapViews(valueF, valueS); return self }
+    public func swapViews(_ valueF: UIView, _ valueS: UIView) -> Self { view.swapViews(valueF, valueS); return self }
     @discardableResult
-    func swapViews(_ valueF: Int, _ valueS: Int) -> Self { view.swapViews(valueF, valueS); return self }
+    public func swapViews(_ valueF: Int, _ valueS: Int) -> Self { view.swapViews(valueF, valueS); return self }
 }
