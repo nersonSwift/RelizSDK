@@ -1407,6 +1407,12 @@ extension RZViewBuilder where V: UIButton{
         view.observeController.remove(.labelView)
         return _labelView(value(view))
     }
+    
+    @discardableResult
+    func enabled(_ bool: Bool) -> Self {
+        view.isEnabled = bool
+        return self
+    }
 }
 
 // MARK: - UIImageView
@@ -1439,6 +1445,22 @@ extension RZViewBuilder where V: UIImageView{
         view.observeController.remove(.image)
         let result = value?.add {[weak view] in view?+>._image($0.new)}.use(.noAnimate)
         view.observeController.add(.image, result)
+        return self
+    }
+    
+    @discardableResult
+    func animationImages(_ images: [UIImage]) -> Self {
+        view.animationImages = images
+        return self
+    }
+    @discardableResult
+    func animationRepeatCount(_ count: Int) -> Self {
+        view.animationRepeatCount = count
+        return self
+    }
+    @discardableResult
+    func animationDuration(_ count: TimeInterval) -> Self {
+        view.animationDuration = count
         return self
     }
 }
@@ -1485,6 +1507,36 @@ extension RZViewBuilder where V: UIScrollView{
     public func contentHeight(_ value: RZProtoValue) -> Self{
         view.observeController.remove(.contentHeight)
         value.setValueIn(view, .contentHeight) { ($0 as? UIScrollView)?+>._contentHeight(value.getValue($0)) }
+        return self
+    }
+    
+    enum ScrollIndicatorType {
+        case vertical, horizontal, all
+    }
+    
+    @discardableResult
+    func indicator(_ indicator: ScrollIndicatorType, _ visible: Bool = false) -> Self {
+        switch indicator {
+        case .all:
+            view.showsHorizontalScrollIndicator = visible
+            view.showsVerticalScrollIndicator = visible
+        case .horizontal:
+            view.showsHorizontalScrollIndicator = visible
+        case .vertical:
+            view.showsVerticalScrollIndicator = visible
+        }
+        return self
+    }
+    
+    @discardableResult
+    func paging(_ paging: Bool = true) -> Self {
+        view.isPagingEnabled = paging
+        return self
+    }
+    
+    @discardableResult
+    func delegate(_ delegate: UIScrollViewDelegate?) -> Self {
+        view.delegate = delegate
         return self
     }
 }
