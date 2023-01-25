@@ -36,7 +36,7 @@ class ContentV: RZUIPacView {
             textField+>
                 .width(86 % self*.w).height(10 % self*.w)
                 .x(self*.cX, .center).y(self*.cY, .center)
-                .cornerRadius(.selfTag(.h) / 4*).border(2)
+//                .cornerRadius(.selfTag(.h) / 4*).border(2)
                 .color(.c1P, .border, .tint)
                 .secured(true).capitalization(.none).keyboard(.emailAddress)
                 .sideSpace(5 % self*.w).sideMode(.always)

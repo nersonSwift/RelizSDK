@@ -279,7 +279,7 @@ public struct RZProtoValue: RZProtoValueProtocol{
         _ closure: @escaping ((UIView) -> ())
     ){
         if observeFlag{
-            observeController?.add(tag, self, closure)
+//            observeController?.add(tag, self, closure)
         }
         if let range = operation{
             range.checkObserv(tag, observeController, closure)
@@ -368,46 +368,47 @@ public struct RZProtoValue: RZProtoValueProtocol{
 
 
 
-class RZObserveController{
-    enum Tag: String {
-        case cornerRadius
+public class RZObserveController{
+    public struct Tag: Hashable{
+        var key: String
         
-        case frame
-        case size
-        case point
-        case width
-        case height
-        case x
-        case y
+        public static func custom(_ key: String) -> Self { .init(key: key) }
         
-        case transform
-        case tx
-        case ty
+        public static var cornerRadius: Self { .init(key: "cornerRadius") }
         
-        case ta
-        case tb
-        case tc
-        case td
+        public static var frame:         Self { .init(key: "frame") }
+        public static var size:          Self { .init(key: "size") }
+        public static var point:         Self { .init(key: "point") }
+        public static var width:         Self { .init(key: "width") }
+        public static var height:        Self { .init(key: "height") }
+        public static var x:             Self { .init(key: "x") }
+        public static var y:             Self { .init(key: "y") }
         
-        case contentWidth
-        case contentHeight
+        public static var transform:     Self { .init(key: "transform") }
+        public static var tx:            Self { .init(key: "tx") }
+        public static var ty:            Self { .init(key: "ty") }
+        public static var ta:            Self { .init(key: "ta") }
+        public static var tb:            Self { .init(key: "tb") }
+        public static var tc:            Self { .init(key: "tc") }
+        public static var td:            Self { .init(key: "td") }
         
-        case text
-        case image
-        case labelView
+        public static var contentWidth:  Self { .init(key: "contentWidth") }
+        public static var contentHeight: Self { .init(key: "contentHeight") }
         
-        //MARK: - Colors
-        case cBackground
-        case cContent
-        case cBorder
-        case sShadow
-        case cTint
+        public static var text:          Self { .init(key: "text") }
+        public static var image:         Self { .init(key: "image") }
+        public static var labelView:     Self { .init(key: "labelView") }
         
-        case alpha
-        case isHidden
+        public static var cBackground:   Self { .init(key: "cBackground") }
+        public static var cContent:      Self { .init(key: "cContent") }
+        public static var cBorder:       Self { .init(key: "cBorder") }
+        public static var sShadow:       Self { .init(key: "sShadow") }
+        public static var cTint:         Self { .init(key: "cTint") }
         
-        //MARK: - TextField
-        case placeholder
+        public static var alpha:         Self { .init(key: "alpha") }
+        public static var isHidden:      Self { .init(key: "isHidden") }
+        
+        public static var placeholder:   Self { .init(key: "placeholder") }
     }
     
     //MARK: - UIScrollView
@@ -449,53 +450,84 @@ class RZObserveController{
     var observes: [Tag: [RZObserve]] = [:]
     var observesRP: [Tag: [RZOResultProtocol]] = [:]
     
-    func add(
-        _ tag: Tag,
-        _ protoValue: RZProtoValue,
-        _ closure: @escaping (UIView) -> ()
-    ){
-        guard let view = view else { return }
-        if observes[tag] == nil{ observes[tag] = [] }
-        let observe = RZObserve(view, tag, protoValue, closure)
-        observes[tag]?.append(observe)
-    }
-    func add(
-        _ tag: Tag,
-        _ rzoProtoValue: RZObservable<RZProtoValue>,
-        _ closure: @escaping (UIView) -> ()
-    ){
-        guard let view = view else { return }
-        if observes[tag] == nil{ observes[tag] = [] }
-        let observe = RZObserve(view, tag, rzoProtoValue, self, closure)
-        observes[tag]?.append(observe)
-    }
-    func add(
-        _ tag: Tag?,
-        _ resultProtocol: RZOResultProtocol?
-    ){
-        guard let tag = tag, let resultProtocol = resultProtocol else {return}
-        observesRP[tag]?.append(resultProtocol)
-    }
+    var observesN: [Tag: [RZObserveAnchorObject]] = [:]
     
-    enum RemoveObject {
-        case all
-        case rzProtoValue
-        case rzResult
-    }
-    
-    func remove(
-        _ tag: Tag?,
-        _ removeObject: RemoveObject = .all
-    ){
-        guard let tag = tag else {return}
-        if removeObject != .rzResult{
-            observes[tag] = nil
-        }
-        if removeObject != .rzProtoValue{
-            observesRP[tag]?.forEach{$0.remove()}
-            observesRP[tag] = nil
+    func set(_ tag: Tag, _ resultProtocol: RZOResultProtocol?){
+        if let resultProtocol = resultProtocol{
+            observesN[tag] = [resultProtocol.anchorObject]
+        }else{
+            observesN[tag] = []
         }
     }
+    
+    func set(_ tag: Tag, _ resultProtocol: [RZOResultProtocol?]){
+        observesN[tag] = resultProtocol.compactMap{ $0?.anchorObject }
+    }
+    
+    func add(_ tag: Tag, _ resultProtocol: RZOResultProtocol?){
+        if var arr = observesN[tag]{
+            if let resultProtocol = resultProtocol{
+                arr.append(resultProtocol.anchorObject)
+                observesN[tag] = arr
+            }
+        }else{
+            set(tag, resultProtocol)
+        }
+    }
+    
+    func add(_ tag: Tag, _ resultProtocol: [RZOResultProtocol?]){
+        if var arr = observesN[tag]{
+            arr += resultProtocol.compactMap{ $0?.anchorObject }
+            observesN[tag] = arr
+        }else{
+            set(tag, resultProtocol)
+        }
+    }
+    
+    func remove(_ tag: Tag){
+        observesN[tag] = nil
+    }
+    
+//    func add(
+//        _ tag: Tag,
+//        _ protoValue: RZProtoValue,
+//        _ closure: @escaping (UIView) -> ()
+//    ){
+//        guard let view = view else { return }
+//        if observes[tag] == nil{ observes[tag] = [] }
+//        let observe = RZObserve(view, tag, protoValue, closure)
+//        observes[tag]?.append(observe)
+//    }
+//    func add(
+//        _ tag: Tag,
+//        _ rzoProtoValue: RZObservable<RZProtoValue>,
+//        _ closure: @escaping (UIView) -> ()
+//    ){
+//        guard let view = view else { return }
+//        if observes[tag] == nil{ observes[tag] = [] }
+//        let observe = RZObserve(view, tag, rzoProtoValue, self, closure)
+//        observes[tag]?.append(observe)
+//    }
+//
+//    enum RemoveObject {
+//        case all
+//        case rzProtoValue
+//        case rzResult
+//    }
+//
+//    func remove(
+//        _ tag: Tag?,
+//        _ removeObject: RemoveObject = .all
+//    ){
+//        guard let tag = tag else {return}
+//        if removeObject != .rzResult{
+//            observes[tag] = nil
+//        }
+//        if removeObject != .rzProtoValue{
+//            observesRP[tag]?.forEach{$0.remove()}
+//            observesRP[tag] = nil
+//        }
+//    }
 }
 
 class UIViewUppdateProcess{

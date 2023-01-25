@@ -19,6 +19,16 @@
 		510015C127B3B4D10014630B /* RZDependencyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 510015BA27B3B4D10014630B /* RZDependencyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		51057A0D270F158700ECD274 /* RZVBTemplateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51057A0C270F158700ECD274 /* RZVBTemplateExtension.swift */; };
 		5105D3F62729BA5B00393E0C /* RZUIProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5105D3F52729BA5B00393E0C /* RZUIProcess.swift */; };
+		512120EF2836935900914F3F /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512120EE2836935900914F3F /* Test.swift */; };
+		512120F62837B8FC00914F3F /* RZVB+UIUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512120F52837B8FC00914F3F /* RZVB+UIUpdate.swift */; };
+		512120F82837B96300914F3F /* RZVB+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512120F72837B96300914F3F /* RZVB+Color.swift */; };
+		512120FA2837BBE700914F3F /* RZVB+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512120F92837BBE700914F3F /* RZVB+CornerRadius.swift */; };
+		512120FC2837C78E00914F3F /* RZVB+AddSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512120FB2837C78D00914F3F /* RZVB+AddSubview.swift */; };
+		512120FE2837F9FE00914F3F /* RZVB+Alpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512120FD2837F9FE00914F3F /* RZVB+Alpha.swift */; };
+		512121002837FF1800914F3F /* RZVB+isHidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512120FF2837FF1800914F3F /* RZVB+isHidden.swift */; };
+		512121022837FFCE00914F3F /* RZVB+Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512121012837FFCE00914F3F /* RZVB+Template.swift */; };
+		512121042838038A00914F3F /* RZVB+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512121032838038A00914F3F /* RZVB+Size.swift */; };
+		512121062838051500914F3F /* RZVB+Origin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512121052838051500914F3F /* RZVB+Origin.swift */; };
 		512ED30E267282BE00CDD342 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED30D267282BE00CDD342 /* AppDelegate.swift */; };
 		512ED310267282BE00CDD342 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED30F267282BE00CDD342 /* SceneDelegate.swift */; };
 		512ED314267282C000CDD342 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 512ED313267282C000CDD342 /* Assets.xcassets */; };
@@ -104,7 +114,7 @@
 		515751D3268C99DC006D45BA /* RZLabelSizeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751C4268C99DC006D45BA /* RZLabelSizeController.swift */; };
 		515751D4268C99DC006D45BA /* UIControlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751C5268C99DC006D45BA /* UIControlExtension.swift */; };
 		515751D5268C99DC006D45BA /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751C6268C99DC006D45BA /* DictionaryExtension.swift */; };
-		515751D7268C99DC006D45BA /* RZObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751C8268C99DC006D45BA /* RZObservable.swift */; };
+		515751D7268C99DC006D45BA /* RZObservableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751C8268C99DC006D45BA /* RZObservableExtension.swift */; };
 		515751ED268C9A57006D45BA /* RZUIPacKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 515751D9268C9A57006D45BA /* RZUIPacKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		515751EE268C9A57006D45BA /* RZPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751DB268C9A57006D45BA /* RZPopUpView.swift */; };
 		515751EF268C9A57006D45BA /* RZRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751DC268C9A57006D45BA /* RZRootController.swift */; };
@@ -132,6 +142,13 @@
 		51B6242626CAEC3F00D97E9E /* RZViewBuilderKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 512ED6AB2672B34800CDD342 /* RZViewBuilderKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		51B6243526CAEE5100D97E9E /* RZUIEntitysLib.h in Headers */ = {isa = PBXBuildFile; fileRef = 51B6243326CAEE5000D97E9E /* RZUIEntitysLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		51B6243726CAEE7A00D97E9E /* RZUIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B6243626CAEE7A00D97E9E /* RZUIStackView.swift */; };
+		51E00DD3282E6CC9006EC591 /* RZUIValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E00DD2282E6CC9006EC591 /* RZUIValue.swift */; };
+		51E00DD5282EACA6006EC591 /* RZUIValueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E00DD4282EACA6006EC591 /* RZUIValueProtocol.swift */; };
+		51E00DD7282EACD0006EC591 /* RZUIValueObservableWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E00DD6282EACD0006EC591 /* RZUIValueObservableWrapper.swift */; };
+		51E00DD9282EACFA006EC591 /* RZUIOperationValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E00DD8282EACFA006EC591 /* RZUIOperationValue.swift */; };
+		51E63374283BBB2D00594A91 /* RZVB+Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E63373283BBB2D00594A91 /* RZVB+Transform.swift */; };
+		51F3D402284E1CBA000B1133 /* RZVBLabel+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F3D400284E1C9B000B1133 /* RZVBLabel+Text.swift */; };
+		51F3D404284E2833000B1133 /* RZVBLabel+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F3D403284E2833000B1133 /* RZVBLabel+Font.swift */; };
 		51FE5D5927B3B71C00075EEE /* RZDependencyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 510015BA27B3B4D10014630B /* RZDependencyKit.framework */; };
 		51FE5D5A27B3B71C00075EEE /* RZDependencyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 510015BA27B3B4D10014630B /* RZDependencyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A70C434CF93CB91C89B63D7F /* Pods_RZStoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54276254A91B934B93E2AF76 /* Pods_RZStoreKit.framework */; };
@@ -404,6 +421,16 @@
 		510015BA27B3B4D10014630B /* RZDependencyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RZDependencyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51057A0C270F158700ECD274 /* RZVBTemplateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZVBTemplateExtension.swift; sourceTree = "<group>"; };
 		5105D3F52729BA5B00393E0C /* RZUIProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZUIProcess.swift; sourceTree = "<group>"; };
+		512120EE2836935900914F3F /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		512120F52837B8FC00914F3F /* RZVB+UIUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RZVB+UIUpdate.swift"; sourceTree = "<group>"; };
+		512120F72837B96300914F3F /* RZVB+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RZVB+Color.swift"; sourceTree = "<group>"; };
+		512120F92837BBE700914F3F /* RZVB+CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RZVB+CornerRadius.swift"; sourceTree = "<group>"; };
+		512120FB2837C78D00914F3F /* RZVB+AddSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RZVB+AddSubview.swift"; sourceTree = "<group>"; };
+		512120FD2837F9FE00914F3F /* RZVB+Alpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RZVB+Alpha.swift"; sourceTree = "<group>"; };
+		512120FF2837FF1800914F3F /* RZVB+isHidden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RZVB+isHidden.swift"; sourceTree = "<group>"; };
+		512121012837FFCE00914F3F /* RZVB+Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RZVB+Template.swift"; sourceTree = "<group>"; };
+		512121032838038A00914F3F /* RZVB+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RZVB+Size.swift"; sourceTree = "<group>"; };
+		512121052838051500914F3F /* RZVB+Origin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RZVB+Origin.swift"; sourceTree = "<group>"; };
 		512ED30A267282BE00CDD342 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		512ED30D267282BE00CDD342 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		512ED30F267282BE00CDD342 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -489,7 +516,7 @@
 		515751C5268C99DC006D45BA /* UIControlExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIControlExtension.swift; sourceTree = "<group>"; };
 		515751C6268C99DC006D45BA /* DictionaryExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
 		515751C7268C99DC006D45BA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		515751C8268C99DC006D45BA /* RZObservable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZObservable.swift; sourceTree = "<group>"; };
+		515751C8268C99DC006D45BA /* RZObservableExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZObservableExtension.swift; sourceTree = "<group>"; };
 		515751D9268C9A57006D45BA /* RZUIPacKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZUIPacKit.h; sourceTree = "<group>"; };
 		515751DB268C9A57006D45BA /* RZPopUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZPopUpView.swift; sourceTree = "<group>"; };
 		515751DC268C9A57006D45BA /* RZRootController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZRootController.swift; sourceTree = "<group>"; };
@@ -510,6 +537,13 @@
 		51B6243226CAEE5000D97E9E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51B6243326CAEE5000D97E9E /* RZUIEntitysLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZUIEntitysLib.h; sourceTree = "<group>"; };
 		51B6243626CAEE7A00D97E9E /* RZUIStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZUIStackView.swift; sourceTree = "<group>"; };
+		51E00DD2282E6CC9006EC591 /* RZUIValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZUIValue.swift; sourceTree = "<group>"; };
+		51E00DD4282EACA6006EC591 /* RZUIValueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZUIValueProtocol.swift; sourceTree = "<group>"; };
+		51E00DD6282EACD0006EC591 /* RZUIValueObservableWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZUIValueObservableWrapper.swift; sourceTree = "<group>"; };
+		51E00DD8282EACFA006EC591 /* RZUIOperationValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZUIOperationValue.swift; sourceTree = "<group>"; };
+		51E63373283BBB2D00594A91 /* RZVB+Transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RZVB+Transform.swift"; sourceTree = "<group>"; };
+		51F3D400284E1C9B000B1133 /* RZVBLabel+Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RZVBLabel+Text.swift"; sourceTree = "<group>"; };
+		51F3D403284E2833000B1133 /* RZVBLabel+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RZVBLabel+Font.swift"; sourceTree = "<group>"; };
 		54276254A91B934B93E2AF76 /* Pods_RZStoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RZStoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55998D5ED8568887B3C340F1 /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6182A7496AAB50FFF3DE937C /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -658,6 +692,58 @@
 				3CFEB6AC268B392C004DEC26 /* RZProtoOperationsTests.swift */,
 			);
 			path = RZProto;
+			sourceTree = "<group>";
+		};
+		512120F02837B88000914F3F /* RZViewBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				512120F42837B8D600914F3F /* Main */,
+				512120F12837B88D00914F3F /* RZVB+UIView */,
+				512120F22837B89E00914F3F /* RZVB+UILabel */,
+				512120F32837B8AA00914F3F /* RZVB+UITextView */,
+			);
+			path = RZViewBuilder;
+			sourceTree = "<group>";
+		};
+		512120F12837B88D00914F3F /* RZVB+UIView */ = {
+			isa = PBXGroup;
+			children = (
+				512120F72837B96300914F3F /* RZVB+Color.swift */,
+				512120F92837BBE700914F3F /* RZVB+CornerRadius.swift */,
+				512120FB2837C78D00914F3F /* RZVB+AddSubview.swift */,
+				512120FD2837F9FE00914F3F /* RZVB+Alpha.swift */,
+				512120FF2837FF1800914F3F /* RZVB+isHidden.swift */,
+				512121012837FFCE00914F3F /* RZVB+Template.swift */,
+				512121032838038A00914F3F /* RZVB+Size.swift */,
+				512121052838051500914F3F /* RZVB+Origin.swift */,
+				51E63373283BBB2D00594A91 /* RZVB+Transform.swift */,
+			);
+			path = "RZVB+UIView";
+			sourceTree = "<group>";
+		};
+		512120F22837B89E00914F3F /* RZVB+UILabel */ = {
+			isa = PBXGroup;
+			children = (
+				51F3D400284E1C9B000B1133 /* RZVBLabel+Text.swift */,
+				51F3D403284E2833000B1133 /* RZVBLabel+Font.swift */,
+			);
+			path = "RZVB+UILabel";
+			sourceTree = "<group>";
+		};
+		512120F32837B8AA00914F3F /* RZVB+UITextView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "RZVB+UITextView";
+			sourceTree = "<group>";
+		};
+		512120F42837B8D600914F3F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				515751B8268C99DC006D45BA /* RZViewBuilder.swift */,
+				512120F52837B8FC00914F3F /* RZVB+UIUpdate.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		512ED301267282BE00CDD342 = {
@@ -917,12 +1003,12 @@
 		515751B7268C99DC006D45BA /* RZViewBuilderKit */ = {
 			isa = PBXGroup;
 			children = (
-				515751B8268C99DC006D45BA /* RZViewBuilder.swift */,
+				51E00DD1282E6CB3006EC591 /* RZUIValue */,
 				515751B9268C99DC006D45BA /* RZProto */,
-				515751BF268C99DC006D45BA /* RZViewBuilderKit.h */,
 				515751C0268C99DC006D45BA /* Helpers */,
+				512120F02837B88000914F3F /* RZViewBuilder */,
+				515751BF268C99DC006D45BA /* RZViewBuilderKit.h */,
 				515751C7268C99DC006D45BA /* Info.plist */,
-				515751C8268C99DC006D45BA /* RZObservable.swift */,
 			);
 			name = RZViewBuilderKit;
 			path = ../../../Sources/RZUIKit/RZViewBuilderKit;
@@ -943,6 +1029,7 @@
 		515751C0268C99DC006D45BA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				515751C8268C99DC006D45BA /* RZObservableExtension.swift */,
 				515751C1268C99DC006D45BA /* RZImageSeter.swift */,
 				5105D3F52729BA5B00393E0C /* RZUIProcess.swift */,
 				515751C2268C99DC006D45BA /* UIViewExtension.swift */,
@@ -1096,6 +1183,18 @@
 				51057A0C270F158700ECD274 /* RZVBTemplateExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		51E00DD1282E6CB3006EC591 /* RZUIValue */ = {
+			isa = PBXGroup;
+			children = (
+				51E00DD4282EACA6006EC591 /* RZUIValueProtocol.swift */,
+				51E00DD2282E6CC9006EC591 /* RZUIValue.swift */,
+				51E00DD6282EACD0006EC591 /* RZUIValueObservableWrapper.swift */,
+				51E00DD8282EACFA006EC591 /* RZUIOperationValue.swift */,
+				512120EE2836935900914F3F /* Test.swift */,
+			);
+			path = RZUIValue;
 			sourceTree = "<group>";
 		};
 		88153E665B5ADC4CBCBDC0EB /* Frameworks */ = {
@@ -1750,6 +1849,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				512ED30E267282BE00CDD342 /* AppDelegate.swift in Sources */,
+				51F3D404284E2833000B1133 /* RZVBLabel+Font.swift in Sources */,
 				E448A0B326A04FE90009FE36 /* Colors.swift in Sources */,
 				51057A0D270F158700ECD274 /* RZVBTemplateExtension.swift in Sources */,
 				E448A0B426A04FE90009FE36 /* ContentView.swift in Sources */,
@@ -1834,20 +1934,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				512120FE2837F9FE00914F3F /* RZVB+Alpha.swift in Sources */,
+				51E00DD7282EACD0006EC591 /* RZUIValueObservableWrapper.swift in Sources */,
+				51E00DD9282EACFA006EC591 /* RZUIOperationValue.swift in Sources */,
 				515751CB268C99DC006D45BA /* RZProtoTest.swift in Sources */,
+				512121042838038A00914F3F /* RZVB+Size.swift in Sources */,
+				512120F82837B96300914F3F /* RZVB+Color.swift in Sources */,
 				515751CA268C99DC006D45BA /* RZProtoFrame.swift in Sources */,
+				512120EF2836935900914F3F /* Test.swift in Sources */,
+				512121002837FF1800914F3F /* RZVB+isHidden.swift in Sources */,
 				515751D0268C99DC006D45BA /* RZImageSeter.swift in Sources */,
 				515751D5268C99DC006D45BA /* DictionaryExtension.swift in Sources */,
 				515751CD268C99DC006D45BA /* RZProto.swift in Sources */,
-				515751D7268C99DC006D45BA /* RZObservable.swift in Sources */,
+				515751D7268C99DC006D45BA /* RZObservableExtension.swift in Sources */,
+				512120FA2837BBE700914F3F /* RZVB+CornerRadius.swift in Sources */,
 				515751CC268C99DC006D45BA /* RZProtoValue.swift in Sources */,
+				512120FC2837C78E00914F3F /* RZVB+AddSubview.swift in Sources */,
 				515751D4268C99DC006D45BA /* UIControlExtension.swift in Sources */,
+				51E00DD3282E6CC9006EC591 /* RZUIValue.swift in Sources */,
+				51E63374283BBB2D00594A91 /* RZVB+Transform.swift in Sources */,
 				515751C9268C99DC006D45BA /* RZViewBuilder.swift in Sources */,
 				5105D3F62729BA5B00393E0C /* RZUIProcess.swift in Sources */,
+				51E00DD5282EACA6006EC591 /* RZUIValueProtocol.swift in Sources */,
 				515751D1268C99DC006D45BA /* UIViewExtension.swift in Sources */,
 				515751CE268C99DC006D45BA /* RZProtoOperationGoup.swift in Sources */,
 				515751D2268C99DC006D45BA /* Operators.swift in Sources */,
+				512121022837FFCE00914F3F /* RZVB+Template.swift in Sources */,
+				512120F62837B8FC00914F3F /* RZVB+UIUpdate.swift in Sources */,
 				515751D3268C99DC006D45BA /* RZLabelSizeController.swift in Sources */,
+				512121062838051500914F3F /* RZVB+Origin.swift in Sources */,
+				51F3D402284E1CBA000B1133 /* RZVBLabel+Text.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,6 +20,7 @@ postfix operator |*
 
 infix operator <>
 infix operator ><
+infix operator -%
 
 infix operator ?> : SecondTernaryPrecedence
 infix operator <| : FirstTernaryPrecedence

@@ -24,13 +24,18 @@ public enum RZOUseType{
 
 public class RZObserveAnchorObject{
     private weak var result: RZOResultProtocol?
-    deinit {result?.remove()}
+    deinit { result?.remove() }
     init(_ result: RZOResultProtocol) { self.result = result }
 }
 
 public protocol RZOResultProtocol: AnyObject{
     var key: Int {get}
+    
     func remove()
+    var anchorObject: RZObserveAnchorObject {get}
+    
+    @discardableResult
+    func snapToObject(_ object: AnyObject) -> Self
 }
 //MARK: - Result
 public class RZOResult<Value>: RZOResultProtocol{

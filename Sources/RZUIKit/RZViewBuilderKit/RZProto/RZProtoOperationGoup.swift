@@ -27,7 +27,7 @@ extension RZProtoOperationProtocol{
             value.checkObserv(tag, observeController, closure)
         }
         if let value = value as? RZObservable<RZProtoValue>{
-            observeController?.add(tag, value, closure)
+            //observeController?.add(tag, value, closure)
         }
     }
 }

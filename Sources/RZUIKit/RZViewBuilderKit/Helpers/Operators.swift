@@ -15,6 +15,8 @@ postfix operator |*
 
 infix operator <>
 infix operator ><
+infix operator -%
+infix operator +>
 
 precedencegroup SecondTernaryPrecedence {
     associativity: right
@@ -30,6 +32,11 @@ infix operator <| : FirstTernaryPrecedence
 
 public postfix func +><V: UIView>(view: V) -> RZViewBuilder<V>{
     RZViewBuilder(view)
+}
+
+public func +><V: UIView>(view: V, closure: (RZViewBuilder<V>)->()) -> UIView{
+    closure(RZViewBuilder(view))
+    return view
 }
 
 public postfix func *(value: UIView) -> RZProto{
