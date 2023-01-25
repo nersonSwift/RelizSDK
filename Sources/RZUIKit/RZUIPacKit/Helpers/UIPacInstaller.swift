@@ -122,7 +122,7 @@ class UIPacInstaller{
         
         uiPacC.place = view
         uiPacC.rotater = RZRotater(viewController: uiPacC)
-        uiPacC.rootViewController?.roatateCild(false)
+        uiPacC.rootViewController?.roatateCild(nil)
     }
     
     private static func setView(_ uiPacC: RZUIPacControllerNGProtocol){

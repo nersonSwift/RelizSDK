@@ -63,7 +63,7 @@ open class RZRootController: UIViewController {
         self.place = place
     }
     
-    func roatateCild(coordinator: UIViewControllerTransitionCoordinator){
+    func roatateCild(_ coordinator: UIViewControllerTransitionCoordinator?){
         let orientation = UIApplication.orientation
         if orientation == .unknown{ return }
         RZRotater.isRotate = true

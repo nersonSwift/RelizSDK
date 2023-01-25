@@ -44,7 +44,7 @@ public class RZRotater: UIView{
         parent: Bool = true,
         parentOrientation: UIInterfaceOrientation,
         deviceOrientation: UIInterfaceOrientation,
-        coordinator: UIViewControllerTransitionCoordinator
+        coordinator: UIViewControllerTransitionCoordinator?
     ){
         let deviceO = deviceOrientation != .unknown ? deviceOrientation : Self.lastOrintation
         let (newO, oldO) = getOrientation(deviceO)
@@ -57,12 +57,12 @@ public class RZRotater: UIView{
         
         if isNeedAnimation(piMode) || (rangeL % 2 != 0 && newO == deviceO) {
             let animation = {self.animationBody(self.frame, piMode, newO, parentOrientation, deviceO, rangeL, rangeG)}
-            coordinator.animate { _ in animation() }
-//            if animate {
-//                UIView.animate(withDuration: time, animations: animation)
-//            }else {
-//                animation()
-//            }
+            
+            if let coordinator {
+                coordinator.animate { _ in animation() }
+            }else {
+                animation()
+            }
         }
         
         mateController?.isHorizontal = newO.isHorizontal
@@ -195,7 +195,7 @@ public class RZRotater: UIView{
                                child: RZUIPacControllerNGProtocol,
                                parentOrientation: UIInterfaceOrientation,
                                _ deviceOrientation: UIInterfaceOrientation,
-                               coordinator: UIViewControllerTransitionCoordinator){
+                               coordinator: UIViewControllerTransitionCoordinator?){
         child.rotater?.rotateMate(parent: parent,
                                   parentOrientation: parentOrientation,
                                   deviceOrientation: deviceOrientation,
