@@ -46,7 +46,9 @@ public class RZRotater: UIView{
         deviceOrientation: UIInterfaceOrientation,
         coordinator: UIViewControllerTransitionCoordinator?
     ){
-        print("oh", deviceOrientation.rawValue)
+        print("oh")
+        print("oh", parentOrientation.rawValue, deviceOrientation.rawValue)
+        print("oh", parentOrientation.getStateNumber(), deviceOrientation.getStateNumber())
         let deviceO = deviceOrientation != .unknown ? deviceOrientation : Self.lastOrintation
         let (newO, oldO) = getOrientation(deviceO)
         
