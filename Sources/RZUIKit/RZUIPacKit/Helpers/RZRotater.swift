@@ -46,6 +46,7 @@ public class RZRotater: UIView{
         deviceOrientation: UIInterfaceOrientation,
         coordinator: UIViewControllerTransitionCoordinator?
     ){
+        print("oh", deviceOrientation.rawValue)
         let deviceO = deviceOrientation != .unknown ? deviceOrientation : Self.lastOrintation
         let (newO, oldO) = getOrientation(deviceO)
         
@@ -83,7 +84,6 @@ public class RZRotater: UIView{
         }else if range == 2{
             range = -2
         }
-        print("oh", range)
         return range
     }
     private func getRangeL(_ oldOrintation: UIInterfaceOrientation, _ newOrientation: UIInterfaceOrientation) -> Int{
