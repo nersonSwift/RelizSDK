@@ -60,7 +60,7 @@ public class RZRotater: UIView{
             
             if let coordinator {
                 print("Huh", "aa")
-                coordinator.animate {
+                coordinator.animateAlongsideTransition(in: self) {
                     print("Huh", $0.transitionDuration)
                     
                     animation()
