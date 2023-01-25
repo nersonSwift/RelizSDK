@@ -63,7 +63,7 @@ open class RZRootController: UIViewController {
         self.place = place
     }
     
-    func roatateCild(_ animate: Bool = true){
+    func roatateCild(coordinator: UIViewControllerTransitionCoordinator){
         let orientation = UIApplication.orientation
         if orientation == .unknown{ return }
         RZRotater.isRotate = true
@@ -75,7 +75,7 @@ open class RZRootController: UIViewController {
                     child: child,
                     parentOrientation: orientation,
                     orientation,
-                    animate: animate
+                    coordinator: coordinator
                 )
             }
         }
@@ -91,10 +91,11 @@ open class RZRootController: UIViewController {
     open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         
+        
         if size.isHorizontal != view.frame.size.isHorizontal || view.frame.size == size{
             DispatchQueue.main.async {
                 if UIApplication.orientation != RZRotater.oldOrintation{
-                    self.roatateCild()
+                    self.roatateCild(coordinator)
                 }
             }
         }else{
