@@ -83,6 +83,7 @@ public class RZRotater: UIView{
         }else if range == 2{
             range = -2
         }
+        print("oh", range)
         return range
     }
     private func getRangeL(_ oldOrintation: UIInterfaceOrientation, _ newOrientation: UIInterfaceOrientation) -> Int{
