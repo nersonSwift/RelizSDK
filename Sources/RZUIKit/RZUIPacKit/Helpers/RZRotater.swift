@@ -59,10 +59,7 @@ public class RZRotater: UIView{
             let animation = {self.animationBody(self.frame, piMode, newO, parentOrientation, deviceO, rangeL, rangeG)}
             
             if let coordinator {
-                
-                    animation()
-                    
-                
+                UIView.animate(withDuration: coordinator.transitionDuration, animations: animation)
             }else {
                 animation()
             }
