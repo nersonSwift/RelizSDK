@@ -80,6 +80,8 @@ public class RZRotater: UIView{
             range -= 4
         }else if range == -3{
             range += 4
+        }else if range == -2{
+            range = 2
         }
         return range
     }
