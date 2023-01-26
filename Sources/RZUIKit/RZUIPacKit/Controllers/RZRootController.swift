@@ -75,7 +75,7 @@ open class RZRootController: UIViewController {
                     parent: false,
                     child: child,
                     parentOrientation: orientation,
-                    parentRotatin: .getRotete(from: RZRotater.oldOrintation, to: RZRotater.lastOrintation),
+                    parentRotatin: .getRotete(from: RZRotater.lastOrintation, to: RZRotater.oldOrintation),
                     orientation,
                     coordinator: coordinator
                 )
