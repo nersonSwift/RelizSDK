@@ -103,7 +103,7 @@ public class RZRotater: UIView{
         }
         mateOrientation = newO
         
-        return lastRotate
+        return needRorete
     }
     
     //MARK: - Ranges
