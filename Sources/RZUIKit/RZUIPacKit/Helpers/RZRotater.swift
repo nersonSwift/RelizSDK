@@ -77,7 +77,7 @@ public class RZRotater: UIView{
         print("oh")
         print("oh", type(of: mateController!))
         print("oh", "old -", oldO.getStateNumber(), "new -", newO)
-        print("oh", "pr -", parentRotatin, "nr -", needRorete, "lr-", lastRotate)
+        print("oh", "pr -", parentRotatin, "nr -", needRorete, "lr -", lastRotate)
         
         let rangeG = getRangeG(parentOrientation, newO)
         let rangeL = getRangeL(oldO, newO)
