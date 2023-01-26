@@ -371,8 +371,8 @@ enum RotateMode{
             new = -1
         }else if new == -3{
             new = 1
-        }else if new == 2{
-            new = -2
+        }else if new == -2{
+            new = 2
         }
         return getRotete(value: new)
     }
