@@ -19,14 +19,24 @@ extension UIInterfaceOrientation{
         }
     }
     
+    func getStateNumberNew() -> Int {
+        switch self {
+            case .portrait: return 0
+            case .landscapeRight: return 1
+            case .portraitUpsideDown: return 2
+            case .landscapeLeft: return 3
+        default: return -1
+        }
+    }
+    
     static func getRotationAt(state: Int) -> UIInterfaceOrientation {
         var state = state % 4
         if state < 0 { state += 4 }
         switch state {
             case 0: return .portrait
-            case 1: return .landscapeLeft
+            case 1: return .landscapeRight
             case 2: return .portraitUpsideDown
-            case 3: return .landscapeRight
+            case 3: return .landscapeLeft
         default: return .unknown
         }
     }
@@ -317,9 +327,9 @@ enum RotateMode{
     func getNewRoration(old rotation: UIInterfaceOrientation) -> UIInterfaceOrientation{
         switch self{
         case .left(let value):
-            return UIInterfaceOrientation.getRotationAt(state: rotation.getStateNumber() + value)
+            return UIInterfaceOrientation.getRotationAt(state: rotation.getStateNumberNew() + value)
         case .right(let value):
-            return UIInterfaceOrientation.getRotationAt(state: rotation.getStateNumber() - value)
+            return UIInterfaceOrientation.getRotationAt(state: rotation.getStateNumberNew() - value)
         case .non:
             return rotation
         }
@@ -356,7 +366,7 @@ enum RotateMode{
     
      
     static func getRotete(from: UIInterfaceOrientation, to: UIInterfaceOrientation) -> Self{
-        var new = to.getStateNumber() - from.getStateNumber()
+        var new = to.getStateNumberNew() - from.getStateNumberNew()
         if new == 3{
             new = -1
         }else if new == -3{
@@ -371,9 +381,9 @@ enum RotateMode{
         if value == 0{
             return .non
         }else if value < 0{
-            return .right(abs(value))
+            return .left(abs(value))
         }else{
-            return .left(value)
+            return .right(value)
         }
     }
 }
