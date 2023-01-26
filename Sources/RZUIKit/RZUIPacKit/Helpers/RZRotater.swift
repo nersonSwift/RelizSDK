@@ -83,11 +83,11 @@ public class RZRotater: UIView{
         let rangeL = getRangeL(oldO, newO)
         let rangeR = getRangeR(deviceO)
         
-        let (piMode, time) = getAnimationValues(rangeR, rangeG)
-        print("oh", "old pi -", piMode, "new pi -", lastRotate.getPi())
+        let piMode = lastRotate.getPi()
+//        print("oh", "old pi -", piMode, "new pi -", lastRotate.getPi())
         
         
-        if isNeedAnimation(piMode) || (rangeL % 2 != 0 && newO == deviceO) {
+        if piMode != 0 {
             let animation = {self.animationBody(self.frame, piMode, newO, parentOrientation, deviceO, rangeL, rangeG)}
             
             if let coordinator {
@@ -174,8 +174,10 @@ public class RZRotater: UIView{
     }
     
     private func setTransform(_ piMode: CGFloat){
-        transform = UIView().transform.rotated(by: piMode / 2)
         transform = transform.rotated(by: piMode / 2)
+        transform = transform.rotated(by: piMode / 2)
+//        transform = UIView().transform.rotated(by: piMode / 2)
+//        transform = transform.rotated(by: piMode / 2)
     }
     
     private func setSelfFrame(
