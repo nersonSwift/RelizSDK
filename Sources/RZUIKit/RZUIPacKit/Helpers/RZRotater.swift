@@ -84,7 +84,7 @@ public class RZRotater: UIView{
         let rangeR = getRangeR(deviceO)
         
         let (piMode, time) = getAnimationValues(rangeR, rangeG)
-        
+        print("oh", "old pi -", piMode, "new pi -", lastRotate.getPi())
         
         
         if isNeedAnimation(piMode) || (rangeL % 2 != 0 && newO == deviceO) {
