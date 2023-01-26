@@ -68,6 +68,7 @@ open class RZRootController: UIViewController {
         if orientation == .unknown{ return }
         RZRotater.isRotate = true
         RZRotater.lastOrintation = orientation
+        print("oh")
         for child in children{
             if let child = child as? RZUIPacControllerNGProtocol{
                 RZRotater.resizeAllChild(
