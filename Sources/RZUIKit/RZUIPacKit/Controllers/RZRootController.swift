@@ -89,11 +89,11 @@ open class RZRootController: UIViewController {
     
     open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        
         if size.isHorizontal != view.frame.size.isHorizontal || view.frame.size == size{
+            let time = coordinator.transitionDuration
             DispatchQueue.main.async {
                 if UIApplication.orientation != RZRotater.oldOrintation{
-                    self.roatateCild(coordinator.transitionDuration)
+                    self.roatateCild(time)
                 }else{
                     self.place?.frame.size = size
                 }

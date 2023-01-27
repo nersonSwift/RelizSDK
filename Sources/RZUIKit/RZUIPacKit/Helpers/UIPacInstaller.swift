@@ -134,6 +134,7 @@ class UIPacInstaller{
         { parentOrientation = orientation }
         RZRotater.isRotate = true
         RZRotater.resizeAllChild(
+            isInstall: true,
             child: uiPacC,
             parentOrientation: parentOrientation,
             parentRotatin: .non

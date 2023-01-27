@@ -9,7 +9,8 @@ import RelizKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    var window: UIWindow?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         RZLineController.addLines([
             .init(id: .main, controller: ContentC()),
@@ -17,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ])
         RZLineController.setRootLine(id: .testRotate)
         RZDarkModeKit.mode = .auto
+        
         return true
     }
 

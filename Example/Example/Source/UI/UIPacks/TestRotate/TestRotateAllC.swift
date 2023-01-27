@@ -9,6 +9,9 @@ import RelizKit
 
 class TestRotateAllC: RZUIPacController{
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {.landscape}
+    var iPhoneViewType: RZUIPacAnyViewProtocol.Type? {TestRotateAllV.self}
+    var router = TestRotateAllR.setup()
+    
     func start() {
         self.view+>.color(.c1L)
         self.view.addSubview(
@@ -23,9 +26,15 @@ class TestRotateAllC: RZUIPacController{
                 .x(self.view|*.scX, .center).y(self.view|*.scY, .center)
                 .view
             self.view.addSubview(place)
-            RZTransition(.In, self).view(place).uiPacC(TestRotatePortC()).saveTranslite(false).animation(.ezAnim).transit()
+            RZTransition(.Instead, self).uiPacC(TestRotatePortC()).saveTranslite(false).animation(.ezAnim).transit()
         })
     }
+}
+class TestRotateAllR: RZUIPacRouter{
+    required init(){}
+}
+class TestRotateAllV: RZUIPacView{
+    var router: TestRotateAllR!
 }
 
 class TestRotatePortC: RZUIPacController{
@@ -39,14 +48,14 @@ class TestRotatePortC: RZUIPacController{
                 .view
         )
         
-        _ = Timer.scheduledTimer(withTimeInterval: 10, repeats: false, block: { _ in
-            let place = UIView()+>
-                .width(70 % self.view*.w).height(70 % self.view*.h)
-                .x(self.view|*.scX, .center).y(self.view|*.scY, .center)
-                .view
-            self.view.addSubview(place)
-            RZTransition(.Instead, self).uiPacC(TestRotateLandC()).saveTranslite(false).animation(.ezAnim).transit()
-        })
+//        _ = Timer.scheduledTimer(withTimeInterval: 10, repeats: false, block: { _ in
+//            let place = UIView()+>
+//                .width(70 % self.view*.w).height(70 % self.view*.h)
+//                .x(self.view|*.scX, .center).y(self.view|*.scY, .center)
+//                .view
+//            self.view.addSubview(place)
+//        RZTransition(.In, self).view(place).uiPacC(TestRotateLandC()).saveTranslite(false).animation(.ezAnim).transit()
+//        })
         
     }
 }

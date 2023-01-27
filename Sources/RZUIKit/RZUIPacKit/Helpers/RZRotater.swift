@@ -52,6 +52,27 @@ extension UIInterfaceOrientation{
     }
 }
 
+extension UIInterfaceOrientationMask{
+    var orientations: [UIInterfaceOrientation]{
+        switch self {
+        case .all:
+            return [.portrait, .portraitUpsideDown, .landscapeLeft, .landscapeRight]
+        case .landscape:
+            return [.landscapeLeft, .landscapeRight]
+        case .portrait:
+            return [.portrait, .portraitUpsideDown]
+        case .landscapeLeft:
+            return [.landscapeLeft]
+        case .landscapeRight:
+            return [.landscapeRight]
+        case .portraitUpsideDown:
+            return [.portraitUpsideDown]
+        default:
+            return []
+        }
+    }
+}
+
 
 public class RZRotater: UIView{
     weak var mateController: RZUIPacControllerNGProtocol?
@@ -63,12 +84,14 @@ public class RZRotater: UIView{
     static var isRotate: Bool = false
     
     static func resizeAllChild(
+        isInstall: Bool = false,
         child: RZUIPacControllerNGProtocol,
         parentOrientation: UIInterfaceOrientation,
         parentRotatin: RotateMode,
         transitionDuration: CGFloat? = nil
     ){
         let parentRotatin = child.rotater?.rotateMate(
+            isInstall: isInstall,
             parentRotatin: parentRotatin,
             parentOrientation: parentOrientation,
             transitionDuration: transitionDuration
@@ -77,6 +100,7 @@ public class RZRotater: UIView{
         for childL in child.children{
             if let childL = childL as? RZUIPacControllerNGProtocol{
                 resizeAllChild(
+                    isInstall: isInstall,
                     child: childL,
                     parentOrientation: child.rotater?.mateOrientation ?? .portrait,
                     parentRotatin: parentRotatin,
@@ -88,18 +112,18 @@ public class RZRotater: UIView{
     }
     
     func rotateMate(
+        isInstall: Bool,
         parentRotatin: RotateMode,
         parentOrientation: UIInterfaceOrientation,
         transitionDuration: CGFloat?
     ) -> RotateMode{
         let (newOrintation, oldOrintation) = getOrientation(RZRotater.lastOrintation, parentOrientation)
-        
         let rootRotation = RotateMode.getRotete(from: RZRotater.oldOrintation, to: RZRotater.lastOrintation)
         let interfaceRotation = RotateMode.getRotete(from: oldOrintation, to: newOrintation, priority: rootRotation.type)
         let rotation = interfaceRotation - parentRotatin
         let needResize = oldOrintation.isHorizontal != newOrintation.isHorizontal
         
-        let animation = {self.animationBody(rotation.pi, needResize)}
+        let animation = {self.animationBody(rotation.pi, needResize, isInstall)}
         
         if let transitionDuration {
             UIView.animate(withDuration: transitionDuration, animations: animation)
@@ -131,8 +155,13 @@ public class RZRotater: UIView{
     }
     
     //MARK: - Animation Body
-    private func animationBody(_ piMode: CGFloat, _ needResize: Bool){
-        if needResize{ frame.size.swap() }
+    private func animationBody(_ piMode: CGFloat, _ needResize: Bool, _ isInstall: Bool){
+        if needResize{
+            frame.size.swap()
+            if isInstall{
+                mate?.frame.size = frame.size
+            }
+        }
         setTransform(piMode)
         setOriginsZero()
         setPlaceSize()
@@ -148,7 +177,7 @@ public class RZRotater: UIView{
     }
     
     private func setPlaceSize(){
-        superview?.frame.size = CGSize(width: self.frame.width, height: self.frame.height)
+        superview?.frame.size = frame.size
     }
     
     private func isGoodOrientation(_ deviceOrientation: UIInterfaceOrientation) -> Bool{
@@ -164,7 +193,6 @@ public class RZRotater: UIView{
         }
         rotatingUIPacC = []
     }
-    private var key: NSKeyValueObservation?
     
     public init(viewController: UIViewController) {
         let view: UIView = viewController.view
@@ -185,108 +213,19 @@ public class RZRotater: UIView{
             (viewController as? RZUIPacControllerNGProtocol)?.resize()
         }
     
-        view.frame.origin = CGPoint()
-        self.addSubview(view)
+        view.frame.origin = .zero
+        addSubview(view)
         mate = view
         if let viewController = viewController as? RZUIPacControllerNGProtocol{
             mateController = viewController
         }
-        setGoodOrintation(supportedInterfaceOrientations: viewController.supportedInterfaceOrientations)
-    }
-    
-    func setGoodOrintation(supportedInterfaceOrientations: UIInterfaceOrientationMask){
-        switch supportedInterfaceOrientations {
-        case .all:
-            mateGoodOrientation = [.portrait, .portraitUpsideDown, .landscapeLeft, .landscapeRight]
-        case .landscape:
-            mateGoodOrientation = [.landscapeLeft, .landscapeRight]
-        case .portrait:
-            mateGoodOrientation = [.portrait, .portraitUpsideDown]
-        case .landscapeLeft:
-            mateGoodOrientation = [.landscapeLeft]
-        case .landscapeRight:
-            mateGoodOrientation = [.landscapeRight]
-        case .portraitUpsideDown:
-            mateGoodOrientation = [.portraitUpsideDown]
-        default: break
-        }
+        mateGoodOrientation = viewController.supportedInterfaceOrientations.orientations
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
-//enum RotateMode{
-//    case left(Int)
-//    case right(Int)
-//    case non
-//
-//    func getNewRoration(old rotation: UIInterfaceOrientation) -> UIInterfaceOrientation{
-//        switch self{
-//        case .left(let value):
-//            return UIInterfaceOrientation.getRotationAt(state: rotation.getStateNumberNew() + value)
-//        case .right(let value):
-//            return UIInterfaceOrientation.getRotationAt(state: rotation.getStateNumberNew() - value)
-//        case .non:
-//            return rotation
-//        }
-//    }
-//
-//    func getValue() -> Int{
-//        switch self{
-//            case .left(let rValue):  return -rValue
-//            case .right(let rValue): return rValue
-//            case .non:               return 0
-//        }
-//    }
-//
-//    func getPi() -> CGFloat{
-//        (.pi / 2) * CGFloat(getValue())
-//    }
-//
-//    static func -=(left: inout Self, right: Self){
-//        left = left - right
-//    }
-//
-//    static func -(left: Self, right: Self) -> Self{
-//        getRotete(value: left.getValue() - right.getValue())
-//    }
-//
-//    static func +=(left: inout Self, right: Self){
-//        left = left + right
-//    }
-//
-//    static func +(left: Self, right: Self) -> Self{
-//        getRotete(value: left.getValue() + right.getValue())
-//    }
-//
-//
-//
-//    static func getRotete(from: UIInterfaceOrientation, to: UIInterfaceOrientation, priority: Self = .right(1)) -> Self{
-//        var new = to.getStateNumberNew() - from.getStateNumberNew()
-//        if new == 3{
-//            new = -1
-//        }else if new == -3{
-//            new = 1
-//        }else if new == -2, case .right(_) = priority{
-//            new = 2
-//        }else if new == 2, case .left(_) = priority{
-//            new = -2
-//        }
-//        return getRotete(value: new)
-//    }
-//
-//    static func getRotete(value: Int) -> Self{
-//        if value == 0{
-//            return .non
-//        }else if value < 0{
-//            return .left(abs(value))
-//        }else{
-//            return .right(value)
-//        }
-//    }
-//}
 
 struct RotateMode{
     enum RotateType{
