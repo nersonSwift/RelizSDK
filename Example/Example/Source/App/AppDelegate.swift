@@ -12,9 +12,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         RZLineController.addLines([
-            .init(id: .main, controller: ContentC())
+            .init(id: .main, controller: ContentC()),
+            .init(id: .testRotate, controller: TestRotateAllC())
         ])
-        RZLineController.setRootLine(id: .main)
+        RZLineController.setRootLine(id: .testRotate)
         RZDarkModeKit.mode = .auto
         return true
     }

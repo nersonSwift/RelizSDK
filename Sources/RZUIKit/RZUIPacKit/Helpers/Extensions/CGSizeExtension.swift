@@ -9,4 +9,10 @@ import UIKit
 
 extension CGSize{
     var isHorizontal: Bool { width > height }
+    
+    mutating func swap(){
+        let newH = width
+        width = height
+        height = newH
+    }
 }

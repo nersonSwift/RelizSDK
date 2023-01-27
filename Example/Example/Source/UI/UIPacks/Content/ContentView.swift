@@ -8,11 +8,13 @@
 import RelizKit
 
 class ContentC: RZUIPacController {
-    typealias Dependency = ContentR
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {.portrait}
+    var iPhoneViewType: RZUIPacAnyViewProtocol.Type? { ContentV.self }
+    var iPadViewType: RZUIPacAnyViewProtocol.Type? { ContentV.self }
     
     var router = ContentR.setup()
     
-    var iPhoneViewType: RZUIPacAnyViewProtocol.Type? { ContentV.self }
+   
 }
 
 class ContentR: RZUIPacRouter { required init(){} }
@@ -28,14 +30,14 @@ class ContentV: RZUIPacView {
     }
     
     private func createSelf() {
-        self+>.color(.systemBackground)
+        self+>.color(.c6P)
     }
     
     private func createTextField(){
         addSubview(
             textField+>
                 .width(86 % self*.w).height(10 % self*.w)
-                .x(self*.cX, .center).y(self*.cY, .center)
+                .x(self|*.scX, .center).y(self|*.scY, .center)
                 .cornerRadius(.selfTag(.h) / 4*).border(2)
                 .color(.c1P, .border, .tint)
                 .secured(true).capitalization(.none).keyboard(.emailAddress)

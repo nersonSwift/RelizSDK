@@ -9,4 +9,5 @@ import RZUIPacKit
 
 extension RZUIPacLines{
     static var main: Self { .init("Main") }
+    static var testRotate: Self { .init("TestRotate") }
 }

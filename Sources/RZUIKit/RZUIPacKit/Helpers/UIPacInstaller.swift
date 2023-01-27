@@ -24,6 +24,7 @@ class UIPacInstaller{
         if viewController == installingUIPacC{return false}
         setView(installingUIPacC)
         setChild(viewController, view, installingUIPacC)
+        rotateChild(viewController, installingUIPacC)
         started(installingUIPacC)
         installingUIPacC.open()
         
@@ -67,6 +68,7 @@ class UIPacInstaller{
             if let selectLine = uiPacC.uiPacLine, setLine{ RZLineController.setControllerInLine(selectLine, installingUIPacC) }
             setView(installingUIPacC)
             setChild(parent, uiPacC.rotater?.superview, installingUIPacC)
+            rotateChild(parent, installingUIPacC)
             started(installingUIPacC)
             installingUIPacC.open()
         }
@@ -122,7 +124,21 @@ class UIPacInstaller{
         
         uiPacC.place = view
         uiPacC.rotater = RZRotater(viewController: uiPacC)
-        uiPacC.rootViewController?.roatateCild(nil)
+    }
+    
+    private static func rotateChild(_ viewController: UIViewController, _ uiPacC: RZUIPacControllerNGProtocol){
+        var parentOrientation = UIApplication.orientation
+        if
+            let viewController = viewController as? RZUIPacControllerNGProtocol,
+            let orientation = viewController.rotater?.mateOrientation
+        { parentOrientation = orientation }
+        RZRotater.isRotate = true
+        RZRotater.resizeAllChild(
+            child: uiPacC,
+            parentOrientation: parentOrientation,
+            parentRotatin: .non
+        )
+        RZRotater.isRotate = false
     }
     
     private static func setView(_ uiPacC: RZUIPacControllerNGProtocol){
