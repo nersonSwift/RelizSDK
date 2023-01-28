@@ -131,7 +131,7 @@ public class RZRotater: UIView{
             animation()
         }
         
-        mateController?.isHorizontal = oldOrintation.isHorizontal
+        mateController?.isHorizontal = newOrintation.isHorizontal
         if let mateController = mateController{
             Self.rotatingUIPacC.append(mateController)
         }
