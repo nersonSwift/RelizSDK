@@ -156,13 +156,15 @@ public class RZRotater: UIView{
     
     //MARK: - Animation Body
     private func animationBody(_ piMode: CGFloat, _ needResize: Bool, _ isInstall: Bool){
+        setTransform(piMode)
+        
         if needResize{
+            let old = mate?.frame.size ?? .zero
             frame.size.swap()
-            if isInstall{
-                mate?.frame.size = frame.size
+            if old == mate?.frame.size{
+                mate?.frame.size.swap()
             }
         }
-        setTransform(piMode)
         setOriginsZero()
         setPlaceSize()
     }
