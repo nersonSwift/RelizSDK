@@ -78,7 +78,9 @@ public class RZRotater: UIView{
     weak var mateController: RZUIPacControllerNGProtocol?
     weak var mate: UIView?
     var mateOrientation: UIInterfaceOrientation?
-    var mateGoodOrientation: [UIInterfaceOrientation] = []
+    var mateGoodOrientation: [UIInterfaceOrientation] {
+        mateController?.supportedInterfaceOrientations.orientations ?? []
+    }
     static var lastOrintation: UIInterfaceOrientation = UIApplication.orientation
     static var oldOrintation: UIInterfaceOrientation = UIApplication.orientation
     static var isRotate: Bool = false
@@ -221,7 +223,6 @@ public class RZRotater: UIView{
         if let viewController = viewController as? RZUIPacControllerNGProtocol{
             mateController = viewController
         }
-        mateGoodOrientation = viewController.supportedInterfaceOrientations.orientations
     }
     
     required init?(coder: NSCoder) {
