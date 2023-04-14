@@ -157,7 +157,7 @@ open class EventSendDelegate {
 
 
 public class RZEvent<SD: EventSendDelegate>: RZAnyEvent{
-    public override init() where SD == EventSendDelegate{
+    public init() where SD == EventSendDelegate{
         super.init()
     }
     
