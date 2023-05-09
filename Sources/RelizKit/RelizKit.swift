@@ -38,3 +38,6 @@
 @_exported import RZAnimationKit
 #endif
 
+#if canImport(RZUIEntitysLib)
+@_exported import RZUIEntitysLib
+#endif
