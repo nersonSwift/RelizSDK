@@ -17,6 +17,8 @@ class ContentC: RZUIPacController {
    
 }
 
+
+
 class ContentR: RZUIPacRouter { required init(){} }
 
 class ContentV: RZUIPacView {
@@ -34,16 +36,15 @@ class ContentV: RZUIPacView {
     }
     
     private func createTextField(){
-        addSubview(
-            textField+>
-                .width(86 % self*.w).height(10 % self*.w)
-                .x(self|*.scX, .center).y(self|*.scY, .center)
-                .cornerRadius(.selfTag(.h) / 4*).border(2)
-                .color(.c1P, .border, .tint)
-                .secured(true).capitalization(.none).keyboard(.emailAddress)
-                .sideSpace(5 % self*.w).sideMode(.always)
-                .sideSpace(5 % self*.w, .right).sideMode(.always, .right)
-                .view
-        )
+        textField.build{$0
+            .width(86 % self*.w).height(10 % self*.w)
+            .x(self|*.scX, .center).y(self|*.scY, .center)
+            .cornerRadius(.selfTag(.h) / 4*).border(2)
+            .color(.c1P, .border, .tint)
+            .secured(true).capitalization(.none).keyboard(.emailAddress)
+            .sideSpace(5 % self*.w).sideMode(.always)
+            .sideSpace(5 % self*.w, .right).sideMode(.always, .right)
+            .addToSuperview(self)
+        }
     }
 }

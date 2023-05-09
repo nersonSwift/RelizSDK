@@ -53,7 +53,8 @@ let package = Package(
                 .target(name: "RZUIPacKit"),
                 .target(name: "RZViewBuilderKit"),
                 .target(name: "RZAnimationKit"),
-                .target(name: "RZDependencyKit")
+                .target(name: "RZDependencyKit"),
+                .target(name: "RZUIEntitysLib")
             ],
             path: "Sources/RelizKit",
             exclude: ["Info.plist"]
@@ -103,9 +104,21 @@ let package = Package(
             dependencies: [.target(name: "RZObservableKit"), .target(name: "RZDarkModeKit")],//, .target(name: "RelizKit")],
             path: "Sources/RZUIKit/RZViewBuilderKit",
             exclude: ["Info.plist"]
+        ),
+        .target(
+            name: "RZUIEntitysLib",
+            dependencies: [
+                .target(name: "RZObservableKit"),
+                .target(name: "RZDarkModeKit"),
+                .target(name: "RZUIPacKit"),
+                .target(name: "RZViewBuilderKit")
+            ],//, .target(name: "RelizKit")],
+            path: "Sources/RZUIKit/RZUIEntitysLib",
+            exclude: ["Info.plist"]
         )
     ]
 )
+
 
 
 

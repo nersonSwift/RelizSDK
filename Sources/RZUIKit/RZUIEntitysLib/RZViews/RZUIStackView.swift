@@ -5,6 +5,7 @@
 //  Created by Александр Сенин on 07.10.2021.
 //
 
+import UIKit
 import RZObservableKit
 import RZViewBuilderKit
 
@@ -274,7 +275,7 @@ extension UIView{
     public static func buildBlock(_ atrs: UIView...) -> [UIView] { return atrs }
 }
 
-extension RZViewBuilder where V: RZUIStackView{
+extension RZBuilder where V: RZUIStackView{
     @discardableResult
     public func addViews(@UIViewBuilder _ views: ()->([UIView])) -> Self { view.addViews(views); return self }
     @discardableResult

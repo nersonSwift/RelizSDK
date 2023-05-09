@@ -5,6 +5,7 @@
 //  Created by Александр Сенин on 07.10.2021.
 //
 
+import UIKit
 import RZViewBuilderKit
 
 
@@ -16,6 +17,7 @@ extension RZVBTemplate where View: UIButton{
         case impact
     }
     
+
     public static func tapMode(_ value: TapMode = .alpha) -> Self{
         switch value {
         case .alpha:

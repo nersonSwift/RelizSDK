@@ -27,7 +27,7 @@ extension RZSUIPacViewProtocol{
 extension RZUIPacAnyViewProtocol where Self: RZSUIPacView{
     public static func createUIPacView(_ rowRouter: RZUIPacRouterNGProtocol) -> UIView? {
         guard let ro = rowRouter as? UIPacRouter else { return nil }
-        return RZUIViewWraper(ro) { AnyView(Self(router: $0)) }
+        return RZSUIViewWraper(ro) { AnyView(Self(router: $0)) }
     }
 }
 

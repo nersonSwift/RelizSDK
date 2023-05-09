@@ -8,15 +8,15 @@
 import SwiftUI
 import RZObservableKit
 
-class RZUIViewWraper: UIView{
-    convenience init <V: View>(@ViewBuilder _ view: @escaping ()->V){
+public class RZSUIViewWraper: UIView{
+    public convenience init <V: View>(@ViewBuilder _ view: @escaping ()->V){
         self.init(RZUIViewWraperObservable()) {_, _ in view()}
     }
-    convenience init <V: View, ObObj: ObservableObject>(_ observable: ObObj, @ViewBuilder _ view: @escaping (ObObj)->V){
+    public convenience init <V: View, ObObj: ObservableObject>(_ observable: ObObj, @ViewBuilder _ view: @escaping (ObObj)->V){
         self.init(observable) {_, obObj in view(obObj)}
     }
     
-    init<V: View, ObObj: ObservableObject>(_ observable: ObObj, @ViewBuilder _ view: @escaping (Self, ObObj)->V){
+    public init<V: View, ObObj: ObservableObject>(_ observable: ObObj, @ViewBuilder _ view: @escaping (Self, ObObj)->V){
         super.init(frame: .zero)
         guard let self = self as? Self else { return }
         observable.setRZObservables()
@@ -35,6 +35,9 @@ class RZUIViewWraper: UIView{
     }
 }
 
+
+
+
 class RZUIViewWraperObservable: ObservableObject{
     @Published var updater: Bool = false
 }
@@ -50,5 +53,25 @@ struct RZObserveView<V: View, UIV: UIView, ObObj: ObservableObject>: View {
     }
     var body: some View {
         view(enviroment)
+    }
+}
+
+
+public struct RZViewWrapper<V: UIView>: UIViewRepresentable{
+    var view: V
+    var update: (V) -> ()
+    public init(_ initClosure: () -> V, _ update: @escaping (V) -> () = {_ in}){
+        self.init(initClosure(), update)
+    }
+    public init(_ view: V, _ update: @escaping (V) -> ()){
+        self.view = view
+        self.update = update
+        update(view)
+    }
+    public func makeUIView(context: Context) -> V {
+        return view
+    }
+    public func updateUIView(_ nsView: V, context: Context) {
+        update(nsView)
     }
 }

@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .init(id: .main, controller: ContentC()),
             .init(id: .testRotate, controller: TestRotateAllC())
         ])
+        
         RZLineController.setRootLine(id: .testRotate)
         RZDarkModeKit.mode = .auto
         
