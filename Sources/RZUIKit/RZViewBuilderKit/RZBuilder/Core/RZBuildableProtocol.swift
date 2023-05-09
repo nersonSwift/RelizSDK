@@ -7,11 +7,11 @@
 
 import Foundation
 
-public protocol RZBuildable{
+public protocol RZBuildableProtocol{
     init()
 }
 
-extension RZBuildable{
+extension RZBuildableProtocol{
     @discardableResult
     public static func build<B: RZBuilderProtocol>(_ type: B.Type, _ closure: (B) -> ()) -> Self where B.V == Self{
         Self.init().build(type, closure)
@@ -24,7 +24,7 @@ extension RZBuildable{
     }
 }
 
-extension RZBuildable{
+extension RZBuildableProtocol{
     public var builder: RZBuilder<Self> { .init(self) }
 
     @discardableResult

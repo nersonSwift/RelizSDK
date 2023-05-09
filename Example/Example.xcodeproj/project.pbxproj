@@ -134,7 +134,10 @@
 		51B6243526CAEE5100D97E9E /* RZUIEntitysLib.h in Headers */ = {isa = PBXBuildFile; fileRef = 51B6243326CAEE5000D97E9E /* RZUIEntitysLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		51B6243726CAEE7A00D97E9E /* RZUIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B6243626CAEE7A00D97E9E /* RZUIStackView.swift */; };
 		51DE1F1A2A0A3A0000E8AE90 /* RZBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE1F172A0A39BF00E8AE90 /* RZBuilder.swift */; };
-		51DE1F1B2A0A3A0000E8AE90 /* RZBuildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE1F132A0A397600E8AE90 /* RZBuildable.swift */; };
+		51DE1F1B2A0A3A0000E8AE90 /* RZBuildableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE1F132A0A397600E8AE90 /* RZBuildableProtocol.swift */; };
+		51DE1F232A0A974F00E8AE90 /* RZUIViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE1F212A0A974400E8AE90 /* RZUIViewProtocol.swift */; };
+		51DE1F262A0A994000E8AE90 /* RZBuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE1F242A0A993100E8AE90 /* RZBuilderProtocol.swift */; };
+		51DE1F292A0A99A900E8AE90 /* RZSUIViewWraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE1F272A0A998E00E8AE90 /* RZSUIViewWraper.swift */; };
 		51FE5D5927B3B71C00075EEE /* RZDependencyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 510015BA27B3B4D10014630B /* RZDependencyKit.framework */; };
 		51FE5D5A27B3B71C00075EEE /* RZDependencyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 510015BA27B3B4D10014630B /* RZDependencyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A70C434CF93CB91C89B63D7F /* Pods_RZStoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54276254A91B934B93E2AF76 /* Pods_RZStoreKit.framework */; };
@@ -514,8 +517,11 @@
 		51B6243226CAEE5000D97E9E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51B6243326CAEE5000D97E9E /* RZUIEntitysLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZUIEntitysLib.h; sourceTree = "<group>"; };
 		51B6243626CAEE7A00D97E9E /* RZUIStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZUIStackView.swift; sourceTree = "<group>"; };
-		51DE1F132A0A397600E8AE90 /* RZBuildable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZBuildable.swift; sourceTree = "<group>"; };
+		51DE1F132A0A397600E8AE90 /* RZBuildableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZBuildableProtocol.swift; sourceTree = "<group>"; };
 		51DE1F172A0A39BF00E8AE90 /* RZBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZBuilder.swift; sourceTree = "<group>"; };
+		51DE1F212A0A974400E8AE90 /* RZUIViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZUIViewProtocol.swift; sourceTree = "<group>"; };
+		51DE1F242A0A993100E8AE90 /* RZBuilderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZBuilderProtocol.swift; sourceTree = "<group>"; };
+		51DE1F272A0A998E00E8AE90 /* RZSUIViewWraper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZSUIViewWraper.swift; sourceTree = "<group>"; };
 		54276254A91B934B93E2AF76 /* Pods_RZStoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RZStoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55998D5ED8568887B3C340F1 /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6182A7496AAB50FFF3DE937C /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -996,6 +1002,7 @@
 			isa = PBXGroup;
 			children = (
 				515751DF268C9A57006D45BA /* RZUIViewWraper.swift */,
+				51DE1F272A0A998E00E8AE90 /* RZSUIViewWraper.swift */,
 				515751E0268C9A57006D45BA /* RZUIPacView.swift */,
 				515751E1268C9A57006D45BA /* RZSUIPacView.swift */,
 			);
@@ -1100,6 +1107,7 @@
 			isa = PBXGroup;
 			children = (
 				51B6243626CAEE7A00D97E9E /* RZUIStackView.swift */,
+				51DE1F212A0A974400E8AE90 /* RZUIViewProtocol.swift */,
 			);
 			path = RZViews;
 			sourceTree = "<group>";
@@ -1125,7 +1133,8 @@
 		51DE1F122A0A396600E8AE90 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				51DE1F132A0A397600E8AE90 /* RZBuildable.swift */,
+				51DE1F132A0A397600E8AE90 /* RZBuildableProtocol.swift */,
+				51DE1F242A0A993100E8AE90 /* RZBuilderProtocol.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1870,12 +1879,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				515751CB268C99DC006D45BA /* RZProtoTest.swift in Sources */,
+				51DE1F262A0A994000E8AE90 /* RZBuilderProtocol.swift in Sources */,
 				515751CA268C99DC006D45BA /* RZProtoFrame.swift in Sources */,
 				515751D0268C99DC006D45BA /* RZImageSeter.swift in Sources */,
 				515751D5268C99DC006D45BA /* DictionaryExtension.swift in Sources */,
 				515751CD268C99DC006D45BA /* RZProto.swift in Sources */,
 				515751D7268C99DC006D45BA /* RZObservable.swift in Sources */,
-				51DE1F1B2A0A3A0000E8AE90 /* RZBuildable.swift in Sources */,
+				51DE1F1B2A0A3A0000E8AE90 /* RZBuildableProtocol.swift in Sources */,
 				515751CC268C99DC006D45BA /* RZProtoValue.swift in Sources */,
 				515751D4268C99DC006D45BA /* UIControlExtension.swift in Sources */,
 				515751C9268C99DC006D45BA /* RZViewBuilder.swift in Sources */,
@@ -1907,6 +1917,7 @@
 				515751F4268C9A57006D45BA /* RZTransitionAnimation.swift in Sources */,
 				515751FB268C9A57006D45BA /* RZUIPacRouter.swift in Sources */,
 				515751F2268C9A57006D45BA /* RZUIPacView.swift in Sources */,
+				51DE1F292A0A99A900E8AE90 /* RZSUIViewWraper.swift in Sources */,
 				515751F1268C9A57006D45BA /* RZUIViewWraper.swift in Sources */,
 				515751F8268C9A57006D45BA /* CGSizeExtension.swift in Sources */,
 				515751F0268C9A57006D45BA /* RZUIPacController.swift in Sources */,
@@ -1931,6 +1942,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				51B6243726CAEE7A00D97E9E /* RZUIStackView.swift in Sources */,
+				51DE1F232A0A974F00E8AE90 /* RZUIViewProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

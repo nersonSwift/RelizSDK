@@ -11,7 +11,7 @@ import UIKit
 import RZDarkModeKit
 import RZObservableKit
 
-extension UIView: RZBuildable{}
+extension UIView: RZBuildableProtocol{}
 
 @available(*, deprecated, renamed: "RZBuilder")
 public typealias RZViewBuilder = RZBuilder
