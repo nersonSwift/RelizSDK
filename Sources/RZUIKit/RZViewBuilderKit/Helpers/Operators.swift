@@ -28,22 +28,15 @@ precedencegroup FirstTernaryPrecedence {
 infix operator ?> : SecondTernaryPrecedence
 infix operator <| : FirstTernaryPrecedence
 
-//public postfix func +><V: UIView>(view: V) -> RZBuilder<V>{
-//    RZBuilder(view)
-//}
+public postfix func +><V: UIView>(view: V) -> RZBuilder<V>{ view.builder }
 
-//public postfix func +><V: RZBuildable>(view: V) -> V.B where V.B: UIView{
-//    view.builder
-//}
+public postfix func *<B: RZBuilderProtocol>(value: B) -> RZProto where B.V: UIView{
+    RZProto(value.value)
+}
 
-
-//public postfix func *<B: RZBuilderProtocol>(value: B) -> RZProto where B.V: UIView{
-//    RZProto(value.value)
-//}
-//
-//public postfix func |*<B: RZBuilderProtocol>(value: B) -> RZProto where B.V: UIView{
-//    RZProto(value.value, true)
-//}
+public postfix func |*<B: RZBuilderProtocol>(value: B) -> RZProto where B.V: UIView{
+    RZProto(value.value, true)
+}
 
 public postfix func *(value: UIView) -> RZProto{
     RZProto(value)

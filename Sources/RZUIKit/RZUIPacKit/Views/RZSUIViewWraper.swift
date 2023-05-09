@@ -5,7 +5,7 @@
 //  Created by Александр Сенин on 09.05.2023.
 //
 
-import Foundation
+import SwiftUI
 
 public class RZSUIViewWraper: UIView{
     public convenience init <V: View>(@ViewBuilder _ view: @escaping ()->V){

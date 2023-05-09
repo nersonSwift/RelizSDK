@@ -37,9 +37,5 @@ extension RZBuildableProtocol{
         closure(builder)
         return self
     }
-
-    static public postfix func +>(view: Self) -> RZBuilder<Self>{
-        view.builder
-    }
 }
 

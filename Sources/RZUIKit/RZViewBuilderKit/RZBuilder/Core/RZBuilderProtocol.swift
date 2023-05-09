@@ -9,6 +9,6 @@ import Foundation
 
 public protocol RZBuilderProtocol{
     associatedtype V: RZBuildableProtocol
-    
+    var value: V { get }
     init(_ value: V)
 }
