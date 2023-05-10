@@ -1,8 +1,8 @@
 
 Pod::Spec.new do |spec|
 
-  spec.name         = "RZViewBuilderKit"
-  spec.version      = "3.0.5"
+  spec.name         = "RZUIEntitiesLib"
+  spec.version      = "1.0"
   spec.summary      = "Small example to test code sharing."
   spec.description  = "Small example to test code sharing via cocoapods."	
   
@@ -21,8 +21,8 @@ Pod::Spec.new do |spec|
 	:tag => spec.name.to_s + "_v" + spec.version.to_s
   }
 
-  spec.source_files = "Sources/RZUIKit/RZUIEntitysLib/**/*"
-  spec.exclude_files = "Sources/RZUIKit/RZUIEntitysLib/**/*.plist"
+  spec.source_files = "Sources/RZUIKit/RZUIEntitiesLib/**/*"
+  spec.exclude_files = "Sources/RZUIKit/RZUIEntitiesLib/**/*.plist"
     
   spec.dependency 'RZDarkModeKit'
   spec.dependency 'RZObservableKit'

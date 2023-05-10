@@ -121,8 +121,8 @@
 		515751F9268C9A57006D45BA /* UIPacInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751E9268C9A57006D45BA /* UIPacInstaller.swift */; };
 		515751FB268C9A57006D45BA /* RZUIPacRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751EC268C9A57006D45BA /* RZUIPacRouter.swift */; };
 		51849C2D2822BA8200FDDA2B /* RZUIPacLinesExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51849C2C2822BA8200FDDA2B /* RZUIPacLinesExtensions.swift */; };
-		51B6241326CAEBE100D97E9E /* RZUIEntitysLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51B6240C26CAEBE100D97E9E /* RZUIEntitysLib.framework */; };
-		51B6241426CAEBE100D97E9E /* RZUIEntitysLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 51B6240C26CAEBE100D97E9E /* RZUIEntitysLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		51B6241326CAEBE100D97E9E /* RZUIEntitiesLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51B6240C26CAEBE100D97E9E /* RZUIEntitiesLib.framework */; };
+		51B6241426CAEBE100D97E9E /* RZUIEntitiesLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 51B6240C26CAEBE100D97E9E /* RZUIEntitiesLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		51B6241926CAEC3F00D97E9E /* RZDarkModeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512ED6C22672B35700CDD342 /* RZDarkModeKit.framework */; };
 		51B6241A26CAEC3F00D97E9E /* RZDarkModeKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 512ED6C22672B35700CDD342 /* RZDarkModeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		51B6241D26CAEC3F00D97E9E /* RZObservableKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512ED3A32672A87900CDD342 /* RZObservableKit.framework */; };
@@ -131,7 +131,7 @@
 		51B6242226CAEC3F00D97E9E /* RZUIPacKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 512ED6DA2672B36800CDD342 /* RZUIPacKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		51B6242526CAEC3F00D97E9E /* RZViewBuilderKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512ED6AB2672B34800CDD342 /* RZViewBuilderKit.framework */; };
 		51B6242626CAEC3F00D97E9E /* RZViewBuilderKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 512ED6AB2672B34800CDD342 /* RZViewBuilderKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		51B6243526CAEE5100D97E9E /* RZUIEntitysLib.h in Headers */ = {isa = PBXBuildFile; fileRef = 51B6243326CAEE5000D97E9E /* RZUIEntitysLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		51B6243526CAEE5100D97E9E /* RZUIEntitiesLib.h in Headers */ = {isa = PBXBuildFile; fileRef = 51B6243326CAEE5000D97E9E /* RZUIEntitiesLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		51B6243726CAEE7A00D97E9E /* RZUIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B6243626CAEE7A00D97E9E /* RZUIStackView.swift */; };
 		51DE1F1A2A0A3A0000E8AE90 /* RZBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE1F172A0A39BF00E8AE90 /* RZBuilder.swift */; };
 		51DE1F1B2A0A3A0000E8AE90 /* RZBuildableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE1F132A0A397600E8AE90 /* RZBuildableProtocol.swift */; };
@@ -337,7 +337,7 @@
 				512ED6B32672B34800CDD342 /* RZViewBuilderKit.framework in Embed Frameworks */,
 				512ED3AB2672A87900CDD342 /* RZObservableKit.framework in Embed Frameworks */,
 				5149D3EC281956130003E130 /* RZAnimationKit.framework in Embed Frameworks */,
-				51B6241426CAEBE100D97E9E /* RZUIEntitysLib.framework in Embed Frameworks */,
+				51B6241426CAEBE100D97E9E /* RZUIEntitiesLib.framework in Embed Frameworks */,
 				512ED4982672AD4B00CDD342 /* RZStoreKit.framework in Embed Frameworks */,
 				512ED6E22672B36800CDD342 /* RZUIPacKit.framework in Embed Frameworks */,
 			);
@@ -513,9 +513,9 @@
 		515751EA268C9A57006D45BA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		515751EC268C9A57006D45BA /* RZUIPacRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZUIPacRouter.swift; sourceTree = "<group>"; };
 		51849C2C2822BA8200FDDA2B /* RZUIPacLinesExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZUIPacLinesExtensions.swift; sourceTree = "<group>"; };
-		51B6240C26CAEBE100D97E9E /* RZUIEntitysLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RZUIEntitysLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		51B6240C26CAEBE100D97E9E /* RZUIEntitiesLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RZUIEntitiesLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51B6243226CAEE5000D97E9E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		51B6243326CAEE5000D97E9E /* RZUIEntitysLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZUIEntitysLib.h; sourceTree = "<group>"; };
+		51B6243326CAEE5000D97E9E /* RZUIEntitiesLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZUIEntitiesLib.h; sourceTree = "<group>"; };
 		51B6243626CAEE7A00D97E9E /* RZUIStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZUIStackView.swift; sourceTree = "<group>"; };
 		51DE1F132A0A397600E8AE90 /* RZBuildableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZBuildableProtocol.swift; sourceTree = "<group>"; };
 		51DE1F172A0A39BF00E8AE90 /* RZBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZBuilder.swift; sourceTree = "<group>"; };
@@ -546,7 +546,7 @@
 			files = (
 				510015C027B3B4D10014630B /* RZDependencyKit.framework in Frameworks */,
 				5149D3EB281956130003E130 /* RZAnimationKit.framework in Frameworks */,
-				51B6241326CAEBE100D97E9E /* RZUIEntitysLib.framework in Frameworks */,
+				51B6241326CAEBE100D97E9E /* RZUIEntitiesLib.framework in Frameworks */,
 				512ED6C92672B35700CDD342 /* RZDarkModeKit.framework in Frameworks */,
 				512ED4B22672AD6F00CDD342 /* RelizKit.framework in Frameworks */,
 				512ED47E2672AD2200CDD342 /* RZEventKit.framework in Frameworks */,
@@ -707,7 +707,7 @@
 				512ED6AB2672B34800CDD342 /* RZViewBuilderKit.framework */,
 				512ED6C22672B35700CDD342 /* RZDarkModeKit.framework */,
 				512ED6DA2672B36800CDD342 /* RZUIPacKit.framework */,
-				51B6240C26CAEBE100D97E9E /* RZUIEntitysLib.framework */,
+				51B6240C26CAEBE100D97E9E /* RZUIEntitiesLib.framework */,
 				510015BA27B3B4D10014630B /* RZDependencyKit.framework */,
 				5149D3E5281956130003E130 /* RZAnimationKit.framework */,
 			);
@@ -770,7 +770,7 @@
 			isa = PBXGroup;
 			children = (
 				5149D3F02819566B0003E130 /* RZAnimationKit */,
-				51B6241826CAEBFC00D97E9E /* RZUIEntitysLib */,
+				51B6241826CAEBFC00D97E9E /* RZUIEntitiesLib */,
 				5157518C268C999E006D45BA /* RZDarkModeKit */,
 				515751D8268C9A57006D45BA /* RZUIPacKit */,
 				515751B7268C99DC006D45BA /* RZViewBuilderKit */,
@@ -1091,16 +1091,16 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		51B6241826CAEBFC00D97E9E /* RZUIEntitysLib */ = {
+		51B6241826CAEBFC00D97E9E /* RZUIEntitiesLib */ = {
 			isa = PBXGroup;
 			children = (
 				51B6243226CAEE5000D97E9E /* Info.plist */,
-				51B6243326CAEE5000D97E9E /* RZUIEntitysLib.h */,
+				51B6243326CAEE5000D97E9E /* RZUIEntitiesLib.h */,
 				51B6242B26CAEC8600D97E9E /* Extensions */,
 				51B6242A26CAEC6800D97E9E /* RZViews */,
 			);
-			name = RZUIEntitysLib;
-			path = ../../../Sources/RZUIKit/RZUIEntitysLib;
+			name = RZUIEntitiesLib;
+			path = ../../../Sources/RZUIKit/RZUIEntitiesLib;
 			sourceTree = "<group>";
 		};
 		51B6242A26CAEC6800D97E9E /* RZViews */ = {
@@ -1261,7 +1261,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51B6243526CAEE5100D97E9E /* RZUIEntitysLib.h in Headers */,
+				51B6243526CAEE5100D97E9E /* RZUIEntitiesLib.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1509,9 +1509,9 @@
 			productReference = 5149D3E5281956130003E130 /* RZAnimationKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		51B6240B26CAEBE100D97E9E /* RZUIEntitysLib */ = {
+		51B6240B26CAEBE100D97E9E /* RZUIEntitiesLib */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 51B6241526CAEBE100D97E9E /* Build configuration list for PBXNativeTarget "RZUIEntitysLib" */;
+			buildConfigurationList = 51B6241526CAEBE100D97E9E /* Build configuration list for PBXNativeTarget "RZUIEntitiesLib" */;
 			buildPhases = (
 				51B6240726CAEBE100D97E9E /* Headers */,
 				51B6240826CAEBE100D97E9E /* Sources */,
@@ -1527,9 +1527,9 @@
 				51B6242426CAEC3F00D97E9E /* PBXTargetDependency */,
 				51B6242826CAEC3F00D97E9E /* PBXTargetDependency */,
 			);
-			name = RZUIEntitysLib;
+			name = RZUIEntitiesLib;
 			productName = RZUIEntitysLib;
-			productReference = 51B6240C26CAEBE100D97E9E /* RZUIEntitysLib.framework */;
+			productReference = 51B6240C26CAEBE100D97E9E /* RZUIEntitiesLib.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -1611,7 +1611,7 @@
 				512ED6AA2672B34800CDD342 /* RZViewBuilderKit */,
 				512ED6C12672B35700CDD342 /* RZDarkModeKit */,
 				512ED6D92672B36800CDD342 /* RZUIPacKit */,
-				51B6240B26CAEBE100D97E9E /* RZUIEntitysLib */,
+				51B6240B26CAEBE100D97E9E /* RZUIEntitiesLib */,
 				510015B927B3B4D10014630B /* RZDependencyKit */,
 				5149D3E4281956130003E130 /* RZAnimationKit */,
 			);
@@ -2046,7 +2046,7 @@
 		};
 		51B6241226CAEBE100D97E9E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 51B6240B26CAEBE100D97E9E /* RZUIEntitysLib */;
+			target = 51B6240B26CAEBE100D97E9E /* RZUIEntitiesLib */;
 			targetProxy = 51B6241126CAEBE100D97E9E /* PBXContainerItemProxy */;
 		};
 		51B6241C26CAEC3F00D97E9E /* PBXTargetDependency */ = {
@@ -3141,7 +3141,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		51B6241526CAEBE100D97E9E /* Build configuration list for PBXNativeTarget "RZUIEntitysLib" */ = {
+		51B6241526CAEBE100D97E9E /* Build configuration list for PBXNativeTarget "RZUIEntitiesLib" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				51B6241626CAEBE100D97E9E /* Debug */,

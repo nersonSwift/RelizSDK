@@ -20,6 +20,7 @@ public class RZSUIViewWraper: UIView{
         guard let self = self as? Self else { return }
         observable.setRZObservables()
         let controller = UIHostingController(rootView: RZObserveView<V, Self, ObObj>(view, uiView: self).environmentObject(observable))
+        controller._disableSafeArea = true
         let view = controller.view ?? UIView()
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
         rzFrame.add{[weak view] in
