@@ -17,8 +17,8 @@ public protocol RZUIViewProtocol: UIView{
 
 extension RZBuilder where V: RZUIViewProtocol{
     @discardableResult
-    public func model(_ closure: (inout V.Model) -> ()) -> Self{
-        closure(&view.model)
+    public func model(_ closure: (V.Model) -> ()) -> Self{
+        closure(view.model)
         return self
     }
     
