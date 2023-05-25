@@ -201,6 +201,15 @@ extension RZUIPacControllerNGProtocol{
         }
     }
     
+    public var superShared: RZUIPacSharedStorage { checkShared(parent) ?? .init() }
+    
+    private func checkShared(_ vc: UIViewController?) -> RZUIPacSharedStorage?{
+        guard let vc = vc else {return nil}
+        var shared = (vc as? RZUIPacShareProtocol)?.shared
+        if let superShared = checkShared(vc.parent){ shared = superShared + shared }
+        return shared
+    }
+    
     public init() {
         self.init(nibName: nil, bundle: nil)
     }
@@ -224,6 +233,10 @@ public protocol RZUIPacControllerViewingProtocol: RZUIPacControllerNGProtocol, R
     //MARK: - iPadPresenter
     /// `ru`: - свойство которое которое должно вернуть тип `RZUIPacView` который будет инициализирован для версии `Mac`
     var macViewType: RZUIPacAnyViewProtocol.Type? { get }
+}
+
+public protocol RZUIPacShareProtocol: RZUIPacControllerNGProtocol{
+    var shared: RZUIPacSharedStorage { get }
 }
 
 extension RZUIPacControllerViewingProtocol{

@@ -7,12 +7,17 @@
 
 import RelizKit
 
+
 class TestRotateAllC: RZUIPacController{
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {.all}
     var iPhoneViewType: RZUIPacAnyViewProtocol.Type? {TestRotateAllV.self}
     var router = TestRotateAllR.setup()
     
+    
+    
     func start() {
+    
+        
         self.view+>.color(.c1L)
         self.view.addSubview(
             UIView()+>

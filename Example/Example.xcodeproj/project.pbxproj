@@ -121,6 +121,14 @@
 		515751F9268C9A57006D45BA /* UIPacInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751E9268C9A57006D45BA /* UIPacInstaller.swift */; };
 		515751FB268C9A57006D45BA /* RZUIPacRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515751EC268C9A57006D45BA /* RZUIPacRouter.swift */; };
 		51849C2D2822BA8200FDDA2B /* RZUIPacLinesExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51849C2C2822BA8200FDDA2B /* RZUIPacLinesExtensions.swift */; };
+		519677F72A1FA31800A63C82 /* RZUIPacSharePreviewIPhoneV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519677F42A1FA30200A63C82 /* RZUIPacSharePreviewIPhoneV.swift */; };
+		519677F82A1FA31800A63C82 /* RZUIPacSharePreviewC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519677F52A1FA30200A63C82 /* RZUIPacSharePreviewC.swift */; };
+		519677F92A1FA31800A63C82 /* RZUIPacSharePreviewR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519677F62A1FA30200A63C82 /* RZUIPacSharePreviewR.swift */; };
+		519678022A1FA52B00A63C82 /* SharePreviewSubR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519678012A1FA51800A63C82 /* SharePreviewSubR.swift */; };
+		519678032A1FA52B00A63C82 /* SharePreviewSubC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519677FE2A1FA51800A63C82 /* SharePreviewSubC.swift */; };
+		519678042A1FA52B00A63C82 /* SharePreviewSubIPhoneV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519678002A1FA51800A63C82 /* SharePreviewSubIPhoneV.swift */; };
+		5196780A2A1FA73500A63C82 /* SharedKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519678082A1FA6BE00A63C82 /* SharedKey.swift */; };
+		5196780B2A1FA73500A63C82 /* SharedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519678062A1FA68D00A63C82 /* SharedStorage.swift */; };
 		51B6241326CAEBE100D97E9E /* RZUIEntitiesLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51B6240C26CAEBE100D97E9E /* RZUIEntitiesLib.framework */; };
 		51B6241426CAEBE100D97E9E /* RZUIEntitiesLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 51B6240C26CAEBE100D97E9E /* RZUIEntitiesLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		51B6241926CAEC3F00D97E9E /* RZDarkModeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512ED6C22672B35700CDD342 /* RZDarkModeKit.framework */; };
@@ -513,6 +521,14 @@
 		515751EA268C9A57006D45BA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		515751EC268C9A57006D45BA /* RZUIPacRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RZUIPacRouter.swift; sourceTree = "<group>"; };
 		51849C2C2822BA8200FDDA2B /* RZUIPacLinesExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZUIPacLinesExtensions.swift; sourceTree = "<group>"; };
+		519677F42A1FA30200A63C82 /* RZUIPacSharePreviewIPhoneV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZUIPacSharePreviewIPhoneV.swift; sourceTree = "<group>"; };
+		519677F52A1FA30200A63C82 /* RZUIPacSharePreviewC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZUIPacSharePreviewC.swift; sourceTree = "<group>"; };
+		519677F62A1FA30200A63C82 /* RZUIPacSharePreviewR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZUIPacSharePreviewR.swift; sourceTree = "<group>"; };
+		519677FE2A1FA51800A63C82 /* SharePreviewSubC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePreviewSubC.swift; sourceTree = "<group>"; };
+		519678002A1FA51800A63C82 /* SharePreviewSubIPhoneV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePreviewSubIPhoneV.swift; sourceTree = "<group>"; };
+		519678012A1FA51800A63C82 /* SharePreviewSubR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePreviewSubR.swift; sourceTree = "<group>"; };
+		519678062A1FA68D00A63C82 /* SharedStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedStorage.swift; sourceTree = "<group>"; };
+		519678082A1FA6BE00A63C82 /* SharedKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedKey.swift; sourceTree = "<group>"; };
 		51B6240C26CAEBE100D97E9E /* RZUIEntitiesLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RZUIEntitiesLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51B6243226CAEE5000D97E9E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51B6243326CAEE5000D97E9E /* RZUIEntitiesLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZUIEntitiesLib.h; sourceTree = "<group>"; };
@@ -1012,6 +1028,7 @@
 		515751E2268C9A57006D45BA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				519678052A1FA66400A63C82 /* SharedStorage */,
 				515751E3268C9A57006D45BA /* RZTransitionAnimation.swift */,
 				515751E4268C9A57006D45BA /* LinesController.swift */,
 				515751E5268C9A57006D45BA /* RZRotater.swift */,
@@ -1091,6 +1108,51 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		519677F22A1FA30200A63C82 /* RZUIPacSharePreview */ = {
+			isa = PBXGroup;
+			children = (
+				519677F52A1FA30200A63C82 /* RZUIPacSharePreviewC.swift */,
+				519677F62A1FA30200A63C82 /* RZUIPacSharePreviewR.swift */,
+				519677F32A1FA30200A63C82 /* RZUIPacSharePreviewV */,
+			);
+			path = RZUIPacSharePreview;
+			sourceTree = "<group>";
+		};
+		519677F32A1FA30200A63C82 /* RZUIPacSharePreviewV */ = {
+			isa = PBXGroup;
+			children = (
+				519677F42A1FA30200A63C82 /* RZUIPacSharePreviewIPhoneV.swift */,
+			);
+			path = RZUIPacSharePreviewV;
+			sourceTree = "<group>";
+		};
+		519677FD2A1FA51800A63C82 /* SharePreviewSub */ = {
+			isa = PBXGroup;
+			children = (
+				519677FE2A1FA51800A63C82 /* SharePreviewSubC.swift */,
+				519678012A1FA51800A63C82 /* SharePreviewSubR.swift */,
+				519677FF2A1FA51800A63C82 /* SharePreviewSubV */,
+			);
+			path = SharePreviewSub;
+			sourceTree = "<group>";
+		};
+		519677FF2A1FA51800A63C82 /* SharePreviewSubV */ = {
+			isa = PBXGroup;
+			children = (
+				519678002A1FA51800A63C82 /* SharePreviewSubIPhoneV.swift */,
+			);
+			path = SharePreviewSubV;
+			sourceTree = "<group>";
+		};
+		519678052A1FA66400A63C82 /* SharedStorage */ = {
+			isa = PBXGroup;
+			children = (
+				519678062A1FA68D00A63C82 /* SharedStorage.swift */,
+				519678082A1FA6BE00A63C82 /* SharedKey.swift */,
+			);
+			path = SharedStorage;
+			sourceTree = "<group>";
+		};
 		51B6241826CAEBFC00D97E9E /* RZUIEntitiesLib */ = {
 			isa = PBXGroup;
 			children = (
@@ -1168,6 +1230,8 @@
 		E448A0B026A04FE90009FE36 /* UIPacks */ = {
 			isa = PBXGroup;
 			children = (
+				519677FD2A1FA51800A63C82 /* SharePreviewSub */,
+				519677F22A1FA30200A63C82 /* RZUIPacSharePreview */,
 				511D5AFC2982C34F00C28983 /* TestRotate */,
 				E448A0B126A04FE90009FE36 /* Content */,
 			);
@@ -1792,12 +1856,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				519678042A1FA52B00A63C82 /* SharePreviewSubIPhoneV.swift in Sources */,
 				512ED30E267282BE00CDD342 /* AppDelegate.swift in Sources */,
+				519678022A1FA52B00A63C82 /* SharePreviewSubR.swift in Sources */,
 				E448A0B326A04FE90009FE36 /* Colors.swift in Sources */,
+				519677F92A1FA31800A63C82 /* RZUIPacSharePreviewR.swift in Sources */,
 				51057A0D270F158700ECD274 /* RZVBTemplateExtension.swift in Sources */,
 				E448A0B426A04FE90009FE36 /* ContentView.swift in Sources */,
 				511D5AFE2982C38300C28983 /* TestRotateAllC.swift in Sources */,
+				519678032A1FA52B00A63C82 /* SharePreviewSubC.swift in Sources */,
 				512ED310267282BE00CDD342 /* SceneDelegate.swift in Sources */,
+				519677F72A1FA31800A63C82 /* RZUIPacSharePreviewIPhoneV.swift in Sources */,
+				519677F82A1FA31800A63C82 /* RZUIPacSharePreviewC.swift in Sources */,
 				51849C2D2822BA8200FDDA2B /* RZUIPacLinesExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1916,9 +1986,11 @@
 				515751F9268C9A57006D45BA /* UIPacInstaller.swift in Sources */,
 				515751F4268C9A57006D45BA /* RZTransitionAnimation.swift in Sources */,
 				515751FB268C9A57006D45BA /* RZUIPacRouter.swift in Sources */,
+				5196780A2A1FA73500A63C82 /* SharedKey.swift in Sources */,
 				515751F2268C9A57006D45BA /* RZUIPacView.swift in Sources */,
 				51DE1F292A0A99A900E8AE90 /* RZSUIViewWraper.swift in Sources */,
 				515751F1268C9A57006D45BA /* RZUIViewWraper.swift in Sources */,
+				5196780B2A1FA73500A63C82 /* SharedStorage.swift in Sources */,
 				515751F8268C9A57006D45BA /* CGSizeExtension.swift in Sources */,
 				515751F0268C9A57006D45BA /* RZUIPacController.swift in Sources */,
 				515751EF268C9A57006D45BA /* RZRootController.swift in Sources */,
