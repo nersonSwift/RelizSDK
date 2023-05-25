@@ -8,7 +8,7 @@
 import RelizKit
 
 extension RZUIPacSharedKeyChain<SharePreviewC>{
-    var router: RZUIPacSharedKey<SharePreviewR> { .init(key: "router") }
+    var router: RZUIPacSharedKey<Self, SharePreviewR> { .init(key: "router") }
 }
 
 extension RZUIPacSharedKey{
@@ -19,6 +19,7 @@ extension RZUIPacSharedKey{
 class SharePreviewC: RZUIPacController, RZUIPacShareProtocol{
     var iPhoneViewType: RZUIPacAnyViewProtocol.Type? { SharePreviewIPhoneV.self }
     var router = SharePreviewR.setup()
+    
     var shared: RZUIPacSharedStorage {
         .init(key: .sharePreviewChain.router, value: router)
     }

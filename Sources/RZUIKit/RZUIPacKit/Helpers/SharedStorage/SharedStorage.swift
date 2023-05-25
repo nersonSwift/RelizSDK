@@ -10,16 +10,16 @@ import Foundation
 public struct RZUIPacSharedStorage{
     private var storage = [String: Any]()
     
-    public subscript<T>(_ key: RZUIPacSharedKey<T>) -> T? {
+    public subscript<C, T>(_ key: RZUIPacSharedKey<C, T>) -> T? {
         set(value){ storage[key.key] = value }
         get{ storage[key.key] as? T }
     }
     
     public init(){}
     public init(_ controls: [RZUIPacSharedContainer]){ append(controls: controls) }
-    public init<T>(key: RZUIPacSharedKey<T>, value: T){ append(key: key, value: value) }
+    public init<C, T>(key: RZUIPacSharedKey<C, T>, value: T){ append(key: key, value: value) }
     
-    public mutating func append<T>(key: RZUIPacSharedKey<T>, value: T){
+    public mutating func append<C, T>(key: RZUIPacSharedKey<C, T>, value: T){
         self[key] = value
     }
     
@@ -42,7 +42,7 @@ public struct RZUIPacSharedContainer{
     private(set) var key: any RZUIPacSharedKeyProtocol
     private(set) var value: Any
     
-    public init<T>(key: RZUIPacSharedKey<T>, value: T){
+    public init<C, T>(key: RZUIPacSharedKey<C, T>, value: T){
         self.key = key
         self.value = value
     }

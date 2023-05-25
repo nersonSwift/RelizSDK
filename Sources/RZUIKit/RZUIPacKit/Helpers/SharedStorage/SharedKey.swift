@@ -7,7 +7,8 @@
 
 import Foundation
 
-public struct RZUIPacSharedKeyChain<T>{ public init(){} }
+public protocol RZUIPacSharedKeyChainProtocol{}
+public struct RZUIPacSharedKeyChain<T>: RZUIPacSharedKeyChainProtocol{ public init(){} }
 
 public protocol RZUIPacSharedKeyProtocol: Hashable{
     var key: String { get }
@@ -19,11 +20,11 @@ extension RZUIPacSharedKeyProtocol{
 }
 
 
-public struct RZUIPacSharedKey<T>: RZUIPacSharedKeyProtocol{
-    public var key: String { keyString + "\(T.self)" }
+public struct RZUIPacSharedKey<Chain: RZUIPacSharedKeyChainProtocol, Value>: RZUIPacSharedKeyProtocol{
+    public var key: String { "\(Chain.self)" + keyString + "\(Value.self)" }
     private var keyString: String
     
-    public init(type: T.Type = T.self, key: String) {
+    public init(chain: Chain.Type = Chain.self, type: Value.Type = Value.self, key: String) {
         self.keyString = key
     }
 }
