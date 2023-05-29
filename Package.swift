@@ -6,34 +6,46 @@ let package = Package(
     name: "RelizSDK",
     platforms: [.iOS(.v13)],
     products: [
-//        .library(
-//            name: "RZEventKit",
-//            targets: ["RZEventKit"]
-//        ),
-//        .library(
-//            name: "RZObservableKit",
-//            targets: ["RZObservableKit"]
-//        ),
-//        .library(
-//            name: "RZStoreKit",
-//            targets: ["RZStoreKit"]
-//        ),
-//        .library(
-//            name: "RZDarkModeKit",
-//            targets: ["RZDarkModeKit"]
-//        ),
-//        .library(
-//            name: "RZUIPacKit",
-//            targets: ["RZUIPacKit"]
-//        ),
-//        .library(
-//            name: "RZViewBuilderKit",
-//            targets: ["RZViewBuilderKit"]
-//        ),
         .library(
             name: "RelizKit",
             targets: ["RelizKit"]
         ),
+        .library(
+            name: "RZEventKit",
+            targets: ["RZEventKit"]
+        ),
+        .library(
+            name: "RZObservableKit",
+            targets: ["RZObservableKit"]
+        ),
+        .library(
+            name: "RZStoreKit",
+            targets: ["RZStoreKit"]
+        ),
+        .library(
+            name: "RZDarkModeKit",
+            targets: ["RZDarkModeKit"]
+        ),
+        .library(
+            name: "RZAnimationKit",
+            targets: ["RZAnimationKit"]
+        ),
+        .library(
+            name: "RZDependencyKit",
+            targets: ["RZDependencyKit"]
+        ),
+        .library(
+            name: "RZUIPacKit",
+            targets: ["RZUIPacKit"]
+        ),
+        .library(
+            name: "RZViewBuilderKit",
+            targets: ["RZViewBuilderKit"]
+        ),
+        .library(
+            name: "RZUIEntitiesLib",
+            targets: ["RZUIEntitiesLib"]
+        )
     ],
     dependencies: [
         .package(
@@ -103,7 +115,8 @@ let package = Package(
             name: "RZViewBuilderKit",
             dependencies: [.target(name: "RZObservableKit"), .target(name: "RZDarkModeKit")],//, .target(name: "RelizKit")],
             path: "Sources/RZUIKit/RZViewBuilderKit",
-            exclude: ["Info.plist"]
+            exclude: ["Info.plist"],
+            publicHeadersPath: ""
         ),
         .target(
             name: "RZUIEntitiesLib",

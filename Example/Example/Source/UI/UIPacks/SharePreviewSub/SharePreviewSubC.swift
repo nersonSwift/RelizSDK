@@ -14,8 +14,6 @@ class SharePreviewSubC: RZUIPacController{
     func start() {
         print(superShared[.sharePreviewChain.router]?.previewText ?? "")
     }
-    
-    
 }
 
 

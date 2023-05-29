@@ -2,7 +2,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "RelizSDK"
-  spec.version      = "2.6.1"
+  spec.version      = "2.6.2"
   spec.summary      = "RelizSDK"
   spec.description  = "Small example to test code sharing via cocoapods."	
   
