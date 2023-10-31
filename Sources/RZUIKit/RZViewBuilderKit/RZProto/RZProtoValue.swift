@@ -474,7 +474,7 @@ class RZObserveController{
         _ resultProtocol: RZOResultProtocol?
     ){
         guard let tag = tag, let resultProtocol = resultProtocol else {return}
-        if observesRP[tag] == nil{ observes[tag] = [] }
+        if observesRP[tag] == nil{ observesRP[tag] = [] }
         observesRP[tag]?.append(resultProtocol)
     }
     
