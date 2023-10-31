@@ -474,6 +474,7 @@ class RZObserveController{
         _ resultProtocol: RZOResultProtocol?
     ){
         guard let tag = tag, let resultProtocol = resultProtocol else {return}
+        if observesRP[tag] == nil{ observes[tag] = [] }
         observesRP[tag]?.append(resultProtocol)
     }
     
@@ -489,8 +490,7 @@ class RZObserveController{
     ){
         guard let tag = tag else {return}
         if removeObject != .rzResult{
-            observes[tag]?.forEach{$0.removeObserve()}
-            observesRP[tag] = nil
+            observes[tag] = nil
         }
         if removeObject != .rzProtoValue{
             observesRP[tag]?.forEach{$0.remove()}
