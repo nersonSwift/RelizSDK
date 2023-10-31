@@ -127,12 +127,13 @@ public class RZRotater: UIView{
         
         let animation = {self.animationBody(rotation.pi, needResize, isInstall)}
         
-        if let transitionDuration {
-            UIView.animate(withDuration: transitionDuration, animations: animation)
-        }else {
-            animation()
-        }
-        
+        animation()
+//        if let transitionDuration {
+//            UIView.animate(withDuration: transitionDuration, animations: animation)
+//        }else {
+//            animation()
+//        }
+
         mateController?.isHorizontal = newOrintation.isHorizontal
         if !isInstall, let mateController = mateController{
             Self.rotatingUIPacC.append(mateController)
@@ -161,11 +162,8 @@ public class RZRotater: UIView{
         setTransform(piMode)
         
         if needResize{
-            let old = mate?.frame.size ?? .zero
             frame.size.swap()
-            if old == mate?.frame.size{
-                mate?.frame.size.swap()
-            }
+            mate?.frame.size = bounds.size
         }
         setOriginsZero()
         setPlaceSize()

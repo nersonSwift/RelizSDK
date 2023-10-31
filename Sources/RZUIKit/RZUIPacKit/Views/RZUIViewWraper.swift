@@ -19,10 +19,6 @@ public struct RZViewWrapper<V: UIView>: UIViewRepresentable{
         self.update = update
         update(view)
     }
-    public func makeUIView(context: Context) -> V {
-        return view
-    }
-    public func updateUIView(_ nsView: V, context: Context) {
-        update(nsView)
-    }
+    public func makeUIView(context: Context) -> V { view }
+    public func updateUIView(_ nsView: V, context: Context) { update(nsView) }
 }

@@ -43,3 +43,4 @@ extension RZUIPacViewNGProtocol where Self: RZUIPacViewProtocol{
 public protocol RZUIPacViewProtocol: RZUIPacViewNGProtocol, RZUIRouted{}
 
 public typealias RZUIPacView = UIView & RZUIPacViewProtocol
+
