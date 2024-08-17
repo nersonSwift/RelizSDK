@@ -73,6 +73,40 @@ extension UIView{
     }
 }
 
+class UIViewHoveringContainer{
+    @RZObservable var rzIsHovering: Bool = false
+    
+    init(_ view: UIView) {
+        let hoverGesture = UIHoverGestureRecognizer(target: self, action: #selector(handleHover(_:)))
+        view.addGestureRecognizer(hoverGesture)
+    }
+    
+    @objc private func handleHover(_ gesture: UIHoverGestureRecognizer) {
+        switch gesture.state {
+            case .began: rzIsHovering = true
+            case .ended: rzIsHovering = false
+        default: break
+        }
+    }
+}
+
+extension UIView{
+    private var hoveringContainerKey: String {"HoveringContainer"}
+    private var hoveringContainer: UIViewHoveringContainer{
+        if let container = Associated(self).get(.hashable(hoveringContainerKey)) as? UIViewHoveringContainer{
+            return container
+        }else{
+            let container = UIViewHoveringContainer(self)
+            Associated(self).set(container, .hashable(hoveringContainerKey), .OBJC_ASSOCIATION_RETAIN)
+            return container
+        }
+    }
+    
+    public var rzIsHovering: RZObservable<Bool> {
+        hoveringContainer.$rzIsHovering
+    }
+}
+
 
 
 class RZUIScrollViewContentOffSetObserve{
@@ -90,6 +124,7 @@ class RZUIScrollViewContentOffSetObserve{
         }
     }
 }
+
 
 extension UIScrollView{
     private var rzContentOffSetKey: String {"contentOffSet"}

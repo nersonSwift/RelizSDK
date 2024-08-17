@@ -71,17 +71,19 @@ public class RZDarkModeKit {
             RZDarkModeKit.updateColorise()
         }
         get{
-            return autoMod ? .auto : .mode(darkMod ? .dark : .light)
+            autoMod.map{ $0 ? .auto : .mode(darkMod ? .dark : .light) } ?? defaultMode
         }
     }
     
+    public static var defaultMode: ColorMod = .auto
+    
     private static var autoModKey = "RZDarkModeKit - autoMod"
-    private static var autoMod: Bool{
+    private static var autoMod: Bool?{
         set(autoMod){
             UserDefaults.standard.set(autoMod, forKey: autoModKey)
         }
         get{
-            return UserDefaults.standard.bool(forKey: autoModKey)
+            return UserDefaults.standard.object(forKey: autoModKey) as? Bool
         }
     }
     
