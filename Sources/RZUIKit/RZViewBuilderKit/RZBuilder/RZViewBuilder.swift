@@ -1088,6 +1088,7 @@ extension RZBuilder where V: UITextField{
     
     @discardableResult
     func _text(_ value: String?) -> Self{
+        guard view.text != value else { return self }
         view.text = value
         RZLabelSizeController.modUpdate(view)
         return self
@@ -1252,6 +1253,7 @@ extension RZBuilder where V: UITextView{
     
     @discardableResult
     func _text(_ value: String?) -> Self{
+        guard view.text != value else { return self }
         view.text = value
         RZLabelSizeController.modUpdate(view)
         return self
